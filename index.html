@@ -37,7 +37,15 @@
   .tag b{display:block;font:700 14px Georgia,serif;color:#f3e3bf;letter-spacing:.04em}
   .tag span{display:block;font-size:10.5px;color:var(--muted)}
   #labels{position:fixed;inset:0;pointer-events:none}
-  @media (max-width:640px){.kit{top:auto;bottom:86px;left:8px;right:8px;width:auto;max-height:38vh}.title h1{font-size:20px}.hint{display:none}}
+  .nav{position:fixed;right:16px;bottom:96px;display:flex;flex-direction:column;gap:6px}
+  .nav button{appearance:none;min-width:44px;height:40px;border:1px solid rgba(120,170,230,.25);background:var(--panel);backdrop-filter:blur(8px);color:var(--fg);font:600 16px system-ui;border-radius:10px;cursor:pointer;padding:0 10px}
+  .nav button:hover{background:rgba(40,70,110,.8)}
+  .nav button.on{background:linear-gradient(180deg,#2d5fa0,#1d3f70);border-color:var(--accent)}
+  .nav #nMode{font-size:12px}
+  @media (max-width:640px){body.todos .kit{top:62px;bottom:auto;max-height:none}.tag{padding:2px 6px}.tag b{font-size:11px}.tag span{display:none}
+  .kit{top:auto;bottom:118px;left:8px;right:8px;width:auto;max-height:30vh}.title h1{font-size:20px}.hint{display:none}
+  .bar{left:8px;right:8px;transform:none;bottom:10px;gap:6px;padding:6px}.bar button{padding:8px 10px;font-size:13px}
+  .nav{right:8px;bottom:auto;top:28%}}
 </style>
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
@@ -50,7 +58,8 @@
   <div class="row"><input type="checkbox" id="sides"><label for="sides">Separar esquerda/direita</label></div>
   <div class="row"><button id="rand">Aleatório</button></div>
   <div id="armasBox"><h2 style="margin-top:14px">Armas</h2><div id="armas"></div></div></div></div>
-<div class="hint">Arraste para girar · role para aproximar<br>Teclas numéricas trocam a animação</div>
+<div class="hint">Arraste: girar · botão direito ou 2 dedos: mover<br>Roda ou pinça: zoom · teclas 1–5: animação</div>
+<div class="nav"><button id="zIn" title="Aproximar">＋</button><button id="zOut" title="Afastar">－</button><button id="nMode" title="O que o dedo / botão esquerdo faz: girar ou arrastar a cena">⟳ Girar</button><button id="nHome" title="Voltar à vista inicial">⌂</button></div>
 <div class="bar" id="bar"></div>
 <script type="module">
 import * as THREE from 'three';
@@ -93,7 +102,8 @@ const envTex = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 const camera = new THREE.PerspectiveCamera(38, innerWidth/innerHeight, 0.1, 200);
 camera.position.set(2.6, 1.9, 5.2);
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0,1,0); controls.enableDamping = true; controls.minDistance = 2.2; controls.maxDistance = 12;
+controls.target.set(0,1,0); controls.enableDamping = true; controls.minDistance = 0.6; controls.maxDistance = 12;
+controls.enablePan = true; controls.screenSpacePanning = true; controls.zoomToCursor = true;   // zoom vai para onde o mouse aponta
 controls.maxPolarAngle = Math.PI*0.49;
 
 // luzes: chave quente, contraluz azul, preenchimento frio
@@ -142,7 +152,7 @@ runes.rotation.x = -Math.PI/2; runes.position.y = 0.005; scene.add(runes);
 // ruínas ao fundo (pilares na névoa)
 const pillarMat = new THREE.MeshStandardMaterial({color:0x1a2230, roughness:.95});
 for(let i=0;i<14;i++){
-  const a = i/14*Math.PI*2 + 0.2, r = 9 + (i%3)*2.5, h = 3 + ((i*37)%5);
+  const a = i/14*Math.PI*2 + 0.42, r = 9 + (i%3)*2.5, h = 3 + ((i*37)%5);
   const p = new THREE.Mesh(new THREE.BoxGeometry(0.9, h, 0.9), pillarMat);
   p.position.set(Math.cos(a)*r, h/2-0.35, Math.sin(a)*r); p.rotation.y = a; p.castShadow = false; scene.add(p);
   if(i%2===0){ const cap = new THREE.Mesh(new THREE.BoxGeometry(1.3,0.3,1.3), pillarMat); cap.position.set(p.position.x, h-0.35, p.position.z); cap.rotation.y=a; scene.add(cap); }
@@ -272,7 +282,6 @@ function buildGallery(src, clips){
       if(on && sock){ restOffset(c, o, side); sock.add(o); seat(o); }
     }
     const holder = new THREE.Group(); holder.add(c); holder.scale.setScalar(RACAS[r].escala || 1);
-    holder.position.set(k * gap, 0, 0.5 - 0.1 * k * k); holder.rotation.y = -k * 0.08;
     const tag = document.createElement('div'); tag.className = 'tag';
     tag.innerHTML = `<b>${RACAS[r].nome}</b><span>${RACAS[r].titulo || ''}</span>`;
     tag.title = 'Abrir no provador'; tag.onclick = () => { setView('provador'); preset(r); };
@@ -283,10 +292,32 @@ function buildGallery(src, clips){
     gallery.push({mixer, actions, current: null, holder});
   });
 }
+function layoutGallery(portrait){            // deitado: uma fileira em arco; em pé (celular): 4 atrás + 3 na frente
+  const n = gallery.length, back = Math.ceil(n / 2), gap = Math.min(1.12, 6.7 / Math.max(1, n - 1));
+  gallery.forEach((g, i) => {
+    if(!portrait){ const k = i - (n - 1) / 2; g.holder.position.set(k * gap, 0, 0.5 - 0.1 * k * k); g.holder.rotation.y = -k * 0.08; }
+    else { const rows = [Math.ceil(n / 3), Math.ceil((n - Math.ceil(n / 3)) / 2)]; rows.push(n - rows[0] - rows[1]);
+      let row = 0, j = i; while(j >= rows[row]){ j -= rows[row]; row++; }
+      const k = j - (rows[row] - 1) / 2;
+      g.holder.position.set(k * 1.25, 0, -2.1 + 2.1 * row); g.holder.rotation.y = -k * 0.06; }
+  });
+}
 function frameGallery(){
+  const portrait = camera.aspect < 0.9; layoutGallery(portrait);
+  camera.fov = portrait ? 50 : 38; camera.updateProjectionMatrix();
+  if(portrait){
+    const th = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect;
+    const d = Math.max(6.6, 3.9 / (2 * th));
+    controls.maxDistance = Math.max(12, d + 3); scene.fog.density = 0.055 * Math.min(1, 7 / d);
+    controls.target.set(0, 0.5, 0.3); camera.position.set(0, 4.6, d + 0.8); return;
+  }
+  scene.fog.density = 0.055;
   const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
-  const d = Math.min(12, Math.max(6.6, 4.6 / Math.tan(hfov / 2)));
-  controls.target.set(0.25, 0.95, 0); camera.position.set(0.25, 1.7, d);
+  const th = Math.tan(hfov / 2), frac = innerWidth > 640 ? 300 / innerWidth : 0;   // o painel ocupa ~300 px à esquerda
+  const d = Math.min(16, Math.max(6.6, 7.6 / (2 * th * (1 - frac))));               // os 7 cabem na área livre
+  const sx = -frac * d * th;                                                           // e ficam centrados nela
+  controls.maxDistance = Math.max(12, d + 2);
+  controls.target.set(sx, 0.95, 0); camera.position.set(sx, 1.7, d);
 }
 function setView(v){
   view = v; document.body.classList.toggle('todos', v === 'todos');
@@ -297,8 +328,33 @@ function setView(v){
   document.getElementById('mProv').classList.toggle('on', v !== 'todos');
   const sub = document.getElementById('sub');
   if(v === 'todos'){ sub.textContent = 'As 7 raças · clique num nome para abrir no provador'; frameGallery(); history.replaceState(null, '', '#todos'); }
-  else { camera.position.set(2.6, 1.9, 5.2); controls.target.set(0, 1, 0); refresh(); }
+  else { homeProv(); refresh(); }
 }
+function homeProv(){
+  scene.fog.density = 0.055; camera.fov = 38; camera.updateProjectionMatrix(); controls.maxDistance = 12;
+  const far = camera.aspect < 0.9 ? 1.6 : 1;                      // em pé: um pouco mais longe para caber
+  camera.position.set(2.6 * far, 1.9, 5.2 * far); controls.target.set(0, 1, 0);
+  if(heroRoot){ followPt.set(heroRoot.position.x * 0.6, 0, heroRoot.position.z * 0.6); lastFollow.copy(followPt); }
+}
+// ---------- navegação: zoom, arrastar, vista inicial ----------
+function zoom(f){
+  const off = camera.position.clone().sub(controls.target);
+  const L = THREE.MathUtils.clamp(off.length() * f, controls.minDistance, controls.maxDistance);
+  camera.position.copy(controls.target).addScaledVector(off.normalize(), L);
+}
+let panMode = false;
+function setPan(on){
+  panMode = on;
+  controls.mouseButtons.LEFT = on ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE;
+  controls.mouseButtons.RIGHT = on ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
+  controls.touches.ONE = on ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE;
+  const b = document.getElementById('nMode'); b.textContent = on ? '✥ Mover' : '⟳ Girar'; b.classList.toggle('on', on);
+}
+document.getElementById('zIn').onclick = () => zoom(0.75);
+document.getElementById('zOut').onclick = () => zoom(1.33);
+document.getElementById('nMode').onclick = () => setPan(!panMode);
+document.getElementById('nHome').onclick = () => { if(view === 'todos') frameGallery(); else homeProv(); };
+addEventListener('keydown', e => { if(e.key === '+' || e.key === '=') zoom(0.8); if(e.key === '-') zoom(1.25); });
 document.getElementById('mTodos').onclick = () => setView('todos');
 document.getElementById('mProv').onclick = () => setView('provador');
 
@@ -335,7 +391,7 @@ addEventListener('resize', () => { camera.aspect=innerWidth/innerHeight; camera.
 
 // ---------- loop ----------
 const clock = new THREE.Clock(); let yaw = 0;
-const camOffset = new THREE.Vector3();
+const followPt = new THREE.Vector3(), lastFollow = new THREE.Vector3();
 function tick(){
   const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
   if(mixer && view !== 'todos') mixer.update(dt);
@@ -353,9 +409,9 @@ function tick(){
     let d = wantYaw - yaw; d = Math.atan2(Math.sin(d), Math.cos(d)); yaw += d*Math.min(1, dt*(v?8:3));
     heroRoot.rotation.y = yaw;
     // câmera acompanha de leve
-    camOffset.copy(camera.position).sub(controls.target);
-    const tgt = new THREE.Vector3(heroRoot.position.x*0.6, 1, heroRoot.position.z*0.6);
-    controls.target.lerp(tgt, Math.min(1, dt*2)); camera.position.copy(controls.target).add(camOffset);
+    followPt.lerp(new THREE.Vector3(heroRoot.position.x*0.6, 0, heroRoot.position.z*0.6), Math.min(1, dt*2));
+    const dl = followPt.clone().sub(lastFollow); lastFollow.copy(followPt);
+    controls.target.add(dl); camera.position.add(dl);
   }
   runes.material.opacity = 0.42 + 0.15*Math.sin(t*1.6);
   runes.rotation.z = t*0.05;
@@ -363,6 +419,8 @@ function tick(){
   for(let i=0;i<N;i++){ p[i*3+1] += dt*(0.12+0.1*Math.sin(seed[i])); p[i*3] += Math.sin(t*0.5+seed[i])*dt*0.05; if(p[i*3+1]>6) p[i*3+1]=0; }
   pgeo.attributes.position.needsUpdate = true;
   rim1.intensity = 16 + 3*Math.sin(t*1.3);
+  if(controls.target.length() > 7){ const ex = controls.target.clone().setLength(controls.target.length() - 7); controls.target.sub(ex); camera.position.sub(ex); }
+  controls.target.y = THREE.MathUtils.clamp(controls.target.y, 0, 3);
   controls.update(); renderer.render(scene, camera); if(view === 'todos') labelRenderer.render(scene, camera);
   requestAnimationFrame(tick);
 }
