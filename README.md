@@ -9,3 +9,7 @@ Kit modular low poly das 7 raças de Erath: Vran, Beorning, Vodnik, Silvano, Lit
 - Animações: Parado, Andar, Correr, Acenar e Comemorar.
 
 A página é um único arquivo (o modelo vai embutido); precisa de internet só para carregar o three.js.
+
+## Créditos
+
+Animações transferidas do ["Mannequin Man"](https://vinish.dev/free-3d-models/) por vinish.dev, licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Alteração: o movimento foi adaptado (retarget) para o esqueleto e as proporções dos personagens de Erath; a malha do manequim não é usada.
