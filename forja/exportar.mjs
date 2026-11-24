@@ -71,7 +71,7 @@ for (const id of ESP_ORDEM) {
     const P = forgeCriatura(id, it.cfg), buf = await toGLB(P, exportGeoC);
     fs.writeFileSync(path.join(dir, it.arquivo), buf); total += buf.length;
     ents.push({ arquivo: `criaturas/${id}/${it.arquivo}`, variacao: nomeVariacao(id, it.cfg), kb: Math.round(buf.length / 1024), triangulos: P.tris, ossos: P.info.ossos,
-      molas: [...new Set(P.info.molas)], altura_m: +P.altura.toFixed(3), animacoes: P.clips.map(c => c.name), velocidades: Object.fromEntries(Object.entries(P.vel).map(([k, v]) => [k, +v.toFixed(3)])), cfg: it.cfg });
+      molas: [...new Set(P.info.molas)], altura_m: +P.altura.toFixed(3), animacoes: P.clips.map(c => c.name), velocidades: Object.fromEntries(Object.entries(P.vel).map(([k, v]) => [k, +v.toFixed(3)])), ...(P.direcao ? { direcao: P.direcao } : {}), cfg: it.cfg });
   }
   catalogo.criaturas[id] = { num: S.num, nome: S.nome, grupo: S.grupo, familia: S.fam, voa: !!S.voa, tamanho_m: S.tam, descricao: S.desc, combinacoes: combinacoesEsp(id),
     categorias: catsOfEsp(id).map(c => ({ chave: c.k, nome: c.n, opcoes: c.o.map(o => ({ chave: o[0], nome: o[1] })) })), arquivos: ents };

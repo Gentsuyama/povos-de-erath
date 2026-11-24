@@ -10136,6 +10136,155 @@
     }
    ]
   },
+  "lagarto-carroca": {
+   "num": 40,
+   "nome": "Lagarto-carroça",
+   "grupo": "Quadrúpedes",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 1.4,
+   "descricao": "6 patas curtas, costas planas de carga; trote estável.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      },
+      {
+       "chave": "deserto",
+       "nome": "Deserto"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      }
+     ]
+    },
+    {
+     "chave": "carga",
+     "nome": "Carga",
+     "opcoes": [
+      {
+       "chave": "caixas",
+       "nome": "Caixas"
+      },
+      {
+       "chave": "barris",
+       "nome": "Barris"
+      },
+      {
+       "chave": "sela",
+       "nome": "Sela dupla"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lagarto-carroca/lagarto-carroca_padrao.glb",
+     "variacao": "Pipo 21",
+     "kb": 99,
+     "triangulos": 1474,
+     "ossos": 25,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.701,
+      "Correr": 2.616
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "musgo",
+      "carga": "caixas"
+     }
+    },
+    {
+     "arquivo": "criaturas/lagarto-carroca/lagarto-carroca_vina-60.glb",
+     "variacao": "Vina 60",
+     "kb": 100,
+     "triangulos": 1474,
+     "ossos": 25,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.701,
+      "Correr": 2.616
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "deserto",
+      "carga": "caixas"
+     }
+    },
+    {
+     "arquivo": "criaturas/lagarto-carroca/lagarto-carroca_tico-27.glb",
+     "variacao": "Tico 27",
+     "kb": 100,
+     "triangulos": 1486,
+     "ossos": 25,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.61,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.831,
+      "Correr": 3.099
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "cinza",
+      "carga": "sela"
+     }
+    }
+   ]
+  },
   "cavalo-de-nevoa": {
    "num": 41,
    "nome": "Cavalo-de-névoa",
@@ -11882,6 +12031,1346 @@
       "tamanho": "g",
       "cores": "rosa",
       "chifres": "enrolados"
+     }
+    }
+   ]
+  },
+  "besouro-armadura": {
+   "num": 65,
+   "nome": "Besouro-armadura",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": true,
+   "tamanho_m": 1,
+   "descricao": "Chifre de rinoceronte, élitros metálicos; anda e voa pesado.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "esmeralda",
+       "nome": "Esmeralda"
+      },
+      {
+       "chave": "bronze",
+       "nome": "Bronze"
+      },
+      {
+       "chave": "safira",
+       "nome": "Safira"
+      },
+      {
+       "chave": "rubi",
+       "nome": "Rubi"
+      }
+     ]
+    },
+    {
+     "chave": "chifre",
+     "nome": "Chifre",
+     "opcoes": [
+      {
+       "chave": "rinoceronte",
+       "nome": "Rinoceronte"
+      },
+      {
+       "chave": "pinca",
+       "nome": "Pinça de veado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Três pontas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/besouro-armadura/besouro-armadura_padrao.glb",
+     "variacao": "Nix 73",
+     "kb": 121,
+     "triangulos": 1126,
+     "ossos": 25,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.474,
+      "Correr": 1.767,
+      "Voar": 1.385
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "esmeralda",
+      "chifre": "rinoceronte"
+     }
+    },
+    {
+     "arquivo": "criaturas/besouro-armadura/besouro-armadura_pipo-45.glb",
+     "variacao": "Pipo 45",
+     "kb": 121,
+     "triangulos": 1134,
+     "ossos": 25,
+     "molas": [],
+     "altura_m": 0.86,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.448,
+      "Correr": 1.67,
+      "Voar": 1.309
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "bronze",
+      "chifre": "pinca"
+     }
+    },
+    {
+     "arquivo": "criaturas/besouro-armadura/besouro-armadura_lua-55.glb",
+     "variacao": "Lua 55",
+     "kb": 121,
+     "triangulos": 1114,
+     "ossos": 25,
+     "molas": [],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.599,
+      "Correr": 2.233,
+      "Voar": 1.75
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "bronze",
+      "chifre": "tridente"
+     }
+    }
+   ]
+  },
+  "aranha-tapeceira": {
+   "num": 66,
+   "nome": "Aranha-tapeceira",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "8 patas, abdômen com desenho de tapete; sobe paredes.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "persa",
+       "nome": "Persa"
+      },
+      {
+       "chave": "oasis",
+       "nome": "Oásis"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "desenho",
+     "nome": "Desenho",
+     "opcoes": [
+      {
+       "chave": "losangos",
+       "nome": "Losangos"
+      },
+      {
+       "chave": "listras",
+       "nome": "Listras"
+      },
+      {
+       "chave": "medalhao",
+       "nome": "Medalhão"
+      }
+     ]
+    },
+    {
+     "chave": "pelos",
+     "nome": "Pelos",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Peluda"
+      },
+      {
+       "chave": "nao",
+       "nome": "Lisa"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/aranha-tapeceira/aranha-tapeceira_padrao.glb",
+     "variacao": "Miro 43",
+     "kb": 119,
+     "triangulos": 1504,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.374,
+      "Correr": 1.394
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "persa",
+      "desenho": "losangos",
+      "pelos": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/aranha-tapeceira/aranha-tapeceira_zuza-60.glb",
+     "variacao": "Zuza 60",
+     "kb": 116,
+     "triangulos": 1280,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.429,
+      "Correr": 1.601
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "oasis",
+      "desenho": "listras",
+      "pelos": "nao"
+     }
+    },
+    {
+     "arquivo": "criaturas/aranha-tapeceira/aranha-tapeceira_bela-35.glb",
+     "variacao": "Bela 35",
+     "kb": 121,
+     "triangulos": 1568,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 0.774,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.321,
+      "Correr": 1.197
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "oasis",
+      "desenho": "listras",
+      "pelos": "sim"
+     }
+    }
+   ]
+  },
+  "louva-espadachim": {
+   "num": 67,
+   "nome": "Louva-espadachim",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 1.8,
+   "descricao": "Braços de foice, postura ereta; luta de guarda alta.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "folha",
+       "nome": "Folha"
+      },
+      {
+       "chave": "orquidea",
+       "nome": "Orquídea"
+      },
+      {
+       "chave": "seca",
+       "nome": "Folha seca"
+      }
+     ]
+    },
+    {
+     "chave": "foices",
+     "nome": "Foices",
+     "opcoes": [
+      {
+       "chave": "longas",
+       "nome": "Longas"
+      },
+      {
+       "chave": "serrilhadas",
+       "nome": "Serrilhadas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/louva-espadachim/louva-espadachim_padrao.glb",
+     "variacao": "Bela 83",
+     "kb": 85,
+     "triangulos": 833,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.544,
+      "Correr": 2.03
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "folha",
+      "foices": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/louva-espadachim/louva-espadachim_teco-93.glb",
+     "variacao": "Teco 93",
+     "kb": 87,
+     "triangulos": 923,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 2.07,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.626,
+      "Correr": 2.334
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "seca",
+      "foices": "serrilhadas"
+     }
+    },
+    {
+     "arquivo": "criaturas/louva-espadachim/louva-espadachim_teco-21.glb",
+     "variacao": "Teco 21",
+     "kb": 88,
+     "triangulos": 923,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 1.548,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.468,
+      "Correr": 1.745
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "orquidea",
+      "foices": "serrilhadas"
+     }
+    }
+   ]
+  },
+  "formiga-carregadora": {
+   "num": 68,
+   "nome": "Formiga-carregadora",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 0.8,
+   "descricao": "Cesto nas costas; anda em fila.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ruiva",
+       "nome": "Ruiva"
+      },
+      {
+       "chave": "negra",
+       "nome": "Negra"
+      },
+      {
+       "chave": "dourada",
+       "nome": "Dourada"
+      }
+     ]
+    },
+    {
+     "chave": "carga",
+     "nome": "No cesto",
+     "opcoes": [
+      {
+       "chave": "folhas",
+       "nome": "Folhas"
+      },
+      {
+       "chave": "frutas",
+       "nome": "Frutas"
+      },
+      {
+       "chave": "pedras",
+       "nome": "Cristais"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/formiga-carregadora/formiga-carregadora_padrao.glb",
+     "variacao": "Quim 53",
+     "kb": 96,
+     "triangulos": 1148,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.364,
+      "Correr": 1.357
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ruiva",
+      "carga": "folhas"
+     }
+    },
+    {
+     "arquivo": "criaturas/formiga-carregadora/formiga-carregadora_pipo-92.glb",
+     "variacao": "Pipo 92",
+     "kb": 97,
+     "triangulos": 1148,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.364,
+      "Correr": 1.357
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "dourada",
+      "carga": "folhas"
+     }
+    },
+    {
+     "arquivo": "criaturas/formiga-carregadora/formiga-carregadora_nix-31.glb",
+     "variacao": "Nix 31",
+     "kb": 95,
+     "triangulos": 1148,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.92,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.418,
+      "Correr": 1.56
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "negra",
+      "carga": "folhas"
+     }
+    }
+   ]
+  },
+  "escorpiao-de-vidro": {
+   "num": 69,
+   "nome": "Escorpião-de-vidro",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "Corpo transparente, ferrão de luz; rasteja.",
+   "combinacoes": 24,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "ambar",
+       "nome": "Âmbar"
+      },
+      {
+       "chave": "veneno",
+       "nome": "Veneno"
+      },
+      {
+       "chave": "ametista",
+       "nome": "Ametista"
+      }
+     ]
+    },
+    {
+     "chave": "ferrao",
+     "nome": "Ferrão",
+     "opcoes": [
+      {
+       "chave": "um",
+       "nome": "Um"
+      },
+      {
+       "chave": "dois",
+       "nome": "Duplo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/escorpiao-de-vidro/escorpiao-de-vidro_padrao.glb",
+     "variacao": "Teco 96",
+     "kb": 153,
+     "triangulos": 1807,
+     "ossos": 39,
+     "molas": [],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.366,
+      "Correr": 1.366
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "gelo",
+      "ferrao": "um"
+     }
+    },
+    {
+     "arquivo": "criaturas/escorpiao-de-vidro/escorpiao-de-vidro_nix-16.glb",
+     "variacao": "Nix 16",
+     "kb": 153,
+     "triangulos": 1822,
+     "ossos": 39,
+     "molas": [],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.421,
+      "Correr": 1.571
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ambar",
+      "ferrao": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/escorpiao-de-vidro/escorpiao-de-vidro_bela-51.glb",
+     "variacao": "Bela 51",
+     "kb": 153,
+     "triangulos": 1807,
+     "ossos": 39,
+     "molas": [],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.421,
+      "Correr": 1.571
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ambar",
+      "ferrao": "um"
+     }
+    }
+   ]
+  },
+  "grilo-musico": {
+   "num": 73,
+   "nome": "Grilo-músico",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 0.3,
+   "descricao": "Pernas de violino; salta e toca.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "campo",
+       "nome": "Campo"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noturno"
+      },
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      }
+     ]
+    },
+    {
+     "chave": "instrumento",
+     "nome": "Instrumento",
+     "opcoes": [
+      {
+       "chave": "violino",
+       "nome": "Violino"
+      },
+      {
+       "chave": "flauta",
+       "nome": "Flauta"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/grilo-musico/grilo-musico_padrao.glb",
+     "variacao": "Lua 75",
+     "kb": 107,
+     "triangulos": 1072,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Saltar"
+     ],
+     "velocidades": {
+      "Andar": 0.148,
+      "Correr": 0.551
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "campo",
+      "instrumento": "violino"
+     }
+    },
+    {
+     "arquivo": "criaturas/grilo-musico/grilo-musico_bela-96.glb",
+     "variacao": "Bela 96",
+     "kb": 106,
+     "triangulos": 1072,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Saltar"
+     ],
+     "velocidades": {
+      "Andar": 0.148,
+      "Correr": 0.551
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "noite",
+      "instrumento": "violino"
+     }
+    },
+    {
+     "arquivo": "criaturas/grilo-musico/grilo-musico_quim-86.glb",
+     "variacao": "Quim 86",
+     "kb": 105,
+     "triangulos": 1004,
+     "ossos": 25,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.258,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Saltar"
+     ],
+     "velocidades": {
+      "Andar": 0.127,
+      "Correr": 0.474
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "campo",
+      "instrumento": "nada"
+     }
+    }
+   ]
+  },
+  "abelha-ursa": {
+   "num": 75,
+   "nome": "Abelha-ursa",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": true,
+   "tamanho_m": 0.45,
+   "descricao": "Pelo de urso, potes de mel; voo zumbido.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "mel",
+       "nome": "Mel"
+      },
+      {
+       "chave": "polar",
+       "nome": "Polar"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "pote",
+     "nome": "Pote",
+     "opcoes": [
+      {
+       "chave": "um",
+       "nome": "Um pote"
+      },
+      {
+       "chave": "dois",
+       "nome": "Dois potes"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/abelha-ursa/abelha-ursa_padrao.glb",
+     "variacao": "Bela 29",
+     "kb": 140,
+     "triangulos": 1561,
+     "ossos": 29,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.45,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.222,
+      "Correr": 0.828,
+      "Voar": 0.599
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "mel",
+      "pote": "um"
+     }
+    },
+    {
+     "arquivo": "criaturas/abelha-ursa/abelha-ursa_dudu-37.glb",
+     "variacao": "Dudu 37",
+     "kb": 135,
+     "triangulos": 1419,
+     "ossos": 29,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.387,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.191,
+      "Correr": 0.712,
+      "Voar": 0.515
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "mel",
+      "pote": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/abelha-ursa/abelha-ursa_pim-30.glb",
+     "variacao": "Pim 30",
+     "kb": 145,
+     "triangulos": 1703,
+     "ossos": 29,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 0.517,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.255,
+      "Correr": 0.952,
+      "Voar": 0.689
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "polar",
+      "pote": "dois"
+     }
+    }
+   ]
+  },
+  "carrapato-colosso": {
+   "num": 76,
+   "nome": "Carrapato-colosso",
+   "grupo": "Insetos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 2.4,
+   "descricao": "8 patas, costas em domo; lento e implacável.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "terra",
+       "nome": "Terra"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza-azul"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      }
+     ]
+    },
+    {
+     "chave": "domo",
+     "nome": "Domo",
+     "opcoes": [
+      {
+       "chave": "liso",
+       "nome": "Liso"
+      },
+      {
+       "chave": "placas",
+       "nome": "Placas"
+      },
+      {
+       "chave": "espinhos",
+       "nome": "Espinhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/carrapato-colosso/carrapato-colosso_padrao.glb",
+     "variacao": "Miro 19",
+     "kb": 121,
+     "triangulos": 1064,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.727,
+      "Correr": 2.918
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "terra",
+      "domo": "placas"
+     }
+    },
+    {
+     "arquivo": "criaturas/carrapato-colosso/carrapato-colosso_miro-19.glb",
+     "variacao": "Miro 19",
+     "kb": 121,
+     "triangulos": 1064,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.727,
+      "Correr": 2.918
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "terra",
+      "domo": "placas"
+     }
+    },
+    {
+     "arquivo": "criaturas/carrapato-colosso/carrapato-colosso_orvo-51.glb",
+     "variacao": "Orvo 51",
+     "kb": 117,
+     "triangulos": 896,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 2.76,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.85,
+      "Correr": 3.416
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "terra",
+      "domo": "liso"
+     }
+    }
+   ]
+  },
+  "caranguejo-castelo": {
+   "num": 80,
+   "nome": "Caranguejo-castelo",
+   "grupo": "Aquáticos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 4.5,
+   "descricao": "Concha de torre de pedra, 10 patas; anda de lado.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      }
+     ]
+    },
+    {
+     "chave": "torre",
+     "nome": "Torre",
+     "opcoes": [
+      {
+       "chave": "redonda",
+       "nome": "Redonda"
+      },
+      {
+       "chave": "quadrada",
+       "nome": "Quadrada"
+      },
+      {
+       "chave": "ruina",
+       "nome": "Ruína com musgo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/caranguejo-castelo/caranguejo-castelo_padrao.glb",
+     "variacao": "Tico 87",
+     "kb": 135,
+     "triangulos": 1504,
+     "ossos": 33,
+     "molas": [],
+     "altura_m": 4.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 1.164,
+      "Correr": 4.673
+     },
+     "direcao": "+X (anda de lado)",
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "torre": "redonda"
+     }
+    },
+    {
+     "arquivo": "criaturas/caranguejo-castelo/caranguejo-castelo_gaia-70.glb",
+     "variacao": "Gaia 70",
+     "kb": 136,
+     "triangulos": 1460,
+     "ossos": 33,
+     "molas": [],
+     "altura_m": 4.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 1.191,
+      "Correr": 4.783
+     },
+     "direcao": "+X (anda de lado)",
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "torre": "quadrada"
+     }
+    },
+    {
+     "arquivo": "criaturas/caranguejo-castelo/caranguejo-castelo_teco-41.glb",
+     "variacao": "Teco 41",
+     "kb": 138,
+     "triangulos": 1576,
+     "ossos": 33,
+     "molas": [],
+     "altura_m": 5.175,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 1.45,
+      "Correr": 5.823
+     },
+     "direcao": "+X (anda de lado)",
+     "cfg": {
+      "tamanho": "g",
+      "cores": "areia",
+      "torre": "ruina"
      }
     }
    ]
@@ -13814,6 +15303,145 @@
       "tamanho": "p",
       "cores": "ocre",
       "chifres": "arco"
+     }
+    }
+   ]
+  },
+  "olho-aranha": {
+   "num": 138,
+   "nome": "Olho-aranha",
+   "grupo": "Estranhos",
+   "familia": "D",
+   "voa": false,
+   "tamanho_m": 1,
+   "descricao": "Olho gigante no centro de 8 patas; corre.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "ambar",
+       "nome": "Âmbar"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      }
+     ]
+    },
+    {
+     "chave": "patas",
+     "nome": "Patas",
+     "opcoes": [
+      {
+       "chave": "finas",
+       "nome": "Finas"
+      },
+      {
+       "chave": "peludas",
+       "nome": "Peludas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/olho-aranha/olho-aranha_padrao.glb",
+     "variacao": "Pipo 75",
+     "kb": 116,
+     "triangulos": 1248,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.374,
+      "Correr": 1.395
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "patas": "finas"
+     }
+    },
+    {
+     "arquivo": "criaturas/olho-aranha/olho-aranha_gaia-57.glb",
+     "variacao": "Gaia 57",
+     "kb": 120,
+     "triangulos": 1536,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.374,
+      "Correr": 1.395
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "patas": "peludas"
+     }
+    },
+    {
+     "arquivo": "criaturas/olho-aranha/olho-aranha_dudu-61.glb",
+     "variacao": "Dudu 61",
+     "kb": 120,
+     "triangulos": 1536,
+     "ossos": 27,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Andar": 0.374,
+      "Correr": 1.395
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "gelo",
+      "patas": "peludas"
      }
     }
    ]
