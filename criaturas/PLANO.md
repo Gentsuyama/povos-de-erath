@@ -24,7 +24,9 @@ Cada espécie tem de 3 a 5 categorias: paleta de cor (4 a 6), forma de uma parte
 | 5 | F: radial / tentáculos | 77, 78, 83, 88, 132, 139 | Parado (ondas nos tentáculos), Mover (andar nos tentáculos, jato, pulsar do sino), Atacar (agarrar), Ameaçar | **feita (6)** |
 | 6 | G: amorfo / rolante / monopé | 87, 90, 110, 135, 136, 140, 141, 145 (o 20 já saiu na fase 1) | Parado, Mover (rolar, pular, deslizar, andar nos dedos), Atacar, Pular, com trilhas de escala para esticar e achatar | **feita (8)** |
 | 7 | H: bípedes grandes e gigantes (poses e IK dos povos, proporções ajustáveis) | 89, 95, 101, 102, 107, 109, 115, 125–131, 134, 143, 147–149 | Parado, Andar, Correr, Atacar, Comemorar (+ Defender com escudo); mais lentos se pesados | **feita (19)** |
-| 8 | Especiais | 54, 55, 57, 59–64, 70, 72, 79, 81–86, 91, 93, 94, 96–100, 104, 111, 112, 119, 120, 137, 144 | por espécie | a fazer |
+| 8a | Especiais em C e D | 37, 55, 57, 59–64, 93 (répteis, dragões, hidra de 3 cabeças, tartaruga-ilha com vila, abóbora) · 70, 72 (libélula com sela, mariposa) | as das famílias C e D | **feita (12)** |
+| 8b | Especiais em A, B, E, F, G, H | 79, 81, 82, 84, 85, 91, 94, 96–100, 104, 111, 112, 120, 137, 144 | por família | a fazer |
+| 8c | I: bípede de ave/dinossauro sem braços | 54, 86, 119 | Parado, Andar, Correr, Atacar, Voar | a fazer |
 | 9 | Colossais / enxames | 63, 85, 98, 127, 132 | escala e LOD | a fazer |
 
 ## Compressão

@@ -668,6 +668,71 @@ const ESP_H = {
 };
 Object.assign(ESPECIES, ESP_H);
 
+// ------------------------------------------------------------ ESPECIAIS 8a (répteis/dragões → C; insetos voadores → D)
+const ESP_8A = {
+  'morsa-alada': { num: 37, nome: 'Morsa-alada', grupo: 'Híbridos alados', fam: 'C', tam: 2.0, voa: true, desc: 'Presas, asas de pinguim que funcionam no ar; voo pesado.',
+    cats: { cores: pal({ parda: { n: 'Parda', pele: '#8a6a52', claro: '#c8a888', escuro: '#4a3424', extra: '#f0e8d0', asa: '#5a4434', asa2: '#2a2018' }, cinza: { n: 'Cinza', pele: '#7a7a80', claro: '#b8b8c0', escuro: '#3a3a40', extra: '#f0ead8', asa: '#4a4a52', asa2: '#1e1e22' }, rosa: { n: 'Rosada', pele: '#c8907a', claro: '#f0c8b0', escuro: '#6a4434', extra: '#fff4e0', asa: '#8a5a4a', asa2: '#3a2018' } }),
+      presas: { n: 'Presas', o: [P_('longas', 'Longas'), P_('curtas', 'Curtas')] } },
+    base: { cores: 'parda', presas: 'longas' },
+    receita: c => ({ corpo: { L: 1.0, R: 0.28, H: 0.14, pesc: 0.04 }, cabeca: { tipo: 'morsa', presas: c.presas }, cauda: 'curta', asas: 'ave', pe: 'nadadeira', pesado: true, flap: 1.8 }) },
+  'dragaozinho-de-cha': { num: 55, nome: 'Dragãozinho-de-chá', grupo: 'Répteis', fam: 'C', tam: 0.18, voa: true, desc: 'Cabe numa xícara, solta vapor; voo curto.',
+    cats: { cores: pal({ jade: { n: 'Jade', pele: '#5ab08a', claro: '#c8f0d8', escuro: '#2a6a4a', extra: '#f0e0b0', asa: '#3a8a6a' }, porcelana: { n: 'Porcelana', pele: '#e8ecf4', claro: '#ffffff', escuro: '#3a5ab0', extra: '#3a5ab0', asa: '#a8b8e0' }, chai: { n: 'Chai', pele: '#c8884a', claro: '#f0d0a0', escuro: '#6a3a1a', extra: '#fff0d0', asa: '#a8603a' } }),
+      vapor: { n: 'Vapor', o: [P_('sim', 'Soltando vapor'), P_('nao', 'Sem vapor')] } },
+    base: { cores: 'jade', vapor: 'sim' },
+    receita: c => ({ corpo: { L: 0.75, R: 0.13, H: 0.22, pesc: 0.12 }, cabeca: { tipo: 'dragao', vapor: c.vapor === 'sim' }, cauda: 'lagarto', asas: 'morcego', pe: 'garra', esparramado: true, flap: 7 }) },
+  'lagarto-espelho': { num: 57, nome: 'Lagarto-espelho', grupo: 'Répteis', fam: 'C', tam: 0.45, desc: 'Escamas espelhadas que somem no ambiente; rasteja.',
+    cats: { cores: pal({ prata: { n: 'Prata', pele: '#c8d0d8', claro: '#ffffff', escuro: '#6a7480' }, ouro: { n: 'Ouro', pele: '#e0c070', claro: '#fff0c0', escuro: '#8a6a20' }, arco: { n: 'Furta-cor', pele: '#a8c8e8', claro: '#f0d8ff', escuro: '#5a6aa0' } }),
+      cauda: { n: 'Cauda', o: [P_('lagarto', 'Longa'), P_('enrolada', 'Enrolada')] } },
+    base: { cores: 'prata', cauda: 'lagarto' },
+    receita: c => ({ corpo: { L: 0.9, R: 0.14, H: 0.14, pesc: 0.06 }, cabeca: { tipo: 'lagarto' }, cauda: c.cauda, pe: 'garra', esparramado: true, espelho: true }) },
+  'crocodilo-musgoso': { num: 59, nome: 'Crocodilo-musgoso', grupo: 'Répteis', fam: 'C', tam: 1.2, desc: 'Árvores nas costas, olhos de lanterna; espreita na água.',
+    cats: { cores: pal({ pantano: { n: 'Pântano', pele: '#4a5a3a', claro: '#a0a878', escuro: '#22281a', musgo: '#5a8a3a', brilho: '#f0e060' }, lodo: { n: 'Lodo', pele: '#5a5040', claro: '#a89878', escuro: '#2a241a', musgo: '#7a8a3a', brilho: '#ff9040' }, noite: { n: 'Noite', pele: '#2e3a3a', claro: '#7a8a8a', escuro: '#141a1a', musgo: '#3a6a5a', brilho: '#80e0ff' } }),
+      costas: { n: 'Costas', o: [P_('floresta', 'Árvores'), P_('flores', 'Flores'), P_('cogumelos', 'Cogumelos')] } },
+    base: { cores: 'pantano', costas: 'floresta' },
+    receita: c => ({ corpo: { L: 1.1, R: 0.17, H: 0.12, pesc: 0.04 }, cabeca: { tipo: 'crocodilo' }, cauda: 'lagarto', pe: 'garra', esparramado: true, extras: ['musgo-' + c.costas], pesado: true }) },
+  'dragao-de-cobre': { num: 60, nome: 'Dragão-de-cobre', grupo: 'Répteis', fam: 'C', tam: 4.5, voa: true, desc: 'Dois pares de chifres, barba de tentáculos; anda e voa.',
+    cats: { cores: pal({ cobre: { n: 'Cobre', pele: '#b0603a', claro: '#e8a070', escuro: '#5a2a14', extra: '#e8dcc0', asa: '#8a3a22', brilho: '#ff8030' }, verdete: { n: 'Verdete', pele: '#4a8a70', claro: '#90d0b0', escuro: '#1e4a3a', extra: '#e0d8b0', asa: '#2a6a50', brilho: '#60ffc0' }, ouro: { n: 'Ouro', pele: '#d0a040', claro: '#f8e090', escuro: '#6a4a10', extra: '#fff8e0', asa: '#a87a20', brilho: '#ffe060' }, negro: { n: 'Negro', pele: '#2e2a30', claro: '#6a6070', escuro: '#100e12', extra: '#d8d0c0', asa: '#3a2a3a', brilho: '#c050ff' } }),
+      chifres: { n: 'Chifres', o: [P_('dois', 'Dois pares'), P_('coroa', 'Coroa'), P_('um', 'Um par')] } },
+    base: { cores: 'cobre', chifres: 'dois' },
+    receita: c => ({ corpo: { L: 1.0, R: 0.18, H: 0.34, pesc: 0.22 }, cabeca: { tipo: 'dragao', chifresD: c.chifres, barbaTent: true, grande: true }, cauda: 'lagarto', asas: 'morcego', pe: 'garra', extras: ['espinhos-dorso'], pesado: true, flap: 1.5 }) },
+  'iguana-trovao': { num: 61, nome: 'Iguana-trovão', grupo: 'Répteis', fam: 'C', tam: 0.9, desc: 'Crista que acende com raios; corre.',
+    cats: { cores: pal({ verde: { n: 'Verde', pele: '#5a8a4a', claro: '#b0d090', escuro: '#2a4a20', brilho: '#80e0ff' }, laranja: { n: 'Laranja', pele: '#c8703a', claro: '#f0c090', escuro: '#5a2a10', brilho: '#ffe040' }, azul: { n: 'Azul', pele: '#3a6a9a', claro: '#90b8e0', escuro: '#18304a', brilho: '#c080ff' } }),
+      crista: { n: 'Crista', o: [P_('alta', 'Alta'), P_('baixa', 'Baixa')] } },
+    base: { cores: 'verde', crista: 'alta' },
+    receita: c => ({ corpo: { L: 0.9, R: 0.14, H: 0.18, pesc: 0.1 }, cabeca: { tipo: 'lagarto', papo: true }, cauda: 'lagarto', pe: 'garra', esparramado: true, extras: ['crista-' + c.crista] }) },
+  'hidra-de-bolso': { num: 62, nome: 'Hidra-de-bolso', grupo: 'Répteis', fam: 'C', tam: 0.5, desc: 'Três cabecinhas que brigam entre si; anda torto.',
+    cats: { cores: pal({ verde: { n: 'Verde', pele: '#5a9a5a', claro: '#c0e8b0', escuro: '#2a4a2a', extra: '#f0e8c0' }, rubra: { n: 'Rubra', pele: '#b04a3a', claro: '#f0b0a0', escuro: '#5a1a14', extra: '#f8e8d0' }, roxa: { n: 'Roxa', pele: '#6a4a9a', claro: '#c8b0f0', escuro: '#2e1a4a', extra: '#f0e0ff' } }),
+      cabecas: { n: 'Cabeças', o: [P_('tres', 'Três'), P_('duas', 'Duas')] } },
+    base: { cores: 'verde', cabecas: 'tres' },
+    receita: c => ({ corpo: { L: 0.75, R: 0.17, H: 0.2, pesc: 0.16 }, cabeca: { tipo: 'dragao' }, extraCabecas: c.cabecas === 'tres' ? 2 : 1, cauda: 'lagarto', pe: 'garra', esparramado: true }) },
+  'tartaruga-ilha': { num: 63, nome: 'Tartaruga-ilha', grupo: 'Colossais', fam: 'C', tam: 30, desc: 'Uma vila inteira nas costas; nada devagar.',
+    cats: { cores: pal({ mar: { n: 'Mar', pele: '#5a8a6a', claro: '#b0d0b8', escuro: '#2a4a3a', extra: '#7a6a4a', casco2: '#a08a5a', musgo: '#5a8a3a' }, rocha: { n: 'Rocha', pele: '#6a6a6a', claro: '#a8a8a8', escuro: '#2e2e2e', extra: '#5a5048', casco2: '#8a7a68', musgo: '#4a7a4a' } }),
+      vila: { n: 'Nas costas', o: [P_('vila', 'Vila'), P_('templo', 'Templo'), P_('floresta', 'Floresta')] } },
+    base: { cores: 'mar', vila: 'vila' },
+    receita: c => ({ corpo: { L: 0.85, R: 0.22, H: 0.16, pesc: 0.12 }, cabeca: { tipo: 'tartaruga' }, cauda: 'curta', pe: 'nadadeira', extras: ['casco-placas', 'costas-' + c.vila], pesado: true }) },
+  'camaleao-tecelao': { num: 64, nome: 'Camaleão-tecelão', grupo: 'Répteis', fam: 'C', tam: 0.6, desc: 'Língua que tece, cauda preênsil; escala.',
+    cats: { cores: pal({ folha: { n: 'Folha', pele: '#6ab04a', claro: '#d0f0a0', escuro: '#2a5a1a', extra: '#f0c040' }, rubi: { n: 'Rubi', pele: '#c8504a', claro: '#f8c0a0', escuro: '#5a1a14', extra: '#40c0f0' }, turquesa: { n: 'Turquesa', pele: '#3ab0a0', claro: '#b0f0e0', escuro: '#145a50', extra: '#f080c0' } }),
+      fio: { n: 'Fio', o: [P_('sim', 'Novelo de fio'), P_('nao', 'Nada')] } },
+    base: { cores: 'folha', fio: 'sim' },
+    receita: c => ({ corpo: { L: 0.75, R: 0.16, H: 0.26, pesc: 0.04 }, cabeca: { tipo: 'camaleao' }, cauda: 'enrolada', pe: 'garra', extras: c.fio === 'sim' ? ['novelo', 'crista-baixa'] : ['crista-baixa'] }) },
+  'abobora-cocheira': { num: 93, nome: 'Abóbora-cocheira', grupo: 'Plantas', fam: 'C', tam: 1.6, desc: 'Corpo de abóbora, patas de raiz; trote pesado.',
+    cats: { cores: pal({ laranja: { n: 'Laranja', pele: '#e0702a', claro: '#f0a060', escuro: '#5a3a1a', brilho: '#ffd040' }, branca: { n: 'Fantasma', pele: '#e8e4d8', claro: '#ffffff', escuro: '#5a4a3a', brilho: '#80e0ff' }, verde: { n: 'Moranga', pele: '#5a7a3a', claro: '#90b060', escuro: '#3a2a1a', brilho: '#ff8040' } }),
+      rosto: { n: 'Rosto', o: [P_('sorriso', 'Sorriso'), P_('bravo', 'Bravo'), P_('nenhum', 'Sem rosto')] } },
+    base: { cores: 'laranja', rosto: 'sorriso' },
+    receita: c => ({ corpo: { L: 0.85, R: 0.3, H: 0.32, pesc: 0.02 }, cabeca: { tipo: 'nenhuma' }, cauda: 'nenhuma', pe: 'raiz', corpoAbobora: c.rosto, pesado: true }) },
+  'libelula-montaria': { num: 70, nome: 'Libélula-montaria', grupo: 'Insetos', fam: 'D', tam: 0.8, voa: true, desc: '4 asas, sela no tórax; montaria voadora.',
+    cats: { cores: pal({ esmeralda: { n: 'Esmeralda', pele: '#2a9a6a', claro: '#80e0b0', escuro: '#104a30', extra: '#7a3a2a', asa: '#d0f0ff' }, rubi: { n: 'Rubi', pele: '#c83a3a', claro: '#f0a0a0', escuro: '#5a1414', extra: '#3a2a1a', asa: '#ffe0e0' }, safira: { n: 'Safira', pele: '#3a5ac8', claro: '#a0b8f0', escuro: '#14245a', extra: '#c8a040', asa: '#e0e8ff' } }),
+      sela: { n: 'Sela', o: [P_('simples', 'Simples'), P_('dupla', 'Dupla'), P_('nenhuma', 'Selvagem')] } },
+    base: { cores: 'esmeralda', sela: 'simples' },
+    receita: c => ({ pares: 3, corpo: 'libelula', cabeca: 'libelula', asas: 'libelula', sela: c.sela, perna: 0.5, flap: 6 }) },
+  'mariposa-lua': { num: 72, nome: 'Mariposa-lua', grupo: 'Insetos', fam: 'D', tam: 0.9, voa: true, desc: 'Asas com olhos falsos, pó prateado; voo noturno lento.',
+    cats: { cores: pal({ lua: { n: 'Lua', pele: '#d8e8d0', claro: '#ffffff', escuro: '#6a7a6a', extra: '#3a6ac8', asa: '#c8e8c0' }, ambar: { n: 'Âmbar', pele: '#e8c890', claro: '#fff4d8', escuro: '#7a5a2a', extra: '#c83a3a', asa: '#f0d090' }, noite: { n: 'Noite', pele: '#5a5a7a', claro: '#c8c8f0', escuro: '#22223a', extra: '#f0d040', asa: '#7a7aa8' } }),
+      olhos: { n: 'Olhos nas asas', o: [P_('grandes', 'Grandes'), P_('pequenos', 'Pequenos')] } },
+    base: { cores: 'lua', olhos: 'grandes' },
+    receita: c => ({ pares: 3, corpo: 'mariposa', cabeca: 'mariposa', asas: 'mariposa', olhosAsa: c.olhos, antenas: true, perna: 0.5, flap: 2.5 }) },
+};
+Object.assign(ESPECIES, ESP_8A);
+
 export const ESP_ORDEM = Object.keys(ESPECIES).sort((a, b) => ESPECIES[a].num - ESPECIES[b].num);
 export const GRUPOS = [...new Set(ESP_ORDEM.map(k => ESPECIES[k].grupo))];
 export function catsOfEsp(id) { const S = ESPECIES[id]; return [{ k: 'tamanho', ...TAM }, ...Object.entries(S.cats).map(([k, v]) => ({ k, n: v.n, o: v.o }))]; }
@@ -1455,10 +1520,10 @@ function forgeC(id, S, cfg) {
   const C = { pele: pele0, claro: hex(pele0, 1.3), escuro: hex(pele0, 0.55), extra: '#e8dcc0', brilho: '#ffd060', asa: pele0, asa2: hex(pele0, 1.3), olho: '#1b1712', ...COL };
   const { L, R: Rb, H, pesc } = R.corpo;
   const kit = makeKit(v => v.clone()), { add, G } = kit;
-  const metal = !!R.armadura, crist = !!R.corpoCristal, ori = !!R.origami;
+  const metal = !!R.armadura || !!R.espelho, crist = !!R.corpoCristal, ori = !!R.origami, spr = R.esparramado ? 1 : 0;
   const bodyMat = crist ? 3 : 0, J = ori ? 0 : crist ? 0.006 : 0.004, VAR = ori ? 0.16 : 0.07;
   const yb = H + Rb * 0.75, zr = -L * 0.38, zc = L * 0.32, yj = yb - Rb * 0.25, fy = 0.05, frontUp = R.dianteiraAlta ? Rb * 0.25 : 0;
-  const xf = Rb * 0.6, xb = Rb * 0.62, zf = L * 0.33, zbk = -L * 0.36;
+  const xf = Rb * (0.6 + 0.35 * spr), xb = Rb * (0.62 + 0.35 * spr), zf = L * 0.33, zbk = -L * 0.36;
   const nb = [0, yb + Rb * 0.35 + frontUp, L * 0.4], hp = [0, yb + Rb * 0.35 + frontUp + pesc * 0.75, L * 0.42 + pesc * 0.7];
   const HB = (x, y, z) => [x, hp[1] + y, hp[2] + z];
 
@@ -1468,7 +1533,7 @@ function forgeC(id, S, cfg) {
   const T = (dy, dz) => [0, t0[1] + dy * tl, t0[2] + dz * tl];
   const tailPts = { peluda: [t0, T(0.05, -0.15), T(0.02, -0.3), T(-0.05, -0.43)], fina: [t0, T(0.02, -0.14), T(-0.02, -0.28), T(-0.08, -0.42)], tufo: [t0, T(0, -0.14), T(-0.06, -0.27), T(-0.14, -0.36)],
     tufoFogo: [t0, T(0.03, -0.15), T(0.04, -0.3), T(0.02, -0.44)], fogo: [t0, T(0.02, -0.12), T(0.03, -0.24), T(0.06, -0.36)], fumaca: [t0, T(-0.02, -0.15), T(-0.08, -0.28), T(-0.16, -0.38)],
-    escamas: [t0, T(-0.04, -0.15), T(-0.1, -0.29), T(-0.16, -0.42)], cristal: [t0, T(0.03, -0.12), T(0.03, -0.24), T(0.0, -0.34)], leque: [t0, T(0.06, -0.12), T(0.12, -0.24), T(0.16, -0.36)] }[R.cauda];
+    escamas: [t0, T(-0.04, -0.15), T(-0.1, -0.29), T(-0.16, -0.42)], cristal: [t0, T(0.03, -0.12), T(0.03, -0.24), T(0.0, -0.34)], leque: [t0, T(0.06, -0.12), T(0.12, -0.24), T(0.16, -0.36)], lagarto: [t0, T(-0.04, -0.2), T(-0.1, -0.4), T(-0.14, -0.6)], enrolada: [t0, T(0.02, -0.16), T(0.12, -0.26), T(0.2, -0.18)] }[R.cauda];
   if (tailPts) chains.push({ name: 'Tail', label: 'cauda', parent: 'Hips', pts: tailPts, names: ['Tail1', 'Tail2', 'Tail3'], end: 'TailEnd',
     spring: [{ k: 55, d: 6, g: 0.3, max: 25 }, { k: 42, d: 5, g: 0.3, max: 35 }, { k: 32, d: 4, g: 0.3, max: 45 }] });
   if (R.extras.includes('crina-longa') || R.extras.includes('crina-curta')) chains.push({ name: 'Mane', label: 'crina', parent: 'Neck', pts: [[0, nb[1] + 0.05, nb[2] + 0.01], [0, (nb[1] + hp[1]) / 2 + 0.05, (nb[2] + hp[2]) / 2 - 0.04], [0, hp[1] + 0.06, hp[2] - 0.08]],
@@ -1476,6 +1541,8 @@ function forgeC(id, S, cfg) {
 
   // ---------- esqueleto
   const bdef = [['Hips', null, [0, yb, zr]], ['Spine', 'Hips', [0, yb + 0.01, 0]], ['Chest', 'Spine', [0, yb + 0.02 + frontUp * 0.5, zc]], ['Neck', 'Chest', nb], ['Head', 'Neck', hp]];
+  const extraH = []; for (let k = 0; k < (R.extraCabecas || 0); k++) { const sd = k === 0 ? 1 : -1, nb2 = [sd * Rb * 0.55, nb[1], nb[2] - 0.02], hp2 = [sd * (Rb * 0.55 + pesc * 0.55), hp[1] - 0.03, hp[2] - 0.04];
+    bdef.push(['Neck' + (k + 2), 'Chest', nb2], ['Head' + (k + 2), 'Neck' + (k + 2), hp2]); extraH.push({ bone: 'Head' + (k + 2), neck: 'Neck' + (k + 2), nb: nb2, hp: hp2, sd }); }
   for (const [s, L2] of [[1, '_L'], [-1, '_R']]) {
     const fyj = yj + frontUp;
     bdef.push(['FrontUpLeg' + L2, 'Chest', [s * xf, fyj, zf]], ['FrontLeg' + L2, 'FrontUpLeg' + L2, [s * xf, (fyj + fy) / 2, zf]], ['FrontFoot' + L2, 'FrontLeg' + L2, [s * xf, fy, zf]],
@@ -1491,12 +1558,21 @@ function forgeC(id, S, cfg) {
   const M = { metal, mat: metal ? 1 : bodyMat };
 
   // ---------- corpo
+  if (R.corpoAbobora) { const zc0 = (zr + zc) / 2;
+    for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; add(G.sph(Rb * 1.15, 9, 7), { c: i % 2 ? C.pele : hex(C.pele, 0.9), b: bodyW, pos: [Math.sin(a) * Rb * 0.45, yb + Rb * 0.25, zc0 + Math.cos(a) * Rb * 0.6], scl: [0.75, 0.9, 0.85], jit: 0.003 }); }
+    add(G.tube([0, yb + Rb * 1.2, zc0], [0.03, yb + Rb * 1.55, zc0 - 0.02], 0.05, 0.035, 6), { c: '#4a6a2a', b: 'Spine', jit: 0.002 });
+    if (R.corpoAbobora !== 'nenhum') { const fz = zc0 + Rb * 1.42, br = R.corpoAbobora === 'bravo';
+      for (const s of [1, -1]) add(G.cone(Rb * 0.18, Rb * 0.26, 3), { c: C.brilho, glow: true, b: bodyW, pos: [s * Rb * 0.32, yb + Rb * 0.45, fz], rot: [90, 0, br ? s * 25 : 0], jit: 0 });
+      add(G.box(Rb * 0.8, Rb * 0.14, Rb * 0.1), { c: C.brilho, glow: true, b: bodyW, pos: [0, yb + Rb * 0.05, fz], jit: 0, deform: g => { const pa = g.attributes.position; for (let i = 0; i < pa.count; i++) pa.setY(i, pa.getY(i) + (br ? -2 : 2) * pa.getX(i) * pa.getX(i)); } }); } }
+  if (!R.corpoAbobora) {
   add(G.sph(Rb, 10, 8), { c: C.pele, b: 'Hips', pos: [0, yb, zr], scl: [1, 0.95, 1.1], jit: J, vary: VAR, ...M });
   const bzs = Math.max(1.35, (zc - zr) * 0.62 / (Rb * 0.97));
   add(G.sph(Rb * 0.97, 10, 8), { c: C.pele, b: bodyW, pos: [0, yb - 0.01 + frontUp * 0.4, (zr + zc) / 2], scl: [1, 0.93, bzs], jit: J, vary: VAR, ...M });
   add(G.sph(Rb * 1.05, 10, 8), { c: C.pele, b: 'Chest', pos: [0, yb + 0.02 + frontUp * 0.8, zc], scl: [1, 1 + frontUp * 2, 1.1], jit: J, vary: VAR, ...M });
   if (!metal && !crist) add(G.sph(Rb * 0.8, 8, 6), { c: C.claro, b: bodyW, pos: [0, yb - Rb * 0.42, 0], scl: [0.75, 0.45, 1.55], jit: J, vary: VAR });
   add(G.tube([nb[0], nb[1] - Rb * 0.3, nb[2] - 0.03], hp, Rb * 0.5, Rb * 0.42, 8), { c: C.pele, b: neckW, jit: J, vary: VAR, ...M });
+  }
+  for (const eh of extraH) add(G.tube([eh.nb[0], eh.nb[1] - Rb * 0.3, eh.nb[2] - 0.03], eh.hp, Rb * 0.4, Rb * 0.32, 8), { c: C.pele, b: p => p.y > eh.nb[1] ? [[eh.neck, 1]] : [['Chest', 1]], jit: J });
   // pernas
   for (const [s, L2] of [[1, '_L'], [-1, '_R']]) for (const fr of [true, false]) {
     const x = s * (fr ? xf : xb), z = fr ? zf : zbk, y0 = fr ? yj + frontUp : yj, ym = (y0 + fy) / 2, P = fr ? 'Front' : 'Back';
@@ -1514,6 +1590,7 @@ function forgeC(id, S, cfg) {
       for (const a of [-0.6, 0, 0.6]) add(G.sph(r2 * 0.28, 5, 3), { c: C.extra, b: F, pos: [x + Math.sin(a) * r2 * 1.1, fy * 0.3, z + Math.cos(a) * r2 * 1.15], jit: 0 }); }
     if (pe === 'nadadeira') add(G.sph(1, 7, 4), { c: C.pele, b: F, pos: [x + s * Rb * 0.25, fy * 0.6, z + (fr ? 0.04 : -0.02)], scl: [Rb * (fr ? 1.1 : 0.7), Rb * 0.12, Rb * 0.45], rot: [0, s * (fr ? -25 : 25), 0], jit: J });
     if (pe === 'fumaca') add(G.cone(r2 * 1.6, fy * 2.2, 7), { c: C.crina || C.claro, mat: 3, b: F, pos: [x, fy * 0.8, z], rot: [180, 0, 0], jit: 0.004 });
+    if (pe === 'raiz') for (const a of [-0.6, 0, 0.6, 2.8]) add(G.tube([x, fy, z], [x + Math.sin(a) * r2 * 2.4, 0.0, z + Math.cos(a) * r2 * 2.4], r2 * 0.6, r2 * 0.2, 5), { c: '#6a4a2a', b: F, jit: 0.003 });
     if (pe === 'cristal') add(G.octa(r2 * 1.4), { c: C.cristal || C.claro, mat: 3, b: F, pos: [x, fy * 0.7, z], scl: [1, 0.8, 1.2], jit: 0 });
   }
   // pelagem
@@ -1668,11 +1745,38 @@ function forgeC(id, S, cfg) {
     add(G.octa(0.05), { c: C.brilho, glow: true, b: 'Head', pos: HB(0, 0.02, 0.04), scl: [0.9, 0.8, 1.5], jit: 0 });
     for (const s of [1, -1]) add(G.octa(0.04), { c: C.cristal, mat: 3, b: 'Head', pos: HB(s * 0.05, 0.1, -0.03), scl: [0.6, 1.8, 0.6], rot: [-20, 0, -s * 15], jit: 0 });
   }
+  const dragonHead = (bone, O, big = 1) => { const Hb = (x, y, z) => [O[0] + x * big, O[1] + y * big, O[2] + z * big];
+    add(G.sph(0.1, 9, 7), { c: C.pele, b: bone, pos: Hb(0, 0.02, 0), scl: [big, 0.85 * big, 1.15 * big], jit: J });
+    add(G.tube(Hb(0, 0.0, 0.06), Hb(0, -0.01, 0.21), 0.058 * big, 0.04 * big, 8), { c: C.pele, b: bone, jit: J });
+    add(G.sph(1, 7, 4), { c: C.claro, b: bone, pos: Hb(0, -0.05, 0.13), scl: [0.05 * big, 0.022 * big, 0.08 * big], jit: J });
+    for (const s of [1, -1]) { add(G.sph(0.012 * big, 5, 3), { c: '#2a1a1a', b: bone, pos: Hb(s * 0.022, 0.02, 0.215), jit: 0 });
+      add(G.sph(0.022 * big, 6, 4), { c: '#f0c030', b: bone, pos: Hb(s * 0.06, 0.055, 0.06), jit: 0, vary: 0 }); add(G.box(0.006 * big, 0.022 * big, 0.006 * big), { c: '#14110c', b: bone, pos: Hb(s * 0.075, 0.055, 0.068), jit: 0, vary: 0 }); }
+    const hc = HC.chifresD || 'um';
+    for (const s of [1, -1]) { add(G.tube(Hb(s * 0.05, 0.08, -0.04), Hb(s * 0.09, 0.16, -0.16), 0.018 * big, 0.003, 5), { c: C.extra, b: bone, jit: 0.001 });
+      if (hc === 'dois') add(G.tube(Hb(s * 0.07, 0.04, -0.06), Hb(s * 0.15, 0.06, -0.15), 0.014 * big, 0.003, 5), { c: C.extra, b: bone, jit: 0.001 }); }
+    if (hc === 'coroa') for (let i = 0; i < 5; i++) add(G.cone(0.012 * big, 0.06 * big, 4), { c: C.extra, b: bone, pos: Hb(Math.cos(i * 0.785 + 0.4) * 0.07, 0.1, -0.03 + Math.sin(i * 0.785 + 0.4) * -0.05), rot: [-30, 0, 0], jit: 0 });
+    if (HC.barbaTent) for (let i = 0; i < 4; i++) add(G.tube(Hb((i - 1.5) * 0.025, -0.06, 0.1), Hb((i - 1.5) * 0.04, -0.16, 0.08), 0.01 * big, 0.003, 4), { c: C.claro, b: bone, jit: 0 });
+    if (HC.vapor) for (const [x, y, z, r] of [[0.02, 0.03, 0.27, 0.025], [-0.02, 0.05, 0.3, 0.02], [0, 0.09, 0.32, 0.03]]) add(G.ico(r * big, 0), { c: '#ffffff', mat: 3, b: bone, pos: Hb(x, y, z), jit: 0 }); };
+  if (hx === 'dragao') { dragonHead('Head', hp, HC.grande ? 1.15 : 1); for (const eh of extraH) dragonHead(eh.bone, eh.hp, 0.85); }
+  if (hx === 'lagarto') { add(G.sph(1, 9, 6), { c: C.pele, b: 'Head', pos: HB(0, 0.0, 0.06), scl: [0.085, 0.055, 0.15], jit: J, ...M }); add(G.box(0.13, 0.006, 0.02), { c: hex(C.pele, 0.5), b: 'Head', pos: HB(0, -0.02, 0.16), jit: 0 });
+    for (const s of [1, -1]) { add(G.sph(0.026, 6, 4), { c: '#f0c030', b: 'Head', pos: HB(s * 0.055, 0.035, 0.07), jit: 0, vary: 0 }); add(G.box(0.006, 0.024, 0.006), { c: '#14110c', b: 'Head', pos: HB(s * 0.075, 0.035, 0.08), jit: 0, vary: 0 }); }
+    if (HC.papo) add(G.sph(1, 6, 4), { c: C.claro, b: 'Head', pos: HB(0, -0.07, 0.04), scl: [0.012, 0.06, 0.07], jit: 0 }); }
+  if (hx === 'crocodilo') { add(G.sph(1, 9, 6), { c: C.pele, b: 'Head', pos: HB(0, 0.0, 0.02), scl: [0.1, 0.06, 0.1], jit: J });
+    add(G.box(0.1, 0.05, 0.3, 2), { c: C.pele, b: 'Head', pos: HB(0, -0.015, 0.2), jit: J, deform: g => { const pa = g.attributes.position; for (let i = 0; i < pa.count; i++) { const k = 1 - Math.max(0, pa.getZ(i) - (hp[2] + 0.1)) * 1.6; pa.setX(i, pa.getX(i) * k); } } });
+    for (let i = 0; i < 6; i++) for (const s of [1, -1]) add(G.cone(0.008, 0.025, 3), { c: '#f0e8d0', b: 'Head', pos: HB(s * (0.045 - i * 0.004), -0.045, 0.1 + i * 0.045), rot: [180, 0, 0], jit: 0 });
+    for (const s of [1, -1]) add(G.sph(0.022, 6, 4), { c: C.brilho, glow: true, b: 'Head', pos: HB(s * 0.05, 0.05, 0.04), jit: 0 }); }
+  if (hx === 'camaleao') { add(G.sph(0.09, 9, 7), { c: C.pele, b: 'Head', pos: HB(0, 0.02, 0.04), scl: [0.9, 1, 1.25], jit: J }); add(G.cone(0.06, 0.12, 5), { c: C.escuro, b: 'Head', pos: HB(0, 0.1, -0.03), rot: [-50, 0, 0], jit: 0.002 });
+    for (const s of [1, -1]) { add(G.sph(0.035, 7, 5), { c: C.pele, b: 'Head', pos: HB(s * 0.075, 0.04, 0.07), jit: 0 }); add(G.sph(0.012, 5, 4), { c: '#14110c', b: 'Head', pos: HB(s * 0.1, 0.045, 0.09), jit: 0 }); }
+    add(G.box(0.07, 0.006, 0.02), { c: '#2a1418', b: 'Head', pos: HB(0, -0.03, 0.14), jit: 0 }); }
+  if (hx === 'morsa') { add(G.sph(0.15, 10, 8), { c: C.pele, b: 'Head', pos: HB(0, 0.0, 0.03), scl: [1.05, 0.9, 1], jit: J, vary: VAR });
+    for (const s of [1, -1]) { add(G.sph(0.055, 7, 5), { c: C.claro, b: 'Head', pos: HB(s * 0.04, -0.04, 0.14), jit: J }); add(G.sph(0.016, 5, 4), { c: '#14110c', b: 'Head', pos: HB(s * 0.07, 0.06, 0.12), jit: 0 });
+      const ln = HC.presas === 'longas' ? 0.22 : 0.12; add(G.tube(HB(s * 0.035, -0.07, 0.15), HB(s * 0.045, -0.07 - ln, 0.12), 0.018, 0.006, 5), { c: C.extra, b: 'Head', jit: 0 });
+      for (let i = 0; i < 3; i++) add(G.box(0.07, 0.003, 0.003), { c: '#e8e0d0', b: 'Head', pos: HB(s * 0.09, -0.04 + i * 0.012, 0.15), rot: [0, s * 20, s * (i - 1) * 12], jit: 0 }); } }
   // ---------- cauda
   const tail = chains.find(c => c.name === 'Tail');
   if (tail) { const W = { b: chainW(tail) }, ct = R.cauda, p = tail.pts;
     const rr = { peluda: [0.05, 0.075, 0.07, 0.03], fina: [0.025, 0.02, 0.015, 0.008], tufo: [0.025, 0.02, 0.016, 0.012], tufoFogo: [0.025, 0.02, 0.016, 0.012], fogo: [0.03, 0.03, 0.025, 0.01],
-      fumaca: [0.05, 0.06, 0.05, 0.015], escamas: [0.09, 0.07, 0.05, 0.015], cristal: [0.04, 0.035, 0.025, 0.006], leque: [0.03, 0.03, 0.03, 0.02] }[ct].map(v => v * Rb / 0.16);
+      fumaca: [0.05, 0.06, 0.05, 0.015], escamas: [0.09, 0.07, 0.05, 0.015], cristal: [0.04, 0.035, 0.025, 0.006], leque: [0.03, 0.03, 0.03, 0.02], lagarto: [0.075, 0.058, 0.036, 0.01], enrolada: [0.045, 0.035, 0.026, 0.012] }[ct].map(v => v * Rb / 0.16);
     const tc = ct === 'fumaca' ? (C.crina || C.claro) : ct === 'cristal' ? C.cristal : C.pele, tm = ct === 'fumaca' || ct === 'cristal' ? 3 : metal ? 1 : 0;
     if (ct !== 'leque') for (let i = 0; i < 3; i++) add(G.tube(p[i], p[i + 1], rr[i], rr[i + 1], 7), { c: tc, mat: tm, metal, vary: VAR, jit: J, ...W });
     if (ct === 'peluda') add(G.sph(rr[2] * 1.1, 6, 4), { c: C.claro, pos: p[3], scl: [1, 1, 1.5], ...W });
@@ -1745,6 +1849,20 @@ function forgeC(id, S, cfg) {
       for (const [s, L2] of [[1, '_L'], [-1, '_R']]) for (const fr of [true, false]) { const x = s * (fr ? xf : xb), z = fr ? zf : zbk;
         add(G.cyl(Rb * 0.24, Rb * 0.24, Rb * 0.14, 7, true), { c: C.faixa, b: (fr ? 'Front' : 'Back') + 'Leg' + L2, pos: [x, yj * 0.35, z], rot: [0, 0, s * 10], jit: 0.002 }); }
       add(G.cyl(0.125, 0.125, 0.04, 9, true), { c: C.faixa, b: 'Head', pos: HB(0, 0.06, 0), rot: [10, 0, 8], jit: 0.002 }); }
+    if (ex === 'espinhos-dorso') for (let i = 0; i < 9; i++) add(G.cone(Rb * 0.14, Rb * 0.4, 4), { c: C.escuro, b: bodyW, pos: [0, yb + Rb * 0.95, zr - Rb * 0.5 + (zc - zr + Rb) * i / 8], rot: [-20, 0, 0], jit: 0 });
+    if (ex === 'crista-alta' || ex === 'crista-baixa') { const h = ex.endsWith('alta') ? Rb * 0.8 : Rb * 0.35, n = 8;
+      for (let i = 0; i < n; i++) { const z = zr - Rb * 0.6 + (zc + Rb * 0.3 - zr) * i / (n - 1), hh = h * (0.5 + 0.5 * Math.sin(Math.PI * i / (n - 1)));
+        add(G.slab([[0, 0], [Rb * 0.25, hh], [Rb * 0.5, 0]], 0.008), { c: C.escuro, b: bodyW, pos: [0.004, yb + Rb * 0.9, z], rot: [0, 90, 0], jit: 0 });
+        if (ex.endsWith('alta')) add(G.box(0.008, 0.012, Rb * 0.18), { c: C.brilho, glow: true, b: bodyW, pos: [0, yb + Rb * 0.9 + hh, z - Rb * 0.22], jit: 0 }); } }
+    if (ex === 'novelo') { add(G.ico(0.07, 1), { c: C.extra, b: 'Head', pos: HB(0, -0.14, 0.18), jit: 0.003 }); for (let i = 0; i < 3; i++) add(new THREE.TorusGeometry(0.071, 0.006, 3, 10), { c: hex(C.extra, 0.8), b: 'Head', pos: HB(0, -0.14, 0.18), rot: [i * 60, i * 40, 0], jit: 0 });
+      add(G.tube(HB(0, -0.03, 0.15), HB(0, -0.09, 0.18), 0.004, 0.004, 3), { c: C.extra, b: 'Head', jit: 0 }); }
+    if (ex.startsWith('costas-')) { const tipo = ex.slice(7), zc0 = (zr + zc) / 2, topY = yb + Rb * 0.9;
+      if (tipo === 'vila') for (let i = 0; i < 7; i++) { const a = i * 0.9, r = Rb * (0.15 + (i % 3) * 0.3), x = Math.cos(a) * r, z = zc0 + Math.sin(a) * r * 1.3, h = Rb * (0.18 + (i % 2) * 0.1);
+        add(G.box(Rb * 0.25, h, Rb * 0.25), { c: ['#e8dcc0', '#d8c8a8', '#f0e8d8'][i % 3], b: 'Spine', pos: [x, topY + h / 2, z], jit: 0.002 }); add(G.cone(Rb * 0.22, Rb * 0.18, 4), { c: ['#a83a2a', '#3a5a8a', '#6a4a2a'][i % 3], b: 'Spine', pos: [x, topY + h + Rb * 0.09, z], rot: [0, 45, 0], jit: 0 }); }
+      if (tipo === 'templo') { for (let i = 0; i < 3; i++) add(G.box(Rb * (0.9 - i * 0.25), Rb * 0.12, Rb * (0.9 - i * 0.25)), { c: '#e0d8c8', b: 'Spine', pos: [0, topY + Rb * (0.06 + i * 0.12), zc0], jit: 0.002 });
+        add(G.cone(Rb * 0.3, Rb * 0.35, 4), { c: '#c8a040', metal: true, mat: 1, b: 'Spine', pos: [0, topY + Rb * 0.52, zc0], rot: [0, 45, 0], jit: 0 }); }
+      if (tipo !== 'templo') for (let i = 0; i < (tipo === 'floresta' ? 9 : 4); i++) { const a = i * 2.2 + 0.5, r = Rb * (0.4 + (i % 2) * 0.3), x = Math.cos(a) * r, z = zc0 + Math.sin(a) * r * 1.3;
+        add(G.cone(Rb * 0.12, Rb * 0.35, 6), { c: '#2f6b3f', b: 'Spine', pos: [x, topY + Rb * 0.2, z], jit: 0.002 }); } }
     if (ex === 'barbela') add(G.sph(1, 6, 4), { c: C.escuro, b: 'Head', pos: HB(0, -0.12, 0.02), scl: [0.03, 0.08, 0.05], jit: 0.003 });
     if (ex === 'gola-penas') for (let i = 0; i < 10; i++) { const a = i / 10 * Math.PI * 2; add(G.sph(1, 5, 3), { c: C.asa2, b: neckW, pos: [Math.cos(a) * Rb * 0.55, nb[1] + 0.02 + Math.sin(a) * Rb * 0.4, nb[2] + 0.02], scl: [0.04, 0.06, 0.02], rot: [0, 0, -a / D2R + 90], jit: 0 }); }
   }
@@ -1777,12 +1895,13 @@ function forgeC(id, S, cfg) {
 
   // ---------- poses
   const legLen = yj - fy, lF = [(yj + frontUp - fy) / 2, (yj + frontUp - fy) / 2], lB = [legLen / 2, legLen / 2];
-  const REST_F = { FL: [xf, 0, zf], FR: [-xf, 0, zf], BL: [xb, 0, zbk], BR: [-xb, 0, zbk] };
+  const ex = 1 + 0.9 * spr, REST_F = { FL: [xf * ex, 0, zf], FR: [-xf * ex, 0, zf], BL: [xb * ex, 0, zbk], BR: [-xb * ex, 0, zbk] };
   const hasW = !!R.asas, pesado = !!R.pesado, flut = !!R.flutua;
   const setE = (b, a, o = 'YXZ') => b.quaternion.copy(E(a, o));
   function applyPose(P) {
     B.Hips.position.set(REST.Hips.x + P.hp[0], REST.Hips.y + P.hp[1], REST.Hips.z + P.hp[2]); setE(B.Hips, P.hr);
     setE(B.Spine, P.sp); setE(B.Chest, P.ch); setE(B.Neck, P.nk); setE(B.Head, P.hd);
+    for (const eh of extraH) { setE(B[eh.neck], [P.nk[0] * 0.8 - 6, -P.nk[1] * 1.3 + eh.sd * 22, eh.sd * 8]); setE(B[eh.bone], [-P.hd[0] * 0.6 + 8, -P.hd[1] + eh.sd * 15, 0]); }
     for (const ch of chains) for (const nm of ch.names) B[nm].quaternion.identity();
     if (B.Tail1) setE(B.Tail1, P.tl || [0, 0, 0]);
     for (const [s, L2] of [[1, '_L'], [-1, '_R']]) if (B['WingA' + L2]) { const bird = ['ave', 'morcego', 'chama'].includes(R.asas);
@@ -1794,7 +1913,7 @@ function forgeC(id, S, cfg) {
     else for (const k of ['FL', 'FR', 'BL', 'BR']) {
       const r0 = REST_F[k], o = P.f[k], fr = k[0] === 'F', L2 = k[1] === 'L' ? '_L' : '_R', s = L2 === '_L' ? 1 : -1, Pn = fr ? 'Front' : 'Back';
       const tgt = V3(r0[0] + o[0], fy + o[1] + (flut ? legLen * 0.25 : 0), r0[2] + o[2]);
-      ikQ(B[Pn + 'UpLeg' + L2], B[Pn + 'Leg' + L2], B[Pn + 'Foot' + L2], tgt, fr ? V3(0, 0, -1) : V3(s * 0.1, 0, 1), fr ? lF[0] : lB[0], fr ? lF[1] : lB[1], !fr, E([o[3] || 0, 0, 0]));
+      ikQ(B[Pn + 'UpLeg' + L2], B[Pn + 'Leg' + L2], B[Pn + 'Foot' + L2], tgt, fr ? V3(s * spr * 0.9, spr * 0.6, -1) : V3(s * (0.1 + spr * 0.9), spr * 0.6, 1), fr ? lF[0] : lB[0], fr ? lF[1] : lB[1], !fr, E([o[3] || 0, 0, 0]));
     }
     B.Hips.updateMatrixWorld(true);
   }
@@ -1856,6 +1975,8 @@ function forgeD(id, S, cfg) {
     olho: { yb: 0.5, hz: 0.0, az: 0, xr: 0.2, zs: [0.14, 0.05, -0.05, -0.14], sp: [0.5, 0.58, 0.58, 0.5], zf: [0.55, 0.2, -0.2, -0.55] },
     lagarto: { yb: 0.26, hz: 0.46, az: -0.2, xr: 0.13, zs: [0.28, 0.0, -0.28], sp: [0.22, 0.24, 0.22], zf: [0.36, 0.0, -0.36] },
     louva: { yb: 0.3, hz: 0.0, az: -0.15, xr: 0.07, zs: [0.02, -0.08], sp: [0.32, 0.34], zf: [0.18, -0.3] },
+    libelula: { yb: 0.26, hz: 0.14, az: -0.08, xr: 0.05, zs: [0.06, 0.0, -0.06], sp: [0.14, 0.16, 0.15], zf: [0.16, 0.0, -0.18] },
+    mariposa: { yb: 0.3, hz: 0.16, az: -0.1, xr: 0.07, zs: [0.06, 0.0, -0.06], sp: [0.18, 0.2, 0.19], zf: [0.2, 0.0, -0.2] },
   }[bc];
   const { yb, hz, az, xr } = LAY, NP = R.pares;
   // ---------- correntes
@@ -1962,6 +2083,11 @@ function forgeD(id, S, cfg) {
     add(G.sph(0.07, 7, 5), { c: C.pele, b: 'Hips', pos: [0, yb + 0.04, 0.0], jit: J });
     for (const s of [1, -1]) add(G.sph(1, 6, 3), { c: C.claro, mat: 3, b: 'Abdomen', pos: [s * 0.06, yb + 0.13, az - 0.14], scl: [0.06, 0.012, 0.28], rot: [-8, s * 8, 0], jit: 0 });
   }
+  if (bc === 'libelula') { add(G.sph(0.07, 8, 6), { c: C.pele, b: 'Hips', pos: [0, yb + 0.02, 0.02], scl: [1, 0.9, 1.3], jit: J });
+    for (let i = 0; i < 6; i++) add(G.cyl(0.03 - i * 0.002, 0.03 - i * 0.002, 0.14, 7), { c: i % 2 ? C.pele : C.claro, b: 'Abdomen', pos: [0, yb + 0.02, az - 0.06 - i * 0.13], rot: [90, 0, 0], jit: 0.002 });
+    if (R.sela !== 'nenhuma') for (const z of (R.sela === 'dupla' ? [0.04, -0.28] : [0.04])) { add(G.box(0.12, 0.04, 0.14), { c: C.extra, b: z > 0 ? 'Hips' : 'Abdomen', pos: [0, yb + 0.1, z], jit: 0.002 }); add(G.box(0.1, 0.06, 0.02), { c: hex(C.extra, 0.7), b: z > 0 ? 'Hips' : 'Abdomen', pos: [0, yb + 0.14, z - 0.07], jit: 0 }); for (const s of [1, -1]) add(G.box(0.008, 0.1, 0.03), { c: '#3a2a1a', b: z > 0 ? 'Hips' : 'Abdomen', pos: [s * 0.065, yb + 0.06, z], jit: 0 }); } }
+  if (bc === 'mariposa') { for (let i = 0; i < 9; i++) add(G.ico(0.045, 0), { c: i % 2 ? C.pele : C.claro, b: 'Hips', pos: [Math.cos(i) * 0.05, yb + 0.03 + Math.sin(i * 2) * 0.03, 0.02 + Math.sin(i) * 0.05], jit: 0.006 });
+    add(G.sph(1, 8, 6), { c: C.pele, b: 'Abdomen', pos: [0, yb + 0.02, az - 0.16], scl: [0.08, 0.075, 0.2], jit: J }); }
   if (bc === 'abelha' && R.pote !== 'nada') for (const s of (R.pote === 'dois' ? [1, -1] : [1])) {
     add(G.sph(0.06, 8, 6), { c: '#c8763a', b: 'Hips', pos: [s * 0.17, yb - 0.04, 0.06], scl: [1, 1.1, 1], jit: 0.003 }); add(G.cyl(0.035, 0.04, 0.025, 8), { c: '#a85a2a', b: 'Hips', pos: [s * 0.17, yb + 0.03, 0.06], jit: 0 });
     add(G.sph(0.04, 6, 3, 0, Math.PI / 2), { c: C.extra, glow: true, b: 'Hips', pos: [s * 0.17, yb + 0.04, 0.06], jit: 0 }); }
@@ -1992,6 +2118,7 @@ function forgeD(id, S, cfg) {
       add(G.sph(r, 6, 4), { c: '#14110c', b: 'Head', pos: [x, yb + y, z], jit: 0, vary: 0 });
     for (const s of [1, -1]) add(G.cone(0.025, 0.09, 4), { c: C.escuro, b: 'Head', pos: [s * 0.04, yb - 0.04, 0.27], rot: [160, 0, 0], jit: 0 });
   }
+  if (hd === 'libelula' || hd === 'mariposa') { add(G.sph(0.06, 8, 6), { c: C.pele, b: 'Head', pos: HB(0, 0.0, 0.03), jit: J }); for (const s of [1, -1]) add(G.sph(hd === 'libelula' ? 0.045 : 0.03, 8, 6), { c: hd === 'libelula' ? C.claro : '#14110c', b: 'Head', pos: HB(s * 0.045, 0.02, 0.05), jit: 0, vary: 0 }); }
   if (hd === 'escorpiao') { eyesOn(0.03, 0.05, 0.0, 0.015, '#14110c', 'Head'); }
   if (hd === 'caranguejo') for (const s of [1, -1]) { add(G.tube(HB(s * 0.08, 0.0, -0.04), HB(s * 0.1, 0.12, 0.0), 0.014, 0.012, 5), { c: C.pele, b: 'Head' }); add(G.sph(0.03, 6, 4), { c: '#14110c', b: 'Head', pos: HB(s * 0.1, 0.13, 0.0), jit: 0 }); }
   if (hd === 'carrapato') { add(G.sph(0.08, 8, 6), { c: C.escuro, b: 'Head', pos: HB(0, -0.04, 0.04), scl: [1, 0.7, 1.2], jit: J }); for (const s of [1, -1]) add(G.cone(0.02, 0.07, 4), { c: C.escuro, b: 'Head', pos: HB(s * 0.03, -0.06, 0.12), rot: [100, 0, 0], jit: 0 }); }
@@ -2066,6 +2193,12 @@ function forgeD(id, S, cfg) {
       const ell = []; for (let i = 0; i <= 10; i++) { const a = i / 10 * Math.PI * 2; ell.push([0.2 + Math.cos(a) * 0.2, Math.sin(a) * 0.06]); }
       const g = G.flat(ell); if (s < 0) { g.scale(-1, 1, 1); const ix = g.index.array; for (let i = 0; i < ix.length; i += 3) { const t = ix[i]; ix[i] = ix[i + 2]; ix[i + 2] = t; } }
       g.rotateY(s * 1.3); g.translate(A[0], A[1] + 0.02, A[2] - 0.04); add(g, { c: C.asa, mat: 3, b: 'WingB' + L, jit: 0.001 }); }
+    if (R.asas === 'libelula' || R.asas === 'mariposa') { const lib = R.asas === 'libelula';
+      for (const [bone, rz, len, wid] of lib ? [['WingA', 8, 0.5, 0.09], ['WingB', -12, 0.46, 0.08]] : [['WingA', 20, 0.42, 0.34], ['WingB', -30, 0.32, 0.24]]) { const pts = []; for (let i = 0; i <= 12; i++) { const a = i / 12 * Math.PI * 2; pts.push([len / 2 + Math.cos(a) * len / 2, Math.sin(a) * wid / 2 + (lib ? 0 : wid * 0.15 * Math.cos(a))]); }
+        const g = G.flat(pts); if (s < 0) { g.scale(-1, 1, 1); const ix = g.index.array; for (let i = 0; i < ix.length; i += 3) { const tq = ix[i]; ix[i] = ix[i + 2]; ix[i + 2] = tq; } }
+        g.rotateX(-0.4); g.rotateZ(s * rz * D2R); g.translate(A[0], A[1], A[2]); add(g, { c: C.asa, mat: lib ? 3 : 0, b: bone + L, jit: 0.001 });
+        if (!lib) { const er = R.olhosAsa === 'grandes' ? 0.06 : 0.035, e = G.cyl(er, er, 0.004, 10); e.rotateX(Math.PI / 2 - 0.4); e.translate(A[0] + s * len * 0.6, A[1] + (bone === 'WingA' ? 0.08 : -0.06), A[2] - 0.01); add(e, { c: C.extra, b: bone + L, jit: 0 });
+          const e2 = G.cyl(er * 0.45, er * 0.45, 0.005, 8); e2.rotateX(Math.PI / 2 - 0.4); e2.translate(A[0] + s * len * 0.6, A[1] + (bone === 'WingA' ? 0.08 : -0.06), A[2] - 0.012); add(e2, { c: '#14110c', b: bone + L, jit: 0 }); } } }
     if (R.asas === 'abelha') { for (const [bone, rz, len] of [['WingA', 20, 0.24], ['WingB', -10, 0.18]]) { const ell = []; for (let i = 0; i <= 10; i++) { const a = i / 10 * Math.PI * 2; ell.push([len / 2 + Math.cos(a) * len / 2, Math.sin(a) * len * 0.2]); }
       const g = G.flat(ell); if (s < 0) { g.scale(-1, 1, 1); const ix = g.index.array; for (let i = 0; i < ix.length; i += 3) { const t = ix[i]; ix[i] = ix[i + 2]; ix[i + 2] = t; } }
       g.rotateX(-0.5); g.rotateZ(s * rz * D2R); g.translate(A[0], A[1], A[2]); add(g, { c: C.asa, mat: 3, b: bone + L, jit: 0.001 }); } }
@@ -2088,7 +2221,8 @@ function forgeD(id, S, cfg) {
     B.Hips.updateMatrixWorld(true);
   }
   const groupA = lg => (lg.i % 2 === 0) === (lg.s > 0);           // tripé / tetrápode alternado
-  const base = () => ({ hp: [0, 0, 0], hr: [0, 0, 0], ab: [0, 0, 0], hd: [0, 0, 0], ch: [0, 0, 0], nk: [0, 0, 0], arm: bc === 'louva' ? [-20, 0, 0, -120, 150, 0] : [10, 10, 0, -30, 20, 10], tail: [0, 0, 0, 0, 0], w: [-5, 75, 0, -5], f: {} });
+  const wRest = ['libelula', 'mariposa'].includes(R.asas) ? [6, 12, 0, 2] : [-5, 75, 0, -5];
+  const base = () => ({ hp: [0, 0, 0], hr: [0, 0, 0], ab: [0, 0, 0], hd: [0, 0, 0], ch: [0, 0, 0], nk: [0, 0, 0], arm: bc === 'louva' ? [-20, 0, 0, -120, 150, 0] : [10, 10, 0, -30, 20, 10], tail: [0, 0, 0, 0, 0], w: [...wRest], f: {} });
   const gait = (name, T, D, Sx, h) => ({ name, dur: T, fps: 60, loop: true, v: Sx / (D * T), fn: t => { const P = base(), u = t / T;
     for (const lg of legs) { const ph = ((u + (groupA(lg) ? 0 : 0.5) + lg.i * 0.04) % 1 + 1) % 1; let d, lift = 0;
       if (ph < D) d = Sx / 2 - Sx * ph / D; else { const w = (ph - D) / (1 - D); d = -Sx / 2 + Sx * EASE.io(w); lift = h * Math.sin(Math.PI * w); }
