@@ -11,6 +11,14 @@ Para ver e montar no navegador, abra a [Forja de Erath](https://gentsuyama.githu
 
 Povos: Anão, Vran, Beorning, Vodnik, Silvano, Litomante, Aetheryn e Humano.
 
+## Criaturas (bestiário)
+
+- `criaturas/<id>/<id>_padrao.glb` + 2 variações sorteadas por espécie. No `catalogo.json`, a chave `criaturas` traz: número na lista, grupo, família de corpo, se voa, tamanho real, categorias de variação e, por arquivo, altura, animações e velocidades.
+- **Família A, bípede com ou sem asas** (fadas, diabretes, ursos alados): `Parado`, `Voar`, `Andar`, `Atacar` e `Comemorar`. Os ossos têm os mesmos nomes dos povos, mais `WingA/B_L/R`, `Tail1..3`, `Ant1/2`, `Hair1/2` e `Fumaca1..3`.
+- **Família B, flutuante** (fantasmas, chamas, olho, relógio...): `Parado`, `Mover`, `Atacar` e `Comemorar`. Os ossos são `Root`, `Body`, `Top`, mais correntes (braços, barra, tentáculos, fitas, pêndulo).
+- A raiz já vem na escala real da espécie, de 6 cm a 2,6 m. O material `translucido` (asas de inseto, água, bolha) usa transparência (BLEND).
+- Para ver e variar: [Bestiário](https://gentsuyama.github.io/povos-de-erath/bestiario.html). Plano das 150 criaturas: [`../criaturas/PLANO.md`](../criaturas/PLANO.md).
+
 ## Cada GLB
 
 - **Malha:** 1 malha com pele (skinned), de 1.000 a 3.100 triângulos, sem textura (cor nos vértices). Materiais: `fosco`, `metal` e `brilho` (sem luz, `KHR_materials_unlit`).

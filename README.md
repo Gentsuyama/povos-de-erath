@@ -14,6 +14,7 @@ A página é um único arquivo (o modelo vai embutido); precisa de internet só 
 
 - `forja.html`: monta personagens dos 8 povos (Anão, Vran, Beorning, Vodnik, Silvano, Litomante, Aetheryn, Humano) peça por peça, com sorteio, exército e export GLB.
 - `forja/erath_forja.js`: o gerador. Módulo puro, sem DOM: roda no navegador e no Node. Tudo é feito em código, com as animações (Parado, Andar, Correr, Atacar, Defender, Comemorar) próprias, sem mocap.
+- `bestiario.html` + `forja/erath_criaturas.js`: criaturas do bestiário (lista e plano em `criaturas/`), com variações por espécie.
 - `personagens/`: GLBs prontos e `catalogo.json` (veja `personagens/README.md`). Para gerar de novo: `npm install && npm run exportar`.
 
 ## Créditos
