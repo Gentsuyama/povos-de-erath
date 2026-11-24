@@ -1,4 +1,5 @@
 {
+ "compressao": "EXT_meshopt_compression (use MeshoptDecoder)",
  "gerado": "2026-11-24",
  "versao_three": "0.160.0",
  "animacoes": [
@@ -450,7 +451,7 @@
      "arquivo": "anao/anao_padrao.glb",
      "nome": "Brakk",
      "epiteto": "Barba-de-Brasa",
-     "kb": 415,
+     "kb": 151,
      "triangulos": 3086,
      "ossos": 19,
      "molas": [
@@ -480,7 +481,7 @@
      "arquivo": "anao/anao_durgal.glb",
      "nome": "Durgal",
      "epiteto": "Martelo-Rubro",
-     "kb": 417,
+     "kb": 154,
      "triangulos": 3104,
      "ossos": 19,
      "molas": [
@@ -510,7 +511,7 @@
      "arquivo": "anao/anao_grimbur.glb",
      "nome": "Grimbur",
      "epiteto": "Martelo-Rubro",
-     "kb": 354,
+     "kb": 137,
      "triangulos": 2238,
      "ossos": 19,
      "molas": [
@@ -540,7 +541,7 @@
      "arquivo": "anao/anao_mordan.glb",
      "nome": "Mordan",
      "epiteto": "Fogo-de-Forja",
-     "kb": 378,
+     "kb": 142,
      "triangulos": 2569,
      "ossos": 19,
      "molas": [
@@ -570,7 +571,7 @@
      "arquivo": "anao/anao_urbur.glb",
      "nome": "Urbur",
      "epiteto": "Fogo-de-Forja",
-     "kb": 402,
+     "kb": 149,
      "triangulos": 2892,
      "ossos": 19,
      "molas": [
@@ -945,7 +946,7 @@
      "arquivo": "vran/vran_padrao.glb",
      "nome": "Rhekesh",
      "epiteto": "Cauda-Firme",
-     "kb": 392,
+     "kb": 143,
      "triangulos": 2646,
      "ossos": 20,
      "molas": [
@@ -974,7 +975,7 @@
      "arquivo": "vran/vran_kressik.glb",
      "nome": "Kressik",
      "epiteto": "Cauda-Firme",
-     "kb": 396,
+     "kb": 142,
      "triangulos": 2574,
      "ossos": 21,
      "molas": [
@@ -1003,7 +1004,7 @@
      "arquivo": "vran/vran_ssaix.glb",
      "nome": "Ssaix",
      "epiteto": "Língua-Rápida",
-     "kb": 387,
+     "kb": 138,
      "triangulos": 2456,
      "ossos": 21,
      "molas": [
@@ -1032,7 +1033,7 @@
      "arquivo": "vran/vran_kreiss.glb",
      "nome": "Kreiss",
      "epiteto": "Escama-de-Jade",
-     "kb": 399,
+     "kb": 144,
      "triangulos": 2746,
      "ossos": 20,
      "molas": [
@@ -1061,7 +1062,7 @@
      "arquivo": "vran/vran_ixiiss.glb",
      "nome": "Ixiiss",
      "epiteto": "Sangue-Frio",
-     "kb": 387,
+     "kb": 140,
      "triangulos": 2576,
      "ossos": 20,
      "molas": [
@@ -1443,7 +1444,7 @@
      "arquivo": "beorning/beorning_padrao.glb",
      "nome": "Arnrik",
      "epiteto": "Dente-de-Lobo",
-     "kb": 423,
+     "kb": 149,
      "triangulos": 2940,
      "ossos": 21,
      "molas": [
@@ -1473,7 +1474,7 @@
      "arquivo": "beorning/beorning_torvrik.glb",
      "nome": "Torvrik",
      "epiteto": "Pele-de-Urso",
-     "kb": 350,
+     "kb": 135,
      "triangulos": 2427,
      "ossos": 17,
      "molas": [],
@@ -1500,7 +1501,7 @@
      "arquivo": "beorning/beorning_ovebjorn.glb",
      "nome": "Ovebjorn",
      "epiteto": "Neve-Rubra",
-     "kb": 389,
+     "kb": 146,
      "triangulos": 2719,
      "ossos": 19,
      "molas": [
@@ -1529,7 +1530,7 @@
      "arquivo": "beorning/beorning_ulfolf.glb",
      "nome": "Ulfolf",
      "epiteto": "Garra-Lenta",
-     "kb": 376,
+     "kb": 146,
      "triangulos": 2789,
      "ossos": 17,
      "molas": [],
@@ -1556,7 +1557,7 @@
      "arquivo": "beorning/beorning_hakkgeir.glb",
      "nome": "Hakkgeir",
      "epiteto": "Pinheiro-Velho",
-     "kb": 400,
+     "kb": 141,
      "triangulos": 2506,
      "ossos": 22,
      "molas": [
@@ -1909,7 +1910,7 @@
      "arquivo": "vodnik/vodnik_padrao.glb",
      "nome": "Nauuro",
      "epiteto": "Rede-Cheia",
-     "kb": 349,
+     "kb": 135,
      "triangulos": 2426,
      "ossos": 17,
      "molas": [],
@@ -1935,7 +1936,7 @@
      "arquivo": "vodnik/vodnik_salago.glb",
      "nome": "Salago",
      "epiteto": "Maré-Alta",
-     "kb": 323,
+     "kb": 127,
      "triangulos": 2060,
      "ossos": 17,
      "molas": [],
@@ -1961,7 +1962,7 @@
      "arquivo": "vodnik/vodnik_pelivo.glb",
      "nome": "Pelivo",
      "epiteto": "Escama-Prata",
-     "kb": 331,
+     "kb": 130,
      "triangulos": 2168,
      "ossos": 17,
      "molas": [],
@@ -1987,7 +1988,7 @@
      "arquivo": "vodnik/vodnik_ondoth.glb",
      "nome": "Ondoth",
      "epiteto": "Âncora-Firme",
-     "kb": 345,
+     "kb": 133,
      "triangulos": 2361,
      "ossos": 17,
      "molas": [],
@@ -2013,7 +2014,7 @@
      "arquivo": "vodnik/vodnik_kelena.glb",
      "nome": "Kelena",
      "epiteto": "Escama-Prata",
-     "kb": 355,
+     "kb": 136,
      "triangulos": 2498,
      "ossos": 17,
      "molas": [],
@@ -2396,7 +2397,7 @@
      "arquivo": "silvano/silvano_padrao.glb",
      "nome": "Orenbo",
      "epiteto": "Pé-Ligeiro",
-     "kb": 367,
+     "kb": 141,
      "triangulos": 2660,
      "ossos": 17,
      "molas": [],
@@ -2423,7 +2424,7 @@
      "arquivo": "silvano/silvano_faumir.glb",
      "nome": "Faumir",
      "epiteto": "Canto-do-Bosque",
-     "kb": 383,
+     "kb": 144,
      "triangulos": 2888,
      "ossos": 17,
      "molas": [],
@@ -2450,7 +2451,7 @@
      "arquivo": "silvano/silvano_ewadil.glb",
      "nome": "Ewadil",
      "epiteto": "Pincel-Verde",
-     "kb": 360,
+     "kb": 137,
      "triangulos": 2570,
      "ossos": 17,
      "molas": [],
@@ -2477,7 +2478,7 @@
      "arquivo": "silvano/silvano_bramlen.glb",
      "nome": "Bramlen",
      "epiteto": "Flauta-Doce",
-     "kb": 366,
+     "kb": 136,
      "triangulos": 2416,
      "ossos": 19,
      "molas": [
@@ -2506,7 +2507,7 @@
      "arquivo": "silvano/silvano_bramwyn.glb",
      "nome": "Bramwyn",
      "epiteto": "Canto-do-Bosque",
-     "kb": 363,
+     "kb": 138,
      "triangulos": 2374,
      "ossos": 19,
      "molas": [
@@ -2826,7 +2827,7 @@
      "arquivo": "litomante/litomante_padrao.glb",
      "nome": "Magul",
      "epiteto": "Punho-de-Granito",
-     "kb": 246,
+     "kb": 109,
      "triangulos": 1004,
      "ossos": 17,
      "molas": [],
@@ -2850,7 +2851,7 @@
      "arquivo": "litomante/litomante_sildor.glb",
      "nome": "Sildor",
      "epiteto": "Rocha-Antiga",
-     "kb": 257,
+     "kb": 111,
      "triangulos": 1160,
      "ossos": 17,
      "molas": [],
@@ -2874,7 +2875,7 @@
      "arquivo": "litomante/litomante_graek.glb",
      "nome": "Graek",
      "epiteto": "Musgo-Velho",
-     "kb": 266,
+     "kb": 115,
      "triangulos": 1284,
      "ossos": 17,
      "molas": [],
@@ -2898,7 +2899,7 @@
      "arquivo": "litomante/litomante_magix.glb",
      "nome": "Magix",
      "epiteto": "Musgo-Velho",
-     "kb": 241,
+     "kb": 108,
      "triangulos": 940,
      "ossos": 17,
      "molas": [],
@@ -2922,7 +2923,7 @@
      "arquivo": "litomante/litomante_magnit.glb",
      "nome": "Magnit",
      "epiteto": "Rocha-Antiga",
-     "kb": 263,
+     "kb": 114,
      "triangulos": 1244,
      "ossos": 17,
      "molas": [],
@@ -3283,7 +3284,7 @@
      "arquivo": "aetheryn/aetheryn_padrao.glb",
      "nome": "Luth",
      "epiteto": "Chama-Fria",
-     "kb": 349,
+     "kb": 131,
      "triangulos": 2170,
      "ossos": 19,
      "molas": [
@@ -3312,7 +3313,7 @@
      "arquivo": "aetheryn/aetheryn_orilith.glb",
      "nome": "Orilith",
      "epiteto": "Sussurro-Prata",
-     "kb": 330,
+     "kb": 131,
      "triangulos": 2152,
      "ossos": 17,
      "molas": [],
@@ -3339,7 +3340,7 @@
      "arquivo": "aetheryn/aetheryn_oriwen.glb",
      "nome": "Oriwen",
      "epiteto": "Lâmina-Lunar",
-     "kb": 358,
+     "kb": 141,
      "triangulos": 2531,
      "ossos": 17,
      "molas": [],
@@ -3366,7 +3367,7 @@
      "arquivo": "aetheryn/aetheryn_oriwen2.glb",
      "nome": "Oriwen",
      "epiteto": "Asa-de-Névoa",
-     "kb": 340,
+     "kb": 136,
      "triangulos": 2286,
      "ossos": 17,
      "molas": [],
@@ -3393,7 +3394,7 @@
      "arquivo": "aetheryn/aetheryn_ilyth.glb",
      "nome": "Ilyth",
      "epiteto": "Lâmina-Lunar",
-     "kb": 374,
+     "kb": 143,
      "triangulos": 2516,
      "ossos": 19,
      "molas": [
@@ -3805,7 +3806,7 @@
      "arquivo": "humano/humano_padrao.glb",
      "nome": "Maric",
      "epiteto": "da Muralha",
-     "kb": 364,
+     "kb": 136,
      "triangulos": 2380,
      "ossos": 19,
      "molas": [
@@ -3835,7 +3836,7 @@
      "arquivo": "humano/humano_bearic.glb",
      "nome": "Bearic",
      "epiteto": "do Vale",
-     "kb": 316,
+     "kb": 125,
      "triangulos": 1968,
      "ossos": 17,
      "molas": [],
@@ -3863,7 +3864,7 @@
      "arquivo": "humano/humano_beawin.glb",
      "nome": "Beawin",
      "epiteto": "da Muralha",
-     "kb": 371,
+     "kb": 137,
      "triangulos": 2484,
      "ossos": 19,
      "molas": [
@@ -3893,7 +3894,7 @@
      "arquivo": "humano/humano_mator.glb",
      "nome": "Mator",
      "epiteto": "Escudo-Rubro",
-     "kb": 399,
+     "kb": 147,
      "triangulos": 2864,
      "ossos": 19,
      "molas": [
@@ -3923,7 +3924,7 @@
      "arquivo": "humano/humano_gerdra.glb",
      "nome": "Gerdra",
      "epiteto": "do Vale",
-     "kb": 344,
+     "kb": 133,
      "triangulos": 2350,
      "ossos": 17,
      "molas": [],
@@ -4064,7 +4065,7 @@
     {
      "arquivo": "criaturas/fada-orvalho/fada-orvalho_padrao.glb",
      "variacao": "Pipo 77",
-     "kb": 354,
+     "kb": 102,
      "triangulos": 1365,
      "ossos": 25,
      "molas": [
@@ -4093,7 +4094,7 @@
     {
      "arquivo": "criaturas/fada-orvalho/fada-orvalho_orvo-83.glb",
      "variacao": "Orvo 83",
-     "kb": 317,
+     "kb": 99,
      "triangulos": 1369,
      "ossos": 21,
      "molas": [],
@@ -4120,7 +4121,7 @@
     {
      "arquivo": "criaturas/fada-orvalho/fada-orvalho_pipo-54.glb",
      "variacao": "Pipo 54",
-     "kb": 306,
+     "kb": 95,
      "triangulos": 1233,
      "ossos": 21,
      "molas": [],
@@ -4237,7 +4238,7 @@
     {
      "arquivo": "criaturas/pirilampa/pirilampa_padrao.glb",
      "variacao": "Tula 84",
-     "kb": 394,
+     "kb": 106,
      "triangulos": 1521,
      "ossos": 25,
      "molas": [
@@ -4265,7 +4266,7 @@
     {
      "arquivo": "criaturas/pirilampa/pirilampa_zuza-57.glb",
      "variacao": "Zuza 57",
-     "kb": 391,
+     "kb": 105,
      "triangulos": 1489,
      "ossos": 25,
      "molas": [
@@ -4293,7 +4294,7 @@
     {
      "arquivo": "criaturas/pirilampa/pirilampa_bela-52.glb",
      "variacao": "Bela 52",
-     "kb": 400,
+     "kb": 107,
      "triangulos": 1609,
      "ossos": 25,
      "molas": [
@@ -4407,7 +4408,7 @@
     {
      "arquivo": "criaturas/fada-cogumelo/fada-cogumelo_padrao.glb",
      "variacao": "Teco 63",
-     "kb": 201,
+     "kb": 60,
      "triangulos": 1034,
      "ossos": 17,
      "molas": [],
@@ -4431,7 +4432,7 @@
     {
      "arquivo": "criaturas/fada-cogumelo/fada-cogumelo_vina-81.glb",
      "variacao": "Vina 81",
-     "kb": 201,
+     "kb": 60,
      "triangulos": 1034,
      "ossos": 17,
      "molas": [],
@@ -4455,7 +4456,7 @@
     {
      "arquivo": "criaturas/fada-cogumelo/fada-cogumelo_zuza-24.glb",
      "variacao": "Zuza 24",
-     "kb": 203,
+     "kb": 60,
      "triangulos": 1066,
      "ossos": 17,
      "molas": [],
@@ -4569,7 +4570,7 @@
     {
      "arquivo": "criaturas/silfide-de-polen/silfide-de-polen_padrao.glb",
      "variacao": "Quim 96",
-     "kb": 305,
+     "kb": 79,
      "triangulos": 1149,
      "ossos": 30,
      "molas": [
@@ -4597,7 +4598,7 @@
     {
      "arquivo": "criaturas/silfide-de-polen/silfide-de-polen_rufo-77.glb",
      "variacao": "Rufo 77",
-     "kb": 289,
+     "kb": 77,
      "triangulos": 1121,
      "ossos": 28,
      "molas": [
@@ -4624,7 +4625,7 @@
     {
      "arquivo": "criaturas/silfide-de-polen/silfide-de-polen_brisa-35.glb",
      "variacao": "Brisa 35",
-     "kb": 305,
+     "kb": 79,
      "triangulos": 1149,
      "ossos": 30,
      "molas": [
@@ -4738,7 +4739,7 @@
     {
      "arquivo": "criaturas/duende-de-musgo/duende-de-musgo_padrao.glb",
      "variacao": "Zuza 70",
-     "kb": 207,
+     "kb": 63,
      "triangulos": 1116,
      "ossos": 17,
      "molas": [],
@@ -4762,7 +4763,7 @@
     {
      "arquivo": "criaturas/duende-de-musgo/duende-de-musgo_luz-48.glb",
      "variacao": "Luz 48",
-     "kb": 202,
+     "kb": 62,
      "triangulos": 1052,
      "ossos": 17,
      "molas": [],
@@ -4786,7 +4787,7 @@
     {
      "arquivo": "criaturas/duende-de-musgo/duende-de-musgo_teco-62.glb",
      "variacao": "Teco 62",
-     "kb": 204,
+     "kb": 62,
      "triangulos": 1076,
      "ossos": 17,
      "molas": [],
@@ -4882,7 +4883,7 @@
     {
      "arquivo": "criaturas/ninfa-gota/ninfa-gota_padrao.glb",
      "variacao": "Sabi 80",
-     "kb": 207,
+     "kb": 61,
      "triangulos": 937,
      "ossos": 19,
      "molas": [
@@ -4907,7 +4908,7 @@
     {
      "arquivo": "criaturas/ninfa-gota/ninfa-gota_miro-60.glb",
      "variacao": "Miro 60",
-     "kb": 197,
+     "kb": 61,
      "triangulos": 981,
      "ossos": 17,
      "molas": [],
@@ -4930,7 +4931,7 @@
     {
      "arquivo": "criaturas/ninfa-gota/ninfa-gota_gaia-93.glb",
      "variacao": "Gaia 93",
-     "kb": 197,
+     "kb": 61,
      "triangulos": 981,
      "ossos": 17,
      "molas": [],
@@ -5047,7 +5048,7 @@
     {
      "arquivo": "criaturas/fada-espinho/fada-espinho_padrao.glb",
      "variacao": "Quim 48",
-     "kb": 278,
+     "kb": 87,
      "triangulos": 1085,
      "ossos": 21,
      "molas": [],
@@ -5073,7 +5074,7 @@
     {
      "arquivo": "criaturas/fada-espinho/fada-espinho_gaia-79.glb",
      "variacao": "Gaia 79",
-     "kb": 297,
+     "kb": 89,
      "triangulos": 1113,
      "ossos": 23,
      "molas": [
@@ -5101,7 +5102,7 @@
     {
      "arquivo": "criaturas/fada-espinho/fada-espinho_dudu-55.glb",
      "variacao": "Dudu 55",
-     "kb": 282,
+     "kb": 88,
      "triangulos": 1141,
      "ossos": 21,
      "molas": [],
@@ -5199,7 +5200,7 @@
     {
      "arquivo": "criaturas/lumibrim/lumibrim_padrao.glb",
      "variacao": "Lua 73",
-     "kb": 50,
+     "kb": 27,
      "triangulos": 208,
      "ossos": 4,
      "molas": [],
@@ -5222,7 +5223,7 @@
     {
      "arquivo": "criaturas/lumibrim/lumibrim_dudu-63.glb",
      "variacao": "Dudu 63",
-     "kb": 51,
+     "kb": 27,
      "triangulos": 212,
      "ossos": 4,
      "molas": [],
@@ -5245,7 +5246,7 @@
     {
      "arquivo": "criaturas/lumibrim/lumibrim_zuza-93.glb",
      "variacao": "Zuza 93",
-     "kb": 50,
+     "kb": 27,
      "triangulos": 208,
      "ossos": 4,
      "molas": [],
@@ -5332,7 +5333,7 @@
     {
      "arquivo": "criaturas/fada-semente/fada-semente_padrao.glb",
      "variacao": "Pim 77",
-     "kb": 246,
+     "kb": 81,
      "triangulos": 931,
      "ossos": 21,
      "molas": [],
@@ -5357,7 +5358,7 @@
     {
      "arquivo": "criaturas/fada-semente/fada-semente_pipo-42.glb",
      "variacao": "Pipo 42",
-     "kb": 246,
+     "kb": 81,
      "triangulos": 931,
      "ossos": 21,
      "molas": [],
@@ -5382,7 +5383,7 @@
     {
      "arquivo": "criaturas/fada-semente/fada-semente_tula-65.glb",
      "variacao": "Tula 65",
-     "kb": 243,
+     "kb": 80,
      "triangulos": 891,
      "ossos": 21,
      "molas": [],
@@ -5471,7 +5472,7 @@
     {
      "arquivo": "criaturas/cantarola/cantarola_padrao.glb",
      "variacao": "Tula 54",
-     "kb": 361,
+     "kb": 102,
      "triangulos": 1348,
      "ossos": 21,
      "molas": [],
@@ -5496,7 +5497,7 @@
     {
      "arquivo": "criaturas/cantarola/cantarola_rufo-90.glb",
      "variacao": "Rufo 90",
-     "kb": 361,
+     "kb": 102,
      "triangulos": 1348,
      "ossos": 21,
      "molas": [],
@@ -5519,9 +5520,9 @@
      }
     },
     {
-     "arquivo": "criaturas/cantarola/cantarola_rufo-90.glb",
+     "arquivo": "criaturas/cantarola/cantarola_rufo-90-2.glb",
      "variacao": "Rufo 90",
-     "kb": 361,
+     "kb": 102,
      "triangulos": 1348,
      "ossos": 21,
      "molas": [],
@@ -5632,7 +5633,7 @@
     {
      "arquivo": "criaturas/pequena-geada/pequena-geada_padrao.glb",
      "variacao": "Teco 99",
-     "kb": 279,
+     "kb": 94,
      "triangulos": 1268,
      "ossos": 21,
      "molas": [],
@@ -5658,7 +5659,7 @@
     {
      "arquivo": "criaturas/pequena-geada/pequena-geada_zuza-41.glb",
      "variacao": "Zuza 41",
-     "kb": 284,
+     "kb": 96,
      "triangulos": 1329,
      "ossos": 21,
      "molas": [],
@@ -5684,7 +5685,7 @@
     {
      "arquivo": "criaturas/pequena-geada/pequena-geada_fagu-55.glb",
      "variacao": "Fagu 55",
-     "kb": 279,
+     "kb": 94,
      "triangulos": 1268,
      "ossos": 21,
      "molas": [],
@@ -5796,7 +5797,7 @@
     {
      "arquivo": "criaturas/fada-teia/fada-teia_padrao.glb",
      "variacao": "Miro 28",
-     "kb": 418,
+     "kb": 118,
      "triangulos": 1533,
      "ossos": 31,
      "molas": [
@@ -5824,7 +5825,7 @@
     {
      "arquivo": "criaturas/fada-teia/fada-teia_sabi-75.glb",
      "variacao": "Sabi 75",
-     "kb": 418,
+     "kb": 117,
      "triangulos": 1533,
      "ossos": 31,
      "molas": [
@@ -5852,7 +5853,7 @@
     {
      "arquivo": "criaturas/fada-teia/fada-teia_brisa-61.glb",
      "variacao": "Brisa 61",
-     "kb": 418,
+     "kb": 117,
      "triangulos": 1533,
      "ossos": 31,
      "molas": [
@@ -6018,7 +6019,7 @@
     {
      "arquivo": "criaturas/diabrete-de-chamine/diabrete-de-chamine_padrao.glb",
      "variacao": "Teco 95",
-     "kb": 321,
+     "kb": 97,
      "triangulos": 1386,
      "ossos": 24,
      "molas": [
@@ -6048,7 +6049,7 @@
     {
      "arquivo": "criaturas/diabrete-de-chamine/diabrete-de-chamine_sabi-94.glb",
      "variacao": "Sabi 94",
-     "kb": 326,
+     "kb": 98,
      "triangulos": 1468,
      "ossos": 24,
      "molas": [
@@ -6078,7 +6079,7 @@
     {
      "arquivo": "criaturas/diabrete-de-chamine/diabrete-de-chamine_tula-95.glb",
      "variacao": "Tula 95",
-     "kb": 288,
+     "kb": 89,
      "triangulos": 1282,
      "ossos": 21,
      "molas": [],
@@ -6196,7 +6197,7 @@
     {
      "arquivo": "criaturas/brasinho/brasinho_padrao.glb",
      "variacao": "Sabi 67",
-     "kb": 190,
+     "kb": 56,
      "triangulos": 883,
      "ossos": 17,
      "molas": [],
@@ -6220,7 +6221,7 @@
     {
      "arquivo": "criaturas/brasinho/brasinho_miro-80.glb",
      "variacao": "Miro 80",
-     "kb": 195,
+     "kb": 60,
      "triangulos": 951,
      "ossos": 17,
      "molas": [],
@@ -6244,7 +6245,7 @@
     {
      "arquivo": "criaturas/brasinho/brasinho_teco-33.glb",
      "variacao": "Teco 33",
-     "kb": 190,
+     "kb": 56,
      "triangulos": 883,
      "ossos": 17,
      "molas": [],
@@ -6358,7 +6359,7 @@
     {
      "arquivo": "criaturas/roi-sapato/roi-sapato_padrao.glb",
      "variacao": "Tico 45",
-     "kb": 240,
+     "kb": 68,
      "triangulos": 1292,
      "ossos": 20,
      "molas": [
@@ -6384,7 +6385,7 @@
     {
      "arquivo": "criaturas/roi-sapato/roi-sapato_bela-38.glb",
      "variacao": "Bela 38",
-     "kb": 230,
+     "kb": 66,
      "triangulos": 1166,
      "ossos": 20,
      "molas": [
@@ -6410,7 +6411,7 @@
     {
      "arquivo": "criaturas/roi-sapato/roi-sapato_pim-50.glb",
      "variacao": "Pim 50",
-     "kb": 231,
+     "kb": 66,
      "triangulos": 1174,
      "ossos": 20,
      "molas": [
@@ -6534,7 +6535,7 @@
     {
      "arquivo": "criaturas/gargula-de-bolso/gargula-de-bolso_padrao.glb",
      "variacao": "Vina 75",
-     "kb": 305,
+     "kb": 95,
      "triangulos": 1504,
      "ossos": 24,
      "molas": [
@@ -6562,7 +6563,7 @@
     {
      "arquivo": "criaturas/gargula-de-bolso/gargula-de-bolso_gaia-65.glb",
      "variacao": "Gaia 65",
-     "kb": 293,
+     "kb": 92,
      "triangulos": 1342,
      "ossos": 24,
      "molas": [
@@ -6590,7 +6591,7 @@
     {
      "arquivo": "criaturas/gargula-de-bolso/gargula-de-bolso_gaia-83.glb",
      "variacao": "Gaia 83",
-     "kb": 318,
+     "kb": 99,
      "triangulos": 1684,
      "ossos": 24,
      "molas": [
@@ -6708,7 +6709,7 @@
     {
      "arquivo": "criaturas/tramelo/tramelo_padrao.glb",
      "variacao": "Rufo 28",
-     "kb": 232,
+     "kb": 64,
      "triangulos": 1092,
      "ossos": 21,
      "molas": [
@@ -6734,7 +6735,7 @@
     {
      "arquivo": "criaturas/tramelo/tramelo_vina-94.glb",
      "variacao": "Vina 94",
-     "kb": 271,
+     "kb": 72,
      "triangulos": 1356,
      "ossos": 24,
      "molas": [
@@ -6761,7 +6762,7 @@
     {
      "arquivo": "criaturas/tramelo/tramelo_orvo-69.glb",
      "variacao": "Orvo 69",
-     "kb": 292,
+     "kb": 75,
      "triangulos": 1462,
      "ossos": 26,
      "molas": [
@@ -6878,7 +6879,7 @@
     {
      "arquivo": "criaturas/diabrete-sombra/diabrete-sombra_padrao.glb",
      "variacao": "Nix 88",
-     "kb": 208,
+     "kb": 48,
      "triangulos": 972,
      "ossos": 20,
      "molas": [
@@ -6904,7 +6905,7 @@
     {
      "arquivo": "criaturas/diabrete-sombra/diabrete-sombra_dudu-69.glb",
      "variacao": "Dudu 69",
-     "kb": 206,
+     "kb": 49,
      "triangulos": 952,
      "ossos": 20,
      "molas": [
@@ -6930,7 +6931,7 @@
     {
      "arquivo": "criaturas/diabrete-sombra/diabrete-sombra_gaia-18.glb",
      "variacao": "Gaia 18",
-     "kb": 219,
+     "kb": 53,
      "triangulos": 1124,
      "ossos": 20,
      "molas": [
@@ -7046,7 +7047,7 @@
     {
      "arquivo": "criaturas/caretinha/caretinha_padrao.glb",
      "variacao": "Rufo 78",
-     "kb": 218,
+     "kb": 63,
      "triangulos": 1274,
      "ossos": 17,
      "molas": [],
@@ -7070,7 +7071,7 @@
     {
      "arquivo": "criaturas/caretinha/caretinha_vina-26.glb",
      "variacao": "Vina 26",
-     "kb": 221,
+     "kb": 63,
      "triangulos": 1314,
      "ossos": 17,
      "molas": [],
@@ -7094,7 +7095,7 @@
     {
      "arquivo": "criaturas/caretinha/caretinha_teco-28.glb",
      "variacao": "Teco 28",
-     "kb": 220,
+     "kb": 63,
      "triangulos": 1304,
      "ossos": 17,
      "molas": [],
@@ -7200,7 +7201,7 @@
     {
      "arquivo": "criaturas/fuliguento/fuliguento_padrao.glb",
      "variacao": "Dudu 17",
-     "kb": 193,
+     "kb": 56,
      "triangulos": 924,
      "ossos": 17,
      "molas": [],
@@ -7224,7 +7225,7 @@
     {
      "arquivo": "criaturas/fuliguento/fuliguento_luz-12.glb",
      "variacao": "Luz 12",
-     "kb": 173,
+     "kb": 52,
      "triangulos": 660,
      "ossos": 17,
      "molas": [],
@@ -7248,7 +7249,7 @@
     {
      "arquivo": "criaturas/fuliguento/fuliguento_gaia-23.glb",
      "variacao": "Gaia 23",
-     "kb": 173,
+     "kb": 51,
      "triangulos": 660,
      "ossos": 17,
      "molas": [],
@@ -7362,7 +7363,7 @@
     {
      "arquivo": "criaturas/diabrete-sino/diabrete-sino_padrao.glb",
      "variacao": "Tula 41",
-     "kb": 246,
+     "kb": 71,
      "triangulos": 1378,
      "ossos": 20,
      "molas": [
@@ -7388,7 +7389,7 @@
     {
      "arquivo": "criaturas/diabrete-sino/diabrete-sino_tula-33.glb",
      "variacao": "Tula 33",
-     "kb": 246,
+     "kb": 71,
      "triangulos": 1368,
      "ossos": 20,
      "molas": [
@@ -7414,7 +7415,7 @@
     {
      "arquivo": "criaturas/diabrete-sino/diabrete-sino_orvo-87.glb",
      "variacao": "Orvo 87",
-     "kb": 251,
+     "kb": 72,
      "triangulos": 1446,
      "ossos": 20,
      "molas": [
@@ -7522,7 +7523,7 @@
     {
      "arquivo": "criaturas/espinho-risonho/espinho-risonho_padrao.glb",
      "variacao": "Fagu 52",
-     "kb": 221,
+     "kb": 65,
      "triangulos": 1310,
      "ossos": 17,
      "molas": [],
@@ -7546,7 +7547,7 @@
     {
      "arquivo": "criaturas/espinho-risonho/espinho-risonho_zuza-22.glb",
      "variacao": "Zuza 22",
-     "kb": 222,
+     "kb": 66,
      "triangulos": 1320,
      "ossos": 17,
      "molas": [],
@@ -7570,7 +7571,7 @@
     {
      "arquivo": "criaturas/espinho-risonho/espinho-risonho_zuza-24.glb",
      "variacao": "Zuza 24",
-     "kb": 220,
+     "kb": 65,
      "triangulos": 1296,
      "ossos": 17,
      "molas": [],
@@ -7658,7 +7659,7 @@
     {
      "arquivo": "criaturas/mastiga-lume/mastiga-lume_padrao.glb",
      "variacao": "Zuza 56",
-     "kb": 319,
+     "kb": 94,
      "triangulos": 1374,
      "ossos": 25,
      "molas": [
@@ -7685,7 +7686,7 @@
     {
      "arquivo": "criaturas/mastiga-lume/mastiga-lume_quim-49.glb",
      "variacao": "Quim 49",
-     "kb": 319,
+     "kb": 94,
      "triangulos": 1374,
      "ossos": 25,
      "molas": [
@@ -7710,9 +7711,9 @@
      }
     },
     {
-     "arquivo": "criaturas/mastiga-lume/mastiga-lume_quim-49.glb",
+     "arquivo": "criaturas/mastiga-lume/mastiga-lume_quim-49-2.glb",
      "variacao": "Quim 49",
-     "kb": 319,
+     "kb": 94,
      "triangulos": 1374,
      "ossos": 25,
      "molas": [
@@ -7855,7 +7856,7 @@
     {
      "arquivo": "criaturas/diabrete-gemeo/diabrete-gemeo_padrao.glb",
      "variacao": "Rufo 65",
-     "kb": 274,
+     "kb": 79,
      "triangulos": 1656,
      "ossos": 21,
      "molas": [
@@ -7882,7 +7883,7 @@
     {
      "arquivo": "criaturas/diabrete-gemeo/diabrete-gemeo_pim-74.glb",
      "variacao": "Pim 74",
-     "kb": 273,
+     "kb": 77,
      "triangulos": 1656,
      "ossos": 21,
      "molas": [
@@ -7909,7 +7910,7 @@
     {
      "arquivo": "criaturas/diabrete-gemeo/diabrete-gemeo_miro-57.glb",
      "variacao": "Miro 57",
-     "kb": 273,
+     "kb": 77,
      "triangulos": 1656,
      "ossos": 21,
      "molas": [
@@ -8022,7 +8023,7 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_padrao.glb",
      "variacao": "Sabi 50",
-     "kb": 339,
+     "kb": 103,
      "triangulos": 2064,
      "ossos": 21,
      "molas": [],
@@ -8048,7 +8049,7 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_lua-76.glb",
      "variacao": "Lua 76",
-     "kb": 320,
+     "kb": 98,
      "triangulos": 1808,
      "ossos": 21,
      "molas": [],
@@ -8074,7 +8075,7 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_tula-86.glb",
      "variacao": "Tula 86",
-     "kb": 317,
+     "kb": 99,
      "triangulos": 1764,
      "ossos": 21,
      "molas": [],
@@ -8182,7 +8183,7 @@
     {
      "arquivo": "criaturas/ursinho-mariposa/ursinho-mariposa_padrao.glb",
      "variacao": "Rufo 42",
-     "kb": 339,
+     "kb": 104,
      "triangulos": 1744,
      "ossos": 25,
      "molas": [
@@ -8210,7 +8211,7 @@
     {
      "arquivo": "criaturas/ursinho-mariposa/ursinho-mariposa_lua-44.glb",
      "variacao": "Lua 44",
-     "kb": 335,
+     "kb": 103,
      "triangulos": 1688,
      "ossos": 25,
      "molas": [
@@ -8238,7 +8239,7 @@
     {
      "arquivo": "criaturas/ursinho-mariposa/ursinho-mariposa_gaia-70.glb",
      "variacao": "Gaia 70",
-     "kb": 340,
+     "kb": 106,
      "triangulos": 1744,
      "ossos": 25,
      "molas": [
@@ -8261,6 +8262,1439 @@
       "cores": "lua",
       "asas": "borboleta",
       "antenas": "pluma"
+     }
+    }
+   ]
+  },
+  "lobo-falcao": {
+   "num": 27,
+   "nome": "Lobo-falcão",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 1.6,
+   "descricao": "Cabeça de lobo, asas e garras de falcão; corre e decola.",
+   "combinacoes": 72,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "pardo",
+       "nome": "Pardo"
+      },
+      {
+       "chave": "neve",
+       "nome": "Neve"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "padrao",
+     "nome": "Pelagem",
+     "opcoes": [
+      {
+       "chave": "liso",
+       "nome": "Lisa"
+      },
+      {
+       "chave": "listras",
+       "nome": "Listras"
+      },
+      {
+       "chave": "pintas",
+       "nome": "Pintas"
+      }
+     ]
+    },
+    {
+     "chave": "asas",
+     "nome": "Asas",
+     "opcoes": [
+      {
+       "chave": "ave",
+       "nome": "De falcão"
+      },
+      {
+       "chave": "morcego",
+       "nome": "De morcego"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lobo-falcao/lobo-falcao_padrao.glb",
+     "variacao": "Quim 14",
+     "kb": 131,
+     "triangulos": 2236,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.575,
+      "Correr": 4.082,
+      "Voar": 3.741
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "padrao": "liso",
+      "asas": "ave"
+     }
+    },
+    {
+     "arquivo": "criaturas/lobo-falcao/lobo-falcao_nix-21.glb",
+     "variacao": "Nix 21",
+     "kb": 127,
+     "triangulos": 2256,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.62,
+      "Correr": 4.402,
+      "Voar": 4.033
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "noite",
+      "padrao": "listras",
+      "asas": "morcego"
+     }
+    },
+    {
+     "arquivo": "criaturas/lobo-falcao/lobo-falcao_tula-90.glb",
+     "variacao": "Tula 90",
+     "kb": 132,
+     "triangulos": 2488,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.84,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.662,
+      "Correr": 4.695,
+      "Voar": 4.302
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "noite",
+      "padrao": "listras",
+      "asas": "ave"
+     }
+    }
+   ]
+  },
+  "gato-morcego": {
+   "num": 28,
+   "nome": "Gato-morcego",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 0.45,
+   "descricao": "Asas de membrana, orelhas enormes; pendura-se de cabeça para baixo.",
+   "combinacoes": 72,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "laranja",
+       "nome": "Laranja"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "orelhas",
+     "nome": "Orelhas",
+     "opcoes": [
+      {
+       "chave": "enorme",
+       "nome": "Enormes"
+      },
+      {
+       "chave": "felina",
+       "nome": "Normais"
+      }
+     ]
+    },
+    {
+     "chave": "padrao",
+     "nome": "Pelagem",
+     "opcoes": [
+      {
+       "chave": "liso",
+       "nome": "Lisa"
+      },
+      {
+       "chave": "listras",
+       "nome": "Listras"
+      },
+      {
+       "chave": "pintas",
+       "nome": "Pintas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gato-morcego/gato-morcego_padrao.glb",
+     "variacao": "Miro 66",
+     "kb": 119,
+     "triangulos": 1891,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.45,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.169,
+      "Correr": 1.197,
+      "Voar": 1.057
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "preto",
+      "orelhas": "enorme",
+      "padrao": "liso"
+     }
+    },
+    {
+     "arquivo": "criaturas/gato-morcego/gato-morcego_gaia-75.glb",
+     "variacao": "Gaia 75",
+     "kb": 124,
+     "triangulos": 2143,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.387,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.157,
+      "Correr": 1.114,
+      "Voar": 0.983
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "preto",
+      "orelhas": "felina",
+      "padrao": "listras"
+     }
+    },
+    {
+     "arquivo": "criaturas/gato-morcego/gato-morcego_miro-30.glb",
+     "variacao": "Miro 30",
+     "kb": 125,
+     "triangulos": 1891,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.387,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.145,
+      "Correr": 1.029,
+      "Voar": 0.909
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "branco",
+      "orelhas": "enorme",
+      "padrao": "liso"
+     }
+    }
+   ]
+  },
+  "javali-zumbidor": {
+   "num": 29,
+   "nome": "Javali-zumbidor",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 1.3,
+   "descricao": "Presas, asas curtas de abelhão; voo zumbido, atropela.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "pardo",
+       "nome": "Pardo"
+      },
+      {
+       "chave": "negro",
+       "nome": "Negro"
+      },
+      {
+       "chave": "ruivo",
+       "nome": "Ruivo"
+      }
+     ]
+    },
+    {
+     "chave": "presas",
+     "nome": "Presas",
+     "opcoes": [
+      {
+       "chave": "curvas",
+       "nome": "Curvas"
+      },
+      {
+       "chave": "longas",
+       "nome": "Longas"
+      },
+      {
+       "chave": "quatro",
+       "nome": "Quatro"
+      }
+     ]
+    },
+    {
+     "chave": "asas",
+     "nome": "Asas",
+     "opcoes": [
+      {
+       "chave": "abelhao",
+       "nome": "Abelhão"
+      },
+      {
+       "chave": "libelula",
+       "nome": "Libélula"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/javali-zumbidor/javali-zumbidor_padrao.glb",
+     "variacao": "Rufo 56",
+     "kb": 117,
+     "triangulos": 1670,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.543,
+      "Correr": 3.855,
+      "Voar": 4.102
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "pardo",
+      "presas": "curvas",
+      "asas": "abelhao"
+     }
+    },
+    {
+     "arquivo": "criaturas/javali-zumbidor/javali-zumbidor_quim-28.glb",
+     "variacao": "Quim 28",
+     "kb": 118,
+     "triangulos": 1710,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.118,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.448,
+      "Correr": 3.176,
+      "Voar": 3.379
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ruivo",
+      "presas": "quatro",
+      "asas": "libelula"
+     }
+    },
+    {
+     "arquivo": "criaturas/javali-zumbidor/javali-zumbidor_dudu-28.glb",
+     "variacao": "Dudu 28",
+     "kb": 117,
+     "triangulos": 1670,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.52,
+      "Correr": 3.693,
+      "Voar": 3.929
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "pardo",
+      "presas": "curvas",
+      "asas": "libelula"
+     }
+    }
+   ]
+  },
+  "lebre-cervo-alada": {
+   "num": 30,
+   "nome": "Lebre-cervo-alada",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 0.5,
+   "descricao": "Galhadas, asas de pardal; salta e plana.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "campo",
+       "nome": "Campo"
+      },
+      {
+       "chave": "neve",
+       "nome": "Neve"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      }
+     ]
+    },
+    {
+     "chave": "galhadas",
+     "nome": "Galhadas",
+     "opcoes": [
+      {
+       "chave": "pequenas",
+       "nome": "Pequenas"
+      },
+      {
+       "chave": "grandes",
+       "nome": "Grandes"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lebre-cervo-alada/lebre-cervo-alada_padrao.glb",
+     "variacao": "Vina 89",
+     "kb": 127,
+     "triangulos": 2232,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.179,
+      "Correr": 1.267,
+      "Voar": 0.886
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "campo",
+      "galhadas": "pequenas"
+     }
+    },
+    {
+     "arquivo": "criaturas/lebre-cervo-alada/lebre-cervo-alada_vina-89.glb",
+     "variacao": "Vina 89",
+     "kb": 127,
+     "triangulos": 2232,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.179,
+      "Correr": 1.267,
+      "Voar": 0.886
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "campo",
+      "galhadas": "pequenas"
+     }
+    },
+    {
+     "arquivo": "criaturas/lebre-cervo-alada/lebre-cervo-alada_vina-89-2.glb",
+     "variacao": "Vina 89",
+     "kb": 127,
+     "triangulos": 2232,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.179,
+      "Correr": 1.267,
+      "Voar": 0.886
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "campo",
+      "galhadas": "pequenas"
+     }
+    }
+   ]
+  },
+  "raposa-de-nove-penas": {
+   "num": 31,
+   "nome": "Raposa-de-nove-penas",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "Nove caudas de penas; corre com as caudas abertas em leque.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "fogo",
+       "nome": "Fogo"
+      },
+      {
+       "chave": "neve",
+       "nome": "Neve"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      },
+      {
+       "chave": "ouro",
+       "nome": "Ouro"
+      }
+     ]
+    },
+    {
+     "chave": "caudas",
+     "nome": "Caudas",
+     "opcoes": [
+      {
+       "chave": "nove",
+       "nome": "Nove"
+      },
+      {
+       "chave": "cinco",
+       "nome": "Cinco"
+      },
+      {
+       "chave": "tres",
+       "nome": "Três"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/raposa-de-nove-penas/raposa-de-nove-penas_padrao.glb",
+     "variacao": "Bela 63",
+     "kb": 110,
+     "triangulos": 2159,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.341,
+      "Correr": 2.421
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "fogo",
+      "caudas": "nove"
+     }
+    },
+    {
+     "arquivo": "criaturas/raposa-de-nove-penas/raposa-de-nove-penas_vina-37.glb",
+     "variacao": "Vina 37",
+     "kb": 104,
+     "triangulos": 1781,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.341,
+      "Correr": 2.421
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "neve",
+      "caudas": "tres"
+     }
+    },
+    {
+     "arquivo": "criaturas/raposa-de-nove-penas/raposa-de-nove-penas_miro-75.glb",
+     "variacao": "Miro 75",
+     "kb": 107,
+     "triangulos": 1907,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.392,
+      "Correr": 2.784
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "neve",
+      "caudas": "cinco"
+     }
+    }
+   ]
+  },
+  "touro-de-ventania": {
+   "num": 32,
+   "nome": "Touro-de-ventania",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 3.2,
+   "descricao": "Asas de águia gigantes, chifres em espiral; galopa e voa.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "tempestade",
+       "nome": "Tempestade"
+      },
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "espiral",
+       "nome": "Espiral"
+      },
+      {
+       "chave": "curvos",
+       "nome": "Curvos"
+      },
+      {
+       "chave": "retos",
+       "nome": "Retos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/touro-de-ventania/touro-de-ventania_padrao.glb",
+     "variacao": "Brisa 43",
+     "kb": 136,
+     "triangulos": 2340,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 3.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.748,
+      "Correr": 2.408,
+      "Voar": 8.813
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "tempestade",
+      "chifres": "espiral"
+     }
+    },
+    {
+     "arquivo": "criaturas/touro-de-ventania/touro-de-ventania_brisa-43.glb",
+     "variacao": "Brisa 43",
+     "kb": 136,
+     "triangulos": 2340,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 3.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.748,
+      "Correr": 2.408,
+      "Voar": 8.813
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "tempestade",
+      "chifres": "espiral"
+     }
+    },
+    {
+     "arquivo": "criaturas/touro-de-ventania/touro-de-ventania_miro-15.glb",
+     "variacao": "Miro 15",
+     "kb": 133,
+     "triangulos": 2196,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 3.68,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.86,
+      "Correr": 2.769,
+      "Voar": 10.134
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "tempestade",
+      "chifres": "curvos"
+     }
+    }
+   ]
+  },
+  "leao-cometa": {
+   "num": 33,
+   "nome": "Leão-cometa",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 2,
+   "descricao": "Juba de fogo, asas de chama; voo rápido.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "solar",
+       "nome": "Solar"
+      },
+      {
+       "chave": "azul",
+       "nome": "Cometa azul"
+      },
+      {
+       "chave": "rubro",
+       "nome": "Rubro"
+      }
+     ]
+    },
+    {
+     "chave": "juba",
+     "nome": "Juba",
+     "opcoes": [
+      {
+       "chave": "fogo",
+       "nome": "De fogo"
+      },
+      {
+       "chave": "pelo",
+       "nome": "De pelo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/leao-cometa/leao-cometa_padrao.glb",
+     "variacao": "Miro 72",
+     "kb": 137,
+     "triangulos": 2540,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.673,
+      "Correr": 4.779,
+      "Voar": 4.814
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "solar",
+      "juba": "fogo"
+     }
+    },
+    {
+     "arquivo": "criaturas/leao-cometa/leao-cometa_zuza-25.glb",
+     "variacao": "Zuza 25",
+     "kb": 138,
+     "triangulos": 2650,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.72,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.579,
+      "Correr": 4.11,
+      "Voar": 4.14
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "rubro",
+      "juba": "pelo"
+     }
+    },
+    {
+     "arquivo": "criaturas/leao-cometa/leao-cometa_luz-79.glb",
+     "variacao": "Luz 79",
+     "kb": 136,
+     "triangulos": 2540,
+     "ossos": 24,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.72,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.579,
+      "Correr": 4.11,
+      "Voar": 4.14
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "rubro",
+      "juba": "fogo"
+     }
+    }
+   ]
+  },
+  "tartaruga-de-vento": {
+   "num": 34,
+   "nome": "Tartaruga-de-vento",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 1.1,
+   "descricao": "Casco com 4 nadadeiras que batem como asas; \"nada\" no ar.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "ceu",
+       "nome": "Céu"
+      }
+     ]
+    },
+    {
+     "chave": "casco",
+     "nome": "Casco",
+     "opcoes": [
+      {
+       "chave": "placas",
+       "nome": "Placas"
+      },
+      {
+       "chave": "espinhos",
+       "nome": "Espinhos"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/tartaruga-de-vento/tartaruga-de-vento_padrao.glb",
+     "variacao": "Teco 36",
+     "kb": 103,
+     "triangulos": 1798,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.46,
+      "Correr": 3.268,
+      "Voar": 3.618
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "mar",
+      "casco": "placas"
+     }
+    },
+    {
+     "arquivo": "criaturas/tartaruga-de-vento/tartaruga-de-vento_orvo-50.glb",
+     "variacao": "Orvo 50",
+     "kb": 105,
+     "triangulos": 1903,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.46,
+      "Correr": 3.268,
+      "Voar": 3.618
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "casco": "espinhos"
+     }
+    },
+    {
+     "arquivo": "criaturas/tartaruga-de-vento/tartaruga-de-vento_luz-81.glb",
+     "variacao": "Luz 81",
+     "kb": 104,
+     "triangulos": 1798,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.46,
+      "Correr": 3.268,
+      "Voar": 3.618
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ceu",
+      "casco": "placas"
+     }
+    }
+   ]
+  },
+  "cao-libelula": {
+   "num": 35,
+   "nome": "Cão-libélula",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 0.7,
+   "descricao": "4 asas de libélula, olhos compostos; paira como helicóptero.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "caramelo",
+       "nome": "Caramelo"
+      },
+      {
+       "chave": "malhado",
+       "nome": "Malhado"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      }
+     ]
+    },
+    {
+     "chave": "orelhas",
+     "nome": "Orelhas",
+     "opcoes": [
+      {
+       "chave": "caida",
+       "nome": "Caídas"
+      },
+      {
+       "chave": "pontuda",
+       "nome": "Pontudas"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "compostos",
+       "nome": "Compostos"
+      },
+      {
+       "chave": "normais",
+       "nome": "Normais"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cao-libelula/cao-libelula_padrao.glb",
+     "variacao": "Gaia 71",
+     "kb": 116,
+     "triangulos": 1694,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.7,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.295,
+      "Correr": 2.095,
+      "Voar": 1.864
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "caramelo",
+      "orelhas": "caida",
+      "olhos": "compostos"
+     }
+    },
+    {
+     "arquivo": "criaturas/cao-libelula/cao-libelula_nix-78.glb",
+     "variacao": "Nix 78",
+     "kb": 120,
+     "triangulos": 1846,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.7,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.282,
+      "Correr": 2.001,
+      "Voar": 1.781
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "malhado",
+      "orelhas": "pontuda",
+      "olhos": "normais"
+     }
+    },
+    {
+     "arquivo": "criaturas/cao-libelula/cao-libelula_fagu-78.glb",
+     "variacao": "Fagu 78",
+     "kb": 121,
+     "triangulos": 1894,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 0.602,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.254,
+      "Correr": 1.802,
+      "Voar": 1.603
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "malhado",
+      "orelhas": "caida",
+      "olhos": "compostos"
      }
     }
    ]
@@ -8330,7 +9764,7 @@
     {
      "arquivo": "criaturas/coruja-urso-polar/coruja-urso-polar_padrao.glb",
      "variacao": "Pim 85",
-     "kb": 309,
+     "kb": 100,
      "triangulos": 1948,
      "ossos": 21,
      "molas": [],
@@ -8355,7 +9789,7 @@
     {
      "arquivo": "criaturas/coruja-urso-polar/coruja-urso-polar_pim-62.glb",
      "variacao": "Pim 62",
-     "kb": 308,
+     "kb": 99,
      "triangulos": 1924,
      "ossos": 21,
      "molas": [],
@@ -8380,7 +9814,7 @@
     {
      "arquivo": "criaturas/coruja-urso-polar/coruja-urso-polar_gaia-47.glb",
      "variacao": "Gaia 47",
-     "kb": 309,
+     "kb": 100,
      "triangulos": 1948,
      "ossos": 21,
      "molas": [],
@@ -8400,6 +9834,2054 @@
       "tamanho": "p",
       "cores": "neve",
       "tufos": "sim"
+     }
+    }
+   ]
+  },
+  "cabra-abutre": {
+   "num": 38,
+   "nome": "Cabra-abutre",
+   "grupo": "Híbridos alados",
+   "familia": "C",
+   "voa": true,
+   "tamanho_m": 1.2,
+   "descricao": "Cabeça de cabra, asas de abutre; escala paredões e plana.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "neve",
+       "nome": "Neve"
+      },
+      {
+       "chave": "negra",
+       "nome": "Negra"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "curvos",
+       "nome": "Curvos"
+      },
+      {
+       "chave": "espiral",
+       "nome": "Espiral"
+      },
+      {
+       "chave": "retos",
+       "nome": "Retos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cabra-abutre/cabra-abutre_padrao.glb",
+     "variacao": "Rufo 24",
+     "kb": 127,
+     "triangulos": 2273,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.44,
+      "Correr": 3.121,
+      "Voar": 2.524
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rocha",
+      "chifres": "curvos"
+     }
+    },
+    {
+     "arquivo": "criaturas/cabra-abutre/cabra-abutre_rufo-60.glb",
+     "variacao": "Rufo 60",
+     "kb": 132,
+     "triangulos": 2417,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.032,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.384,
+      "Correr": 2.723,
+      "Voar": 2.202
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "neve",
+      "chifres": "espiral"
+     }
+    },
+    {
+     "arquivo": "criaturas/cabra-abutre/cabra-abutre_bela-83.glb",
+     "variacao": "Bela 83",
+     "kb": 130,
+     "triangulos": 2417,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.446,
+      "Correr": 3.167,
+      "Voar": 2.56
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rocha",
+      "chifres": "espiral"
+     }
+    }
+   ]
+  },
+  "musgoforte": {
+   "num": 39,
+   "nome": "Musgoforte",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 3.5,
+   "descricao": "Costas cobertas de floresta, patas de elefante; passo lento.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "pedra",
+       "nome": "Pedra"
+      },
+      {
+       "chave": "terra",
+       "nome": "Terra"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza-azul"
+      }
+     ]
+    },
+    {
+     "chave": "costas",
+     "nome": "Costas",
+     "opcoes": [
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "flores",
+       "nome": "Flores"
+      },
+      {
+       "chave": "cogumelos",
+       "nome": "Cogumelos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/musgoforte/musgoforte_padrao.glb",
+     "variacao": "Zuza 15",
+     "kb": 120,
+     "triangulos": 2232,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 3.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.896,
+      "Correr": 2.885
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "pedra",
+      "costas": "floresta"
+     }
+    },
+    {
+     "arquivo": "criaturas/musgoforte/musgoforte_pipo-75.glb",
+     "variacao": "Pipo 75",
+     "kb": 123,
+     "triangulos": 2344,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 4.025,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 1.152,
+      "Correr": 3.711
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "pedra",
+      "costas": "cogumelos"
+     }
+    },
+    {
+     "arquivo": "criaturas/musgoforte/musgoforte_dudu-87.glb",
+     "variacao": "Dudu 87",
+     "kb": 123,
+     "triangulos": 2344,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 3.01,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.862,
+      "Correr": 2.775
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "cinza",
+      "costas": "cogumelos"
+     }
+    }
+   ]
+  },
+  "cavalo-de-nevoa": {
+   "num": 41,
+   "nome": "Cavalo-de-névoa",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 1.8,
+   "descricao": "Cascos que viram fumaça; galope silencioso.",
+   "combinacoes": 24,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      },
+      {
+       "chave": "aurora",
+       "nome": "Aurora"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      }
+     ]
+    },
+    {
+     "chave": "crina",
+     "nome": "Crina",
+     "opcoes": [
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cavalo-de-nevoa/cavalo-de-nevoa_padrao.glb",
+     "variacao": "Sabi 95",
+     "kb": 110,
+     "triangulos": 1672,
+     "ossos": 22,
+     "molas": [
+      "cauda",
+      "crina"
+     ],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.637,
+      "Correr": 4.518
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "prata",
+      "crina": "longa"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavalo-de-nevoa/cavalo-de-nevoa_brisa-10.glb",
+     "variacao": "Brisa 10",
+     "kb": 108,
+     "triangulos": 1624,
+     "ossos": 22,
+     "molas": [
+      "cauda",
+      "crina"
+     ],
+     "altura_m": 2.07,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.732,
+      "Correr": 5.196
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "prata",
+      "crina": "curta"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavalo-de-nevoa/cavalo-de-nevoa_teco-54.glb",
+     "variacao": "Teco 54",
+     "kb": 108,
+     "triangulos": 1624,
+     "ossos": 22,
+     "molas": [
+      "cauda",
+      "crina"
+     ],
+     "altura_m": 1.548,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.548,
+      "Correr": 3.886
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "prata",
+      "crina": "curta"
+     }
+    }
+   ]
+  },
+  "pangolim-blindado": {
+   "num": 42,
+   "nome": "Pangolim-blindado",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.7,
+   "descricao": "Escamas em placas; anda e rola em bola.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "bronze",
+       "nome": "Bronze"
+      },
+      {
+       "chave": "oliva",
+       "nome": "Oliva"
+      },
+      {
+       "chave": "ferro",
+       "nome": "Ferro"
+      }
+     ]
+    },
+    {
+     "chave": "escamas",
+     "nome": "Escamas",
+     "opcoes": [
+      {
+       "chave": "lisas",
+       "nome": "Lisas"
+      },
+      {
+       "chave": "pontudas",
+       "nome": "Pontudas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/pangolim-blindado/pangolim-blindado_padrao.glb",
+     "variacao": "Dudu 52",
+     "kb": 125,
+     "triangulos": 2896,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.7,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.336,
+      "Correr": 2.385
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "bronze",
+      "escamas": "lisas"
+     }
+    },
+    {
+     "arquivo": "criaturas/pangolim-blindado/pangolim-blindado_dudu-52.glb",
+     "variacao": "Dudu 52",
+     "kb": 125,
+     "triangulos": 2896,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.7,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.336,
+      "Correr": 2.385
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "bronze",
+      "escamas": "lisas"
+     }
+    },
+    {
+     "arquivo": "criaturas/pangolim-blindado/pangolim-blindado_nix-84.glb",
+     "variacao": "Nix 84",
+     "kb": 115,
+     "triangulos": 2448,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.805,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.386,
+      "Correr": 2.742
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "oliva",
+      "escamas": "pontudas"
+     }
+    }
+   ]
+  },
+  "texugo-trovao": {
+   "num": 43,
+   "nome": "Texugo-trovão",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.6,
+   "descricao": "Listra que solta faíscas, garras de cavar; cava túneis.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "classico",
+       "nome": "Clássico"
+      },
+      {
+       "chave": "ocre",
+       "nome": "Ocre"
+      },
+      {
+       "chave": "ardosia",
+       "nome": "Ardósia"
+      }
+     ]
+    },
+    {
+     "chave": "faiscas",
+     "nome": "Faíscas",
+     "opcoes": [
+      {
+       "chave": "listra",
+       "nome": "Listra"
+      },
+      {
+       "chave": "pontas",
+       "nome": "Pontas no pelo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/texugo-trovao/texugo-trovao_padrao.glb",
+     "variacao": "Pim 89",
+     "kb": 99,
+     "triangulos": 1866,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.277,
+      "Correr": 1.964
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "classico",
+      "faiscas": "listra"
+     }
+    },
+    {
+     "arquivo": "criaturas/texugo-trovao/texugo-trovao_quim-80.glb",
+     "variacao": "Quim 80",
+     "kb": 98,
+     "triangulos": 1866,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.69,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.318,
+      "Correr": 2.258
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "classico",
+      "faiscas": "pontas"
+     }
+    },
+    {
+     "arquivo": "criaturas/texugo-trovao/texugo-trovao_tico-64.glb",
+     "variacao": "Tico 64",
+     "kb": 98,
+     "triangulos": 1866,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.277,
+      "Correr": 1.964
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ardosia",
+      "faiscas": "pontas"
+     }
+    }
+   ]
+  },
+  "alce-lanterna": {
+   "num": 44,
+   "nome": "Alce-lanterna",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 2.4,
+   "descricao": "Galhadas com lanternas penduradas; passo solene.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      }
+     ]
+    },
+    {
+     "chave": "galhadas",
+     "nome": "Galhadas",
+     "opcoes": [
+      {
+       "chave": "palmadas",
+       "nome": "Palmadas"
+      },
+      {
+       "chave": "ramos",
+       "nome": "Ramificadas"
+      }
+     ]
+    },
+    {
+     "chave": "lanternas",
+     "nome": "Lanternas",
+     "opcoes": [
+      {
+       "chave": "quatro",
+       "nome": "Quatro"
+      },
+      {
+       "chave": "duas",
+       "nome": "Duas"
+      },
+      {
+       "chave": "seis",
+       "nome": "Seis"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/alce-lanterna/alce-lanterna_padrao.glb",
+     "variacao": "Bela 97",
+     "kb": 103,
+     "triangulos": 1842,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.624,
+      "Correr": 4.43
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "castanho",
+      "galhadas": "palmadas",
+      "lanternas": "quatro"
+     }
+    },
+    {
+     "arquivo": "criaturas/alce-lanterna/alce-lanterna_orvo-83.glb",
+     "variacao": "Orvo 83",
+     "kb": 102,
+     "triangulos": 1770,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.76,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.718,
+      "Correr": 5.095
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "castanho",
+      "galhadas": "palmadas",
+      "lanternas": "duas"
+     }
+    },
+    {
+     "arquivo": "criaturas/alce-lanterna/alce-lanterna_orvo-83-2.glb",
+     "variacao": "Orvo 83",
+     "kb": 106,
+     "triangulos": 1930,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.675,
+      "Correr": 4.788
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "galhadas": "ramos",
+      "lanternas": "seis"
+     }
+    }
+   ]
+  },
+  "rinoceronte-cristal": {
+   "num": 45,
+   "nome": "Rinoceronte-cristal",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 2,
+   "descricao": "Chifre de cristal, pele de gema; investida.",
+   "combinacoes": 24,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ametista",
+       "nome": "Ametista"
+      },
+      {
+       "chave": "esmeralda",
+       "nome": "Esmeralda"
+      },
+      {
+       "chave": "safira",
+       "nome": "Safira"
+      },
+      {
+       "chave": "rubi",
+       "nome": "Rubi"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "um",
+       "nome": "Um"
+      },
+      {
+       "chave": "dois",
+       "nome": "Dois"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/rinoceronte-cristal/rinoceronte-cristal_padrao.glb",
+     "variacao": "Gaia 95",
+     "kb": 114,
+     "triangulos": 1864,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.538,
+      "Correr": 1.732
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ametista",
+      "chifres": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/rinoceronte-cristal/rinoceronte-cristal_rufo-24.glb",
+     "variacao": "Rufo 24",
+     "kb": 114,
+     "triangulos": 1864,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.618,
+      "Correr": 1.992
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "esmeralda",
+      "chifres": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/rinoceronte-cristal/rinoceronte-cristal_miro-44.glb",
+     "variacao": "Miro 44",
+     "kb": 114,
+     "triangulos": 1864,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.618,
+      "Correr": 1.992
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "safira",
+      "chifres": "dois"
+     }
+    }
+   ]
+  },
+  "camelo-de-tres-corcovas": {
+   "num": 46,
+   "nome": "Camelo-de-três-corcovas",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 2.4,
+   "descricao": "Corcovas com água luminosa; passo ondulante.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "ferrugem",
+       "nome": "Ferrugem"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "corcovas",
+     "nome": "Corcovas",
+     "opcoes": [
+      {
+       "chave": "tres",
+       "nome": "Três"
+      },
+      {
+       "chave": "duas",
+       "nome": "Duas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/camelo-de-tres-corcovas/camelo-de-tres-corcovas_padrao.glb",
+     "variacao": "Pipo 56",
+     "kb": 125,
+     "triangulos": 2365,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.827,
+      "Correr": 5.867
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "corcovas": "tres"
+     }
+    },
+    {
+     "arquivo": "criaturas/camelo-de-tres-corcovas/camelo-de-tres-corcovas_pim-64.glb",
+     "variacao": "Pim 64",
+     "kb": 126,
+     "triangulos": 2365,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.827,
+      "Correr": 5.867
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branco",
+      "corcovas": "tres"
+     }
+    },
+    {
+     "arquivo": "criaturas/camelo-de-tres-corcovas/camelo-de-tres-corcovas_tula-60.glb",
+     "variacao": "Tula 60",
+     "kb": 118,
+     "triangulos": 2106,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.827,
+      "Correr": 5.867
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "corcovas": "duas"
+     }
+    }
+   ]
+  },
+  "hiena-de-ossos": {
+   "num": 47,
+   "nome": "Hiena-de-ossos",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "Costelas por fora; ri enquanto trota.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "savana",
+       "nome": "Savana"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "fuligem",
+       "nome": "Fuligem"
+      }
+     ]
+    },
+    {
+     "chave": "ossos",
+     "nome": "Ossos",
+     "opcoes": [
+      {
+       "chave": "costelas",
+       "nome": "Costelas"
+      },
+      {
+       "chave": "espinha",
+       "nome": "Espinha e costelas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/hiena-de-ossos/hiena-de-ossos_padrao.glb",
+     "variacao": "Pim 48",
+     "kb": 125,
+     "triangulos": 2742,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.346,
+      "Correr": 2.458
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "savana",
+      "ossos": "costelas"
+     }
+    },
+    {
+     "arquivo": "criaturas/hiena-de-ossos/hiena-de-ossos_orvo-72.glb",
+     "variacao": "Orvo 72",
+     "kb": 127,
+     "triangulos": 2838,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.774,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.298,
+      "Correr": 2.114
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "cinza",
+      "ossos": "espinha"
+     }
+    },
+    {
+     "arquivo": "criaturas/hiena-de-ossos/hiena-de-ossos_pipo-59.glb",
+     "variacao": "Pipo 59",
+     "kb": 125,
+     "triangulos": 2742,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.774,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.298,
+      "Correr": 2.114
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "savana",
+      "ossos": "costelas"
+     }
+    }
+   ]
+  },
+  "capivara-ancia": {
+   "num": 48,
+   "nome": "Capivara-anciã",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.75,
+   "descricao": "Pássaros e sapos morando nas costas.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "terra",
+       "nome": "Terra"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "dourada",
+       "nome": "Dourada"
+      }
+     ]
+    },
+    {
+     "chave": "passageiros",
+     "nome": "Nas costas",
+     "opcoes": [
+      {
+       "chave": "passaros",
+       "nome": "Pássaros"
+      },
+      {
+       "chave": "sapos",
+       "nome": "Sapos"
+      },
+      {
+       "chave": "ambos",
+       "nome": "Os dois"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/capivara-ancia/capivara-ancia_padrao.glb",
+     "variacao": "Pipo 14",
+     "kb": 98,
+     "triangulos": 1854,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.75,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.317,
+      "Correr": 2.251
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "terra",
+      "passageiros": "ambos"
+     }
+    },
+    {
+     "arquivo": "criaturas/capivara-ancia/capivara-ancia_orvo-86.glb",
+     "variacao": "Orvo 86",
+     "kb": 99,
+     "triangulos": 1854,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.862,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.365,
+      "Correr": 2.589
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "cinza",
+      "passageiros": "ambos"
+     }
+    },
+    {
+     "arquivo": "criaturas/capivara-ancia/capivara-ancia_nix-60.glb",
+     "variacao": "Nix 60",
+     "kb": 96,
+     "triangulos": 1724,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.862,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.368,
+      "Correr": 2.615
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "terra",
+      "passageiros": "sapos"
+     }
+    }
+   ]
+  },
+  "tigre-de-papel": {
+   "num": 49,
+   "nome": "Tigre-de-papel",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 1.4,
+   "descricao": "Corpo de origami; movimento em dobras.",
+   "combinacoes": 24,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "branco",
+       "nome": "Papel branco"
+      },
+      {
+       "chave": "vermelho",
+       "nome": "Papel vermelho"
+      },
+      {
+       "chave": "dourado",
+       "nome": "Papel dourado"
+      },
+      {
+       "chave": "azul",
+       "nome": "Papel azul"
+      }
+     ]
+    },
+    {
+     "chave": "listras",
+     "nome": "Tinta",
+     "opcoes": [
+      {
+       "chave": "listras",
+       "nome": "Listras"
+      },
+      {
+       "chave": "liso",
+       "nome": "Sem tinta"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/tigre-de-papel/tigre-de-papel_padrao.glb",
+     "variacao": "Nix 38",
+     "kb": 109,
+     "triangulos": 1995,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.576,
+      "Correr": 4.086
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branco",
+      "listras": "listras"
+     }
+    },
+    {
+     "arquivo": "criaturas/tigre-de-papel/tigre-de-papel_tico-61.glb",
+     "variacao": "Tico 61",
+     "kb": 104,
+     "triangulos": 1743,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.204,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.495,
+      "Correr": 3.514
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "dourado",
+      "listras": "liso"
+     }
+    },
+    {
+     "arquivo": "criaturas/tigre-de-papel/tigre-de-papel_bela-40.glb",
+     "variacao": "Bela 40",
+     "kb": 109,
+     "triangulos": 1995,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.61,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.662,
+      "Correr": 4.699
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "dourado",
+      "listras": "listras"
+     }
+    }
+   ]
+  },
+  "bisonte-de-pedra": {
+   "num": 50,
+   "nome": "Bisonte-de-pedra",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 2.4,
+   "descricao": "Corcova de rocha, barba de líquen; anda em manada.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "basalto",
+       "nome": "Basalto"
+      },
+      {
+       "chave": "arenito",
+       "nome": "Arenito"
+      },
+      {
+       "chave": "granito",
+       "nome": "Granito"
+      }
+     ]
+    },
+    {
+     "chave": "liquen",
+     "nome": "Líquen",
+     "opcoes": [
+      {
+       "chave": "barba",
+       "nome": "Barba de líquen"
+      },
+      {
+       "chave": "pouco",
+       "nome": "Pouco"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/bisonte-de-pedra/bisonte-de-pedra_padrao.glb",
+     "variacao": "Sabi 90",
+     "kb": 110,
+     "triangulos": 1960,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.616,
+      "Correr": 1.984
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "basalto",
+      "liquen": "barba"
+     }
+    },
+    {
+     "arquivo": "criaturas/bisonte-de-pedra/bisonte-de-pedra_miro-13.glb",
+     "variacao": "Miro 13",
+     "kb": 112,
+     "triangulos": 1960,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.76,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.708,
+      "Correr": 2.282
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "granito",
+      "liquen": "barba"
+     }
+    },
+    {
+     "arquivo": "criaturas/bisonte-de-pedra/bisonte-de-pedra_sabi-90.glb",
+     "variacao": "Sabi 90",
+     "kb": 110,
+     "triangulos": 1960,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.616,
+      "Correr": 1.984
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "basalto",
+      "liquen": "barba"
+     }
+    }
+   ]
+  },
+  "furao-de-fogo": {
+   "num": 51,
+   "nome": "Furão-de-fogo",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.3,
+   "descricao": "Corpo comprido, cauda em brasa; corre ondulando.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "azul",
+       "nome": "Fogo-azul"
+      }
+     ]
+    },
+    {
+     "chave": "mascara",
+     "nome": "Rosto",
+     "opcoes": [
+      {
+       "chave": "mascara",
+       "nome": "Máscara"
+      },
+      {
+       "chave": "liso",
+       "nome": "Liso"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/furao-de-fogo/furao-de-fogo_padrao.glb",
+     "variacao": "Quim 57",
+     "kb": 94,
+     "triangulos": 1733,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.124,
+      "Correr": 0.88
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "brasa",
+      "mascara": "mascara"
+     }
+    },
+    {
+     "arquivo": "criaturas/furao-de-fogo/furao-de-fogo_quim-57.glb",
+     "variacao": "Quim 57",
+     "kb": 94,
+     "triangulos": 1733,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.124,
+      "Correr": 0.88
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "brasa",
+      "mascara": "mascara"
+     }
+    },
+    {
+     "arquivo": "criaturas/furao-de-fogo/furao-de-fogo_dudu-93.glb",
+     "variacao": "Dudu 93",
+     "kb": 94,
+     "triangulos": 1733,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.345,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.143,
+      "Correr": 1.012
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "brasa",
+      "mascara": "mascara"
+     }
+    }
+   ]
+  },
+  "ovelha-nuvem": {
+   "num": 52,
+   "nome": "Ovelha-nuvem",
+   "grupo": "Quadrúpedes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "Lã de nuvem; flutua um palmo acima do chão.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "branca",
+       "nome": "Branca"
+      },
+      {
+       "chave": "rosa",
+       "nome": "Pôr do sol"
+      },
+      {
+       "chave": "tempestade",
+       "nome": "Tempestade"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "nenhum",
+       "nome": "Nenhum"
+      },
+      {
+       "chave": "enrolados",
+       "nome": "Enrolados"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/ovelha-nuvem/ovelha-nuvem_padrao.glb",
+     "variacao": "Teco 73",
+     "kb": 118,
+     "triangulos": 2716,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.382,
+      "Correr": 2.714
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branca",
+      "chifres": "nenhum"
+     }
+    },
+    {
+     "arquivo": "criaturas/ovelha-nuvem/ovelha-nuvem_bela-34.glb",
+     "variacao": "Bela 34",
+     "kb": 118,
+     "triangulos": 2716,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.44,
+      "Correr": 3.121
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "rosa",
+      "chifres": "nenhum"
+     }
+    },
+    {
+     "arquivo": "criaturas/ovelha-nuvem/ovelha-nuvem_miro-20.glb",
+     "variacao": "Miro 20",
+     "kb": 122,
+     "triangulos": 2908,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.035,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.44,
+      "Correr": 3.121
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "rosa",
+      "chifres": "enrolados"
      }
     }
    ]
@@ -8491,7 +11973,7 @@
     {
      "arquivo": "criaturas/fogo-fatuo/fogo-fatuo_padrao.glb",
      "variacao": "Orvo 35",
-     "kb": 64,
+     "kb": 29,
      "triangulos": 308,
      "ossos": 5,
      "molas": [
@@ -8517,7 +11999,7 @@
     {
      "arquivo": "criaturas/fogo-fatuo/fogo-fatuo_sabi-82.glb",
      "variacao": "Sabi 82",
-     "kb": 64,
+     "kb": 29,
      "triangulos": 308,
      "ossos": 5,
      "molas": [
@@ -8543,7 +12025,7 @@
     {
      "arquivo": "criaturas/fogo-fatuo/fogo-fatuo_orvo-35.glb",
      "variacao": "Orvo 35",
-     "kb": 64,
+     "kb": 29,
      "triangulos": 308,
      "ossos": 5,
      "molas": [
@@ -8637,7 +12119,7 @@
     {
      "arquivo": "criaturas/espirito-de-vapor/espirito-de-vapor_padrao.glb",
      "variacao": "Gaia 87",
-     "kb": 124,
+     "kb": 43,
      "triangulos": 772,
      "ossos": 9,
      "molas": [
@@ -8663,7 +12145,7 @@
     {
      "arquivo": "criaturas/espirito-de-vapor/espirito-de-vapor_brisa-90.glb",
      "variacao": "Brisa 90",
-     "kb": 124,
+     "kb": 43,
      "triangulos": 772,
      "ossos": 9,
      "molas": [
@@ -8689,7 +12171,7 @@
     {
      "arquivo": "criaturas/espirito-de-vapor/espirito-de-vapor_orvo-26.glb",
      "variacao": "Orvo 26",
-     "kb": 124,
+     "kb": 43,
      "triangulos": 772,
      "ossos": 9,
      "molas": [
@@ -8710,6 +12192,155 @@
       "tamanho": "p",
       "cores": "ferro",
       "cabeca": "bule"
+     }
+    }
+   ]
+  },
+  "cristalino": {
+   "num": 106,
+   "nome": "Cristalino",
+   "grupo": "Elementais",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.9,
+   "descricao": "Quadrúpede de cristal facetado; passo tilintante.",
+   "combinacoes": 24,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "quartzo",
+       "nome": "Quartzo"
+      },
+      {
+       "chave": "ametista",
+       "nome": "Ametista"
+      },
+      {
+       "chave": "citrino",
+       "nome": "Citrino"
+      },
+      {
+       "chave": "jade",
+       "nome": "Jade"
+      }
+     ]
+    },
+    {
+     "chave": "pontas",
+     "nome": "Pontas",
+     "opcoes": [
+      {
+       "chave": "muitas",
+       "nome": "Muitas"
+      },
+      {
+       "chave": "poucas",
+       "nome": "Poucas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cristalino/cristalino_padrao.glb",
+     "variacao": "Rufo 10",
+     "kb": 97,
+     "triangulos": 1216,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.365,
+      "Correr": 2.587
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "quartzo",
+      "pontas": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/cristalino/cristalino_bela-42.glb",
+     "variacao": "Bela 42",
+     "kb": 97,
+     "triangulos": 1216,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.9,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.365,
+      "Correr": 2.587
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ametista",
+      "pontas": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/cristalino/cristalino_sabi-64.glb",
+     "variacao": "Sabi 64",
+     "kb": 96,
+     "triangulos": 1176,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.774,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.314,
+      "Correr": 2.225
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ametista",
+      "pontas": "poucas"
      }
     }
    ]
@@ -8801,7 +12432,7 @@
     {
      "arquivo": "criaturas/nuvenzinha-chuvosa/nuvenzinha-chuvosa_padrao.glb",
      "variacao": "Orvo 28",
-     "kb": 95,
+     "kb": 37,
      "triangulos": 728,
      "ossos": 5,
      "molas": [
@@ -8827,7 +12458,7 @@
     {
      "arquivo": "criaturas/nuvenzinha-chuvosa/nuvenzinha-chuvosa_fagu-91.glb",
      "variacao": "Fagu 91",
-     "kb": 95,
+     "kb": 37,
      "triangulos": 728,
      "ossos": 5,
      "molas": [
@@ -8853,7 +12484,7 @@
     {
      "arquivo": "criaturas/nuvenzinha-chuvosa/nuvenzinha-chuvosa_luz-76.glb",
      "variacao": "Luz 76",
-     "kb": 92,
+     "kb": 35,
      "triangulos": 692,
      "ossos": 5,
      "molas": [
@@ -8969,7 +12600,7 @@
     {
      "arquivo": "criaturas/fantasminha-lencol/fantasminha-lencol_padrao.glb",
      "variacao": "Pim 90",
-     "kb": 68,
+     "kb": 27,
      "triangulos": 374,
      "ossos": 5,
      "molas": [
@@ -8995,7 +12626,7 @@
     {
      "arquivo": "criaturas/fantasminha-lencol/fantasminha-lencol_bela-88.glb",
      "variacao": "Bela 88",
-     "kb": 69,
+     "kb": 29,
      "triangulos": 374,
      "ossos": 5,
      "molas": [
@@ -9019,9 +12650,9 @@
      }
     },
     {
-     "arquivo": "criaturas/fantasminha-lencol/fantasminha-lencol_bela-88.glb",
+     "arquivo": "criaturas/fantasminha-lencol/fantasminha-lencol_bela-88-2.glb",
      "variacao": "Bela 88",
-     "kb": 69,
+     "kb": 29,
      "triangulos": 374,
      "ossos": 5,
      "molas": [
@@ -9111,7 +12742,7 @@
     {
      "arquivo": "criaturas/lanterna-assombrada/lanterna-assombrada_padrao.glb",
      "variacao": "Zuza 44",
-     "kb": 65,
+     "kb": 31,
      "triangulos": 316,
      "ossos": 5,
      "molas": [
@@ -9136,7 +12767,7 @@
     {
      "arquivo": "criaturas/lanterna-assombrada/lanterna-assombrada_tico-12.glb",
      "variacao": "Tico 12",
-     "kb": 74,
+     "kb": 34,
      "triangulos": 430,
      "ossos": 5,
      "molas": [
@@ -9161,7 +12792,7 @@
     {
      "arquivo": "criaturas/lanterna-assombrada/lanterna-assombrada_gaia-58.glb",
      "variacao": "Gaia 58",
-     "kb": 74,
+     "kb": 34,
      "triangulos": 430,
      "ossos": 5,
      "molas": [
@@ -9250,7 +12881,7 @@
     {
      "arquivo": "criaturas/carpideira-veu/carpideira-veu_padrao.glb",
      "variacao": "Tico 61",
-     "kb": 104,
+     "kb": 36,
      "triangulos": 491,
      "ossos": 9,
      "molas": [
@@ -9276,7 +12907,7 @@
     {
      "arquivo": "criaturas/carpideira-veu/carpideira-veu_gaia-44.glb",
      "variacao": "Gaia 44",
-     "kb": 104,
+     "kb": 36,
      "triangulos": 491,
      "ossos": 9,
      "molas": [
@@ -9302,7 +12933,7 @@
     {
      "arquivo": "criaturas/carpideira-veu/carpideira-veu_rufo-74.glb",
      "variacao": "Rufo 74",
-     "kb": 104,
+     "kb": 36,
      "triangulos": 491,
      "ossos": 9,
      "molas": [
@@ -9400,7 +13031,7 @@
     {
      "arquivo": "criaturas/olho-flutuante/olho-flutuante_padrao.glb",
      "variacao": "Rufo 75",
-     "kb": 168,
+     "kb": 45,
      "triangulos": 846,
      "ossos": 15,
      "molas": [
@@ -9425,7 +13056,7 @@
     {
      "arquivo": "criaturas/olho-flutuante/olho-flutuante_rufo-75.glb",
      "variacao": "Rufo 75",
-     "kb": 168,
+     "kb": 45,
      "triangulos": 846,
      "ossos": 15,
      "molas": [
@@ -9450,7 +13081,7 @@
     {
      "arquivo": "criaturas/olho-flutuante/olho-flutuante_sabi-32.glb",
      "variacao": "Sabi 32",
-     "kb": 218,
+     "kb": 52,
      "triangulos": 990,
      "ossos": 21,
      "molas": [
@@ -9470,6 +13101,151 @@
       "tamanho": "m",
       "cores": "roxo",
       "tentaculos": "seis"
+     }
+    }
+   ]
+  },
+  "gato-enfaixado": {
+   "num": 121,
+   "nome": "Gato-enfaixado",
+   "grupo": "Espectrais",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.4,
+   "descricao": "Faixas de múmia, olhos verdes; furtivo.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "ouro",
+       "nome": "Real"
+      }
+     ]
+    },
+    {
+     "chave": "faixas",
+     "nome": "Faixas",
+     "opcoes": [
+      {
+       "chave": "muitas",
+       "nome": "Muitas"
+      },
+      {
+       "chave": "soltas",
+       "nome": "Soltas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gato-enfaixado/gato-enfaixado_padrao.glb",
+     "variacao": "Tico 62",
+     "kb": 106,
+     "triangulos": 1931,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.168,
+      "Correr": 1.194
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "faixas": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/gato-enfaixado/gato-enfaixado_dudu-46.glb",
+     "variacao": "Dudu 46",
+     "kb": 106,
+     "triangulos": 1931,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.344,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.145,
+      "Correr": 1.027
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "areia",
+      "faixas": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/gato-enfaixado/gato-enfaixado_lua-80.glb",
+     "variacao": "Lua 80",
+     "kb": 102,
+     "triangulos": 1859,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.46,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.193,
+      "Correr": 1.373
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ouro",
+      "faixas": "soltas"
      }
     }
    ]
@@ -9539,7 +13315,7 @@
     {
      "arquivo": "criaturas/relogio-fantasma/relogio-fantasma_padrao.glb",
      "variacao": "Gaia 64",
-     "kb": 73,
+     "kb": 33,
      "triangulos": 416,
      "ossos": 5,
      "molas": [
@@ -9564,7 +13340,7 @@
     {
      "arquivo": "criaturas/relogio-fantasma/relogio-fantasma_orvo-69.glb",
      "variacao": "Orvo 69",
-     "kb": 72,
+     "kb": 33,
      "triangulos": 412,
      "ossos": 5,
      "molas": [
@@ -9589,7 +13365,7 @@
     {
      "arquivo": "criaturas/relogio-fantasma/relogio-fantasma_teco-80.glb",
      "variacao": "Teco 80",
-     "kb": 72,
+     "kb": 33,
      "triangulos": 412,
      "ossos": 5,
      "molas": [
@@ -9682,7 +13458,7 @@
     {
      "arquivo": "criaturas/mascara-errante/mascara-errante_padrao.glb",
      "variacao": "Gaia 19",
-     "kb": 86,
+     "kb": 29,
      "triangulos": 252,
      "ossos": 9,
      "molas": [
@@ -9707,7 +13483,7 @@
     {
      "arquivo": "criaturas/mascara-errante/mascara-errante_teco-73.glb",
      "variacao": "Teco 73",
-     "kb": 86,
+     "kb": 29,
      "triangulos": 252,
      "ossos": 9,
      "molas": [
@@ -9732,7 +13508,7 @@
     {
      "arquivo": "criaturas/mascara-errante/mascara-errante_zuza-12.glb",
      "variacao": "Zuza 12",
-     "kb": 86,
+     "kb": 29,
      "triangulos": 252,
      "ossos": 9,
      "molas": [
@@ -9825,7 +13601,7 @@
     {
      "arquivo": "criaturas/cranio-de-velas/cranio-de-velas_padrao.glb",
      "variacao": "Sabi 54",
-     "kb": 67,
+     "kb": 30,
      "triangulos": 522,
      "ossos": 3,
      "molas": [],
@@ -9848,7 +13624,7 @@
     {
      "arquivo": "criaturas/cranio-de-velas/cranio-de-velas_quim-46.glb",
      "variacao": "Quim 46",
-     "kb": 57,
+     "kb": 28,
      "triangulos": 396,
      "ossos": 3,
      "molas": [],
@@ -9871,7 +13647,7 @@
     {
      "arquivo": "criaturas/cranio-de-velas/cranio-de-velas_dudu-88.glb",
      "variacao": "Dudu 88",
-     "kb": 57,
+     "kb": 28,
      "triangulos": 396,
      "ossos": 3,
      "molas": [],
@@ -9889,6 +13665,155 @@
       "tamanho": "m",
       "cores": "espectral",
       "velas": "uma"
+     }
+    }
+   ]
+  },
+  "behemote-de-chifre": {
+   "num": 133,
+   "nome": "Behemote-de-chifre",
+   "grupo": "Gigantes",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 10,
+   "descricao": "Chifres em arco; trote que treme o chão.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "obsidiana",
+       "nome": "Obsidiana"
+      },
+      {
+       "chave": "ocre",
+       "nome": "Ocre"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo antigo"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "arco",
+       "nome": "Em arco"
+      },
+      {
+       "chave": "curvos",
+       "nome": "Curvos"
+      },
+      {
+       "chave": "espiral",
+       "nome": "Espiral"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/behemote-de-chifre/behemote-de-chifre_padrao.glb",
+     "variacao": "Quim 89",
+     "kb": 118,
+     "triangulos": 2280,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 10,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 2.2,
+      "Correr": 7.086
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "obsidiana",
+      "chifres": "arco"
+     }
+    },
+    {
+     "arquivo": "criaturas/behemote-de-chifre/behemote-de-chifre_tico-71.glb",
+     "variacao": "Tico 71",
+     "kb": 120,
+     "triangulos": 2280,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 10,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 2.2,
+      "Correr": 7.086
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ocre",
+      "chifres": "arco"
+     }
+    },
+    {
+     "arquivo": "criaturas/behemote-de-chifre/behemote-de-chifre_tico-61.glb",
+     "variacao": "Tico 61",
+     "kb": 120,
+     "triangulos": 2280,
+     "ossos": 20,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 8.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 1.892,
+      "Correr": 6.094
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ocre",
+      "chifres": "arco"
      }
     }
    ]
@@ -9958,7 +13883,7 @@
     {
      "arquivo": "criaturas/bolha-sabia/bolha-sabia_padrao.glb",
      "variacao": "Vina 13",
-     "kb": 65,
+     "kb": 33,
      "triangulos": 496,
      "ossos": 3,
      "molas": [],
@@ -9981,7 +13906,7 @@
     {
      "arquivo": "criaturas/bolha-sabia/bolha-sabia_pipo-93.glb",
      "variacao": "Pipo 93",
-     "kb": 52,
+     "kb": 27,
      "triangulos": 324,
      "ossos": 3,
      "molas": [],
@@ -10004,7 +13929,7 @@
     {
      "arquivo": "criaturas/bolha-sabia/bolha-sabia_fagu-58.glb",
      "variacao": "Fagu 58",
-     "kb": 52,
+     "kb": 27,
      "triangulos": 324,
      "ossos": 3,
      "molas": [],
@@ -10022,6 +13947,145 @@
       "tamanho": "m",
       "cores": "ambar",
       "oculos": "nao"
+     }
+    }
+   ]
+  },
+  "cao-armadura": {
+   "num": 146,
+   "nome": "Cão-armadura",
+   "grupo": "Constructos",
+   "familia": "C",
+   "voa": false,
+   "tamanho_m": 0.8,
+   "descricao": "Armadura de cão sem ninguém dentro; trote.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ferro",
+       "nome": "Ferro"
+      },
+      {
+       "chave": "bronze",
+       "nome": "Bronze"
+      },
+      {
+       "chave": "negro",
+       "nome": "Aço negro"
+      }
+     ]
+    },
+    {
+     "chave": "orelhas",
+     "nome": "Orelhas",
+     "opcoes": [
+      {
+       "chave": "pontuda",
+       "nome": "Pontudas"
+      },
+      {
+       "chave": "caida",
+       "nome": "Caídas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cao-armadura/cao-armadura_padrao.glb",
+     "variacao": "Fagu 41",
+     "kb": 98,
+     "triangulos": 1486,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.322,
+      "Correr": 2.282
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ferro",
+      "orelhas": "pontuda"
+     }
+    },
+    {
+     "arquivo": "criaturas/cao-armadura/cao-armadura_brisa-33.glb",
+     "variacao": "Brisa 33",
+     "kb": 98,
+     "triangulos": 1534,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.688,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.289,
+      "Correr": 2.049
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "bronze",
+      "orelhas": "caida"
+     }
+    },
+    {
+     "arquivo": "criaturas/cao-armadura/cao-armadura_pipo-67.glb",
+     "variacao": "Pipo 67",
+     "kb": 95,
+     "triangulos": 1486,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Rugir"
+     ],
+     "velocidades": {
+      "Andar": 0.322,
+      "Correr": 2.282
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "negro",
+      "orelhas": "pontuda"
      }
     }
    ]

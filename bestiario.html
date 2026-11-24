@@ -113,8 +113,8 @@ if (SHEET) {
   cams.forEach((cm, ci) => cells.forEach((cell, k) => {
     const key = cfgKeyEsp(cell.id, cell.cfg), D = cache[key] || (cache[key] = makeActor(cell.id, cell.cfg));
     scene.add(D.root); D.mixer.stopAllAction(); const act = D.actions[cell.clip] || D.actions.Parado; act.reset().play(); D.mixer.setTime(cell.t); D.root.updateMatrixWorld(true);
-    const h = D.altura, ty = h * (D.especie.voa || D.especie.fam === 'B' ? 0.75 : 0.5), d = V3(...DIR[cm]).normalize().multiplyScalar(fitDist(h));
-    camera.position.set(d.x, ty + d.y, d.z); camera.lookAt(0, ty, 0); camera.near = h * 0.02; camera.aspect = cw / chh; camera.updateProjectionMatrix(); setSun(V3(0, 0, 0), h);
+    const h = D.vista, ty = h * ((D.especie.voa && D.especie.fam === 'A') || D.especie.fam === 'B' ? 0.75 : 0.5), d = V3(...DIR[cm]).normalize().multiplyScalar(fitDist(h));
+    camera.position.set(d.x, ty + d.y, d.z); camera.lookAt(0, ty, 0); scene.fog.near = Math.max(14, h * 5); scene.fog.far = Math.max(40, h * 12); camera.far = Math.max(120, h * 30); camera.near = h * 0.02; camera.aspect = cw / chh; camera.updateProjectionMatrix(); setSun(V3(0, 0, 0), h);
     const r = ci * rowsPer + Math.floor(k / cols), i = k % cols, x = i * cw, y = Hh - (r + 1) * chh;
     renderer.setViewport(x, y, cw, chh); renderer.setScissor(x, y, cw, chh); renderer.clear(); renderer.render(scene, camera); scene.remove(D.root);
     const lb = document.createElement('div'); lb.className = 'lbl'; lb.style.left = (x + 4) + 'px'; lb.style.top = (r * chh + 4) + 'px'; lb.textContent = `${cell.lab} · ${cell.clip} ${cell.t.toFixed(2)}s`; document.body.appendChild(lb);
@@ -143,7 +143,7 @@ function startViewer() {
   function play(name) { curName = name; if (bandoOn) bando.forEach((X, i) => playOn(X, name, 0.2, (i * 0.37) % 1)); else playOn(D, name);
     document.querySelectorAll('#clips button').forEach(b => b.classList.toggle('on', b.textContent === name)); }
   function frameCam(h, center = V3(0, 0, 0)) { const ty = h * 0.6; controls.target.set(center.x, ty, center.z); const d = fitDist(h) * (bandoOn ? 2.6 : 1);
-    camera.position.set(center.x + d * 0.6, ty + d * 0.35, center.z + d * 0.75); camera.near = Math.max(0.002, h * 0.02); camera.updateProjectionMatrix(); controls.minDistance = h * 0.6; controls.maxDistance = h * 25; controls.update(); setSun(center, h * (bandoOn ? 3 : 1)); }
+    camera.position.set(center.x + d * 0.6, ty + d * 0.35, center.z + d * 0.75); camera.near = Math.max(0.002, h * 0.02); camera.far = Math.max(120, h * 30); scene.fog.near = Math.max(14, h * 5 * (bandoOn ? 2 : 1)); scene.fog.far = Math.max(40, h * 12 * (bandoOn ? 2 : 1)); camera.updateProjectionMatrix(); controls.minDistance = h * 0.6; controls.maxDistance = h * 25; controls.update(); setSun(center, h * (bandoOn ? 3 : 1)); }
   function setActor(nid, cfg, keepHash, reframe) {
     if (D) { scene.remove(D.root); D.geo.dispose(); } if (skel) { scene.remove(skel); skel = null; }
     const changed = nid !== id || !D; id = nid; D = makeActor(id, cfg); scene.add(D.root);
@@ -154,16 +154,16 @@ function startViewer() {
     document.querySelectorAll('#cats button').forEach(b => b.classList.toggle('on', D.cfg[b.dataset.k] === b.dataset.v));
     document.querySelectorAll('#clips button').forEach(b => b.classList.toggle('on', b.textContent === curName));
     if (!keepHash) history.replaceState(null, '', '#esp=' + id + '&' + catsOfEsp(id).map(x => x.k + '=' + D.cfg[x.k]).join('&'));
-    placeAnao(); if (changed || reframe) frameCam(Math.max(D.altura, $('cAnao').checked ? 1.3 : 0));
+    placeAnao(); if (changed || reframe) frameCam(Math.max(D.vista, $('cAnao').checked ? 1.3 : 0));
     glbKB = 0; clearTimeout(glbT); glbT = setTimeout(() => exportGLB(b => { glbKB = Math.round(b.byteLength / 1024); drawStats(); }), 600); drawStats();
   }
   function placeAnao() {
     if (anao) { scene.remove(anao.root); anao = null; }
     if (!$('cAnao').checked) return;
     anao = forgePovo('anao', baseCfgPovo('anao')); anao.mixer = new THREE.AnimationMixer(anao.root); anao.mixer.clipAction(anao.clips[0]).play();
-    anao.root.position.set(-(0.45 + D.altura * 0.6), 0, -0.1); scene.add(anao.root);
+    anao.root.position.set(-(0.45 + D.vista * 0.6), 0, -0.1); scene.add(anao.root);
   }
-  $('cAnao').onchange = () => { placeAnao(); frameCam(Math.max(D.altura, $('cAnao').checked ? 1.3 : 0)); };
+  $('cAnao').onchange = () => { placeAnao(); frameCam(Math.max(D.vista, $('cAnao').checked ? 1.3 : 0)); };
   $('cWire').onchange = e => CMATS.forEach(m => m.wireframe = e.target.checked);
   $('cBones').onchange = e => { if (skel) skel.visible = e.target.checked; };
   $('bSort').onclick = () => { if (bandoOn) toggleBando(); setActor(id, randomCfgEsp(id, rng(Math.random() * 1e9 | 0))); };
@@ -171,11 +171,11 @@ function startViewer() {
   $('bLink').onclick = () => { navigator.clipboard?.writeText(location.href); $('bLink').textContent = 'Link copiado'; setTimeout(() => $('bLink').textContent = 'Copiar link', 1500); };
   function toggleBando() {
     bandoOn = !bandoOn; $('bBando').classList.toggle('on', bandoOn); $('hint').style.display = bandoOn ? 'block' : 'none';
-    if (bandoOn) { D.root.visible = false; if (skel) skel.visible = false; const r = rng(Math.random() * 1e9 | 0), h = D.altura; bando = [];
+    if (bandoOn) { D.root.visible = false; if (skel) skel.visible = false; const r = rng(Math.random() * 1e9 | 0), h = D.vista; bando = [];
       for (let i = 0; i < 7; i++) { const X = makeActor(id, i === 3 ? D.cfg : randomCfgEsp(id, r)), a = (i - 3) * 0.42;
         X.root.position.set(Math.sin(a) * h * 2.2, 0, -Math.cos(a) * h * 1.2 + h * 1.2); X.root.rotation.y = -a * 0.6; scene.add(X.root); bando.push(X); }
       play(curName); frameCam(h); }
-    else { bando.forEach(X => { scene.remove(X.root); X.geo.dispose(); }); bando = []; D.root.visible = true; if (skel) skel.visible = $('cBones').checked; frameCam(D.altura); }
+    else { bando.forEach(X => { scene.remove(X.root); X.geo.dispose(); }); bando = []; D.root.visible = true; if (skel) skel.visible = $('cBones').checked; frameCam(D.vista); }
   }
   $('bBando').onclick = toggleBando;
   const ray = new THREE.Raycaster(), mouse = new THREE.Vector2(); let downAt = null;
@@ -194,7 +194,7 @@ function startViewer() {
   $('bGlb').onclick = () => exportGLB(b => download(b, id + '_' + nomeVariacao(id, D.cfg).toLowerCase().replace(/\s+/g, '') + '.glb', 'model/gltf-binary'));
   const fmtH = h => h < 1 ? Math.round(h * 100) + ' cm' : h.toFixed(2).replace('.', ',') + ' m';
   const drawStats = () => { if (!D) return; const S = ESPECIES[id];
-    const rows = [['Nº na lista', S.num], ['Família de corpo', S.fam === 'A' ? 'A · bípede' + (S.voa ? ' alado' : '') : 'B · flutuante'], ['Tamanho real', fmtH(D.altura)], ['Triângulos', D.tris.toLocaleString('pt-BR')],
+    const rows = [['Nº na lista', S.num], ['Família de corpo', S.fam === 'A' ? 'A · bípede' + (S.voa ? ' alado' : '') : S.fam === 'C' ? 'C · quadrúpede' + (S.voa ? ' alado' : '') : 'B · flutuante'], ['Tamanho real', fmtH(D.altura)], ['Triângulos', D.tris.toLocaleString('pt-BR')],
       ['Ossos', D.info.ossos], ['Molas', D.info.molas.length ? [...new Set(D.info.molas)].join(', ') : '—'], ['Variações possíveis', combinacoesEsp(id).toLocaleString('pt-BR')],
       ['Velocidade', Object.entries(D.vel).map(([k, v]) => `${k} ${v.toFixed(2)} m/s`).join(' · ') || '—'], ['GLB', glbKB ? glbKB + ' KB' : '…'], ['Espécies prontas', ESP_ORDEM.length + ' de 150']];
     $('stats').innerHTML = rows.map(([a, b]) => `<span>${a}</span><b>${b}</b>`).join(''); };

@@ -18,7 +18,7 @@ Cada espécie tem de 3 a 5 categorias: paleta de cor (4 a 6), forma de uma parte
 |---|---|---|---|---|
 | 1 | A: bípede pequeno, com ou sem asas | fadas 1–7, 9–12 · diabretes 13–24 · ursos alados 25, 26, 36 | Parado, Voar/Andar, Atacar, Comemorar | **feita** |
 | 1 | B: flutuante | 8, 103, 105, 108, 113, 114, 117, 118, 122, 123, 124, 142 | Parado, Mover, Atacar, Comemorar | **feita** |
-| 2 | C: quadrúpede (com ou sem asas) | 27–35, 37–52, 106, 121, 133, 146 | Parado, Andar, Correr, Atacar, Voar (alados) | a fazer |
+| 2 | C: quadrúpede (com ou sem asas) | 27–35, 38, 39, 41–52, 106, 121, 133, 146 (37 morsa e 40 lagarto-carroça foram para as fases 8 e 3) | Parado, Andar (4 tempos), Correr (galope/trote), Atacar, Rugir, Voar | **feita (27)** |
 | 3 | D: hexápode / octópode | 40, 65–69, 73, 75, 76, 80, 138 | ritmo alternado em tripé | a fazer |
 | 4 | E: serpente / verme / corrente | 53, 56, 58, 71, 74, 92, 116, 150 | onda procedural | a fazer |
 | 5 | F: radial / tentáculos | 77, 78, 83, 88, 132, 139 | correntes com mola + pulso | a fazer |
@@ -26,6 +26,9 @@ Cada espécie tem de 3 a 5 categorias: paleta de cor (4 a 6), forma de uma parte
 | 7 | A+: bípedes grandes e gigantes | 89, 95, 101, 102, 107, 109, 115, 125–131, 134, 143, 147–149 | as da família A, com peso | a fazer |
 | 8 | Especiais | 54, 55, 57, 59–64, 70, 72, 79, 81–86, 91, 93, 94, 96–100, 104, 111, 112, 119, 120, 137, 144 | por espécie | a fazer |
 | 9 | Colossais / enxames | 63, 85, 98, 127, 132 | escala e LOD | a fazer |
+
+## Compressão
+Desde a fase 2, os GLBs saem com quadros redundantes removidos e EXT_meshopt_compression (cerca de 1/3 do tamanho). `--sem-meshopt` gera a versão para motores sem decodificador.
 
 ## Regras herdadas da Forja
 - Peças duras ficam 100% num osso; pano, cabelo e rabo vão em correntes com mola.

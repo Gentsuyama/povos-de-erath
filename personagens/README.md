@@ -11,12 +11,20 @@ Para ver e montar no navegador, abra a [Forja de Erath](https://gentsuyama.githu
 
 Povos: Anão, Vran, Beorning, Vodnik, Silvano, Litomante, Aetheryn e Humano.
 
+## Compressão (importante para carregar)
+
+Os GLBs saem com **EXT_meshopt_compression** e sem os quadros de animação redundantes: em média, um terço do tamanho original.
+- **three.js:** `new GLTFLoader().setMeshoptDecoder(MeshoptDecoder)` (de `three/addons/libs/meshopt_decoder.module.js`).
+- **Unity:** o glTFast lê direto.
+- **Godot ou outro motor sem meshopt:** gere sem compressão com `node forja/exportar.mjs 4 2 --sem-meshopt`.
+
 ## Criaturas (bestiário)
 
 - `criaturas/<id>/<id>_padrao.glb` + 2 variações sorteadas por espécie. No `catalogo.json`, a chave `criaturas` traz: número na lista, grupo, família de corpo, se voa, tamanho real, categorias de variação e, por arquivo, altura, animações e velocidades.
 - **Família A, bípede com ou sem asas** (fadas, diabretes, ursos alados): `Parado`, `Voar`, `Andar`, `Atacar` e `Comemorar`. Os ossos têm os mesmos nomes dos povos, mais `WingA/B_L/R`, `Tail1..3`, `Ant1/2`, `Hair1/2` e `Fumaca1..3`.
+- **Família C, quadrúpede com ou sem asas** (lobo-falcão, javali, alce, tartaruga-de-vento...): `Parado`, `Andar` (passo de 4 tempos), `Correr` (galope; trote nos pesados), `Atacar`, `Rugir` e `Voar` (alados). Os ossos são `Hips, Spine, Chest, Neck, Head, FrontUpLeg/FrontLeg/FrontFoot_L/R, BackUpLeg/BackLeg/BackFoot_L/R`, mais `Tail1..3`, `Mane1/2` e `WingA/B_L/R`.
 - **Família B, flutuante** (fantasmas, chamas, olho, relógio...): `Parado`, `Mover`, `Atacar` e `Comemorar`. Os ossos são `Root`, `Body`, `Top`, mais correntes (braços, barra, tentáculos, fitas, pêndulo).
-- A raiz já vem na escala real da espécie, de 6 cm a 2,6 m. O material `translucido` (asas de inseto, água, bolha) usa transparência (BLEND).
+- A raiz já vem na escala real da espécie, de 6 cm a 10 m. O material `translucido` (asas de inseto, água, bolha) usa transparência (BLEND).
 - Para ver e variar: [Bestiário](https://gentsuyama.github.io/povos-de-erath/bestiario.html). Plano das 150 criaturas: [`../criaturas/PLANO.md`](../criaturas/PLANO.md).
 
 ## Cada GLB

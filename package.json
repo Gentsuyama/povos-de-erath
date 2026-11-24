@@ -3,6 +3,14 @@
   "private": true,
   "type": "module",
   "description": "Personagens low poly de Erath gerados 100% em código (forja/erath_forja.js).",
-  "scripts": { "exportar": "node forja/exportar.mjs" },
-  "devDependencies": { "three": "0.160.0" }
+  "scripts": {
+    "exportar": "node forja/exportar.mjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "meshoptimizer": "^1.3.0",
+    "three": "0.160.0"
+  }
 }

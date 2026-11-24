@@ -7,21 +7,38 @@ import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import { RACAS, RACA_ORDEM, catsOf, baseCfg, randomCfg, nameOf, forge, exportGeometry, rng, CLIPDEF, combinacoes } from './erath_forja.js';
 import { ESPECIES, ESP_ORDEM, catsOfEsp, baseCfgEsp, randomCfgEsp, nomeVariacao, forgeCriatura, exportGeometry as exportGeoC, rng as rngC, combinacoesEsp } from './erath_criaturas.js';
 
+import { NodeIO } from '@gltf-transform/core';
+import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
+import { resample, dedup, prune, meshopt } from '@gltf-transform/functions';
+import { MeshoptEncoder, MeshoptDecoder } from 'meshoptimizer';
+// Compressão (padrão): quadros redundantes removidos + EXT_meshopt_compression (three.js e Unity/glTFast leem; precisa do decodificador meshopt).
+// Para motores sem meshopt (ex.: Godot), rode com --sem-meshopt: só remove os quadros redundantes.
+const SEM_MESHOPT = process.argv.includes('--sem-meshopt');
+await MeshoptEncoder.ready; await MeshoptDecoder.ready;
+const IO = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.encoder': MeshoptEncoder, 'meshopt.decoder': MeshoptDecoder });
+async function comprimir(buf) {
+  const doc = await IO.readBinary(new Uint8Array(buf));
+  const steps = [dedup(), resample({ tolerance: 1e-4 }), prune({ keepAttributes: true })];
+  if (!SEM_MESHOPT) steps.push(meshopt({ encoder: MeshoptEncoder, level: 'medium' }));
+  await doc.transform(...steps);
+  return Buffer.from(await IO.writeBinary(doc));
+}
 // o GLTFExporter usa FileReader para o binário; o Node não tem
 globalThis.FileReader ??= class { readAsArrayBuffer(b) { b.arrayBuffer().then(r => { this.result = r; this.onloadend?.(); }); }
   readAsDataURL(b) { b.arrayBuffer().then(r => { this.result = 'data:application/octet-stream;base64,' + Buffer.from(r).toString('base64'); this.onloadend?.(); }); } };
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'personagens');
-const NVAR = +(process.argv[2] || 4);
+const ARGS = process.argv.slice(2).filter(a => !a.startsWith('--'));
+const NVAR = +(ARGS[0] || 4);
 const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 function toGLB(P, geoFn = exportGeometry) {
   P.restPose(); P.root.updateMatrixWorld(true);
   P.mesh.geometry = geoFn(P);
-  return new Promise((res, rej) => new GLTFExporter().parse(P.root, b => res(Buffer.from(b)), rej, { binary: true, animations: P.clips }));
+  return new Promise((res, rej) => new GLTFExporter().parse(P.root, b => res(b), rej, { binary: true, animations: P.clips })).then(comprimir);
 }
-const catalogo = { gerado: new Date().toISOString().slice(0, 10), versao_three: '0.160.0', animacoes: CLIPDEF.map(c => ({ nome: c.name, duracao: c.dur, loop: !!c.loop })),
+const catalogo = { compressao: SEM_MESHOPT ? 'nenhuma (quadros redundantes removidos)' : 'EXT_meshopt_compression (use MeshoptDecoder)', gerado: new Date().toISOString().slice(0, 10), versao_three: '0.160.0', animacoes: CLIPDEF.map(c => ({ nome: c.name, duracao: c.dur, loop: !!c.loop })),
   convencoes: { unidade: 'metro', cima: '+Y', frente: '+Z', esquerda_do_personagem: '+X', materiais: ['fosco', 'metal', 'brilho (sem luz)'] }, racas: {} };
 let total = 0;
 for (const raca of RACA_ORDEM) {
@@ -43,12 +60,12 @@ for (const raca of RACA_ORDEM) {
   catalogo.racas[raca] = { nome: R.nome, titulo: R.titulo, combinacoes: combinacoes(raca), categorias: catsOf(raca).map(c => ({ chave: c.k, nome: c.n, opcoes: c.o.map(o => ({ chave: o[0], nome: o[1] })) })), personagens: ents };
 }
 // ---------- criaturas (bestiário): padrão + variações sorteadas
-const NVC = +(process.argv[3] || 2);
+const NVC = +(ARGS[1] || 2);
 catalogo.criaturas = {};
 for (const id of ESP_ORDEM) {
   const S = ESPECIES[id], dir = path.join(OUT, 'criaturas', id); fs.mkdirSync(dir, { recursive: true });
   const r = rngC(5000 + S.num), lista = [{ arquivo: `${id}_padrao.glb`, cfg: baseCfgEsp(id) }];
-  for (let i = 0; i < NVC; i++) { const c = randomCfgEsp(id, r); lista.push({ arquivo: `${id}_${slug(nomeVariacao(id, c))}.glb`, cfg: c }); }
+  for (let i = 0; i < NVC; i++) { const c = randomCfgEsp(id, r); let f = `${id}_${slug(nomeVariacao(id, c))}`, k = 2; while (lista.some(x => x.arquivo === f + '.glb')) f = `${id}_${slug(nomeVariacao(id, c))}-${k++}`; lista.push({ arquivo: f + '.glb', cfg: c }); }
   const ents = [];
   for (const it of lista) {
     const P = forgeCriatura(id, it.cfg), buf = await toGLB(P, exportGeoC);
