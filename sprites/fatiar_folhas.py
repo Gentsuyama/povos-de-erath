@@ -29,6 +29,16 @@ def mascara(rgb):
     return cheio, d
 
 
+def centro_nucleo(mm):
+    """x do miolo do corpo: tira as partes finas (cajado, lança, pernas finas, cauda) e pega o maior pedaço"""
+    h = mm.shape[0]; e = ndi.binary_erosion(mm, iterations=max(2, int(h * 0.025)))
+    if e.sum() < mm.sum() * 0.08: e = ndi.binary_erosion(mm, iterations=max(1, int(h * 0.01)))
+    if e.sum() < 30: return float(np.nonzero(mm)[1].mean())
+    lab, n = ndi.label(e)
+    if n > 1: ar = ndi.sum(e, lab, range(1, n + 1)); e = lab == (int(np.argmax(ar)) + 1)
+    return float(np.nonzero(e)[1].mean())
+
+
 def bacias(dd, mm, mk):
     """watershed por fila de prioridade: inunda das sementes pelas partes mais grossas primeiro; a fronteira cai nos pontos finos"""
     import heapq
@@ -138,7 +148,7 @@ def quadros(img, esperado=5):
             mm = mm_full[a0:a1, b0:b1]
             alfa = Image.fromarray((mm * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.7))
             rgba = Image.fromarray(np.ascontiguousarray(rgb[y0 + a0:y0 + a1, b0:b1])).convert('RGBA'); rgba.putalpha(alfa)
-            out.append({'img': rgba, 'h': a1 - a0, 'cx': (xs - b0).mean(), 'base': a1 - a0 - 1, 'w': b1 - b0})
+            out.append({'img': rgba, 'h': a1 - a0, 'cx': centro_nucleo(mm), 'base': a1 - a0 - 1, 'w': b1 - b0})
     if out:
         med = float(np.median([q['h'] * q['w'] for q in out])); out = [q for q in out if q['h'] * q['w'] > med * 0.25]
     if len(out) > 2:                                                       # quadro largo demais = dois bichos juntos: divide de novo
@@ -166,12 +176,18 @@ def redividir(q, k):
         if m2.sum() < 50: continue
         ys, xs = np.nonzero(m2); a0, a1, b0, b1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
         sub = a[a0:a1, b0:b1].copy(); sub[..., 3] = np.where(m2[a0:a1, b0:b1], sub[..., 3], 0)
-        partes.append((b0, {'img': Image.fromarray(sub), 'h': a1 - a0, 'cx': (xs - b0).mean(), 'base': a1 - a0 - 1, 'w': b1 - b0}))
+        partes.append((b0, {'img': Image.fromarray(sub), 'h': a1 - a0, 'cx': centro_nucleo(m2[a0:a1, b0:b1]), 'base': a1 - a0 - 1, 'w': b1 - b0}))
     return [p for _, p in sorted(partes, key=lambda t: t[0])] or [q]
 
 
 ALTURA = 200         # altura mediana da criatura em px (a célula cresce em volta do maior quadro)
 FOLGA = 10
+
+
+def altura_util(q):
+    m = np.asarray(q['img'])[..., 3] > 127; w = m.sum(1); lim = w.max() * 0.14
+    rows = np.nonzero(w >= lim)[0]
+    return float(q['base'] - rows.min() + 1) if len(rows) else float(q['h'])
 
 
 def limpar(qs, mov):
@@ -182,13 +198,87 @@ def limpar(qs, mov):
 
 
 def escalas(qs, mov):
-    """escala de cada quadro: a folha inteira vai para ALTURA; tira o ruído de zoom da IA fora do ataque"""
-    hmed = float(np.median([q['h'] for q in qs])); base = ALTURA / hmed; ks = []
-    for q in qs:
-        k = base
-        if mov != 'atacar' and abs(q['h'] - hmed) / hmed > 0.12: k *= hmed / q['h']
-        ks.append(k)
-    return ks
+    """escala de cada quadro. A folha inteira vai para ALTURA (pela mediana). Fora do ataque, cada quadro é
+    reescalado pela altura útil (pés até o topo do corpo, sem ponta de arma): acaba o "cresce e encolhe" da IA"""
+    hmed = float(np.median([q['h'] for q in qs])); base = ALTURA / hmed
+    if mov == 'atacar': return [base] * len(qs)
+    hu = [altura_util(q) for q in qs]; hum = float(np.median(hu))
+    return [base * hum / h for h in hu]
+
+
+def transformar(cel, s, dx, px, py):
+    """escala em volta do pivô (pés) e desloca na horizontal"""
+    if abs(s - 1) < 1e-3 and abs(dx) < 0.5: return cel
+    a = 1 / s; c = px - (px + dx) / s; e = 1 / s; f = py - py / s
+    return cel.transform(cel.size, Image.AFFINE, (a, 0, c, 0, e, f), resample=Image.BICUBIC)
+
+
+def registrar(cels, mov, px, py, frac=0.25, escala=False):
+    """tira o tremor e a mudança de tamanho: encaixa cabeça+tronco de cada quadro sobre o quadro de referência
+    (escala em volta dos pés + deslocamento horizontal); os pés continuam no chão e as pernas livres"""
+    if len(cels) < 3 or mov == 'atacar': return cels
+    from scipy.signal import fftconvolve
+    A = [np.asarray(c)[..., 3] > 127 for c in cels]
+    hs = [(lambda r: r.max() - r.min() if len(r) else 0)(np.nonzero(a.any(1))[0]) for a in A]
+    r = int(np.argsort(hs)[len(hs) // 2])
+    ref = A[r]; ys = np.nonzero(ref.any(1))[0]; topo, hh = ys.min(), ys.max() - ys.min()
+    def banda(m):                                                        # metade de cima do corpo (cabeça e tronco)
+        b = np.zeros(m.shape, np.float32); yy = np.nonzero(m.any(1))[0]
+        if len(yy): t = yy.min(); b[t:t + int(hh * frac)] = m[t:t + int(hh * frac)]
+        return b
+    br = banda(ref); sr = br.sum(); W = ref.shape[1]; lim_dx = int(W * 0.2)
+    out = []
+    for i, c in enumerate(cels):
+        if i == r: out.append(c); continue
+        melhor = (-1, 1.0, 0)
+        for sc in (np.arange(0.88, 1.121, 0.02) if escala else [1.0]):
+            m = np.asarray(transformar(c, sc, 0, px, py))[..., 3] > 127
+            bm = banda(m)
+            if bm.sum() == 0: continue
+            corr = fftconvolve(bm, br[::-1, ::-1], mode='same')[ref.shape[0] // 2]   # só deslocamento horizontal (dy = 0)
+            cx0 = W // 2; jan = corr[max(0, cx0 - lim_dx):cx0 + lim_dx + 1]
+            j = int(np.argmax(jan)); dice = 2 * jan[j] / (sr + bm.sum())
+            if dice > melhor[0]: melhor = (dice, sc, -(j + max(0, cx0 - lim_dx) - cx0))
+        out.append(transformar(c, melhor[1], melhor[2], px, py))
+    return out
+
+
+def cabeca_x(m):
+    """centro do miolo da cabeça: topo do corpo, sem hastes finas (cajado, lança, machado erguido)"""
+    yy = np.nonzero(m.any(1))[0]
+    if not len(yy): return None
+    t, h = yy.min(), yy.max() - yy.min(); b = m[t:t + max(4, int(h * 0.24))]
+    e = ndi.binary_erosion(b, iterations=max(2, int(h * 0.012)))
+    if e.sum() < 20: e = b
+    lab, n = ndi.label(e)
+    if n > 1: ar = ndi.sum(e, lab, range(1, n + 1)); e = lab == (int(np.argmax(ar)) + 1)
+    return float(np.nonzero(e)[1].mean())
+
+
+def estabilizar(cels, mov, px, py):
+    """tremor: a cabeça fica no mesmo x em todos os quadros (pés no chão, altura já igualada)"""
+    if len(cels) < 3 or mov == 'atacar': return cels
+    xs = [cabeca_x(np.asarray(c)[..., 3] > 127) for c in cels]
+    ok = [x for x in xs if x is not None]
+    if not ok: return cels
+    alvo = float(np.median(ok))
+    return [transformar(c, 1.0, alvo - x, px, py) if x is not None else c for c, x in zip(cels, xs)]
+
+
+def passo(cels, py, H):
+    """quanto o personagem anda por quadro (px da célula): 2 passos por ciclo; passo = abertura máxima dos pés − largura do pé"""
+    ws = []
+    for c in cels:
+        m = np.asarray(c)[..., 3] > 127; faixa = m[max(0, py - int(H * 0.07)):py + 1]
+        xs = np.nonzero(faixa.any(0))[0]; ws.append(xs.max() - xs.min() if len(xs) else 0)
+    if not ws or max(ws) == 0: return 0
+    return round(2 * (max(ws) - min(ws)) / len(cels), 2)
+
+
+def limitar_vel(v):
+    """a medida pela abertura dos pés é ruidosa (6 patas, galope): prende em faixas plausíveis para ALTURA=200"""
+    vel = v.get('vel', {}); a = min(9.0, max(3.0, vel.get('andar', 5.0))); c = min(25.0, max(a * 1.8, vel.get('correr', a * 2.5)))
+    v['vel'] = {'andar': round(a, 2), 'correr': round(c, 2)}
 
 
 def main(src, dst):
@@ -213,12 +303,14 @@ def main(src, dst):
                 im = q['img'].resize((max(1, round(q['img'].width * k)), max(1, round(q['img'].height * k))), Image.LANCZOS)
                 cel = Image.new('RGBA', (W, H), (0, 0, 0, 0)); cel.paste(im, (round(px - q['cx'] * k), round(py - q['base'] * k)), im); cels.append(cel)
             D = DIRS[d]
+            if D == 'E' and mov in ('andar', 'correr'): man[cri].setdefault('vel', {})[mov] = passo(cels, py, H)
             for nome, lista in [(D, cels)] + ([(ESPELHO[D], [c.transpose(Image.FLIP_LEFT_RIGHT) for c in cels])] if D in ESPELHO else []):
                 tira = Image.new('RGBA', (W * len(lista), H), (0, 0, 0, 0))
                 for i, c in enumerate(lista): tira.paste(c, (i * W, 0))
                 tira.save(os.path.join(dst, cri, f'{mov}_{nome}.webp'), quality=88, method=5)
                 man[cri]['anim'].setdefault(mov, {})[nome] = len(lista)
         print(f'{cri:8} célula {W}x{H}  ' + ' '.join(f'{m}_{DIRS[d]}:{len(q)}' for (m, d), q in fat.items() if len(q) != 10))
+    for v in man.values(): limitar_vel(v)
     json.dump({'criaturas': man}, open(os.path.join(dst, 'manifesto.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 
