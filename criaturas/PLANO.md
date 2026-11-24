@@ -2,6 +2,8 @@
 
 Objetivo: gerar em código as 150 criaturas de [`lista_150.md`](lista_150.md), cada uma com **variações** (sorteio por espécie), animações próprias da família de corpo, GLBs e entrada no catálogo do jogo.
 
+**Status: 150 de 150 prontas**, em 9 famílias de corpo (A a I). São 450 GLBs de criaturas (padrão + 2 variações) mais 40 dos povos, 46 MB com meshopt.
+
 ## Arquitetura
 - `forja/erath_criaturas.js`: módulo puro (navegador + Node), separado dos povos (`erath_forja.js`).
   - **Famílias de esqueleto.** Cada uma tem o seu jeito de mover (clipes assados) e as correntes de mola dela.
@@ -26,8 +28,8 @@ Cada espécie tem de 3 a 5 categorias: paleta de cor (4 a 6), forma de uma parte
 | 7 | H: bípedes grandes e gigantes (poses e IK dos povos, proporções ajustáveis) | 89, 95, 101, 102, 107, 109, 115, 125–131, 134, 143, 147–149 | Parado, Andar, Correr, Atacar, Comemorar (+ Defender com escudo); mais lentos se pesados | **feita (19)** |
 | 8a | Especiais em C e D | 37, 55, 57, 59–64, 93 (répteis, dragões, hidra de 3 cabeças, tartaruga-ilha com vila, abóbora) · 70, 72 (libélula com sela, mariposa) | as das famílias C e D | **feita (12)** |
 | 8b | Especiais em A, B, E, F, G, H | 79, 81, 82, 84, 85, 91, 94, 96–100, 104, 111, 112, 120, 137, 144 (baiacu que infla, raia que plana, sereia, cavalo-marinho com sela, baleia-de-nuvem, flor que anda nas raízes, colônia de cogumelos em bando, lírio-hélice, redemoinho de areia, tempestuoso, mercurial, baú-mordedor, livro que bate as páginas, salgueiro, sombra-longa) | por família | **feita (18)** |
-| 8c | I: bípede de ave/dinossauro sem braços | 54, 86, 119 | Parado, Andar, Correr, Atacar, Voar | a fazer |
-| 9 | Colossais / enxames | 63, 85, 98, 127, 132 | escala e LOD | a fazer |
+| 8c | I: bípede de ave/dinossauro sem braços (família nova) | 54, 86, 119 | Parado (cabeça aos trancos), Andar, Correr, Atacar (bicada), Gritar, Voar | **feita (3)** |
+| 9 | Colossais / enxames | 63, 85, 98, 127, 132 | escala e LOD | **coberta**: as 5 saíram nas fases 5, 7, 8a e 8b no tamanho real (até 40 m; câmera e névoa do bestiário acompanham). O enxame é a colônia (3 a 7 num GLB só) mais o Bando de 7 do bestiário. LOD não faz falta, porque nenhuma passa de 4 mil triângulos. |
 
 ## Compressão
 Desde a fase 2, os GLBs saem com quadros redundantes removidos e EXT_meshopt_compression (cerca de 1/3 do tamanho). `--sem-meshopt` gera a versão para motores sem decodificador.

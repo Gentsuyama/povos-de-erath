@@ -12336,6 +12336,172 @@
     }
    ]
   },
+  "galo-lagarto": {
+   "num": 54,
+   "nome": "Galo-lagarto",
+   "grupo": "Répteis",
+   "familia": "I",
+   "voa": false,
+   "tamanho_m": 0.6,
+   "descricao": "Crista de galo, cauda de lagarto; corre nas patas traseiras.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "terreiro",
+       "nome": "Terreiro"
+      },
+      {
+       "chave": "verde",
+       "nome": "Pântano"
+      },
+      {
+       "chave": "negro",
+       "nome": "Carvão"
+      }
+     ]
+    },
+    {
+     "chave": "crista",
+     "nome": "Crista",
+     "opcoes": [
+      {
+       "chave": "serra",
+       "nome": "Serrilhada"
+      },
+      {
+       "chave": "coroa",
+       "nome": "Coroa"
+      },
+      {
+       "chave": "baixa",
+       "nome": "Baixa"
+      }
+     ]
+    },
+    {
+     "chave": "cauda",
+     "nome": "Cauda",
+     "opcoes": [
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/galo-lagarto/galo-lagarto_padrao.glb",
+     "variacao": "Orvo 48",
+     "kb": 82,
+     "triangulos": 1645,
+     "ossos": 14,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.422,
+      "Correr": 2.274
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "terreiro",
+      "crista": "serra",
+      "cauda": "longa"
+     }
+    },
+    {
+     "arquivo": "criaturas/galo-lagarto/galo-lagarto_rufo-18.glb",
+     "variacao": "Rufo 18",
+     "kb": 83,
+     "triangulos": 1645,
+     "ossos": 14,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.69,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.485,
+      "Correr": 2.615
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "verde",
+      "crista": "serra",
+      "cauda": "curta"
+     }
+    },
+    {
+     "arquivo": "criaturas/galo-lagarto/galo-lagarto_tula-11.glb",
+     "variacao": "Tula 11",
+     "kb": 82,
+     "triangulos": 1645,
+     "ossos": 14,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.69,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.482,
+      "Correr": 2.596
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "negro",
+      "crista": "coroa",
+      "cauda": "curta"
+     }
+    }
+   ]
+  },
   "dragaozinho-de-cha": {
    "num": 55,
    "nome": "Dragãozinho-de-chá",
@@ -16844,6 +17010,171 @@
       "tamanho": "p",
       "cores": "ceu",
       "nuvens": "muitas"
+     }
+    }
+   ]
+  },
+  "peixe-lanterna-andante": {
+   "num": 86,
+   "nome": "Peixe-lanterna-andante",
+   "grupo": "Aquáticos",
+   "familia": "I",
+   "voa": false,
+   "tamanho_m": 1,
+   "descricao": "Pernas de peixe-sapo, isca luminosa; anda gingando.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "abismo",
+       "nome": "Abismo"
+      },
+      {
+       "chave": "lodo",
+       "nome": "Lodo"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      }
+     ]
+    },
+    {
+     "chave": "isca",
+     "nome": "Isca",
+     "opcoes": [
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      }
+     ]
+    },
+    {
+     "chave": "pintas",
+     "nome": "Pintas",
+     "opcoes": [
+      {
+       "chave": "brilho",
+       "nome": "Que brilham"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nenhuma"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/peixe-lanterna-andante/peixe-lanterna-andante_padrao.glb",
+     "variacao": "Orvo 41",
+     "kb": 85,
+     "triangulos": 1724,
+     "ossos": 17,
+     "molas": [
+      "cauda",
+      "isca"
+     ],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.518,
+      "Correr": 2.788
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "abismo",
+      "isca": "longa",
+      "pintas": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/peixe-lanterna-andante/peixe-lanterna-andante_rufo-97.glb",
+     "variacao": "Rufo 97",
+     "kb": 82,
+     "triangulos": 1574,
+     "ossos": 17,
+     "molas": [
+      "cauda",
+      "isca"
+     ],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.633,
+      "Correr": 3.411
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "abismo",
+      "isca": "curta",
+      "pintas": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/peixe-lanterna-andante/peixe-lanterna-andante_sabi-88.glb",
+     "variacao": "Sabi 88",
+     "kb": 82,
+     "triangulos": 1574,
+     "ossos": 17,
+     "molas": [
+      "cauda",
+      "isca"
+     ],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar"
+     ],
+     "velocidades": {
+      "Andar": 0.551,
+      "Correr": 2.966
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "abismo",
+      "isca": "curta",
+      "pintas": "nada"
      }
     }
    ]
@@ -21403,6 +21734,157 @@
       "tamanho": "m",
       "cores": "roxo",
       "tentaculos": "seis"
+     }
+    }
+   ]
+  },
+  "corvo-de-ossos": {
+   "num": 119,
+   "nome": "Corvo-de-ossos",
+   "grupo": "Espectrais",
+   "familia": "I",
+   "voa": true,
+   "tamanho_m": 0.5,
+   "descricao": "Penas negras, crânio à mostra; voa.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinzas"
+      },
+      {
+       "chave": "roxo",
+       "nome": "Assombrado"
+      }
+     ]
+    },
+    {
+     "chave": "costelas",
+     "nome": "Costelas",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "À mostra"
+      },
+      {
+       "chave": "nao",
+       "nome": "Cobertas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/corvo-de-ossos/corvo-de-ossos_padrao.glb",
+     "variacao": "Nix 31",
+     "kb": 106,
+     "triangulos": 2058,
+     "ossos": 18,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.412,
+      "Correr": 2.218,
+      "Voar": 0.848
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "noite",
+      "costelas": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/corvo-de-ossos/corvo-de-ossos_quim-78.glb",
+     "variacao": "Quim 78",
+     "kb": 95,
+     "triangulos": 1514,
+     "ossos": 18,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.43,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.354,
+      "Correr": 1.907,
+      "Voar": 0.729
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "cinza",
+      "costelas": "nao"
+     }
+    },
+    {
+     "arquivo": "criaturas/corvo-de-ossos/corvo-de-ossos_fagu-93.glb",
+     "variacao": "Fagu 93",
+     "kb": 108,
+     "triangulos": 2058,
+     "ossos": 18,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Gritar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Andar": 0.412,
+      "Correr": 2.218,
+      "Voar": 0.848
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "costelas": "sim"
      }
     }
    ]

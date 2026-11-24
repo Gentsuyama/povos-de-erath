@@ -797,6 +797,32 @@ const ESP_8B = {
 };
 Object.assign(ESPECIES, ESP_8B);
 
+// ------------------------------------------------------------ BÍPEDES SEM BRAÇOS (família I)
+const ESP_8C = {
+  'galo-lagarto': { num: 54, nome: 'Galo-lagarto', grupo: 'Répteis', fam: 'I', tam: 0.6, desc: 'Crista de galo, cauda de lagarto; corre nas patas traseiras.',
+    cats: { cores: pal({ terreiro: { n: 'Terreiro', pele: '#8a5a2a', claro: '#e8c890', escuro: '#4a2c12', pena: '#c84a1a', crista: '#d8302a', perna: '#e0a040', bico: '#f0c040' },
+      verde: { n: 'Pântano', pele: '#4a7a3a', claro: '#c8d8a0', escuro: '#22401a', pena: '#2a6a7a', crista: '#e0a020', perna: '#a8a040', bico: '#d8c060' },
+      negro: { n: 'Carvão', pele: '#3a3438', claro: '#a8a0a0', escuro: '#18141a', pena: '#5a3a6a', crista: '#e03a6a', perna: '#8a8a8a', bico: '#c8c0b0' } }),
+      crista: { n: 'Crista', o: [P_('serra', 'Serrilhada'), P_('coroa', 'Coroa'), P_('baixa', 'Baixa')] }, cauda: { n: 'Cauda', o: [P_('longa', 'Longa'), P_('curta', 'Curta')] } },
+    base: { cores: 'terreiro', crista: 'serra', cauda: 'longa' },
+    receita: c => ({ Rb: 0.13, L: 0.34, legK: 1, pesc: 0.16, cabeca: 'galo', crista: c.crista, cauda: 'lagarto', caudaK: c.cauda === 'longa' ? 1 : 0.6, pele: 'escamas' }) },
+  'peixe-lanterna-andante': { num: 86, nome: 'Peixe-lanterna-andante', grupo: 'Aquáticos', fam: 'I', tam: 1.0, desc: 'Pernas de peixe-sapo, isca luminosa; anda gingando.',
+    cats: { cores: pal({ abismo: { n: 'Abismo', pele: '#3a3a5a', claro: '#8a88a8', escuro: '#16162a', perna: '#5a5878', brilho: '#60f0ff' },
+      lodo: { n: 'Lodo', pele: '#5a5a3a', claro: '#a8a888', escuro: '#26261a', perna: '#7a7a5a', brilho: '#c0ff60' },
+      coral: { n: 'Coral', pele: '#a84a4a', claro: '#e8a898', escuro: '#4a1a1a', perna: '#b86a5a', brilho: '#ffe060' } }),
+      isca: { n: 'Isca', o: [P_('longa', 'Longa'), P_('curta', 'Curta')] }, pintas: { n: 'Pintas', o: [P_('brilho', 'Que brilham'), P_('nada', 'Nenhuma')] } },
+    base: { cores: 'abismo', isca: 'longa', pintas: 'brilho' },
+    receita: c => ({ Rb: 0.2, L: 0.3, legK: 0.7, pesc: 0.02, cabeca: 'lanterna', isca: c.isca, cauda: 'peixe', pele: 'peixe', pintas: c.pintas === 'brilho' }) },
+  'corvo-de-ossos': { num: 119, nome: 'Corvo-de-ossos', grupo: 'Espectrais', fam: 'I', tam: 0.5, voa: true, desc: 'Penas negras, crânio à mostra; voa.',
+    cats: { cores: pal({ noite: { n: 'Noite', pele: '#22202a', claro: '#3a3844', escuro: '#100e14', perna: '#3a3440', brilho: '#80ff90', osso: '#ece4d0' },
+      cinza: { n: 'Cinzas', pele: '#5a5a62', claro: '#7a7a84', escuro: '#2a2a30', perna: '#4a4a50', brilho: '#ff5050', osso: '#e8e0cc' },
+      roxo: { n: 'Assombrado', pele: '#3a2448', claro: '#584068', escuro: '#1a0e22', perna: '#3a2a44', brilho: '#e080ff', osso: '#f0e8d8' } }),
+      costelas: { n: 'Costelas', o: [P_('sim', 'À mostra'), P_('nao', 'Cobertas')] } },
+    base: { cores: 'noite', costelas: 'sim' },
+    receita: c => ({ Rb: 0.11, L: 0.26, legK: 0.5, pesc: 0.1, cabeca: 'cranio', cauda: 'leque', asas: true, pele: 'penas', costelas: c.costelas === 'sim', flap: 5 }) },
+};
+Object.assign(ESPECIES, ESP_8C);
+
 export const ESP_ORDEM = Object.keys(ESPECIES).sort((a, b) => ESPECIES[a].num - ESPECIES[b].num);
 export const GRUPOS = [...new Set(ESP_ORDEM.map(k => ESPECIES[k].grupo))];
 export function catsOfEsp(id) { const S = ESPECIES[id]; return [{ k: 'tamanho', ...TAM }, ...Object.entries(S.cats).map(([k, v]) => ({ k, n: v.n, o: v.o }))]; }
@@ -3068,10 +3094,155 @@ function forgeH(id, S, cfg) {
   return P0;
 }
 
+// ======================================================================= FAMÍLIA I — bípede de ave/dinossauro sem braços (joelho para trás)
+function forgeI(id, S, cfg) {
+  const R = { Rb: 0.13, L: 0.34, legK: 1, pesc: 0.16, cabeca: 'galo', cauda: 'lagarto', caudaK: 1, asas: false, pele: 'escamas', flap: 5, ...S.receita(cfg) };
+  const COL = S.cats.cores.cor[cfg.cores];
+  const C = { pele: '#8a6a3a', claro: '#e8d8b0', escuro: '#3a2a14', bico: '#f0b030', perna: '#e0a040', brilho: '#ffe070', crista: '#d8302a', pena: '#3a2a22', osso: '#ece4d0', ...COL };
+  const kit = makeKit(v => v.clone()), { add, G } = kit;
+  const Rb = R.Rb, Lb = R.L, J = 0.003, ck = R.caudaK;
+  const hipY = 0.42 * R.legK, yb = hipY + Rb * 0.35, LX = Rb * 0.5, fy = 0.03;
+  const zr = -Lb * 0.3, zc = Lb * 0.32;
+  const nb = [0, yb + Rb * 0.55, zc + Rb * 0.35], hp = [0, nb[1] + R.pesc * 0.85, nb[2] + R.pesc * 0.4];
+  const HB = (x, y, z) => [hp[0] + x, hp[1] + y, hp[2] + z];
+  // ---------- correntes
+  const chains = [], tz = zr - Rb * 0.75;
+  const tailPts = { lagarto: [[0, yb, tz], [0, yb - 0.01, tz - 0.17 * ck], [0, yb - 0.04, tz - 0.34 * ck], [0, yb - 0.08, tz - 0.5 * ck]],
+    peixe: [[0, yb, tz + 0.04], [0, yb, tz - 0.06], [0, yb + 0.01, tz - 0.14], [0, yb + 0.03, tz - 0.22]],
+    leque: [[0, yb + 0.02, tz + 0.06], [0, yb + 0.02, tz - 0.03], [0, yb + 0.03, tz - 0.11], [0, yb + 0.04, tz - 0.19]] }[R.cauda];
+  chains.push({ name: 'Tail', label: 'cauda', parent: 'Hips', pts: tailPts, names: ['Tail1', 'Tail2', 'Tail3'], end: 'TailEnd', spring: [{ k: 70, d: 6, g: 0.2, max: 20 }, { k: 55, d: 5, g: 0.2, max: 28 }, { k: 40, d: 4, g: 0.2, max: 35 }] });
+  if (R.cabeca === 'lanterna') { const ln = R.isca === 'longa' ? 1.4 : 1;
+    chains.push({ name: 'Isca', label: 'isca', parent: 'Head', pts: [[0, hp[1] + Rb * 0.95, hp[2] + 0.04], [0, hp[1] + Rb * 0.95 + 0.1 * ln, hp[2] + 0.08], [0, hp[1] + Rb * 0.95 + 0.14 * ln, hp[2] + 0.18 * ln], [0, hp[1] + Rb * 0.95 + 0.1 * ln, hp[2] + 0.26 * ln]],
+      names: ['Isca1', 'Isca2', 'Isca3'], end: 'IscaEnd', spring: [{ k: 30, d: 3, g: 0.4, max: 35 }, { k: 22, d: 2.5, g: 0.4, max: 45 }, { k: 16, d: 2, g: 0.4, max: 55 }] }); }
+  // ---------- esqueleto
+  const kn = hipY * 0.52;
+  const bdef = [['Hips', null, [0, yb, 0]], ['Chest', 'Hips', [0, yb + 0.01, zc * 0.55]], ['Neck', 'Chest', nb], ['Head', 'Neck', hp], ['Jaw', 'Head', [0, hp[1] - 0.02, hp[2] + 0.02]]];
+  for (const [s, L2] of [[1, '_L'], [-1, '_R']]) {
+    bdef.push(['UpLeg' + L2, 'Hips', [s * LX, hipY, 0]], ['Leg' + L2, 'UpLeg' + L2, [s * LX, kn, 0]], ['Foot' + L2, 'Leg' + L2, [s * LX, fy, 0]]);
+    if (R.asas) bdef.push(['WingA' + L2, 'Chest', [s * Rb * 0.75, yb + Rb * 0.45, zc * 0.45]], ['WingB' + L2, 'WingA' + L2, [s * (Rb * 0.75 + 0.17), yb + Rb * 0.45, zc * 0.45 - 0.02]]);
+  }
+  const skel = buildSkeleton(bdef, chains, v => v);
+  kit.setBI(skel.BI);
+  const { B, REST } = skel;
+  const bodyW = p => { const t = clamp((p.z - zr) / (zc - zr), 0, 1); return [['Hips', 1 - t], ['Chest', t]]; };
+  const neckW = p => p.y > nb[1] + 0.02 ? [['Neck', 1]] : [['Chest', 0.5], ['Neck', 0.5]];
+  const tail = chains[0], TW = chainW(tail);
+  const pena = R.pele === 'penas';
+  // ---------- corpo
+  const zm = (zr + zc) / 2, sz0 = (zc - zr + 2 * Rb) / (2 * Rb);
+  add(G.sph(Rb, 11, 8), { c: C.pele, b: bodyW, pos: [0, yb, zm], scl: [1, R.cabeca === 'lanterna' ? 1.05 : 0.92, sz0], jit: J, vary: 0.08 });
+  add(G.sph(Rb * 0.9, 9, 6), { c: C.claro, b: bodyW, pos: [0, yb - Rb * 0.22, zm + Rb * 0.1], scl: [0.9, 0.75, sz0 * 0.95], jit: J });
+  add(G.tube([0, nb[1] - Rb * 0.35, nb[2] - 0.04], hp, Rb * 0.5, Rb * 0.36, 8), { c: C.pele, b: neckW, jit: J });
+  if (R.pele === 'escamas') {
+    for (let i = 0; i < 10; i++) { const a = i * 2.4, r = Rb * 0.45; add(G.cone(Rb * 0.18, Rb * 0.5, 4), { c: i % 2 ? C.pena : hex(C.pena, 1.15), b: neckW, pos: [Math.cos(a) * r, nb[1] - Rb * 0.05 + (i % 3) * 0.02, nb[2] - 0.02 + Math.sin(a) * r * 0.6], rot: [-150 + Math.sin(a) * 20, 0, Math.cos(a) * 30], jit: 0.002 }); }
+    for (let row = 0; row < 6; row++) for (const k of [-1, 0, 1]) add(G.sph(1, 5, 3), { c: row % 2 ? C.escuro : hex(C.escuro, 1.2), b: bodyW, pos: [k * Rb * 0.4, yb + Rb * 0.88 - Math.abs(k) * Rb * 0.12, zr - Rb * 0.4 + (zc - zr) * 0.7 * row / 5], scl: [Rb * 0.22, Rb * 0.05, Rb * 0.26], rot: [10, 0, -k * 25], jit: 0 }); }
+  if (pena) { for (let row = 0; row < 5; row++) for (const k of [-1, 0, 1]) add(G.box(Rb * 0.5, Rb * 0.06, Rb * 0.7), { c: (row + k) % 2 ? C.pele : hex(C.pele, 1.25), b: bodyW, pos: [k * Rb * 0.5, yb + Rb * 0.82 - Math.abs(k) * Rb * 0.2, zc - (zc - zr + Rb) * row / 5], rot: [12, 0, -k * 28], jit: 0.002 });
+    if (R.costelas) for (let i = 0; i < 4; i++) for (const s of [1, -1]) { const g = new THREE.TorusGeometry(Rb * 0.95, Rb * 0.06, 4, 8, Math.PI * 0.55); g.rotateY(Math.PI / 2); if (s < 0) g.scale(-1, 1, 1); g.rotateZ(s * 0.35); g.translate(s * Rb * 0.05, yb, zc * 0.6 - i * Rb * 0.4); add(g, { c: C.osso, b: bodyW, jit: 0.001 }); } }
+  if (R.pele === 'peixe') { for (let i = 0; i < 6; i++) add(G.cone(Rb * 0.06, Rb * (0.45 - Math.abs(i - 2) * 0.06), 4), { c: C.escuro, b: bodyW, pos: [0, yb + Rb * 1.0, zc * 0.4 - i * Rb * 0.25], rot: [-25, 0, 0], jit: 0 });
+    add(G.slab([[0, 0], [Rb * 1.5, Rb * 0.5], [Rb * 1.6, 0]], 0.008), { c: C.escuro, mat: 3, b: bodyW, pos: [0.004, yb + Rb * 0.95, zc * 0.45], rot: [0, 90, 0], jit: 0 });
+    for (const s of [1, -1]) add(G.slab([[0, 0], [Rb * 0.55, Rb * 0.3], [Rb * 0.6, -Rb * 0.2]], 0.01), { c: C.escuro, mat: 3, b: 'Chest', pos: [s * Rb * 0.9, yb - Rb * 0.1, zc * 0.5], rot: [0, s > 0 ? 30 : 150, -20 * s], jit: 0 });
+    if (R.pintas) for (let i = 0; i < 9; i++) { const a = i * 2.2, z = zr + (zc - zr) * ((i * 0.37) % 1); if (Math.cos(a) < -0.2) continue; add(G.sph(Rb * 0.07, 5, 4), { c: C.brilho, glow: true, b: bodyW, pos: [Math.sin(a) * Rb * 0.98, yb + Math.cos(a) * Rb * 0.9, z], jit: 0 }); } }
+  // ---------- pernas
+  for (const [s, L2] of [[1, '_L'], [-1, '_R']]) { const x = s * LX;
+    add(G.tube([x, hipY + 0.02, 0], [x, kn, 0], Rb * 0.42, Rb * 0.2, 7), { c: pena ? C.pele : C.pele, b: 'UpLeg' + L2, jit: J });
+    add(G.tube([x, kn, 0], [x, fy, 0], Rb * 0.13, Rb * 0.1, 6), { c: C.perna, b: 'Leg' + L2, jit: 0.002 });
+    add(G.sph(Rb * 0.15, 6, 4), { c: C.perna, b: 'Leg' + L2, pos: [x, kn, 0], jit: 0 });
+    for (const a of [-0.45, 0, 0.45, Math.PI]) { const ln = a === Math.PI ? 0.5 : 1; add(G.tube([x, fy, 0], [x + Math.sin(a) * Rb * 0.75 * ln, 0.006, Math.cos(a) * Rb * 0.85 * ln], Rb * 0.08, Rb * 0.04, 4), { c: C.perna, b: 'Foot' + L2, jit: 0 });
+      add(G.cone(Rb * 0.04, Rb * 0.12, 3), { c: C.escuro, b: 'Foot' + L2, pos: [x + Math.sin(a) * Rb * 0.82 * ln, 0.006, Math.cos(a) * Rb * 0.93 * ln], rot: [90, 0, 0], pre: g => g.rotateY(0), jit: 0 }); } }
+  // ---------- cauda
+  const tp = tail.pts;
+  if (R.cauda === 'lagarto') { const rr = [Rb * 0.55, Rb * 0.38, Rb * 0.22, Rb * 0.05];
+    for (let i = 0; i < 3; i++) { add(G.tube(tp[i], tp[i + 1], rr[i], rr[i + 1], 7), { c: C.pele, b: TW, jit: J }); add(G.cone(Rb * 0.08, Rb * 0.22, 4), { c: C.escuro, b: TW, pos: V3(...tp[i]).lerp(V3(...tp[i + 1]), 0.5).add(V3(0, rr[i] * 0.85, 0)).toArray(), rot: [-30, 0, 0], jit: 0 }); }
+    add(G.tube([0, yb, zr - Rb * 0.2], tp[0], Rb * 0.75, rr[0], 8), { c: C.pele, b: p => p.z < tz + 0.02 ? [['Tail1', 1]] : [['Hips', 1]], jit: J }); }
+  if (R.cauda === 'peixe') { add(G.tube([0, yb, zr - Rb * 0.3], tp[1], Rb * 0.6, Rb * 0.25, 8), { c: C.pele, b: p => p.z < tp[0][2] ? [['Tail1', 1]] : [['Hips', 1]], jit: J });
+    add(G.slab([[0, 0], [Rb * 1.1, Rb * 0.9], [Rb * 0.8, 0], [Rb * 1.1, -Rb * 0.7]], 0.012), { c: C.escuro, mat: 3, b: TW, pos: [0.006, tp[1][1], tp[1][2]], rot: [0, 90, 0], jit: 0 }); }
+  if (R.cauda === 'leque') for (let i = 0; i < 7; i++) { const a = (i / 6 - 0.5) * 1.1; add(G.box(Rb * 0.35, Rb * 0.05, Rb * 2.2), { c: i % 2 ? C.pele : hex(C.pele, 1.2), b: TW, pos: [Math.sin(a) * Rb * 0.9, yb + 0.03, tz - Rb * 0.9], rot: [8, a / D2R, 0], jit: 0.001 }); }
+  // ---------- cabeça
+  const hc = R.cabeca;
+  const eyes = (x, y, z, r, iris, pupil = '#14110c', slit = false) => { for (const s of [1, -1]) { add(G.sph(r, 6, 5), { c: iris, b: 'Head', pos: HB(s * x, y, z), jit: 0, vary: 0 });
+    add(slit ? G.box(r * 0.3, r * 1.1, r * 0.3) : G.sph(r * 0.5, 5, 4), { c: pupil, b: 'Head', pos: HB(s * (x + r * 0.75), y, z + r * 0.25), jit: 0, vary: 0 }); } };
+  if (hc === 'galo') { add(G.sph(0.075, 9, 7), { c: C.pele, b: 'Head', pos: HB(0, 0.01, 0.01), scl: [0.95, 1, 1.15], jit: J });
+    add(G.cone(0.032, 0.09, 5), { c: C.bico, b: 'Head', pos: HB(0, 0.0, 0.11), rot: [90, 0, 0], scl: [1, 1, 0.7], jit: 0 });
+    add(G.cone(0.026, 0.06, 5), { c: hex(C.bico, 0.85), b: 'Jaw', pos: HB(0, -0.02, 0.09), rot: [100, 0, 0], scl: [1, 1, 0.5], jit: 0 });
+    for (let i = 0; i < 3; i++) add(G.cone(0.006, 0.014, 3), { c: '#f8f4e8', b: 'Jaw', pos: HB((i - 1) * 0.012, -0.012, 0.075 + i % 2 * 0.005), rot: [0, 0, 0], jit: 0 });
+    eyes(0.05, 0.025, 0.04, 0.018, '#f0c030', '#14110c', true);
+    const cr = R.crista || 'serra', n = cr === 'baixa' ? 3 : 5;
+    for (let i = 0; i < n; i++) { const h = cr === 'coroa' ? 0.06 : cr === 'baixa' ? 0.03 : 0.045 + 0.01 * Math.sin(i * 1.3);
+      add(G.slab([[-0.016, 0], [0.016, 0], [0, h]], 0.01), { c: C.crista, b: 'Head', pos: HB(cr === 'coroa' ? Math.cos(i / (n - 1) * Math.PI) * 0.035 : 0, 0.065, 0.07 - i * 0.026 * (cr === 'coroa' ? 0.4 : 1)), rot: [-15 + i * 8, cr === 'coroa' ? 0 : 90, 0], jit: 0 }); }
+    add(G.sph(1, 6, 4), { c: C.crista, b: 'Jaw', pos: HB(0, -0.06, 0.07), scl: [0.016, 0.03, 0.02], jit: 0 }); }
+  if (hc === 'lanterna') { const r = Rb * 1.0;
+    add(G.sph(r, 11, 8), { c: C.pele, b: 'Head', pos: HB(0, 0.02, 0.04), scl: [1.05, 0.9, 0.95], jit: J, vary: 0.08 });
+    add(G.sph(r * 0.95, 10, 5, Math.PI / 2, Math.PI / 2), { c: C.pele, b: 'Jaw', pos: HB(0, 0.0, 0.07), scl: [1.05, 0.7, 0.95], jit: J });
+    add(G.box(r * 1.5, r * 0.08, r * 0.3), { c: '#1a0c10', b: 'Jaw', pos: HB(0, 0.0, 0.04 + r * 0.82), jit: 0 });
+    for (let i = 0; i < 9; i++) { const a = (i / 8 - 0.5) * 2.2, x = Math.sin(a) * r * 0.85, z = 0.04 + Math.cos(a) * r * 0.85;
+      add(G.cone(r * 0.04, r * (0.18 + (i % 2) * 0.1), 3), { c: '#f0ecd8', b: 'Head', pos: HB(x, 0.0 - r * 0.06, z + 0.01), rot: [180, 0, 0], jit: 0 });
+      add(G.cone(r * 0.035, r * (0.14 + ((i + 1) % 2) * 0.08), 3), { c: '#f0ecd8', b: 'Jaw', pos: HB(x * 0.95, r * 0.06, z), jit: 0 }); }
+    eyes(r * 0.55, r * 0.45, 0.04 + r * 0.55, r * 0.12, '#e8e0c8');
+    const isc = chains.find(c => c.name === 'Isca'), IW = chainW(isc);
+    for (let i = 0; i < 3; i++) add(G.tube(isc.pts[i], isc.pts[i + 1], 0.008, 0.006, 4), { c: C.escuro, b: IW, jit: 0 });
+    add(G.ico(0.035, 1), { c: C.brilho, glow: true, b: IW, pos: isc.pts[3], jit: 0 }); add(G.ico(0.05, 1), { c: C.brilho, mat: 3, b: IW, pos: isc.pts[3], jit: 0 }); }
+  if (hc === 'cranio') { add(G.sph(0.06, 9, 7), { c: C.osso, b: 'Head', pos: HB(0, 0.01, 0.01), scl: [0.95, 0.95, 1.2], jit: 0.002 });
+    add(G.cone(0.026, 0.12, 5), { c: hex(C.osso, 0.85), b: 'Head', pos: HB(0, 0.0, 0.12), rot: [90, 0, 0], scl: [1, 1, 0.7], jit: 0 });
+    add(G.cone(0.02, 0.08, 5), { c: hex(C.osso, 0.75), b: 'Jaw', pos: HB(0, -0.022, 0.1), rot: [98, 0, 0], scl: [1, 1, 0.5], jit: 0 });
+    for (const s of [1, -1]) { add(G.sph(0.02, 6, 4), { c: '#14110c', b: 'Head', pos: HB(s * 0.035, 0.02, 0.05), jit: 0 }); add(G.sph(0.009, 5, 4), { c: C.brilho, glow: true, b: 'Head', pos: HB(s * 0.045, 0.02, 0.058), jit: 0 }); }
+    for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; add(G.box(0.02, 0.006, 0.05), { c: C.pele, b: 'Neck', pos: [Math.cos(a) * Rb * 0.42, (nb[1] + hp[1]) / 2 - 0.02, (nb[2] + hp[2]) / 2 + Math.sin(a) * Rb * 0.3 - 0.02], rot: [30, a / D2R, 0], jit: 0.002 }); } }
+  // ---------- asas
+  if (R.asas) for (const [s, L2] of [[1, '_L'], [-1, '_R']]) { const A = REST['WingA' + L2].toArray(), Bw = REST['WingB' + L2].toArray();
+    add(G.tube(A, Bw, 0.016, 0.012, 5), { c: C.pele, b: 'WingA' + L2, jit: 0 });
+    for (let i = 0; i < 4; i++) add(G.box(0.045, 0.008, 0.13 - i * 0.012), { c: i % 2 ? C.pele : hex(C.pele, 1.2), b: 'WingA' + L2, pos: [A[0] + s * (0.03 + i * 0.04), A[1], A[2] - 0.065], rot: [0, -s * 6, 0], jit: 0.001 });
+    for (let i = 0; i < 5; i++) add(G.box(0.04, 0.008, 0.2 - i * 0.02), { c: i % 2 ? C.pele : hex(C.pele, 1.2), b: 'WingB' + L2, pos: [Bw[0] + s * (0.02 + i * 0.035), Bw[1], Bw[2] - 0.08 + i * 0.012], rot: [0, -s * (12 + i * 8), 0], jit: 0.001 });
+    if (R.costelas) add(G.tube(Bw, [Bw[0] + s * 0.18, Bw[1], Bw[2] + 0.02], 0.006, 0.004, 4), { c: C.osso, b: 'WingB' + L2, jit: 0 }); }
+  // ---------- poses
+  const legLen = hipY - fy, lA = REST.UpLeg_L.distanceTo(REST.Leg_L), lB = REST.Leg_L.distanceTo(REST.Foot_L);
+  const setE = (b, a, o = 'YXZ') => b.quaternion.copy(E(a, o));
+  const WF = [-20, 84, -40], hasW = !!R.asas;
+  function applyPose(P) {
+    B.Hips.position.set(REST.Hips.x + P.hp[0], REST.Hips.y + P.hp[1], REST.Hips.z + P.hp[2]); setE(B.Hips, P.hr);
+    setE(B.Chest, P.ch); setE(B.Neck, P.nk); setE(B.Head, P.hd); B.Jaw.quaternion.setFromAxisAngle(_X, (P.jaw || 0) * D2R);
+    for (const ch of chains) for (const nm of ch.names) B[nm].quaternion.identity();
+    setE(B.Tail1, P.tl);
+    if (hasW) for (const [s, L2] of [[1, '_L'], [-1, '_R']]) { B['WingA' + L2].quaternion.copy(E([0, s * P.w[1], s * P.w[0]], 'XYZ')); B['WingB' + L2].quaternion.copy(E([0, s * P.w[1] * 0.5, s * P.w[2]], 'XYZ')); }
+    B.Hips.updateMatrixWorld(true);
+    for (const [s, L2, k] of [[1, '_L', 'L'], [-1, '_R', 'R']]) {
+      if (P.fk) { setE(B['UpLeg' + L2], [P.fk[0], 0, 0], 'XYZ'); B['Leg' + L2].quaternion.setFromAxisAngle(_X, P.fk[1] * D2R); B['Foot' + L2].quaternion.copy(E([P.fk[2] || 0, 0, 0])); continue; }
+      const o = P.f[k]; ikQ(B['UpLeg' + L2], B['Leg' + L2], B['Foot' + L2], V3(s * LX + o[0], fy + o[1], o[2]), V3(0, 0, -1), lA, lB, false, E([o[3] || 0, 0, 0])); }
+    B.Hips.updateMatrixWorld(true);
+  }
+  const crouch = -legLen * 0.1;
+  const base = () => ({ hp: [0, crouch, 0], hr: [0, 0, 0], ch: [0, 0, 0], nk: [0, 0, 0], hd: [0, 0, 0], tl: [0, 0, 0], jaw: 0, w: [...WF], f: { L: [0, 0, 0, 0], R: [0, 0, 0, 0] } });
+  const gaitFoot = (u, D, Sx, h) => { if (u < D) return [0, 0, Sx / 2 - Sx * u / D, 0]; const w = (u - D) / (1 - D); return [0, h * Math.sin(Math.PI * w), -Sx / 2 + Sx * EASE.io(w), -35 * Math.sin(Math.PI * w)]; };
+  const szk = Math.sqrt(legLen / 0.4);
+  const gait = (name, T, D, Sx, h, extra) => ({ name, dur: T, fps: 60, loop: true, v: Sx / (D * T), fn: t => { const P = base(), u = t / T;
+    P.f.L = gaitFoot(u % 1, D, Sx, h); P.f.R = gaitFoot((u + 0.5) % 1, D, Sx, h); extra(P, u); return P; } });
+  const clipdefs = [
+    { name: 'Parado', dur: 3, fps: 30, loop: true, fn: t => { const P = base(), a = 2 * Math.PI * t / 3, look = Math.round(Math.sin(a) * 2) / 2;   // cabeça de ave: vira aos trancos
+      P.hp[1] += 0.005 * Math.sin(2 * a); P.ch = [-2 * Math.sin(2 * a), 0, 0]; P.nk = [3 * Math.sin(2 * a), 10 * look, 0]; P.hd = [4 * Math.sin(4 * a), 20 * look, 0]; P.tl = [0, 14 * Math.sin(a), 0];
+      if (hasW) P.w = [WF[0] + 3 * Math.sin(2 * a), WF[1], WF[2]]; return P; } },
+    gait('Andar', 0.8 * szk, 0.62, legLen * 0.7, legLen * 0.2, (P, u) => { const a = 2 * Math.PI * u;
+      P.hp[1] += -0.02 * legLen * Math.cos(2 * a); P.hr = [0, 4 * Math.cos(a), 4 * Math.sin(a)]; P.nk = [-10 * Math.cos(2 * a), -4 * Math.cos(a), 0]; P.hd = [10 * Math.cos(2 * a), 0, 0]; P.tl = [0, 12 * Math.sin(a), 0]; }),
+    gait('Correr', 0.45 * szk, 0.38, legLen * 1.3, legLen * 0.32, (P, u) => { const a = 2 * Math.PI * u;
+      P.hp[1] += 0.05 * legLen * Math.sin(2 * a - 0.6); P.hr = [12, 3 * Math.cos(a), 0]; P.ch = [-4, 0, 0]; P.nk = [-12 + 6 * Math.sin(2 * a), 0, 0]; P.hd = [8, 0, 0]; P.tl = [-14, 8 * Math.sin(a), 0];
+      if (hasW) P.w = [WF[0] + 30, WF[1] * 0.6, WF[2] + 30]; }),
+    { name: 'Atacar', dur: 0.9, fps: 60, fn: t => { const P = base(), u = t / 0.9, w = u < 0.4 ? EASE.io(u / 0.4) : u < 0.52 ? 1 - EASE.in((u - 0.4) / 0.12) * 2 : -1 + EASE.io((u - 0.52) / 0.48), back = Math.max(0, w), fwd = Math.max(0, -w);
+      P.hp = [0, crouch - legLen * 0.06 * back, -Lb * 0.05 * back + Lb * 0.12 * fwd]; P.hr = [-6 * back + 18 * fwd, 0, 0]; P.ch = [-8 * back + 10 * fwd, 0, 0]; P.nk = [-25 * back + 35 * fwd, 0, 0]; P.hd = [-10 * back + 20 * fwd, 0, 0];
+      P.jaw = 35 * Math.max(back * 0.6, fwd); P.tl = [-15 * fwd + 10 * back, 0, 0]; P.f.L = [0, 0, 0.06 * fwd, 0]; if (hasW) P.w = [WF[0] + 60 * back, WF[1] * (1 - back * 0.7), WF[2] + 60 * back]; return P; } },
+    { name: 'Gritar', dur: 1.6, fps: 30, fn: t => { const P = base(), u = t / 1.6, k = Math.sin(Math.PI * clamp(u / 0.85, 0, 1)), sh = k > 0.5 ? Math.sin(u * 70) * 2 : 0;
+      P.hp[1] += legLen * 0.05 * k; P.hr = [-14 * k, 0, 0]; P.ch = [-10 * k, 0, 0]; P.nk = [-30 * k + sh, 0, 0]; P.hd = [-25 * k, sh, 0]; P.jaw = 40 * k; P.tl = [-10 * k, 0, 0];
+      if (hasW) P.w = [WF[0] + 70 * k, WF[1] * (1 - k), WF[2] + 70 * k]; return P; } },
+  ];
+  if (hasW) { const f = R.flap, DV = Math.max(1, Math.round(1.2 * f)) / f, hov = legLen * 0.9;
+    clipdefs.push({ name: 'Voar', dur: DV, fps: Math.max(30, Math.min(120, f * 10)), loop: true, v: 3 * Lb, fn: t => { const P = base(), ph = 2 * Math.PI * f * t, sl = 2 * Math.PI * t / DV;
+      P.hp = [0, hov + legLen * 0.12 * Math.cos(ph), 0]; P.hr = [8, 0, 3 * Math.sin(sl)]; P.nk = [-12, 0, 0]; P.hd = [-6, 0, 0]; P.tl = [-6, 0, 0]; P.jaw = 0;
+      P.fk = [-50, 110, 40]; P.w = [48 * Math.sin(ph) + 6, 4, 40 * Math.sin(ph - 0.6) + 4]; return P; } }); }
+  const P0 = finish(kit, skel, chains, S.nome, clipdefs, applyPose, {});
+  P0.vel = Object.fromEntries(clipdefs.filter(c => c.v).map(c => [c.name, c.v]));
+  return P0;
+}
+
 // ======================================================================= entrada
 export function forgeCriatura(id, cfgIn) {
   const S = ESPECIES[id], cfg = { ...baseCfgEsp(id), ...cfgIn };
-  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : S.fam === 'E' ? forgeE(id, S, cfg) : S.fam === 'F' ? forgeF(id, S, cfg) : S.fam === 'G' ? forgeG(id, S, cfg) : S.fam === 'H' ? forgeH(id, S, cfg) : forgeB(id, S, cfg);
+  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : S.fam === 'E' ? forgeE(id, S, cfg) : S.fam === 'F' ? forgeF(id, S, cfg) : S.fam === 'G' ? forgeG(id, S, cfg) : S.fam === 'H' ? forgeH(id, S, cfg) : S.fam === 'I' ? forgeI(id, S, cfg) : forgeB(id, S, cfg);
   const scale = S.tam * TAMK[cfg.tamanho] / (S.medida === 'comprimento' ? P.nominalL : P.nominalH);
   P.root.scale.setScalar(scale);
   P.root.updateMatrixWorld(true);
