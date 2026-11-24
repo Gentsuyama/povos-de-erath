@@ -2,7 +2,7 @@
 //   import { ESPECIES, ESP_ORDEM, catsOfEsp, baseCfgEsp, randomCfgEsp, nomeVariacao, forgeCriatura, springStep } from './erath_criaturas.js'
 //   const P = forgeCriatura('fada-orvalho', baseCfgEsp('fada-orvalho'));  // P.root já na escala real; P.clips; P.springs
 // Famílias: A = bípede pequeno com/sem asas (fadas, diabretes, ursos alados); B = flutuante (fantasmas, chamas, olhos...);
-// C = quadrúpede com/sem asas (lobo-falcão, javali, alce, tartaruga-de-vento...); D = 6/8 patas (insetos, aranhas, caranguejo).
+// C = quadrúpede com/sem asas (lobo-falcão, javali, alce, tartaruga-de-vento...); D = 6/8 patas (insetos, aranhas, caranguejo); E = serpentes e corpos em corrente (tamanho = comprimento).
 // Convenções iguais às da Forja: Y para cima, olha para +Z, esquerda dele = +X, metros.
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
@@ -466,6 +466,52 @@ const ESP_D = {
     receita: c => ({ pares: 4, corpo: 'olho', cabeca: 'olho', pelos: c.patas === 'peludas', perna: 1.2 }) },
 };
 Object.assign(ESPECIES, ESP_D);
+
+// ------------------------------------------------------------ SERPENTES E CORRENTES (família E) — tam = COMPRIMENTO
+const ESP_E = {
+  'serpente-plumada': { num: 53, nome: 'Serpente-plumada', grupo: 'Répteis', fam: 'E', tam: 5, medida: 'comprimento', voa: true, desc: 'Corpo de cobra com penas coloridas e crista; voa ondulando.',
+    cats: { cores: pal({ jade: { n: 'Jade', pele: '#2a8a6a', claro: '#a8e8c8', escuro: '#145a40', pena: '#e8b030', pena2: '#d83a3a' }, sol: { n: 'Sol', pele: '#d8902a', claro: '#f8e0a0', escuro: '#8a4a10', pena: '#2a9ad8', pena2: '#f0f0f0' },
+      noite: { n: 'Noite', pele: '#3a2a6a', claro: '#a898e8', escuro: '#1a1238', pena: '#40e0d0', pena2: '#e040a0' } }),
+      crista: { n: 'Crista', o: [P_('leque', 'Leque'), P_('longa', 'Ao longo do corpo')] }, asas: { n: 'Asinhas', o: [P_('sim', 'Com asinhas'), P_('nao', 'Sem asas')] } },
+    base: { cores: 'jade', crista: 'leque', asas: 'sim' },
+    receita: c => ({ N: 14, r0: 0.045, tipo: 'plumada', cabeca: 'cobra', crista: c.crista, asinhas: c.asas === 'sim', onda: 'vertical' }) },
+  'verme-das-dunas': { num: 56, nome: 'Verme-das-dunas', grupo: 'Répteis', fam: 'E', tam: 20, medida: 'comprimento', desc: 'Sem olhos, boca em pétalas, placas de areia; nada na areia.',
+    cats: { cores: pal({ areia: { n: 'Areia', pele: '#c8a070', claro: '#f0d8a8', escuro: '#7a5a34', boca: '#c84a4a' }, rocha: { n: 'Rocha', pele: '#8a7a6a', claro: '#c8bca8', escuro: '#4a3e34', boca: '#e08a30' }, cinza: { n: 'Cinza', pele: '#6a6a72', claro: '#b0b0b8', escuro: '#34343a', boca: '#a040c0' } }),
+      petalas: { n: 'Pétalas', o: [P_('cinco', 'Cinco'), P_('tres', 'Três'), P_('oito', 'Oito')] } },
+    base: { cores: 'areia', petalas: 'cinco' },
+    receita: c => ({ N: 14, r0: 0.07, taper: 0.7, tipo: 'verme', cabeca: 'petalas', petalas: { tres: 3, cinco: 5, oito: 8 }[c.petalas], onda: 'vertical', mergulha: true }) },
+  'cobra-de-duas-pontas': { num: 58, nome: 'Cobra-de-duas-pontas', grupo: 'Répteis', fam: 'E', tam: 2, medida: 'comprimento', desc: 'Uma cabeça em cada ponta; rola como roda.',
+    cats: { cores: pal({ coral: { n: 'Coral', pele: '#d84a3a', claro: '#f8e0c0', escuro: '#1a1414' }, oliva: { n: 'Oliva', pele: '#6a7a3a', claro: '#d8e0a0', escuro: '#2a3014' }, azul: { n: 'Azul', pele: '#3a6ab0', claro: '#c0d8f0', escuro: '#141a30' } }),
+      aneis: { n: 'Anéis', o: [P_('sim', 'Com anéis'), P_('nao', 'Lisa')] } },
+    base: { cores: 'coral', aneis: 'sim' },
+    receita: c => ({ N: 12, r0: 0.035, taper: 0, tipo: 'duas', cabeca: 'cobra', duas: true, aneis: c.aneis === 'sim', onda: 'lateral' }) },
+  'lagarta-onibus': { num: 71, nome: 'Lagarta-ônibus', grupo: 'Insetos', fam: 'E', tam: 6, medida: 'comprimento', desc: 'Janelinhas e passageiros dentro; rasteja ondulando.',
+    cats: { cores: pal({ verde: { n: 'Verde', pele: '#7ab84a', claro: '#e0f0a0', escuro: '#3a6a20', janela: '#a8e0ff' }, amarela: { n: 'Escolar', pele: '#f0c030', claro: '#fff0b0', escuro: '#8a6a10', janela: '#c8f0ff' }, roxa: { n: 'Roxa', pele: '#8a5ac8', claro: '#e0c8ff', escuro: '#4a2a7a', janela: '#ffe8a8' } }),
+      passageiros: { n: 'Passageiros', o: [P_('muitos', 'Lotada'), P_('poucos', 'Poucos'), P_('nenhum', 'Vazia')] } },
+    base: { cores: 'verde', passageiros: 'muitos' },
+    receita: c => ({ N: 9, r0: 0.07, taper: 0.15, tipo: 'lagarta', cabeca: 'lagarta', passageiros: c.passageiros, onda: 'vertical', antenas: true }) },
+  'centopeia-trem': { num: 74, nome: 'Centopeia-trem', grupo: 'Insetos', fam: 'E', tam: 10, medida: 'comprimento', desc: 'Segmentos que se soltam e andam sozinhos; ondula.',
+    cats: { cores: pal({ ferrugem: { n: 'Ferrugem', pele: '#8a3a1e', claro: '#e0905a', escuro: '#3a1408', extra: '#c8a050' }, preta: { n: 'Preta', pele: '#2a2628', claro: '#7a6a70', escuro: '#100c0e', extra: '#e0c040' }, jade: { n: 'Jade', pele: '#2a6a5a', claro: '#80d0b0', escuro: '#103028', extra: '#d0e0a0' } }),
+      vagoes: { n: 'Vagões', o: [P_('sim', 'Com vagões'), P_('nao', 'Sem vagões')] } },
+    base: { cores: 'ferrugem', vagoes: 'sim' },
+    receita: c => ({ N: 12, r0: 0.035, taper: 0.2, tipo: 'centopeia', cabeca: 'centopeia', vagoes: c.vagoes === 'sim', onda: 'lateral', patas: true, antenas: true }) },
+  'vinha-serpente': { num: 92, nome: 'Vinha-serpente', grupo: 'Plantas', fam: 'E', tam: 5, medida: 'comprimento', desc: 'Espinhos e flores; ondula.',
+    cats: { cores: pal({ verde: { n: 'Verde', pele: '#4a7a2a', claro: '#a8d070', escuro: '#2a4a14', flor: '#e84a6a' }, outono: { n: 'Outono', pele: '#7a5a2a', claro: '#d8a050', escuro: '#4a3014', flor: '#f0a020' }, sombria: { n: 'Sombria', pele: '#2a3a2a', claro: '#6a8a6a', escuro: '#141e14', flor: '#a040e0' } }),
+      flores: { n: 'Flores', o: [P_('muitas', 'Muitas'), P_('poucas', 'Poucas'), P_('frutos', 'Frutos')] } },
+    base: { cores: 'verde', flores: 'muitas' },
+    receita: c => ({ N: 14, r0: 0.03, taper: 0.6, tipo: 'vinha', cabeca: 'flor', flores: c.flores, onda: 'lateral' }) },
+  'serpente-de-ossos': { num: 116, nome: 'Serpente-de-ossos', grupo: 'Espectrais', fam: 'E', tam: 8, medida: 'comprimento', desc: 'Costelas soltas; ondula.',
+    cats: { cores: pal({ osso: { n: 'Osso', pele: '#e8e0cc', claro: '#fff8e8', escuro: '#6a6050', brilho: '#60e0ff' }, velho: { n: 'Velho', pele: '#c8b088', claro: '#e8d8b0', escuro: '#5a4a30', brilho: '#a0ff60' }, obsidiana: { n: 'Obsidiana', pele: '#3a3438', claro: '#6a6068', escuro: '#141014', brilho: '#ff5040' } }),
+      costelas: { n: 'Costelas', o: [P_('longas', 'Longas'), P_('curtas', 'Curtas')] } },
+    base: { cores: 'osso', costelas: 'longas' },
+    receita: c => ({ N: 16, r0: 0.03, taper: 0.5, tipo: 'ossos', cabeca: 'cranio', costelas: c.costelas, onda: 'lateral' }) },
+  'pipa-dragao': { num: 150, nome: 'Pipa-dragão', grupo: 'Constructos', fam: 'E', tam: 4, medida: 'comprimento', voa: true, desc: 'Serpente de papel; ondula no céu ao vento.',
+    cats: { cores: pal({ rubro: { n: 'Rubro', pele: '#d83a2a', claro: '#f0d060', escuro: '#5a1410', fita: '#f0c030' }, jade: { n: 'Jade', pele: '#2a9a6a', claro: '#f0e8c0', escuro: '#104030', fita: '#e84a4a' }, anil: { n: 'Anil', pele: '#3a4ab8', claro: '#f0f0ff', escuro: '#141a50', fita: '#f0f0f0' } }),
+      fitas: { n: 'Fitas', o: [P_('longas', 'Longas'), P_('curtas', 'Curtas')] } },
+    base: { cores: 'rubro', fitas: 'longas' },
+    receita: c => ({ N: 12, r0: 0.04, taper: 0.3, tipo: 'pipa', cabeca: 'pipa', fitas: c.fitas, onda: 'vertical' }) },
+};
+Object.assign(ESPECIES, ESP_E);
 
 export const ESP_ORDEM = Object.keys(ESPECIES).sort((a, b) => ESPECIES[a].num - ESPECIES[b].num);
 export const GRUPOS = [...new Set(ESP_ORDEM.map(k => ESPECIES[k].grupo))];
@@ -1926,14 +1972,172 @@ function forgeD(id, S, cfg) {
   return P0;
 }
 
+// ======================================================================= FAMÍLIA E — serpentes, vermes e corpos em corrente
+function forgeE(id, S, cfg) {
+  const R = { N: 12, r0: 0.04, taper: 0.5, tipo: 'cobra', cabeca: 'cobra', onda: 'lateral', ...S.receita(cfg) };
+  const COL = S.cats.cores.cor[cfg.cores];
+  const C = { pele: '#6a7a3a', claro: '#d8e0a0', escuro: '#2a3014', extra: '#e8dcc0', brilho: '#ffd060', ...COL };
+  const kit = makeKit(v => v.clone()), { add, G } = kit;
+  const N = R.N, SL = 1 / N, r0 = R.r0, yb = r0, J = 0.003;
+  const rad = i => r0 * (1 - R.taper * Math.pow(i / N, 1.3));
+  // ---------- esqueleto: Root no chão; Seg1 (pescoço) .. SegN (ponta); Head à frente de Seg1
+  const bdef = [['Root', null, [0, 0, 0]]];
+  for (let i = 1; i <= N; i++) bdef.push(['Seg' + i, i === 1 ? 'Root' : 'Seg' + (i - 1), [0, yb, -(i - 1) * SL]]);
+  bdef.push(['SegEnd', 'Seg' + N, [0, yb, -N * SL]], ['Head', 'Seg1', [0, yb, 0.02]], ['Jaw', 'Head', [0, yb - r0 * 0.4, 0.03]]);
+  if (R.duas) bdef.push(['Head2', 'Seg' + N, [0, yb, -N * SL - 0.02]]);
+  if (R.cabeca === 'petalas') for (let i = 0; i < R.petalas; i++) bdef.push(['Petal' + (i + 1), 'Head', [Math.cos(i / R.petalas * Math.PI * 2) * r0 * 0.9, yb + Math.sin(i / R.petalas * Math.PI * 2) * r0 * 0.9, 0.04]]);
+  if (R.patas) for (let i = 2; i <= N; i++) for (const [s, L] of [[1, '_L'], [-1, '_R']]) bdef.push(['Pata' + i + L, 'Seg' + i, [s * rad(i) * 0.8, yb - rad(i) * 0.3, -(i - 0.5) * SL]]);
+  const chains = [];
+  if (R.antenas) for (const [s, L] of [[1, '_L'], [-1, '_R']]) chains.push({ name: 'Ant' + L, label: 'antenas', parent: 'Head', pts: [[s * r0 * 0.5, yb + r0 * 0.9, 0.06], [s * r0 * 1.0, yb + r0 * 2.2, 0.1], [s * r0 * 1.4, yb + r0 * 3.2, 0.12]],
+    names: ['Ant1' + L, 'Ant2' + L], end: 'AntEnd' + L, spring: [{ k: 80, d: 6, g: 0.2, max: 30 }, { k: 60, d: 5, g: 0.2, max: 40 }] });
+  if (R.tipo === 'pipa') for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const n = R.fitas === 'longas' ? 0.35 : 0.18, b = [s * rad(N) * 0.5, yb, -N * SL];
+    chains.push({ name: 'Fita' + L, label: 'fitas', parent: 'Seg' + N, pts: [b, [b[0] + s * 0.02, yb - 0.01, b[2] - n * 0.5], [b[0] + s * 0.04, yb - 0.02, b[2] - n]], names: ['Fita1' + L, 'Fita2' + L], end: 'FitaEnd' + L,
+      spring: [{ k: 25, d: 3, g: 0.3, max: 50 }, { k: 18, d: 2.5, g: 0.3, max: 60 }] }); }
+  const skel = buildSkeleton(bdef, chains, v => v);
+  kit.setBI(skel.BI);
+  const { B, REST } = skel;
+  const spine = { pts: [[0, yb, 0.0]].concat(Array.from({ length: N }, (_, i) => [0, yb, -(i + 1) * SL])), names: Array.from({ length: N }, (_, i) => 'Seg' + (i + 1)), parent: 'Root' };
+  const SW = chainW(spine);
+  const zAt = i => -(i - 0.5) * SL;
+  // ---------- corpo
+  const t = R.tipo, bodyMat = 0;
+  for (let i = 1; i <= N; i++) {
+    const z0 = -(i - 1) * SL, z1 = -i * SL, r = rad(i - 1), r2 = rad(i);
+    if (t === 'ossos') {
+      add(G.cyl(r * 0.55, r2 * 0.55, SL * 0.7, 6), { c: C.pele, b: 'Seg' + i, pos: [0, yb, (z0 + z1) / 2], rot: [90, 0, 0], jit: J });
+      add(G.box(r * 0.5, r * 1.2, SL * 0.3), { c: C.claro, b: 'Seg' + i, pos: [0, yb + r * 0.8, (z0 + z1) / 2], jit: J });
+      const rl = R.costelas === 'longas' ? 1.9 : 1.3;
+      if (i > 1 && i < N - 1) for (const s of [1, -1]) { const g = new THREE.TorusGeometry(r * rl, r * 0.12, 4, 8, Math.PI * 0.7); g.rotateY(Math.PI / 2); g.rotateX(Math.PI * 0.15); if (s < 0) g.scale(-1, 1, 1); g.translate(0, yb + r * 0.2, (z0 + z1) / 2);
+        add(g, { c: C.pele, b: 'Seg' + i, jit: 0.002 }); }
+      continue;
+    }
+    if (t === 'pipa') { const w = r * 3.2; add(G.slab([[0, w], [w * 0.7, 0], [0, -w * 0.6], [-w * 0.7, 0]], 0.006), { c: i % 2 ? C.pele : C.claro, b: 'Seg' + i, pos: [0, yb, (z0 + z1) / 2], rot: [-90, 0, 0], jit: 0.001 });
+      add(G.box(0.004, 0.004, SL), { c: C.escuro, b: 'Seg' + i, pos: [0, yb + 0.004, (z0 + z1) / 2], jit: 0 }); continue; }
+    add(G.tube([0, yb, z0], [0, yb, z1], r, r2, t === 'verme' ? 10 : 8), { c: C.pele, b: SW, jit: J, vary: 0.08, mat: bodyMat });
+    add(G.sph(r * 1.02, 8, 6), { c: C.pele, b: 'Seg' + i, pos: [0, yb, z0], jit: J });
+    if (t !== 'verme' && t !== 'lagarta') add(G.sph(1, 7, 4), { c: C.claro, b: 'Seg' + i, pos: [0, yb - r * 0.55, (z0 + z1) / 2], scl: [r * 0.8, r * 0.4, SL * 0.55], jit: J });
+    if (t === 'verme') { add(G.cyl(r * 1.06, r2 * 1.06, SL * 0.25, 10, true), { c: C.escuro, b: 'Seg' + i, pos: [0, yb, z0 - SL * 0.15], rot: [90, 0, 0], jit: 0.002 });
+      for (let k = 0; k < 4; k++) { const a = k / 4 * Math.PI * 2 + i; add(G.box(r * 0.45, r * 0.12, SL * 0.5), { c: C.claro, b: 'Seg' + i, pos: [Math.cos(a) * r * 0.97, yb + Math.sin(a) * r * 0.97, (z0 + z1) / 2], rot: [0, 0, a / D2R + 90], jit: 0.002 }); } }
+    if (t === 'duas' && R.aneis && i % 2) add(G.cyl(r * 1.04, r * 1.04, SL * 0.35, 8, true), { c: C.escuro, b: 'Seg' + i, pos: [0, yb, (z0 + z1) / 2], rot: [90, 0, 0], jit: 0.001 });
+    if (t === 'duas' && R.aneis && !(i % 2)) add(G.cyl(r * 1.03, r * 1.03, SL * 0.2, 8, true), { c: C.claro, b: 'Seg' + i, pos: [0, yb, (z0 + z1) / 2], rot: [90, 0, 0], jit: 0.001 });
+    if (t === 'plumada') { if (R.crista === 'longa' || i < 4) { const h = R.crista === 'leque' ? r * (3.2 - i * 0.6) : r * 1.6;
+        add(G.slab([[0, 0], [SL * 0.5, h], [SL, 0]], 0.006), { c: i % 2 ? C.pena : C.pena2, b: 'Seg' + i, pos: [0.003, yb + r * 0.85, z0], rot: [0, 90, 0], jit: 0 }); }
+      for (const s of [1, -1]) add(G.sph(1, 5, 3), { c: C.pena, b: 'Seg' + i, pos: [s * r * 0.9, yb, (z0 + z1) / 2], scl: [r * 0.5, r * 0.12, SL * 0.4], rot: [0, 0, s * 30], jit: 0 }); }
+    if (t === 'lagarta') { add(G.cyl(r * 1.02, r * 1.02, SL * 0.18, 9, true), { c: C.escuro, b: 'Seg' + i, pos: [0, yb, z0 - SL * 0.05], rot: [90, 0, 0], jit: 0 });
+      for (const s of [1, -1]) { add(G.box(r * 0.3, r * 0.45, SL * 0.45), { c: C.janela, mat: 3, b: 'Seg' + i, pos: [s * r * 0.93, yb + r * 0.25, (z0 + z1) / 2], jit: 0 });
+        const q = R.passageiros, show = q === 'muitos' ? true : q === 'poucos' ? i % 3 === 0 : false;
+        if (show && i > 1) add(G.sph(r * 0.18, 6, 4), { c: ['#e3a782', '#5f9a3e', '#8fa9b8', '#d9cce8'][i % 4], b: 'Seg' + i, pos: [s * r * 0.6, yb + r * 0.3, (z0 + z1) / 2], jit: 0 }); }
+      for (const s of [1, -1]) add(G.cyl(r * 0.18, r * 0.12, r * 0.4, 6), { c: C.escuro, b: 'Seg' + i, pos: [s * r * 0.6, yb - r * 0.85, (z0 + z1) / 2], jit: 0 });
+      add(G.box(r * 1.3, r * 0.08, SL * 0.9), { c: C.claro, b: 'Seg' + i, pos: [0, yb + r * 1.0, (z0 + z1) / 2], jit: 0 }); }
+    if (t === 'centopeia') { add(G.sph(1, 7, 4), { c: C.escuro, b: 'Seg' + i, pos: [0, yb + r * 0.4, (z0 + z1) / 2], scl: [r * 1.1, r * 0.55, SL * 0.45], jit: 0.002 });
+      if (R.vagoes && i > 2 && i % 3 === 0) { add(G.box(r * 1.6, r * 1.2, SL * 0.8), { c: C.extra, b: 'Seg' + i, pos: [0, yb + r * 1.4, (z0 + z1) / 2], jit: 0.002 });
+        for (const s of [1, -1]) add(G.box(r * 0.05, r * 0.5, SL * 0.4), { c: '#ffe080', glow: true, b: 'Seg' + i, pos: [s * r * 0.81, yb + r * 1.45, (z0 + z1) / 2], jit: 0 }); } }
+    if (t === 'vinha') { if (i % 2) for (const s of [1, -1]) add(G.cone(r * 0.25, r * 0.9, 4), { c: C.escuro, b: 'Seg' + i, pos: [s * r * 1.0, yb + r * 0.3, (z0 + z1) / 2], rot: [0, 0, -s * 70], jit: 0 });
+      if (i % 2 === 0) add(G.sph(1, 5, 3), { c: C.claro, b: 'Seg' + i, pos: [(i % 4 ? 1 : -1) * r * 1.4, yb + r * 0.4, (z0 + z1) / 2], scl: [r * 1.2, r * 0.2, r * 0.7], rot: [0, 0, (i % 4 ? -1 : 1) * 30], jit: 0 });
+      const f = R.flores, put = f === 'muitas' ? i % 3 === 1 : i % 5 === 2;
+      if (put && i > 1) { if (f === 'frutos') add(G.ico(r * 0.6, 1), { c: C.flor, b: 'Seg' + i, pos: [0, yb + r * 1.2, (z0 + z1) / 2], jit: 0 });
+        else for (let k = 0; k < 5; k++) { const a = k / 5 * Math.PI * 2; add(G.sph(1, 5, 3), { c: C.flor, b: 'Seg' + i, pos: [Math.cos(a) * r * 0.7, yb + r * 1.3, (z0 + z1) / 2 + Math.sin(a) * r * 0.7], scl: [r * 0.5, r * 0.12, r * 0.5], jit: 0 }); } } }
+  }
+  // patas (centopeia) e penas-asas
+  if (R.patas) for (let i = 2; i <= N; i++) for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const p0 = REST['Pata' + i + L].toArray(), r = rad(i);
+    add(G.tube(p0, [p0[0] + s * r * 1.6, p0[1] - r * 0.2, p0[2]], r * 0.22, r * 0.18, 4), { c: C.extra, b: 'Pata' + i + L, jit: 0 });
+    add(G.tube([p0[0] + s * r * 1.6, p0[1] - r * 0.2, p0[2]], [p0[0] + s * r * 2.0, 0.0, p0[2] + r * 0.2], r * 0.18, r * 0.06, 4), { c: C.extra, b: 'Pata' + i + L, jit: 0 }); }
+  if (R.asinhas) for (const s of [1, -1]) { const z = -SL * 2.5, r = rad(2);
+    for (let k = 0; k < 4; k++) add(G.box(r * (4.5 - k * 0.8), r * 0.5, 0.004), { c: k % 2 ? C.pena : C.pena2, b: 'Seg3', pos: [s * r * (2.4 - k * 0.3), yb + r * 0.6, z - k * r * 0.4], rot: [-15, s * 15, s * (25 - k * 10)], jit: 0 }); }
+  // fitas da pipa
+  for (const ch of chains.filter(c => c.name.startsWith('Fita'))) { const W = { b: chainW(ch) }; for (let i = 0; i < 2; i++) add(G.tube(ch.pts[i], ch.pts[i + 1], 0.012, 0.012, 3), { c: C.fita, ...W, pre: g => g.scale(1.8, 1, 0.3) }); }
+  // ---------- cabeça
+  const HB = (x, y, z) => [x, yb + y, 0.02 + z], hc = R.cabeca;
+  const snake = (bone, sgn = 1, zoff = 0) => { const P2 = (x, y, z) => [x, yb + y, zoff + sgn * z], r = r0;
+    add(G.sph(1, 9, 6), { c: C.pele, b: bone, pos: P2(0, r * 0.15, r * 1.4), scl: [r * 1.25, r * 0.85, r * 1.9], jit: J });
+    add(G.sph(1, 7, 4), { c: C.claro, b: bone === 'Head' ? 'Jaw' : bone, pos: P2(0, -r * 0.4, r * 1.5), scl: [r * 1.05, r * 0.35, r * 1.6], jit: J });
+    for (const s of [1, -1]) { add(G.sph(r * 0.28, 6, 4), { c: '#f0c030', b: bone, pos: P2(s * r * 0.8, r * 0.55, r * 1.9), jit: 0, vary: 0 });
+      add(G.box(r * 0.08, r * 0.38, r * 0.08), { c: '#14110c', b: bone, pos: P2(s * r * 0.98, r * 0.55, r * 2.0), jit: 0, vary: 0 }); }
+    add(G.tube(P2(0, -r * 0.2, r * 3.1), P2(0, -r * 0.25, r * 3.9), r * 0.08, r * 0.05, 3), { c: '#d83a5a', b: bone === 'Head' ? 'Jaw' : bone, jit: 0 }); };
+  if (hc === 'cobra') { snake('Head'); if (R.duas) snake('Head2', -1, -N * SL - 0.04); }
+  if (hc === 'petalas') { const r = r0, n = R.petalas;
+    add(G.sph(r * 1.05, 10, 6), { c: C.pele, b: 'Head', pos: HB(0, 0, r * 0.2), jit: J });
+    add(G.cyl(r * 0.55, r * 0.55, r * 0.2, 10), { c: C.boca, b: 'Head', pos: HB(0, 0, r * 1.0), rot: [90, 0, 0], jit: 0 });
+    for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, p0 = REST['Petal' + (i + 1)];
+      add(G.slab([[-r * 0.45, 0], [r * 0.45, 0], [r * 0.2, r * 1.2], [0, r * 1.5], [-r * 0.2, r * 1.2]], r * 0.12), { c: i % 2 ? C.claro : C.pele, b: 'Petal' + (i + 1), pos: [p0.x, p0.y, p0.z], rot: [0, 0, a / D2R - 90], pre: g => g.rotateX(-0.5), jit: 0.002 });
+      for (let k = 0; k < 3; k++) add(G.cone(r * 0.06, r * 0.22, 3), { c: '#f0e8d0', b: 'Petal' + (i + 1), pos: [p0.x * (0.7 + k * 0.25), p0.y - yb * 0 + (p0.y - yb) * (k * 0.25 - 0.3), p0.z + r * 0.12], rot: [90, 0, 0], jit: 0 }); } }
+  if (hc === 'lagarta') { const r = r0; add(G.sph(r * 1.1, 9, 7), { c: C.pele, b: 'Head', pos: HB(0, r * 0.1, r * 0.6), jit: J });
+    for (const s of [1, -1]) { add(G.sph(r * 0.32, 7, 5), { c: '#fff8e0', glow: true, b: 'Head', pos: HB(s * r * 0.5, 0, r * 1.5), jit: 0 }); add(G.sph(r * 0.15, 5, 4), { c: '#14110c', b: 'Head', pos: HB(s * r * 0.4, r * 0.55, r * 1.45), jit: 0 }); }
+    add(G.box(r * 0.8, r * 0.08, r * 0.1), { c: '#14110c', b: 'Head', pos: HB(0, -r * 0.4, r * 1.6), jit: 0 }); }
+  if (hc === 'centopeia') { const r = r0; add(G.sph(r * 1.1, 8, 6), { c: C.escuro, b: 'Head', pos: HB(0, 0, r * 0.7), scl: [1.1, 0.8, 1], jit: J });
+    for (const s of [1, -1]) { add(G.tube(HB(s * r * 0.6, -r * 0.3, r * 1.4), HB(-s * r * 0.2, -r * 0.4, r * 2.3), r * 0.18, r * 0.05, 4), { c: C.extra, b: 'Jaw', jit: 0 }); add(G.sph(r * 0.18, 5, 4), { c: '#ffd040', glow: true, b: 'Head', pos: HB(s * r * 0.55, r * 0.4, r * 1.4), jit: 0 }); } }
+  if (hc === 'flor') { const r = r0 * 1.6; add(G.sph(r * 0.7, 8, 6), { c: C.pele, b: 'Head', pos: HB(0, 0, r * 0.4), jit: J });
+    for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; add(G.sph(1, 6, 4), { c: C.flor, b: i % 2 ? 'Head' : 'Jaw', pos: HB(Math.cos(a) * r * 0.85, Math.sin(a) * r * 0.85, r * 0.7), scl: [r * 0.6, r * 0.6, r * 0.15], jit: 0 }); }
+    add(G.cyl(r * 0.35, r * 0.35, r * 0.2, 8), { c: '#2a1418', b: 'Head', pos: HB(0, 0, r * 0.95), rot: [90, 0, 0], jit: 0 });
+    for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; add(G.cone(r * 0.06, r * 0.22, 3), { c: '#f0e8d0', b: 'Head', pos: HB(Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3, r * 1.05), rot: [90, 0, 0], jit: 0 }); } }
+  if (hc === 'cranio') { const r = r0 * 1.3;
+    add(G.sph(r * 1.0, 9, 7), { c: C.pele, b: 'Head', pos: HB(0, r * 0.2, r * 0.8), scl: [1, 0.85, 1.4], jit: J });
+    add(G.box(r * 1.4, r * 0.4, r * 1.8), { c: C.pele, b: 'Jaw', pos: HB(0, -r * 0.45, r * 1.2), jit: J });
+    for (const s of [1, -1]) add(G.sph(r * 0.3, 6, 4), { c: C.brilho, glow: true, b: 'Head', pos: HB(s * r * 0.45, r * 0.45, r * 1.6), jit: 0 });
+    for (let i = 0; i < 6; i++) add(G.cone(r * 0.08, r * 0.3, 3), { c: C.claro, b: 'Head', pos: HB(((i % 3) - 1) * r * 0.3 * (i < 3 ? 1 : 0.8), -r * 0.15, r * (1.6 + (i < 3 ? 0.6 : 0.2))), rot: [180, 0, 0], jit: 0 }); }
+  if (hc === 'pipa') { const r = r0 * 3;
+    add(G.slab([[-r, -r * 0.6], [r, -r * 0.6], [r * 1.1, r * 0.4], [r * 0.6, r], [-r * 0.6, r], [-r * 1.1, r * 0.4]], 0.01), { c: C.pele, b: 'Head', pos: HB(0, r * 0.3, r * 0.4), jit: 0 });
+    for (const s of [1, -1]) { add(G.cyl(r * 0.25, r * 0.25, 0.012, 8), { c: '#ffffff', b: 'Head', pos: HB(s * r * 0.45, r * 0.55, r * 0.42), rot: [90, 0, 0], jit: 0 }); add(G.cyl(r * 0.12, r * 0.12, 0.014, 8), { c: '#14110c', b: 'Head', pos: HB(s * r * 0.45, r * 0.55, r * 0.43), rot: [90, 0, 0], jit: 0 });
+      add(G.cone(r * 0.15, r * 0.7, 4), { c: C.claro, b: 'Head', pos: HB(s * r * 0.7, r * 1.3, r * 0.3), rot: [-20, 0, -s * 25], jit: 0 }); }
+    add(G.slab([[-r * 0.8, 0], [r * 0.8, 0], [0, -r * 0.6]], 0.01), { c: C.claro, b: 'Jaw', pos: HB(0, -r * 0.1, r * 0.45), jit: 0 }); }
+  for (const ch of chains.filter(c => c.name.startsWith('Ant'))) { const W = { b: chainW(ch) }; add(G.tube(ch.pts[0], ch.pts[1], r0 * 0.12, r0 * 0.1, 4), { c: C.escuro, ...W }); add(G.tube(ch.pts[1], ch.pts[2], r0 * 0.1, r0 * 0.06, 4), { c: C.escuro, ...W }); add(G.sph(r0 * 0.2, 5, 4), { c: C.claro, pos: ch.pts[2], ...W }); }
+
+  // ---------- poses
+  const vert = R.onda === 'vertical', voa = !!S.voa;
+  const setE = (b, a, o = 'YXZ') => b.quaternion.copy(E(a, o));
+  function applyPose(P) {
+    B.Root.position.set(P.p[0], P.p[1], P.p[2]); setE(B.Root, P.r || [0, 0, 0]);
+    let prevYaw = 0, prevPitch = 0;
+    for (let i = 1; i <= N; i++) { const yw = P.yaw[i - 1] || 0, pt = P.pitch[i - 1] || 0; setE(B['Seg' + i], [pt - prevPitch, yw - prevYaw, 0]); prevYaw = yw; prevPitch = pt; }
+    setE(B.Head, [P.hd ? P.hd[0] : 0, (P.hd ? P.hd[1] : 0) - (P.yaw[0] || 0) * 0.6, 0]); B.Jaw.quaternion.setFromAxisAngle(_X, (P.jaw || 0) * D2R);
+    if (B.Head2) setE(B.Head2, [0, 180 + (P.yaw[N - 1] || 0) * -0.3, 0]);
+    if (R.cabeca === 'petalas') for (let i = 1; i <= R.petalas; i++) { const a = (i - 1) / R.petalas * Math.PI * 2; B['Petal' + i].quaternion.copy(E([-Math.sin(a) * (P.jaw || 0), Math.cos(a) * (P.jaw || 0), 0], 'XYZ')); }
+    if (R.patas) for (let i = 2; i <= N; i++) for (const [s, L] of [[1, '_L'], [-1, '_R']]) setE(B['Pata' + i + L], [0, (P.legs ? P.legs[i] : 0) * s, 0]);
+    for (const ch of chains) for (const nm of ch.names) B[nm].quaternion.identity();
+    B.Root.updateMatrixWorld(true);
+  }
+  const L = N * SL, waves = vert ? 1.2 : 1.5, lam = L / waves;
+  const wave = (t, T, A, axis, ampHead = 0.35) => { const out = []; for (let i = 0; i < N; i++) { const u = i / (N - 1), amp = A * (ampHead + (1 - ampHead) * Math.min(1, u * 1.6)); out.push(amp * Math.sin(2 * Math.PI * (t / T - i / (N / waves)))); } return out; };
+  const zeros = () => new Array(N).fill(0);
+  const base = () => ({ p: [0, 0, 0], r: [0, 0, 0], yaw: zeros(), pitch: zeros(), hd: [0, 0], jaw: 0 });
+  const hover = voa ? 0.35 : 0;
+  const ground = P => { if (voa || R.mergulha || P.r && P.r[0]) return P; let y = 0, mn = 0;     // apoia o corpo no chão: a cabeça sobe, o resto não afunda
+    for (let i = 0; i < N; i++) { y += SL * Math.sin((P.pitch[i] || 0) * D2R); mn = Math.min(mn, y); } P.p[1] += -mn; return P; };
+  const clipdefs = [
+    { name: 'Parado', dur: 3, fps: 30, loop: true, fn: t => { const P = base(), a = 2 * Math.PI * t / 3;
+      if (voa) { P.p[1] = hover + 0.03 * Math.sin(a); P.pitch = wave(t, 3, 8, 'p', 0.5); P.yaw = wave(t, 6, 6, 'y', 0.2); }
+      else if (R.mergulha) { P.p[1] = -r0 * 0.4; P.pitch = zeros().map((_, i) => i < 4 ? -14 + i * 4 + 3 * Math.sin(a + i) : 0); P.yaw = wave(t, 3, 5, 'y', 0.6); }
+      else { const coil = zeros().map((_, i) => 38 * Math.sin(i / (N - 1) * Math.PI * 2.2)); P.yaw = coil.map((v, i) => v + 3 * Math.sin(a + i * 0.4)); P.pitch = zeros().map((_, i) => i < 3 ? -12 + i * 4 : 0); P.hd = [4 * Math.sin(2 * a), 15 * Math.sin(a)]; }
+      P.jaw = R.cabeca === 'petalas' ? 8 + 6 * Math.sin(a) : 0; return ground(P); } },
+    { name: 'Mover', dur: 1.4, fps: 30, loop: true, v: 0.6 * lam / 1.4, fn: t => { const P = base();
+      if (vert && !R.mergulha) { P.p[1] = hover; P.pitch = wave(t, 1.4, voa ? 14 : 10, 'p', voa ? 0.3 : 0.1); if (!voa) P.pitch = P.pitch.map(v => Math.min(0, v) * 0.8); }
+      else if (R.mergulha) { P.p[1] = -r0 * 1.2; P.pitch = wave(t, 1.4, 22, 'p', 0.8); }
+      else { P.yaw = wave(t, 1.4, R.tipo === 'centopeia' ? 10 : 30, 'y'); }
+      if (R.patas) P.legs = zeros().concat([0]).map((_, i) => 35 * Math.sin(2 * Math.PI * (t / 0.35 - i * 0.18))); return ground(P); } },
+    { name: 'Atacar', dur: 1.0, fps: 60, fn: t => { const P = base(), w = t < 0.4 ? EASE.io(t / 0.4) : t < 0.55 ? 1 - EASE.in((t - 0.4) / 0.15) * 2 : -1 + EASE.io((t - 0.55) / 0.45), back = Math.max(0, w), fwd = Math.max(0, -w);
+      P.p = [0, hover + (R.mergulha ? -r0 * 0.4 : 0), 0.08 * L * fwd - 0.04 * L * back];
+      P.pitch = zeros().map((_, i) => i < 4 ? -(30 * back + 5 * fwd) * (1 - i / 4) * 2 : 0);
+      P.yaw = zeros().map((_, i) => 20 * Math.sin(i / (N - 1) * Math.PI * 2) * (1 - fwd)); P.hd = [25 * fwd - 10 * back, 0]; P.jaw = 40 * Math.max(back, fwd) * (R.cabeca === 'petalas' ? 1.2 : 1); return ground(P); } },
+    { name: 'Ameaçar', dur: 1.8, fps: 30, fn: t => { const P = base(), k = Math.sin(Math.PI * clamp(t / 1.5, 0, 1));
+      P.p[1] = hover + (R.mergulha ? -r0 * 0.4 : 0); P.pitch = zeros().map((_, i) => i < 5 ? -38 * k * (1 - i / 5) * 1.6 : 0); P.yaw = zeros().map((_, i) => i < 5 ? 12 * Math.sin(t * 6 + i) * k : 25 * Math.sin(i / (N - 1) * Math.PI * 2));
+      P.hd = [20 * k, 0]; P.jaw = 35 * k; return ground(P); } },
+  ];
+  if (R.duas) { const circ = L, rr = circ / (2 * Math.PI);
+    clipdefs.push({ name: 'Rolar', dur: 1.2, fps: 60, loop: true, v: circ / 1.2, fn: t => { const P = base(); P.pitch = zeros().map((_, i) => -(i + 1) * 360 / N + 360 / N * 0.5); P.p = [0, rr + r0, 0]; P.r = [-360 * t / 1.2, 0, 0]; return P; } }); }
+  if (voa) clipdefs.push({ name: 'Voar', dur: 1.6, fps: 30, loop: true, v: 1.2 * L, fn: t => { const P = base(); P.p[1] = hover * 1.6; P.pitch = wave(t, 1.6, 16, 'p', 0.25); P.yaw = wave(t, 3.2, 8, 'y', 0.2); return P; } });
+  const P0 = finish(kit, skel, chains, S.nome, clipdefs, applyPose, {});
+  P0.vel = Object.fromEntries(clipdefs.filter(c => c.v).map(c => [c.name, c.v]));
+  return P0;
+}
+
 // ======================================================================= entrada
 export function forgeCriatura(id, cfgIn) {
   const S = ESPECIES[id], cfg = { ...baseCfgEsp(id), ...cfgIn };
-  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : forgeB(id, S, cfg);
-  const scale = S.tam * TAMK[cfg.tamanho] / P.nominalH;
+  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : S.fam === 'E' ? forgeE(id, S, cfg) : forgeB(id, S, cfg);
+  const scale = S.tam * TAMK[cfg.tamanho] / (S.medida === 'comprimento' ? P.nominalL : P.nominalH);
   P.root.scale.setScalar(scale);
   P.root.updateMatrixWorld(true);
-  P.escala = scale; P.altura = S.tam * TAMK[cfg.tamanho]; P.comprimento = P.nominalL * scale; P.vista = Math.max(P.altura, P.comprimento * 0.55);
+  P.escala = scale; P.altura = S.medida === 'comprimento' ? P.nominalH * scale : S.tam * TAMK[cfg.tamanho]; P.comprimento = P.nominalL * scale; P.vista = Math.max(P.altura, P.comprimento * 0.55);
   for (const k in P.vel) P.vel[k] *= scale;
   P.id = id; P.cfg = cfg; P.especie = S;
   return P;

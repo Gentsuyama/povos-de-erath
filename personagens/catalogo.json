@@ -12035,6 +12035,438 @@
     }
    ]
   },
+  "serpente-plumada": {
+   "num": 53,
+   "nome": "Serpente-plumada",
+   "grupo": "Répteis",
+   "familia": "E",
+   "voa": true,
+   "tamanho_m": 5,
+   "descricao": "Corpo de cobra com penas coloridas e crista; voa ondulando.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "jade",
+       "nome": "Jade"
+      },
+      {
+       "chave": "sol",
+       "nome": "Sol"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "crista",
+     "nome": "Crista",
+     "opcoes": [
+      {
+       "chave": "leque",
+       "nome": "Leque"
+      },
+      {
+       "chave": "longa",
+       "nome": "Ao longo do corpo"
+      }
+     ]
+    },
+    {
+     "chave": "asas",
+     "nome": "Asinhas",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com asinhas"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem asas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/serpente-plumada/serpente-plumada_padrao.glb",
+     "variacao": "Vina 50",
+     "kb": 123,
+     "triangulos": 3076,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.863,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.516,
+      "Voar": 5.093
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "jade",
+      "crista": "leque",
+      "asas": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/serpente-plumada/serpente-plumada_quim-60.glb",
+     "variacao": "Quim 60",
+     "kb": 121,
+     "triangulos": 2980,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.742,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.304,
+      "Voar": 4.38
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "sol",
+      "crista": "leque",
+      "asas": "nao"
+     }
+    },
+    {
+     "arquivo": "criaturas/serpente-plumada/serpente-plumada_tula-81.glb",
+     "variacao": "Tula 81",
+     "kb": 125,
+     "triangulos": 3164,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.672,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.516,
+      "Voar": 5.093
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "jade",
+      "crista": "longa",
+      "asas": "sim"
+     }
+    }
+   ]
+  },
+  "verme-das-dunas": {
+   "num": 56,
+   "nome": "Verme-das-dunas",
+   "grupo": "Répteis",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 20,
+   "descricao": "Sem olhos, boca em pétalas, placas de areia; nada na areia.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      }
+     ]
+    },
+    {
+     "chave": "petalas",
+     "nome": "Pétalas",
+     "opcoes": [
+      {
+       "chave": "cinco",
+       "nome": "Cinco"
+      },
+      {
+       "chave": "tres",
+       "nome": "Três"
+      },
+      {
+       "chave": "oito",
+       "nome": "Oito"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/verme-das-dunas/verme-das-dunas_padrao.glb",
+     "variacao": "Sabi 71",
+     "kb": 125,
+     "triangulos": 2987,
+     "ossos": 23,
+     "molas": [],
+     "altura_m": 5.441,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 6.462
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "petalas": "cinco"
+     }
+    },
+    {
+     "arquivo": "criaturas/verme-das-dunas/verme-das-dunas_quim-56.glb",
+     "variacao": "Quim 56",
+     "kb": 133,
+     "triangulos": 3116,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 6.56,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 7.431
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "cinza",
+      "petalas": "oito"
+     }
+    },
+    {
+     "arquivo": "criaturas/verme-das-dunas/verme-das-dunas_quim-66.glb",
+     "variacao": "Quim 66",
+     "kb": 116,
+     "triangulos": 2901,
+     "ossos": 21,
+     "molas": [],
+     "altura_m": 4.871,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 6.462
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rocha",
+      "petalas": "tres"
+     }
+    }
+   ]
+  },
+  "cobra-de-duas-pontas": {
+   "num": 58,
+   "nome": "Cobra-de-duas-pontas",
+   "grupo": "Répteis",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 2,
+   "descricao": "Uma cabeça em cada ponta; rola como roda.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "oliva",
+       "nome": "Oliva"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      }
+     ]
+    },
+    {
+     "chave": "aneis",
+     "nome": "Anéis",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com anéis"
+      },
+      {
+       "chave": "nao",
+       "nome": "Lisa"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cobra-de-duas-pontas/cobra-de-duas-pontas_padrao.glb",
+     "variacao": "Pim 35",
+     "kb": 95,
+     "triangulos": 2520,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.116,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Rolar"
+     ],
+     "velocidades": {
+      "Mover": 0.435,
+      "Rolar": 1.269
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "aneis": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cobra-de-duas-pontas/cobra-de-duas-pontas_pim-35.glb",
+     "variacao": "Pim 35",
+     "kb": 95,
+     "triangulos": 2520,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.116,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Rolar"
+     ],
+     "velocidades": {
+      "Mover": 0.435,
+      "Rolar": 1.269
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "aneis": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cobra-de-duas-pontas/cobra-de-duas-pontas_luz-10.glb",
+     "variacao": "Luz 10",
+     "kb": 92,
+     "triangulos": 2328,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.134,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Rolar"
+     ],
+     "velocidades": {
+      "Mover": 0.5,
+      "Rolar": 1.46
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "oliva",
+      "aneis": "nao"
+     }
+    }
+   ]
+  },
   "besouro-armadura": {
    "num": 65,
    "nome": "Besouro-armadura",
@@ -12779,6 +13211,149 @@
     }
    ]
   },
+  "lagarta-onibus": {
+   "num": 71,
+   "nome": "Lagarta-ônibus",
+   "grupo": "Insetos",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 6,
+   "descricao": "Janelinhas e passageiros dentro; rasteja ondulando.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "amarela",
+       "nome": "Escolar"
+      },
+      {
+       "chave": "roxa",
+       "nome": "Roxa"
+      }
+     ]
+    },
+    {
+     "chave": "passageiros",
+     "nome": "Passageiros",
+     "opcoes": [
+      {
+       "chave": "muitos",
+       "nome": "Lotada"
+      },
+      {
+       "chave": "poucos",
+       "nome": "Poucos"
+      },
+      {
+       "chave": "nenhum",
+       "nome": "Vazia"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lagarta-onibus/lagarta-onibus_padrao.glb",
+     "variacao": "Brisa 21",
+     "kb": 98,
+     "triangulos": 2918,
+     "ossos": 17,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.626,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.867
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "passageiros": "muitos"
+     }
+    },
+    {
+     "arquivo": "criaturas/lagarta-onibus/lagarta-onibus_tico-13.glb",
+     "variacao": "Tico 13",
+     "kb": 88,
+     "triangulos": 2342,
+     "ossos": 17,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.398,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.606
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "amarela",
+      "passageiros": "nenhum"
+     }
+    },
+    {
+     "arquivo": "criaturas/lagarta-onibus/lagarta-onibus_tula-72.glb",
+     "variacao": "Tula 72",
+     "kb": 98,
+     "triangulos": 2918,
+     "ossos": 17,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.87,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.147
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "amarela",
+      "passageiros": "muitos"
+     }
+    }
+   ]
+  },
   "grilo-musico": {
    "num": 73,
    "nome": "Grilo-músico",
@@ -12927,6 +13502,145 @@
       "tamanho": "p",
       "cores": "campo",
       "instrumento": "nada"
+     }
+    }
+   ]
+  },
+  "centopeia-trem": {
+   "num": 74,
+   "nome": "Centopeia-trem",
+   "grupo": "Insetos",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 10,
+   "descricao": "Segmentos que se soltam e andam sozinhos; ondula.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ferrugem",
+       "nome": "Ferrugem"
+      },
+      {
+       "chave": "preta",
+       "nome": "Preta"
+      },
+      {
+       "chave": "jade",
+       "nome": "Jade"
+      }
+     ]
+    },
+    {
+     "chave": "vagoes",
+     "nome": "Vagões",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com vagões"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem vagões"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/centopeia-trem/centopeia-trem_padrao.glb",
+     "variacao": "Tico 70",
+     "kb": 131,
+     "triangulos": 3496,
+     "ossos": 42,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.417,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.518
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ferrugem",
+      "vagoes": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/centopeia-trem/centopeia-trem_tico-70.glb",
+     "variacao": "Tico 70",
+     "kb": 131,
+     "triangulos": 3496,
+     "ossos": 42,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.417,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.518
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ferrugem",
+      "vagoes": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/centopeia-trem/centopeia-trem_miro-44.glb",
+     "variacao": "Miro 44",
+     "kb": 132,
+     "triangulos": 3496,
+     "ossos": 42,
+     "molas": [
+      "antenas"
+     ],
+     "altura_m": 1.218,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.166
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "jade",
+      "vagoes": "sim"
      }
     }
    ]
@@ -13371,6 +14085,143 @@
       "tamanho": "g",
       "cores": "areia",
       "torre": "ruina"
+     }
+    }
+   ]
+  },
+  "vinha-serpente": {
+   "num": 92,
+   "nome": "Vinha-serpente",
+   "grupo": "Plantas",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 5,
+   "descricao": "Espinhos e flores; ondula.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "sombria",
+       "nome": "Sombria"
+      }
+     ]
+    },
+    {
+     "chave": "flores",
+     "nome": "Flores",
+     "opcoes": [
+      {
+       "chave": "muitas",
+       "nome": "Muitas"
+      },
+      {
+       "chave": "poucas",
+       "nome": "Poucas"
+      },
+      {
+       "chave": "frutos",
+       "nome": "Frutos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/vinha-serpente/vinha-serpente_padrao.glb",
+     "variacao": "Orvo 67",
+     "kb": 106,
+     "triangulos": 3246,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.595,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.325
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "flores": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/vinha-serpente/vinha-serpente_teco-95.glb",
+     "variacao": "Teco 95",
+     "kb": 104,
+     "triangulos": 3246,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.511,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.139
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "sombria",
+      "flores": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/vinha-serpente/vinha-serpente_vina-54.glb",
+     "variacao": "Vina 54",
+     "kb": 104,
+     "triangulos": 3086,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 0.684,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.523
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "outono",
+      "flores": "frutos"
      }
     }
    ]
@@ -14301,6 +15152,139 @@
       "tamanho": "m",
       "cores": "ferro",
       "forma": "redonda"
+     }
+    }
+   ]
+  },
+  "serpente-de-ossos": {
+   "num": 116,
+   "nome": "Serpente-de-ossos",
+   "grupo": "Espectrais",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 8,
+   "descricao": "Costelas soltas; ondula.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "osso",
+       "nome": "Osso"
+      },
+      {
+       "chave": "velho",
+       "nome": "Velho"
+      },
+      {
+       "chave": "obsidiana",
+       "nome": "Obsidiana"
+      }
+     ]
+    },
+    {
+     "chave": "costelas",
+     "nome": "Costelas",
+     "opcoes": [
+      {
+       "chave": "longas",
+       "nome": "Longas"
+      },
+      {
+       "chave": "curtas",
+       "nome": "Curtas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/serpente-de-ossos/serpente-de-ossos_padrao.glb",
+     "variacao": "Tico 49",
+     "kb": 97,
+     "triangulos": 2486,
+     "ossos": 20,
+     "molas": [],
+     "altura_m": 0.703,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.078
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "osso",
+      "costelas": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/serpente-de-ossos/serpente-de-ossos_tico-49.glb",
+     "variacao": "Tico 49",
+     "kb": 97,
+     "triangulos": 2486,
+     "ossos": 20,
+     "molas": [],
+     "altura_m": 0.703,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.078
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "osso",
+      "costelas": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/serpente-de-ossos/serpente-de-ossos_luz-53.glb",
+     "variacao": "Luz 53",
+     "kb": 96,
+     "triangulos": 2486,
+     "ossos": 20,
+     "molas": [],
+     "altura_m": 0.49,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.787
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "osso",
+      "costelas": "curtas"
      }
     }
    ]
@@ -15714,6 +16698,151 @@
       "tamanho": "m",
       "cores": "negro",
       "orelhas": "pontuda"
+     }
+    }
+   ]
+  },
+  "pipa-dragao": {
+   "num": 150,
+   "nome": "Pipa-dragão",
+   "grupo": "Constructos",
+   "familia": "E",
+   "voa": true,
+   "tamanho_m": 4,
+   "descricao": "Serpente de papel; ondula no céu ao vento.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "rubro",
+       "nome": "Rubro"
+      },
+      {
+       "chave": "jade",
+       "nome": "Jade"
+      },
+      {
+       "chave": "anil",
+       "nome": "Anil"
+      }
+     ]
+    },
+    {
+     "chave": "fitas",
+     "nome": "Fitas",
+     "opcoes": [
+      {
+       "chave": "longas",
+       "nome": "Longas"
+      },
+      {
+       "chave": "curtas",
+       "nome": "Curtas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/pipa-dragao/pipa-dragao_padrao.glb",
+     "variacao": "Pim 96",
+     "kb": 70,
+     "triangulos": 516,
+     "ossos": 20,
+     "molas": [
+      "fitas"
+     ],
+     "altura_m": 0.969,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.255,
+      "Voar": 4.217
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rubro",
+      "fitas": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/pipa-dragao/pipa-dragao_brisa-71.glb",
+     "variacao": "Brisa 71",
+     "kb": 70,
+     "triangulos": 516,
+     "ossos": 20,
+     "molas": [
+      "fitas"
+     ],
+     "altura_m": 0.969,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.255,
+      "Voar": 4.217
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "jade",
+      "fitas": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/pipa-dragao/pipa-dragao_pim-39.glb",
+     "variacao": "Pim 39",
+     "kb": 70,
+     "triangulos": 516,
+     "ossos": 20,
+     "molas": [
+      "fitas"
+     ],
+     "altura_m": 1.114,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 1.443,
+      "Voar": 4.849
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "jade",
+      "fitas": "curtas"
      }
     }
    ]
