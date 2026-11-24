@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Clareira de Erath</title>
+<style>
+  :root { --ouro: #e8c070; --painel: rgba(20, 18, 14, .78); --linha: rgba(232, 192, 112, .35); --txt: #f4ead8; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #9fc0d8; color: var(--txt); font: 15px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif; touch-action: none; user-select: none; -webkit-user-select: none; }
+  canvas { display: block; }
+  .painel { background: var(--painel); border: 1px solid var(--linha); border-radius: 12px; backdrop-filter: blur(4px); }
+  #menu { position: fixed; inset: 0; display: grid; place-items: center; background: radial-gradient(ellipse at center, rgba(20,18,14,.55), rgba(20,18,14,.85)); z-index: 20; padding: 16px; }
+  #menu .caixa { width: min(760px, 100%); max-height: 100%; overflow: auto; padding: 22px; }
+  h1 { margin: 0 0 4px; font-size: 28px; color: var(--ouro); letter-spacing: .5px; }
+  .sub { opacity: .8; margin: 0 0 16px; }
+  #racas { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  .raca { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--linha); background: rgba(255,255,255,.04); color: var(--txt); text-align: left; cursor: pointer; font: inherit; }
+  .raca b { display: block; color: var(--ouro); }
+  .raca small { opacity: .75; }
+  .raca.sel { background: rgba(232,192,112,.18); border-color: var(--ouro); }
+  .linha { display: flex; gap: 10px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+  button.acao { font: inherit; font-weight: 600; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--ouro); background: var(--ouro); color: #2a2010; cursor: pointer; }
+  button.sec { font: inherit; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--linha); background: transparent; color: var(--txt); cursor: pointer; }
+  #heroi { opacity: .9; }
+  .ajuda { margin-top: 14px; font-size: 13px; opacity: .75; }
+  #hud { position: fixed; left: 12px; top: 12px; padding: 10px 12px; min-width: 210px; z-index: 5; display: none; }
+  .barra { height: 10px; border-radius: 6px; background: rgba(255,255,255,.12); overflow: hidden; margin: 4px 0 8px; }
+  .barra i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #d8503a, #f0a040); transition: width .2s; }
+  #hud .nome { color: var(--ouro); font-weight: 600; }
+  #hud .num { font-variant-numeric: tabular-nums; }
+  #toast { position: fixed; left: 50%; top: 14px; transform: translateX(-50%); padding: 8px 14px; z-index: 6; opacity: 0; transition: opacity .3s; pointer-events: none; text-align: center; }
+  #toast b { color: var(--ouro); }
+  #livro { position: fixed; right: 12px; top: 12px; bottom: 12px; width: min(330px, calc(100% - 24px)); padding: 14px; overflow: auto; z-index: 7; display: none; }
+  #livro h2 { margin: 0 0 8px; font-size: 18px; color: var(--ouro); }
+  #livro li { margin: 2px 0; }
+  #livro small { opacity: .7; }
+  #btLivro { position: fixed; right: 12px; top: 12px; z-index: 6; display: none; }
+  #morte { position: fixed; inset: 0; display: none; place-items: center; z-index: 8; background: rgba(60,10,10,.35); font-size: 26px; color: #ffd8c8; text-shadow: 0 2px 8px #000; }
+  .dano { position: fixed; z-index: 4; font-weight: 800; font-size: 18px; color: #fff3c8; text-shadow: 0 1px 3px #000, 0 0 2px #000; pointer-events: none; transform: translate(-50%, -50%); }
+  .dano.ruim { color: #ff8a70; }
+  #toque { display: none; }
+  @media (max-width: 640px) { #toast { top: 112px; width: calc(100% - 24px); } #hud { min-width: 0; font-size: 13px; } }
+  #toque .stick { position: fixed; left: 22px; bottom: 22px; width: 130px; height: 130px; border-radius: 50%; background: rgba(20,18,14,.35); border: 1px solid var(--linha); z-index: 6; }
+  #toque .stick i { position: absolute; left: 40px; top: 40px; width: 50px; height: 50px; border-radius: 50%; background: rgba(232,192,112,.6); }
+  #toque .bts { position: fixed; right: 18px; bottom: 22px; display: grid; grid-template-columns: 72px 72px; gap: 10px; z-index: 6; }
+  #toque .bts button { width: 72px; height: 72px; border-radius: 50%; border: 1px solid var(--linha); background: rgba(20,18,14,.55); color: var(--txt); font: 600 13px system-ui; }
+  #toque .bts .grande { background: rgba(216,80,58,.7); }
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="menu"><div class="caixa painel">
+  <h1>Clareira de Erath</h1>
+  <p class="sub">Escolha seu povo e explore a clareira. As criaturas do bestiário andam por aí: umas fogem, outras atacam. Registre quantas espécies conseguir.</p>
+  <div id="racas">Carregando o catálogo…</div>
+  <div class="linha"><span id="heroi"></span><button class="sec" id="btOutro">Outro herói</button><button class="acao" id="btJogar" disabled>Jogar</button></div>
+  <div class="ajuda">Teclado: WASD/setas andam · Shift corre · Espaço ou J ataca · K defende · C comemora · B abre o bestiário · arraste o mouse para girar a câmera, roda para zoom. No celular: joystick à esquerda e botões à direita.</div>
+</div></div>
+<div id="hud" class="painel">
+  <div class="nome" id="hNome"></div>
+  <div class="barra"><i id="hVida"></i></div>
+  <div class="num">Vencidas: <b id="hAbates">0</b></div>
+  <div class="num">Bestiário: <b id="hVistos">0</b> de 150</div>
+</div>
+<button class="sec painel" id="btLivro">Bestiário (B)</button>
+<div id="livro" class="painel"><h2>Bestiário</h2><div id="livroLista"></div><div class="linha"><button class="sec" id="btFechaLivro">Fechar</button></div></div>
+<div id="toast" class="painel"></div>
+<div id="morte">Você caiu… voltando ao acampamento</div>
+<div id="toque"><div class="stick" id="stick"><i></i></div><div class="bts"><button id="tDef">Defender</button><button class="grande" id="tAtk">Atacar</button><button id="tCorrer">Correr</button><button id="tLivro">Livro</button></div></div>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+const $ = id => document.getElementById(id);
+const rnd = (a, b) => a + Math.random() * (b - a), pick = a => a[Math.floor(Math.random() * a.length)], clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const angDiff = (a, b) => { let d = b - a; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; };
+const MUNDO_R = 95;
+
+// ------------------------------------------------------------------ cena
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio)); renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#a8c8de'); scene.fog = new THREE.Fog('#a8c8de', 50, 170);
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.05, 400);
+scene.add(new THREE.HemisphereLight('#dceeff', '#5a6a3a', 1.1));
+const sol = new THREE.DirectionalLight('#fff2dc', 2.2); sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
+Object.assign(sol.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 120 }); sol.shadow.bias = -0.0006; sol.shadow.normalBias = 0.03;
+scene.add(sol, sol.target);
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+// chão facetado com tons por face
+{ const g = new THREE.PlaneGeometry(2 * MUNDO_R + 120, 2 * MUNDO_R + 120, 70, 70).toNonIndexed(); g.rotateX(-Math.PI / 2);
+  const cor = [], c = new THREE.Color(), p = g.attributes.position;
+  for (let i = 0; i < p.count; i += 3) { const x = p.getX(i), z = p.getZ(i), r = Math.min(1, Math.hypot(x, z) / (MUNDO_R + 40)), q = (p.getX(i) + p.getX(i + 1) + p.getX(i + 2)) / 3, w = (p.getZ(i) + p.getZ(i + 1) + p.getZ(i + 2)) / 3, ruido = Math.sin(q * 0.08) * Math.cos(w * 0.07) * 0.03;
+    c.setHSL(0.24 + ruido + rnd(-0.01, 0.01), 0.4, 0.48 + rnd(-0.035, 0.035) - r * 0.05 + ruido); for (let k = 0; k < 3; k++) cor.push(c.r, c.g, c.b); }
+  g.setAttribute('color', new THREE.Float32BufferAttribute(cor, 3)); g.computeVertexNormals();
+  const chao = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true })); chao.receiveShadow = true; scene.add(chao); }
+// cenário: árvores, pedras, tufos (instanciados) e um anel de montanhas
+const OBST = [];
+function espalhar(n, rMin, rMax, fn) { for (let i = 0; i < n; i++) { const a = Math.random() * Math.PI * 2, r = Math.sqrt(rnd(rMin * rMin, rMax * rMax)); fn(Math.cos(a) * r, Math.sin(a) * r, i); } }
+{ const tronco = new THREE.CylinderGeometry(0.18, 0.26, 1.6, 6), copa = new THREE.ConeGeometry(1.3, 3.2, 7), pedra = new THREE.DodecahedronGeometry(1, 0), tufo = new THREE.ConeGeometry(0.12, 0.45, 4);
+  const N = 170, mT = new THREE.InstancedMesh(tronco, new THREE.MeshLambertMaterial({ color: '#6a4a2e', flatShading: true }), N), mC = new THREE.InstancedMesh(copa, new THREE.MeshLambertMaterial({ color: '#ffffff', flatShading: true }), N);
+  const mP = new THREE.InstancedMesh(pedra, new THREE.MeshLambertMaterial({ color: '#a8a49a', flatShading: true }), 90), mG = new THREE.InstancedMesh(tufo, new THREE.MeshLambertMaterial({ color: '#5f9a3e', flatShading: true }), 900);
+  const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), S = new THREE.Vector3(), P = new THREE.Vector3(), cor = new THREE.Color();
+  espalhar(N, 12, MUNDO_R + 25, (x, z, i) => { const k = rnd(0.7, 1.5); M.compose(P.set(x, 0.8 * k, z), Q.identity(), S.set(k, k, k)); mT.setMatrixAt(i, M); M.compose(P.set(x, (1.6 + 1.5) * k, z), Q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rnd(0, 6)), S.set(k, k * rnd(0.85, 1.2), k)); mC.setMatrixAt(i, M);
+    mC.setColorAt(i, cor.set('#2f6b3f').offsetHSL(rnd(-0.03, 0.03), 0, rnd(-0.06, 0.06))); OBST.push({ x, z, r: 0.35 * k }); });
+  espalhar(90, 6, MUNDO_R + 25, (x, z, i) => { const k = rnd(0.3, 1.4); M.compose(P.set(x, k * 0.35, z), Q.setFromEuler(new THREE.Euler(rnd(0, 3), rnd(0, 3), 0)), S.set(k, k * 0.6, k)); mP.setMatrixAt(i, M); if (k > 0.6) OBST.push({ x, z, r: k * 0.85 }); });
+  espalhar(900, 2, MUNDO_R + 10, (x, z, i) => { const k = rnd(0.6, 1.4); M.compose(P.set(x, 0.2 * k, z), Q.identity(), S.set(k, k, k)); mG.setMatrixAt(i, M); });
+  for (const m of [mT, mC, mP]) { m.castShadow = true; m.receiveShadow = true; } scene.add(mT, mC, mP, mG);
+  const serra = new THREE.Group(); for (let i = 0; i < 40; i++) { const a = i / 40 * Math.PI * 2, h = rnd(18, 40), m = new THREE.Mesh(new THREE.ConeGeometry(rnd(14, 24), h, 5), new THREE.MeshLambertMaterial({ color: new THREE.Color('#7a8a9a').offsetHSL(0, 0, rnd(-0.05, 0.05)), flatShading: true }));
+    m.position.set(Math.cos(a) * 150, h / 2 - 2, Math.sin(a) * 150); serra.add(m); } scene.add(serra);
+  // fogueira do acampamento (ponto de volta)
+  const fogo = new THREE.Mesh(new THREE.ConeGeometry(0.35, 0.8, 6), new THREE.MeshBasicMaterial({ color: '#ffa040' })); fogo.position.set(0, 0.4, 0); scene.add(fogo);
+  for (let i = 0; i < 7; i++) { const a = i / 7 * Math.PI * 2, s = new THREE.Mesh(new THREE.DodecahedronGeometry(0.2, 0), new THREE.MeshLambertMaterial({ color: '#8a8478', flatShading: true })); s.position.set(Math.cos(a) * 0.6, 0.12, Math.sin(a) * 0.6); scene.add(s); }
+  const luz = new THREE.PointLight('#ffb060', 6, 9, 1.6); luz.position.set(0, 1, 0); scene.add(luz); }
+
+// ------------------------------------------------------------------ carregar GLBs (cache por arquivo; cada ator é um clone)
+const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+const cache = new Map();
+const carregar = arq => { if (!cache.has(arq)) cache.set(arq, loader.loadAsync('personagens/' + arq)); return cache.get(arq); };
+
+class Ator {
+  constructor(gltf) {
+    this.obj = SkeletonUtils.clone(gltf.scene);
+    this.obj.traverse(o => { if (o.isMesh) { o.castShadow = true; o.frustumCulled = false; o.material = o.material.clone(); } });
+    this.mixer = new THREE.AnimationMixer(this.obj); this.acts = {}; this.dur = {};
+    for (const c of gltf.animations) { this.acts[c.name] = this.mixer.clipAction(c); this.dur[c.name] = c.duration; }
+    this.cur = null; this.curNome = ''; this.feito = null;
+    this.mixer.addEventListener('finished', e => { if (e.action === this.cur && this.feito) { const f = this.feito; this.feito = null; f(); } });
+    const box = new THREE.Box3().setFromObject(this.obj), sz = box.getSize(new THREE.Vector3());
+    this.altura = sz.y; this.raio = Math.max(0.2, Math.min(sz.x, sz.z) * 0.45); this.flash = 0;
+  }
+  tem(n) { return !!this.acts[n]; }
+  tocar(n, o = {}) {
+    const a = this.acts[n]; if (!a) return false;
+    if (this.cur === a && !o.reinicia) { if (o.ts) a.timeScale = o.ts; return true; }
+    a.reset(); a.setLoop(o.uma ? THREE.LoopOnce : THREE.LoopRepeat, Infinity); a.clampWhenFinished = !!o.uma; a.timeScale = o.ts || 1; a.setEffectiveWeight(1); a.play();
+    if (this.cur && this.cur !== a) a.crossFadeFrom(this.cur, o.fade ?? 0.18, false);
+    this.cur = a; this.curNome = n; this.feito = o.fim || null; return true;
+  }
+  tempo() { return this.cur ? this.cur.time : 0; }
+  piscar() { this.flash = 0.18; }
+  atualizar(dt) {
+    this.mixer.update(dt);
+    if (this.flash > 0 || this._f) { this.flash -= dt; const on = this.flash > 0; this._f = on;
+      this.obj.traverse(o => { if (o.isMesh && o.material.emissive) o.material.emissive.setRGB(on ? 0.6 : 0, on ? 0.1 : 0, on ? 0.05 : 0); }); }
+  }
+}
+
+// ------------------------------------------------------------------ catálogo e menu
+let CAT, escolha = { raca: null, p: null };
+const vistos = new Set(JSON.parse((() => { try { return localStorage.getItem('erath_vistos') || '[]'; } catch { return '[]'; } })()));
+const salvarVistos = () => { try { localStorage.setItem('erath_vistos', JSON.stringify([...vistos])); } catch {} };
+fetch('personagens/catalogo.json').then(r => r.json()).then(c => { CAT = c; montarMenu(); });
+function montarMenu() {
+  const box = $('racas'); box.textContent = '';
+  for (const [k, r] of Object.entries(CAT.racas)) { const b = document.createElement('button'); b.className = 'raca'; b.innerHTML = `<b>${r.nome}</b><small>${r.titulo}</small>`;
+    b.onclick = () => { escolha.raca = k; escolha.p = pick(r.personagens); [...box.children].forEach(x => x.classList.toggle('sel', x === b)); atualizaHeroi(); }; box.appendChild(b); }
+  box.children[0].click();
+}
+function atualizaHeroi() { const p = escolha.p; $('heroi').innerHTML = `Herói: <b>${p.nome}</b> ${p.epiteto || ''}`; $('btJogar').disabled = false; }
+$('btOutro').onclick = () => { if (!escolha.raca) return; const ps = CAT.racas[escolha.raca].personagens; let p; do p = pick(ps); while (ps.length > 1 && p === escolha.p); escolha.p = p; atualizaHeroi(); };
+$('btJogar').onclick = async () => { $('btJogar').disabled = true; $('btJogar').textContent = 'Carregando…'; await iniciar(); $('menu').style.display = 'none'; };
+
+// ------------------------------------------------------------------ jogador
+let J = null, jogando = false, abates = 0, golpes = 0;
+const cam = { yaw: Math.PI, pitch: 0.38, dist: 4.5, alvo: new THREE.Vector3() };
+async function iniciar() {
+  const p = escolha.p, gl = await carregar(p.arquivo);
+  if (J) scene.remove(J.a.obj);
+  const a = new Ator(gl); scene.add(a.obj);
+  J = { a, p, nome: p.nome, vida: 30, max: 30, vAndar: p.velocidade_andar, vCorrer: p.velocidade_correr, yaw: 0, pos: a.obj.position, ocupado: false, defendendo: false, acertou: false, morto: false };
+  J.pos.set(0, 0, 3); cam.dist = Math.max(3.2, a.altura * 3.4); a.tocar('Parado');
+  $('hNome').textContent = `${p.nome} · ${CAT.racas[escolha.raca].nome}`; $('hud').style.display = 'block'; $('btLivro').style.display = 'block';
+  if (matchMedia('(pointer: coarse)').matches) $('toque').style.display = 'block';
+  atualizaHud(); jogando = true; if (!criaturas.length) for (let i = 0; i < POP; i++) gerarCriatura(true);
+}
+function atualizaHud() { $('hVida').style.width = (100 * J.vida / J.max) + '%'; $('hAbates').textContent = abates; $('hVistos').textContent = vistos.size; }
+
+// ------------------------------------------------------------------ entrada
+const tecla = {}; let correrToque = false;
+addEventListener('keydown', e => { tecla[e.code] = true; if (!jogando) return;
+  if (e.code === 'Space' || e.code === 'KeyJ') { atacar(); e.preventDefault(); } if (e.code === 'KeyK') defender(); if (e.code === 'KeyC') comemorar(); if (e.code === 'KeyB') alternaLivro(); });
+addEventListener('keyup', e => { tecla[e.code] = false; });
+let arrasto = null;
+renderer.domElement.addEventListener('pointerdown', e => { arrasto = { x: e.clientX, y: e.clientY, id: e.pointerId, mov: 0 }; });
+addEventListener('pointermove', e => { if (!arrasto || e.pointerId !== arrasto.id) return; const dx = e.clientX - arrasto.x, dy = e.clientY - arrasto.y; arrasto.x = e.clientX; arrasto.y = e.clientY; arrasto.mov += Math.abs(dx) + Math.abs(dy);
+  cam.yaw -= dx * 0.006; cam.pitch = clamp(cam.pitch + dy * 0.004, 0.08, 1.2); });
+addEventListener('pointerup', e => { if (arrasto && e.pointerId === arrasto.id) { if (arrasto.mov < 6 && e.pointerType === 'mouse' && jogando) atacar(); arrasto = null; } });
+renderer.domElement.addEventListener('wheel', e => { cam.dist = clamp(cam.dist * (1 + Math.sign(e.deltaY) * 0.1), 2, 30); }, { passive: true });
+// joystick
+const stick = { x: 0, y: 0, id: null };
+$('stick').addEventListener('pointerdown', e => { stick.id = e.pointerId; e.stopPropagation(); mexeStick(e); });
+addEventListener('pointermove', e => { if (e.pointerId === stick.id) mexeStick(e); });
+addEventListener('pointerup', e => { if (e.pointerId === stick.id) { stick.id = null; stick.x = stick.y = 0; $('stick').firstChild.style.transform = ''; } });
+function mexeStick(e) { const r = $('stick').getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), m = Math.min(1, Math.hypot(dx, dy) / 55), a = Math.atan2(dy, dx);
+  stick.x = Math.cos(a) * m; stick.y = -Math.sin(a) * m; $('stick').firstChild.style.transform = `translate(${stick.x * 40}px, ${-stick.y * 40}px)`; }
+for (const [id, fn] of [['tAtk', () => atacar()], ['tDef', () => defender()], ['tLivro', () => alternaLivro()]]) $(id).addEventListener('pointerdown', e => { e.stopPropagation(); fn(); });
+$('tCorrer').addEventListener('pointerdown', e => { e.stopPropagation(); correrToque = !correrToque; $('tCorrer').style.background = correrToque ? 'rgba(232,192,112,.6)' : ''; });
+
+function atacar() { if (!J || J.morto || J.ocupado) return; J.ocupado = true; J.acertou = false; J.a.tocar('Atacar', { uma: true, reinicia: true, fade: 0.1, fim: () => { J.ocupado = false; } }); }
+function defender() { if (!J || J.morto || J.ocupado || !J.a.tem('Defender')) return; J.ocupado = J.defendendo = true; J.a.tocar('Defender', { uma: true, reinicia: true, fade: 0.1, fim: () => { J.ocupado = J.defendendo = false; } }); }
+function comemorar() { if (!J || J.morto || J.ocupado || !J.a.tem('Comemorar')) return; J.ocupado = true; J.a.tocar('Comemorar', { uma: true, reinicia: true, fim: () => { J.ocupado = false; } }); }
+
+// ------------------------------------------------------------------ criaturas
+const POP = 22, criaturas = [];
+const AGRESSIVOS = new Set(['Diabretes', 'Espectrais', 'Gigantes', 'Répteis', 'Insetos', 'Elementais']);
+let ELEG = null;
+function elegiveis() {
+  if (ELEG) return ELEG;
+  ELEG = Object.entries(CAT.criaturas).filter(([, c]) => c.tamanho_m <= 6 && c.arquivos[0].animacoes.some(n => ['Andar', 'Mover', 'Voar'].includes(n)));
+  return ELEG;
+}
+async function gerarCriatura(inicio = false) {
+  const [id, info] = pick(elegiveis()), arq = pick(info.arquivos), gl = await carregar(arq.arquivo);
+  if (!J) return;
+  const a = new Ator(gl), ang = Math.random() * Math.PI * 2, d = inicio ? rnd(10, 55) : rnd(35, 60);
+  a.obj.position.set(clamp(J.pos.x + Math.cos(ang) * d, -MUNDO_R, MUNDO_R), 0, clamp(J.pos.z + Math.sin(ang) * d, -MUNDO_R, MUNDO_R)); a.obj.rotation.y = Math.random() * 6.28;
+  const v = arq.velocidades || {}, voa = info.voa && a.tem('Voar');
+  const flutua = voa && ['A', 'B', 'F', 'E'].includes(info.familia);   // fadas e flutuantes sempre no ar; alados de 4 patas andam e voam ao correr
+  const mov = flutua || (voa && !a.tem('Andar') && !a.tem('Mover')) ? 'Voar' : a.tem('Andar') ? 'Andar' : a.tem('Mover') ? 'Mover' : 'Voar', corre = voa ? 'Voar' : a.tem('Correr') ? 'Correr' : mov;
+  const tam = info.tamanho_m, gr = info.grupo;
+  const humor = tam < 0.45 ? 'timido' : AGRESSIVOS.has(gr) ? (Math.random() < 0.75 ? 'agressivo' : 'neutro') : tam > 2.5 ? 'neutro' : pick(['timido', 'neutro', 'neutro', 'agressivo']);
+  const ameaca = ['Rugir', 'Ameaçar', 'Gritar'].find(n => a.tem(n));
+  const C = { id, info, arq, a, pos: a.obj.position, yaw: a.obj.rotation.y, mov, corre, vMov: v[mov] || 0.4, vCorre: v[corre] || (v[mov] || 0.4) * 1.6, humor, ameaca,
+    vida: clamp(Math.ceil(tam * 2.5), 1, 12), dano: clamp(Math.round(tam * 0.8), 1, 4), estado: 'parado', t: rnd(0.5, 3), alvo: null, cd: 0, acertou: false, morto: false, sumir: 0 };
+  C.max = C.vida; scene.add(a.obj); a.tocar('Parado'); criaturas.push(C);
+}
+function removerCriatura(C) { scene.remove(C.a.obj); criaturas.splice(criaturas.indexOf(C), 1); gerarCriatura(); }
+
+function andarPara(C, x, z, vel, clip, dt) {
+  const dx = x - C.pos.x, dz = z - C.pos.z, d = Math.hypot(dx, dz); if (d < 1e-3) return 0;
+  const alvoYaw = Math.atan2(dx, dz); C.yaw += angDiff(C.yaw, alvoYaw) * Math.min(1, dt * 6); C.a.obj.rotation.y = C.yaw;
+  const frente = Math.max(0, Math.cos(angDiff(C.yaw, alvoYaw))), passo = Math.min(d, vel * frente * dt);
+  C.pos.x += Math.sin(C.yaw) * passo; C.pos.z += Math.cos(C.yaw) * passo; C.a.tocar(clip); return d;
+}
+function empurrar(pos, r) {
+  for (const o of OBST) { const dx = pos.x - o.x, dz = pos.z - o.z, d = Math.hypot(dx, dz), m = o.r + r; if (d < m && d > 1e-4) { pos.x = o.x + dx / d * m; pos.z = o.z + dz / d * m; } }
+  const d = Math.hypot(pos.x, pos.z); if (d > MUNDO_R) { pos.x *= MUNDO_R / d; pos.z *= MUNDO_R / d; }
+}
+function ferir(C, n, de) {
+  if (C.morto) return; golpes++; C.vida -= n; C.a.piscar(); numero(C.pos, C.a.altura, '-' + n, false);
+  const dx = C.pos.x - de.x, dz = C.pos.z - de.z, d = Math.hypot(dx, dz) || 1, k = 0.5 / Math.max(1, C.info.tamanho_m); C.pos.x += dx / d * k; C.pos.z += dz / d * k;
+  if (C.vida <= 0) { C.morto = true; C.estado = 'morto'; C.sumir = 0.6; abates++; atualizaHud(); toast(`<b>${C.info.nome}</b> foi vencido`); return; }
+  if (C.humor === 'timido') { C.estado = 'fugir'; C.t = 4; } else { C.humor = 'agressivo'; C.estado = 'perseguir'; }
+}
+function atualizarCriatura(C, dt) {
+  C.a.atualizar(dt);
+  if (C.morto) { C.sumir -= dt; const s = Math.max(0.01, C.sumir / 0.6); C.a.obj.scale.setScalar(s); if (C.sumir <= 0) removerCriatura(C); return; }
+  const dx = J.pos.x - C.pos.x, dz = J.pos.z - C.pos.z, d = Math.hypot(dx, dz), alcance = C.a.raio + J.a.raio + 0.45;
+  if (d > 95) { removerCriatura(C); return; }
+  if (!vistos.has(C.id) && d < 12) { vistos.add(C.id); salvarVistos(); atualizaHud(); toast(`Nova criatura: <b>${C.info.nome}</b> · ${C.info.grupo}`); }
+  C.t -= dt; C.cd -= dt;
+  const vivo = !J.morto;
+  if (vivo && C.estado !== 'atacar' && C.estado !== 'ameacar') {
+    if (C.humor === 'agressivo' && d < 7 + C.info.tamanho_m * 2 && C.estado !== 'perseguir') { if (C.ameaca && C.estado !== 'perseguir') { C.estado = 'ameacar'; C.yaw = Math.atan2(dx, dz); C.a.obj.rotation.y = C.yaw; C.a.tocar(C.ameaca, { uma: true, reinicia: true, fim: () => { C.estado = 'perseguir'; } }); return; } C.estado = 'perseguir'; }
+    if (C.humor === 'timido' && d < 5 && C.estado !== 'fugir') { C.estado = 'fugir'; C.t = 4; }
+  }
+  switch (C.estado) {
+    case 'parado': C.a.tocar('Parado'); if (C.t <= 0) { const a = Math.random() * 6.28, r = rnd(4, 14); C.alvo = [clamp(C.pos.x + Math.cos(a) * r, -MUNDO_R, MUNDO_R), clamp(C.pos.z + Math.sin(a) * r, -MUNDO_R, MUNDO_R)]; C.estado = 'passear'; C.t = 12; } break;
+    case 'passear': if (andarPara(C, C.alvo[0], C.alvo[1], C.vMov, C.mov, dt) < 0.4 || C.t <= 0) { C.estado = 'parado'; C.t = rnd(1.5, 5); } break;
+    case 'fugir': andarPara(C, C.pos.x - dx, C.pos.z - dz, C.vCorre, C.corre, dt); if ((d > 16 && C.t <= 0) || !vivo) { C.estado = 'parado'; C.t = rnd(1, 3); } break;
+    case 'perseguir':
+      if (!vivo || d > 24) { C.estado = 'parado'; C.t = 2; break; }
+      if (d <= alcance) { if (C.cd <= 0) { C.estado = 'atacar'; C.acertou = false; C.a.tocar('Atacar', { uma: true, reinicia: true, fade: 0.1, fim: () => { C.estado = 'perseguir'; C.cd = rnd(1.2, 2.4); } }); } else { C.a.tocar('Parado'); C.yaw += angDiff(C.yaw, Math.atan2(dx, dz)) * Math.min(1, dt * 6); C.a.obj.rotation.y = C.yaw; } }
+      else andarPara(C, J.pos.x, J.pos.z, C.vCorre, C.corre, dt); break;
+    case 'atacar': C.yaw += angDiff(C.yaw, Math.atan2(dx, dz)) * Math.min(1, dt * 4); C.a.obj.rotation.y = C.yaw;
+      if (!C.acertou && C.a.tempo() > C.a.dur.Atacar * 0.42) { C.acertou = true; if (vivo && d < alcance + 0.6) ferirJogador(C.dano, C); } break;
+  }
+  if (C.estado !== 'atacar') empurrar(C.pos, C.a.raio * 0.6);
+  for (const O of criaturas) { if (O === C || O.morto) continue; const ox = C.pos.x - O.pos.x, oz = C.pos.z - O.pos.z, od = Math.hypot(ox, oz), m = (C.a.raio + O.a.raio) * 0.8;   // não se empilham
+    if (od < m && od > 1e-4) { const k = (m - od) * 0.5; C.pos.x += ox / od * k; C.pos.z += oz / od * k; } }
+  // não atravessa o jogador
+  if (d < J.a.raio + C.a.raio && d > 1e-3) { const m = (J.a.raio + C.a.raio - d); C.pos.x -= dx / d * m; C.pos.z -= dz / d * m; }
+}
+function ferirJogador(n, C) {
+  if (J.morto) return; const real = J.defendendo ? Math.max(0, Math.floor(n * 0.2)) : n;
+  J.vida = Math.max(0, J.vida - real); J.a.piscar(); numero(J.pos, J.a.altura, real ? '-' + real : 'defendeu', true); atualizaHud();
+  if (J.vida <= 0) { J.morto = true; J.a.tocar('Parado'); $('morte').style.display = 'grid';
+    setTimeout(() => { J.vida = J.max; J.morto = false; J.ocupado = false; J.pos.set(0, 0, 3); $('morte').style.display = 'none'; atualizaHud(); for (const c of criaturas) if (c.estado === 'perseguir' || c.estado === 'atacar') { c.estado = 'parado'; c.t = 3; } }, 2200); }
+}
+
+// ------------------------------------------------------------------ interface: números, avisos, livro
+const nums = [];
+function numero(pos, h, txt, ruim) { const el = document.createElement('div'); el.className = 'dano' + (ruim ? ' ruim' : ''); el.textContent = txt; document.body.appendChild(el); nums.push({ el, p: new THREE.Vector3(pos.x, h * 1.05 + 0.2, pos.z), t: 0.9 }); }
+let toastT = 0; function toast(html) { $('toast').innerHTML = html; $('toast').style.opacity = 1; toastT = 2.6; }
+function alternaLivro() { const l = $('livro'); if (l.style.display === 'block') { l.style.display = 'none'; return; }
+  const g = {}; for (const id of vistos) { const c = CAT.criaturas[id]; if (c) (g[c.grupo] ||= []).push(c); }
+  $('livroLista').innerHTML = `<p>${vistos.size} de 150 espécies registradas.</p>` + (Object.keys(g).sort().map(k => `<b>${k}</b><ul>${g[k].sort((a, b) => a.num - b.num).map(c => `<li>${c.nome} <small>· ${c.tamanho_m < 1 ? Math.round(c.tamanho_m * 100) + ' cm' : c.tamanho_m + ' m'}</small></li>`).join('')}</ul>`).join('') || '<p><small>Chegue perto de uma criatura para registrá-la.</small></p>');
+  l.style.display = 'block'; }
+$('btLivro').onclick = alternaLivro; $('btFechaLivro').onclick = alternaLivro;
+
+// ------------------------------------------------------------------ laço
+const relogio = new THREE.Clock(), V = new THREE.Vector3();
+function passoJogador(dt) {
+  const a = J.a; a.atualizar(dt);
+  if (J.morto) return;
+  let ix = (tecla.KeyD || tecla.ArrowRight ? 1 : 0) - (tecla.KeyA || tecla.ArrowLeft ? 1 : 0) + stick.x, iy = (tecla.KeyW || tecla.ArrowUp ? 1 : 0) - (tecla.KeyS || tecla.ArrowDown ? 1 : 0) + stick.y;
+  const m = Math.min(1, Math.hypot(ix, iy)); const correr = tecla.ShiftLeft || tecla.ShiftRight || correrToque;
+  if (J.ocupado) {
+    if (J.a.curNome === 'Atacar' && !J.acertou && a.tempo() > a.dur.Atacar * 0.4) { J.acertou = true;
+      for (const C of criaturas) { if (C.morto) continue; const dx = C.pos.x - J.pos.x, dz = C.pos.z - J.pos.z, d = Math.hypot(dx, dz);
+        if (d < a.raio + C.a.raio + 1.0 && Math.abs(angDiff(J.yaw, Math.atan2(dx, dz))) < 1.2) ferir(C, 1 + (Math.random() < 0.2 ? 1 : 0), J.pos); } }
+    return;
+  }
+  if (m > 0.05) {
+    const fx = -Math.sin(cam.yaw), fz = -Math.cos(cam.yaw), mx = fx * iy + (-fz) * ix, mz = fz * iy + fx * ix, alvoYaw = Math.atan2(mx, mz);
+    J.yaw += angDiff(J.yaw, alvoYaw) * Math.min(1, dt * 10); a.obj.rotation.y = J.yaw;
+    const vel = (correr ? J.vCorrer : J.vAndar * 1.25) * m;
+    J.pos.x += Math.sin(J.yaw) * vel * dt; J.pos.z += Math.cos(J.yaw) * vel * dt;
+    if (correr) a.tocar('Correr', { ts: vel / J.vCorrer }); else a.tocar('Andar', { ts: vel / J.vAndar });
+    empurrar(J.pos, a.raio * 0.8);
+  } else a.tocar('Parado');
+  J.vida = Math.min(J.max, J.vida + dt * 0.25); $('hVida').style.width = (100 * J.vida / J.max) + '%';
+}
+function quadro() {
+  requestAnimationFrame(quadro);
+  const dt = Math.min(0.05, relogio.getDelta());
+  if (jogando && J) {
+    passoJogador(dt);
+    for (const C of [...criaturas]) atualizarCriatura(C, dt);
+    // câmera em terceira pessoa
+    const h = J.a.altura; cam.alvo.lerp(V.set(J.pos.x, h * 0.75, J.pos.z), Math.min(1, dt * 8));
+    camera.position.set(cam.alvo.x + Math.sin(cam.yaw) * Math.cos(cam.pitch) * cam.dist, cam.alvo.y + Math.sin(cam.pitch) * cam.dist, cam.alvo.z + Math.cos(cam.yaw) * Math.cos(cam.pitch) * cam.dist);
+    camera.lookAt(cam.alvo);
+    sol.position.set(J.pos.x + 18, 30, J.pos.z + 10); sol.target.position.set(J.pos.x, 0, J.pos.z);
+  } else { const t = performance.now() / 9000; camera.position.set(Math.sin(t) * 14, 5, Math.cos(t) * 14); camera.lookAt(0, 1, 0); }
+  for (let i = nums.length - 1; i >= 0; i--) { const n = nums[i]; n.t -= dt; n.p.y += dt * 0.8; V.copy(n.p).project(camera);
+    if (n.t <= 0 || V.z > 1) { n.el.remove(); nums.splice(i, 1); continue; } n.el.style.left = (V.x * 0.5 + 0.5) * innerWidth + 'px'; n.el.style.top = (-V.y * 0.5 + 0.5) * innerHeight + 'px'; n.el.style.opacity = Math.min(1, n.t * 2); }
+  if (toastT > 0) { toastT -= dt; if (toastT <= 0) $('toast').style.opacity = 0; }
+  renderer.render(scene, camera);
+}
+quadro();
+// modo de teste sem relógio: ?teste=SEGUNDOS[&raca=x] — começa, anda, ataca e simula a 30 qps
+const QS = new URLSearchParams(location.search);
+if (QS.get('teste')) (async () => {
+  await new Promise(r => { const f = () => CAT ? r() : setTimeout(f, 50); f(); });
+  if (QS.get('raca')) { escolha.raca = QS.get('raca'); escolha.p = CAT.racas[escolha.raca].personagens[0]; }
+  await iniciar(); $('menu').style.display = 'none';
+  while (criaturas.length < POP) await new Promise(r => setTimeout(r, 100));
+  if (QS.get('perto')) criaturas.forEach((c, i) => { const a = i / criaturas.length * 6.28; c.pos.set(Math.cos(a) * rnd(3, 9), 0, 3 + Math.sin(a) * rnd(3, 9)); });
+  const T = +QS.get('teste'), dt = 1 / 30;
+  for (let i = 0; i < T * 30; i++) { const u = i / (T * 30); tecla.KeyW = u < 0.5; tecla.ShiftLeft = u > 0.25 && u < 0.5; if (Math.abs(u - 0.7) < 0.5 / (T * 30)) atacar();
+    if (QS.get('alvo') && u >= 0.5) { const C0 = criaturas[0]; if (i % 45 === 0 && C0 && !C0.morto) { C0.humor = 'agressivo'; C0.vida = Math.max(C0.vida, 1); C0.pos.set(J.pos.x + Math.sin(J.yaw) * 1.2, 0, J.pos.z + Math.cos(J.yaw) * 1.2); } if (i % 45 === 1) atacar(); }
+    passoJogador(dt); for (const C of [...criaturas]) atualizarCriatura(C, dt); }
+  tecla.KeyW = tecla.ShiftLeft = false;
+  const h = J.a.altura; cam.alvo.set(J.pos.x, h * 0.75, J.pos.z);
+  console.log('TESTE ' + JSON.stringify({ pos: [J.pos.x.toFixed(2), J.pos.z.toFixed(2)], vida: J.vida.toFixed(1), clip: J.a.curNome, vistos: vistos.size, abates, golpes, criaturas: criaturas.map(c => c.id + ':' + c.estado + ':' + c.a.curNome).slice(0, 12) }));
+})();
+// ganchos de teste (só leitura do estado)
+window.__jogo = { get J() { return J; }, criaturas, vistos, iniciar: async () => { await new Promise(r => { const f = () => CAT ? r() : setTimeout(f, 50); f(); }); await iniciar(); $('menu').style.display = 'none'; } };
+</script>
+</body>
+</html>
