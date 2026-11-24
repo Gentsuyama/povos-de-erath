@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galeria do Bestiário</title>
+<style>
+  :root { --bg: #ece4d4; --card: #fbf7ee; --tx: #2a2218; --mut: #7a6a54; --acc: #b07a1c; --line: #dccfb8; --thumb: linear-gradient(180deg, #cfe0ea 0%, #e6efe0 62%, #b9cf98 100%); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #17140f; --card: #241f18; --tx: #f3ead8; --mut: #b8a88c; --acc: #e0aa35; --line: #3a3226; --thumb: linear-gradient(180deg, #2c3a44 0%, #34402e 62%, #3f5230 100%); } }
+  :root[data-theme="dark"] { --bg: #17140f; --card: #241f18; --tx: #f3ead8; --mut: #b8a88c; --acc: #e0aa35; --line: #3a3226; --thumb: linear-gradient(180deg, #2c3a44 0%, #34402e 62%, #3f5230 100%); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--tx); font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 3; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 12px 16px 10px; }
+  .topo { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 22px; letter-spacing: .3px; }
+  .topo .cont { color: var(--mut); }
+  .topo a { margin-left: auto; color: var(--acc); text-decoration: none; font-weight: 600; }
+  .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+  input[type=search], select { font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--tx); }
+  input[type=search] { flex: 1 1 200px; min-width: 0; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .chip { font: inherit; font-size: 12.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--tx); cursor: pointer; }
+  .chip.on { background: var(--acc); border-color: var(--acc); color: #1d1408; }
+  .chip small { opacity: .7; }
+  main { padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+  .thumb { position: relative; aspect-ratio: 1; background: var(--thumb); }
+  .thumb img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .thumb .num { position: absolute; left: 8px; top: 8px; font-size: 12px; font-weight: 700; background: rgba(20,16,10,.62); color: #f3ead8; padding: 2px 7px; border-radius: 999px; }
+  .thumb .voa { position: absolute; right: 8px; top: 8px; font-size: 11px; background: rgba(20,16,10,.62); color: #f3ead8; padding: 2px 7px; border-radius: 999px; }
+  .thumb .dado { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(20,16,10,.62); color: #f3ead8; cursor: pointer; font-size: 15px; opacity: 0; transition: opacity .15s; }
+  .card:hover .dado, .dado:focus { opacity: 1; }
+  @media (hover: none) { .thumb .dado { opacity: .85; } }
+  .thumb .esp { position: absolute; inset: 0; display: grid; place-items: center; color: var(--mut); font-size: 12px; }
+  .info { padding: 9px 11px 11px; }
+  .info b { display: block; font-size: 15px; }
+  .info .meta { color: var(--mut); font-size: 12.5px; }
+  .info .desc { font-size: 12.5px; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vazio { grid-column: 1 / -1; text-align: center; color: var(--mut); padding: 40px 0; }
+  @media (max-width: 480px) { main { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px; } .info .desc { display: none; } h1 { font-size: 19px; } }
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<header>
+  <div class="topo"><h1>Bestiário de Erath</h1><span class="cont" id="cont"></span><a href="bestiario.html">Abrir a forja de criaturas →</a></div>
+  <div class="filtros">
+    <input type="search" id="busca" placeholder="Buscar por nome ou número…">
+    <select id="ordem"><option value="num">Ordem da lista</option><option value="tam">Do menor ao maior</option><option value="tamd">Do maior ao menor</option><option value="nome">Nome (A–Z)</option></select>
+    <select id="fam"><option value="">Todas as famílias de corpo</option></select>
+    <label class="chip" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="soVoa"> Só as que voam</label>
+  </div>
+  <div class="chips" id="grupos"></div>
+</header>
+<main id="grade"></main>
+
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { ESPECIES, ESP_ORDEM, GRUPOS, baseCfgEsp, randomCfgEsp, nomeVariacao, forgeCriatura, rng } from './forja/erath_criaturas.js';
+
+const $ = id => document.getElementById(id);
+const FAM = { A: 'A · bípede pequeno', B: 'B · flutuante', C: 'C · quadrúpede', D: 'D · 6 ou 8 patas', E: 'E · serpente e corrente', F: 'F · tentáculos', G: 'G · amorfo e rolante', H: 'H · bípede grande', I: 'I · bípede sem braços' };
+const fmtT = m => m < 1 ? Math.round(m * 100) + ' cm' : (m < 10 ? m.toFixed(1).replace('.', ',') : Math.round(m)) + ' m';
+
+// ---------------------------------------------------------------- filtros
+const estado = { busca: '', grupo: '', fam: '', voa: false, ordem: 'num' };
+for (const [k, v] of Object.entries(FAM)) { const o = document.createElement('option'); o.value = k; o.textContent = v; $('fam').appendChild(o); }
+const chipsG = [['', 'Todos']].concat(GRUPOS.map(g => [g, g]));
+for (const [g, nome] of chipsG) { const b = document.createElement('button'); b.className = 'chip' + (g === '' ? ' on' : ''); b.dataset.g = g;
+  const n = g ? ESP_ORDEM.filter(k => ESPECIES[k].grupo === g).length : ESP_ORDEM.length; b.innerHTML = `${nome} <small>${n}</small>`;
+  b.onclick = () => { estado.grupo = g; for (const x of $('grupos').children) x.classList.toggle('on', x === b); montar(); }; $('grupos').appendChild(b); }
+$('busca').oninput = e => { estado.busca = e.target.value.trim().toLowerCase(); montar(); };
+$('ordem').onchange = e => { estado.ordem = e.target.value; montar(); };
+$('fam').onchange = e => { estado.fam = e.target.value; montar(); };
+$('soVoa').onchange = e => { estado.voa = e.target.checked; montar(); };
+
+// ---------------------------------------------------------------- cartões
+const cartoes = new Map();
+for (const id of ESP_ORDEM) {
+  const S = ESPECIES[id], a = document.createElement('a'); a.className = 'card'; a.href = 'bestiario.html#esp=' + id;
+  a.innerHTML = `<div class="thumb"><div class="esp">desenhando…</div><span class="num">${S.num}</span>${S.voa ? '<span class="voa">voa</span>' : ''}<button class="dado" title="Ver outra variação" aria-label="Ver outra variação">🎲</button></div>
+    <div class="info"><b>${S.nome}</b><div class="meta">${S.grupo} · ${fmtT(S.tam)}${S.medida === 'comprimento' ? ' de comprimento' : ''}</div><div class="desc">${S.desc || ''}</div></div>`;
+  const img = document.createElement('img'); img.alt = S.nome; img.loading = 'lazy'; img.hidden = true; a.querySelector('.thumb').prepend(img);
+  a.querySelector('.dado').onclick = e => { e.preventDefault(); e.stopPropagation(); const c = randomCfgEsp(id, rng(Math.floor(Math.random() * 1e6))); fila.unshift({ id, cfg: c, forca: true }); bombear();
+    a.href = 'bestiario.html#' + new URLSearchParams({ esp: id, ...c }).toString(); a.querySelector('b').textContent = S.nome + ' · ' + nomeVariacao(id, c); };
+  cartoes.set(id, { a, img, feito: false });
+}
+function montar() {
+  let ids = ESP_ORDEM.filter(id => { const S = ESPECIES[id];
+    if (estado.grupo && S.grupo !== estado.grupo) return false; if (estado.fam && S.fam !== estado.fam) return false; if (estado.voa && !S.voa) return false;
+    if (estado.busca && !(S.nome.toLowerCase().includes(estado.busca) || String(S.num) === estado.busca || (S.desc || '').toLowerCase().includes(estado.busca))) return false; return true; });
+  const o = estado.ordem; ids.sort((a, b) => { const A = ESPECIES[a], B = ESPECIES[b]; return o === 'tam' ? A.tam - B.tam : o === 'tamd' ? B.tam - A.tam : o === 'nome' ? A.nome.localeCompare(B.nome, 'pt') : A.num - B.num; });
+  const g = $('grade'); g.textContent = '';
+  for (const id of ids) g.appendChild(cartoes.get(id).a);
+  if (!ids.length) g.innerHTML = '<div class="vazio">Nenhuma criatura com esses filtros.</div>';
+  $('cont').textContent = ids.length === ESP_ORDEM.length ? `${ESP_ORDEM.length} criaturas` : `${ids.length} de ${ESP_ORDEM.length} criaturas`;
+}
+{ const h = new URLSearchParams(location.hash.slice(1));   // filtros pela URL: #grupo=Colossais&ordem=tamd&fam=E&busca=dragão
+  if (h.get('grupo')) { estado.grupo = h.get('grupo'); for (const x of $('grupos').children) x.classList.toggle('on', x.dataset.g === estado.grupo); }
+  if (h.get('ordem')) $('ordem').value = estado.ordem = h.get('ordem'); if (h.get('fam')) $('fam').value = estado.fam = h.get('fam');
+  if (h.get('busca')) { $('busca').value = h.get('busca'); estado.busca = h.get('busca').toLowerCase(); } }
+montar();
+
+// ---------------------------------------------------------------- miniaturas: um renderizador só, desenhado no próprio navegador
+const TAM = 360;
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(TAM, TAM); renderer.setClearColor(0x000000, 0);
+renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.add(new THREE.HemisphereLight('#e2f0ff', '#5a4632', 1.0));
+const sol = new THREE.DirectionalLight('#fff0d8', 2.3); sol.castShadow = true; sol.shadow.mapSize.set(1024, 1024); sol.shadow.bias = -0.0004; sol.shadow.normalBias = 0.01; scene.add(sol, sol.target);
+const sombra = new THREE.Mesh(new THREE.CircleGeometry(1, 40), new THREE.ShadowMaterial({ opacity: 0.28 })); sombra.rotation.x = -Math.PI / 2; sombra.receiveShadow = true; scene.add(sombra);
+const camera = new THREE.PerspectiveCamera(32, 1, 0.005, 400);
+const DIR = new THREE.Vector3(0.62, 0.38, 0.78).normalize();
+
+function desenhar(id, cfg) {
+  const P = forgeCriatura(id, cfg), S = ESPECIES[id];
+  const mixer = new THREE.AnimationMixer(P.root), clip = P.clips.find(c => c.name === 'Parado') || P.clips[0];
+  mixer.clipAction(clip).play(); mixer.setTime(Math.min(0.3, clip.duration * 0.2)); P.root.updateMatrixWorld(true);
+  P.root.traverse(o => { if (o.isMesh) { o.castShadow = true; o.frustumCulled = false; } });
+  scene.add(P.root);
+  // enquadra pela caixa real da pose (as longas e as que pairam também cabem)
+  const box = new THREE.Box3().setFromObject(P.root), c = box.getCenter(new THREE.Vector3()), sz = box.getSize(new THREE.Vector3());
+  const raio = Math.max(sz.x, sz.y, sz.z) * 0.62 + 1e-3, dist = raio / Math.sin(THREE.MathUtils.degToRad(32 / 2)) * 0.9;
+  camera.position.copy(c).addScaledVector(DIR, dist); camera.near = dist * 0.02; camera.far = dist * 10; camera.lookAt(c); camera.updateProjectionMatrix();
+  const k = raio * 1.6; sombra.scale.setScalar(k * 1.5); sombra.position.set(c.x, 0.001, c.z);
+  Object.assign(sol.shadow.camera, { left: -k, right: k, top: k, bottom: -k, near: 0.01, far: k * 10 }); sol.shadow.camera.updateProjectionMatrix();
+  sol.position.set(c.x + k * 1.1, k * 2.4, c.z + k * 1.5); sol.target.position.set(c.x, 0, c.z);
+  renderer.render(scene, camera);
+  const url = renderer.domElement.toDataURL('image/webp', 0.86);
+  scene.remove(P.root); P.root.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+  return url;
+}
+
+// fila: primeiro o que está na tela, depois o resto aos poucos
+const fila = [];
+const obs = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { const id = e.target.dataset.id, ct = cartoes.get(id); if (!ct.feito && !fila.some(f => f.id === id)) { fila.unshift({ id, cfg: baseCfgEsp(id) }); bombear(); } } }, { rootMargin: '300px' });
+for (const [id, ct] of cartoes) { ct.a.dataset.id = id; obs.observe(ct.a); }
+let ocupado = false;
+function bombear() {
+  if (ocupado) return; ocupado = true;
+  const passo = () => {
+    let job = fila.shift();
+    if (!job) { const id = ESP_ORDEM.find(k => !cartoes.get(k).feito); if (id) job = { id, cfg: baseCfgEsp(id) }; }
+    if (!job) { ocupado = false; return; }
+    const ct = cartoes.get(job.id);
+    if (!ct.feito || job.forca) { try { ct.img.src = desenhar(job.id, job.cfg); ct.img.hidden = false; ct.feito = true; const e = ct.a.querySelector('.esp'); if (e) e.remove(); } catch (err) { console.warn('miniatura', job.id, err); ct.feito = true; } }
+    setTimeout(passo, 0);
+  };
+  passo();
+}
+bombear();
+window.__galeria = { pronto: () => [...cartoes.values()].every(c => c.feito) };
+</script>
+</body>
+</html>
