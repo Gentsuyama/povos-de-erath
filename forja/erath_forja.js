@@ -325,7 +325,7 @@ export const MATS = [
   new THREE.MeshBasicMaterial({ vertexColors: true, name: 'brilho' }),
 ];
 const _X = V3(1, 0, 0), _Y = V3(0, 1, 0);
-function ik(b1, b2, b3, target, pole, l1, l2, leg, qEnd, twist) {
+export function ik(b1, b2, b3, target, pole, l1, l2, leg, qEnd, twist) {
   const P = new THREE.Vector3().setFromMatrixPosition(b1.matrixWorld);
   const v = target.clone().sub(P); const d0 = v.length(); const vh = v.divideScalar(d0 || 1);
   const d = clamp(d0, Math.abs(l1 - l2) + 1e-3, (l1 + l2) * 0.9995);

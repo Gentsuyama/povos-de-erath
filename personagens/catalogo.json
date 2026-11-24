@@ -14803,6 +14803,149 @@
     }
    ]
   },
+  "broto-andante": {
+   "num": 89,
+   "nome": "Broto-andante",
+   "grupo": "Plantas",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 1.4,
+   "descricao": "Tronco jovem, galhos como braços, folhas; passo rígido.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "primavera",
+       "nome": "Primavera"
+      },
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "cerejeira",
+       "nome": "Cerejeira"
+      }
+     ]
+    },
+    {
+     "chave": "copa",
+     "nome": "Copa",
+     "opcoes": [
+      {
+       "chave": "redonda",
+       "nome": "Redonda"
+      },
+      {
+       "chave": "pontuda",
+       "nome": "Pontuda"
+      },
+      {
+       "chave": "flores",
+       "nome": "Com flores"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/broto-andante/broto-andante_padrao.glb",
+     "variacao": "Bela 85",
+     "kb": 107,
+     "triangulos": 1752,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.578,
+      "Correr": 2.217
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "primavera",
+      "copa": "redonda"
+     }
+    },
+    {
+     "arquivo": "criaturas/broto-andante/broto-andante_sabi-92.glb",
+     "variacao": "Sabi 92",
+     "kb": 105,
+     "triangulos": 1752,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.578,
+      "Correr": 2.217
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "outono",
+      "copa": "redonda"
+     }
+    },
+    {
+     "arquivo": "criaturas/broto-andante/broto-andante_sabi-40.glb",
+     "variacao": "Sabi 40",
+     "kb": 105,
+     "triangulos": 1752,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.204,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.497,
+      "Correr": 1.906
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "cerejeira",
+      "copa": "redonda"
+     }
+    }
+   ]
+  },
   "cogumelo-saltitante": {
    "num": 90,
    "nome": "Cogumelo-saltitante",
@@ -15077,6 +15220,444 @@
       "tamanho": "g",
       "cores": "outono",
       "flores": "frutos"
+     }
+    }
+   ]
+  },
+  "cacto-guerreiro": {
+   "num": 95,
+   "nome": "Cacto-guerreiro",
+   "grupo": "Plantas",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 1.6,
+   "descricao": "Braços de cacto, flor na cabeça; passo duro.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azulado"
+      },
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "espada",
+       "nome": "Espada de espinho"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Chapéu",
+     "opcoes": [
+      {
+       "chave": "flor",
+       "nome": "Flor"
+      },
+      {
+       "chave": "sombrero",
+       "nome": "Chapelão"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cacto-guerreiro/cacto-guerreiro_padrao.glb",
+     "variacao": "Dudu 75",
+     "kb": 117,
+     "triangulos": 2228,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.722,
+      "Correr": 2.769
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "arma": "espada",
+      "chapeu": "flor"
+     }
+    },
+    {
+     "arquivo": "criaturas/cacto-guerreiro/cacto-guerreiro_vina-49.glb",
+     "variacao": "Vina 49",
+     "kb": 115,
+     "triangulos": 2164,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.84,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.83,
+      "Correr": 3.184
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "verde",
+      "arma": "nada",
+      "chapeu": "flor"
+     }
+    },
+    {
+     "arquivo": "criaturas/cacto-guerreiro/cacto-guerreiro_bela-29.glb",
+     "variacao": "Bela 29",
+     "kb": 115,
+     "triangulos": 2164,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.722,
+      "Correr": 2.769
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "roxo",
+      "arma": "nada",
+      "chapeu": "flor"
+     }
+    }
+   ]
+  },
+  "elemental-de-cascalho": {
+   "num": 101,
+   "nome": "Elemental-de-cascalho",
+   "grupo": "Elementais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 2.5,
+   "descricao": "Pedras soltas orbitando o corpo; anda e se remonta.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "granito",
+       "nome": "Granito"
+      },
+      {
+       "chave": "ardosia",
+       "nome": "Ardósia"
+      },
+      {
+       "chave": "arenito",
+       "nome": "Arenito"
+      }
+     ]
+    },
+    {
+     "chave": "nucleo",
+     "nome": "Núcleo",
+     "opcoes": [
+      {
+       "chave": "brilho",
+       "nome": "Que brilha"
+      },
+      {
+       "chave": "pedra",
+       "nome": "Só pedra"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/elemental-de-cascalho/elemental-de-cascalho_padrao.glb",
+     "variacao": "Pim 94",
+     "kb": 101,
+     "triangulos": 1256,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.085,
+      "Correr": 4.159
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "granito",
+      "nucleo": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/elemental-de-cascalho/elemental-de-cascalho_dudu-48.glb",
+     "variacao": "Dudu 48",
+     "kb": 101,
+     "triangulos": 1256,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.085,
+      "Correr": 4.159
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "arenito",
+      "nucleo": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/elemental-de-cascalho/elemental-de-cascalho_nix-25.glb",
+     "variacao": "Nix 25",
+     "kb": 99,
+     "triangulos": 1176,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.875,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.247,
+      "Correr": 4.783
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ardosia",
+      "nucleo": "pedra"
+     }
+    }
+   ]
+  },
+  "golenzinho-de-argila": {
+   "num": 102,
+   "nome": "Golenzinho-de-argila",
+   "grupo": "Elementais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 0.6,
+   "descricao": "Marcas de dedos, olhos de botão; anda trôpego.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "terracota",
+       "nome": "Terracota"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Argila cinza"
+      },
+      {
+       "chave": "branca",
+       "nome": "Porcelana"
+      }
+     ]
+    },
+    {
+     "chave": "runa",
+     "nome": "Runa",
+     "opcoes": [
+      {
+       "chave": "peito",
+       "nome": "No peito"
+      },
+      {
+       "chave": "testa",
+       "nome": "Na testa"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/golenzinho-de-argila/golenzinho-de-argila_padrao.glb",
+     "variacao": "Lua 88",
+     "kb": 104,
+     "triangulos": 1456,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.278,
+      "Correr": 1.068
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "terracota",
+      "runa": "peito"
+     }
+    },
+    {
+     "arquivo": "criaturas/golenzinho-de-argila/golenzinho-de-argila_nix-81.glb",
+     "variacao": "Nix 81",
+     "kb": 105,
+     "triangulos": 1456,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.278,
+      "Correr": 1.068
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branca",
+      "runa": "peito"
+     }
+    },
+    {
+     "arquivo": "criaturas/golenzinho-de-argila/golenzinho-de-argila_luz-80.glb",
+     "variacao": "Luz 80",
+     "kb": 105,
+     "triangulos": 1456,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.278,
+      "Correr": 1.068
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "runa": "testa"
      }
     }
    ]
@@ -15540,6 +16121,145 @@
     }
    ]
   },
+  "magmoide": {
+   "num": 107,
+   "nome": "Magmoide",
+   "grupo": "Elementais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 2.2,
+   "descricao": "Crosta preta, lava nas juntas; passo pesado.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "lava",
+       "nome": "Lava"
+      },
+      {
+       "chave": "azul",
+       "nome": "Fogo azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Enxofre"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "nenhum",
+       "nome": "Nenhum"
+      },
+      {
+       "chave": "curvos",
+       "nome": "Curvos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/magmoide/magmoide_padrao.glb",
+     "variacao": "Tula 46",
+     "kb": 96,
+     "triangulos": 1240,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.96,
+      "Correr": 3.68
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "lava",
+      "chifres": "nenhum"
+     }
+    },
+    {
+     "arquivo": "criaturas/magmoide/magmoide_nix-78.glb",
+     "variacao": "Nix 78",
+     "kb": 97,
+     "triangulos": 1280,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.892,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.812,
+      "Correr": 3.113
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "azul",
+      "chifres": "curvos"
+     }
+    },
+    {
+     "arquivo": "criaturas/magmoide/magmoide_sabi-19.glb",
+     "variacao": "Sabi 19",
+     "kb": 96,
+     "triangulos": 1240,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.53,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.104,
+      "Correr": 4.232
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "verde",
+      "chifres": "nenhum"
+     }
+    }
+   ]
+  },
   "nuvenzinha-chuvosa": {
    "num": 108,
    "nome": "Nuvenzinha-chuvosa",
@@ -15700,6 +16420,149 @@
       "cores": "tempestade",
       "clima": "neve",
       "rosto": "feliz"
+     }
+    }
+   ]
+  },
+  "esqueleto-de-gelo": {
+   "num": 109,
+   "nome": "Esqueleto-de-gelo",
+   "grupo": "Elementais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 2.4,
+   "descricao": "Ossos de gelo; anda rangendo.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "geleira",
+       "nome": "Geleira"
+      },
+      {
+       "chave": "aurora",
+       "nome": "Aurora"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite polar"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "espada",
+       "nome": "Espada de gelo"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "nada",
+       "nome": "Garras"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/esqueleto-de-gelo/esqueleto-de-gelo_padrao.glb",
+     "variacao": "Gaia 62",
+     "kb": 104,
+     "triangulos": 1392,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.091,
+      "Correr": 4.184
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "geleira",
+      "arma": "espada"
+     }
+    },
+    {
+     "arquivo": "criaturas/esqueleto-de-gelo/esqueleto-de-gelo_gaia-58.glb",
+     "variacao": "Gaia 58",
+     "kb": 104,
+     "triangulos": 1380,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.091,
+      "Correr": 4.184
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "aurora",
+      "arma": "machado"
+     }
+    },
+    {
+     "arquivo": "criaturas/esqueleto-de-gelo/esqueleto-de-gelo_vina-13.glb",
+     "variacao": "Vina 13",
+     "kb": 100,
+     "triangulos": 1340,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.064,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.939,
+      "Correr": 3.598
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "geleira",
+      "arma": "nada"
      }
     }
    ]
@@ -16140,6 +17003,169 @@
       "tamanho": "m",
       "cores": "ferro",
       "forma": "redonda"
+     }
+    }
+   ]
+  },
+  "cavaleiro-oco": {
+   "num": 115,
+   "nome": "Cavaleiro-oco",
+   "grupo": "Espectrais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 1.8,
+   "descricao": "Armadura vazia, olhos de luz; passo metálico.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      },
+      {
+       "chave": "negro",
+       "nome": "Negro"
+      },
+      {
+       "chave": "ouro",
+       "nome": "Dourado"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      }
+     ]
+    },
+    {
+     "chave": "escudo",
+     "nome": "Escudo",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Escudo"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem escudo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cavaleiro-oco/cavaleiro-oco_padrao.glb",
+     "variacao": "Rufo 46",
+     "kb": 125,
+     "triangulos": 1704,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.76,
+      "Correr": 2.913
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "prata",
+      "arma": "espada",
+      "escudo": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavaleiro-oco/cavaleiro-oco_orvo-54.glb",
+     "variacao": "Orvo 54",
+     "kb": 124,
+     "triangulos": 1692,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.548,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.653,
+      "Correr": 2.505
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ouro",
+      "arma": "machado",
+      "escudo": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavaleiro-oco/cavaleiro-oco_orvo-54-2.glb",
+     "variacao": "Orvo 54",
+     "kb": 124,
+     "triangulos": 1692,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.548,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.653,
+      "Correr": 2.505
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ouro",
+      "arma": "machado",
+      "escudo": "sim"
      }
     }
    ]
@@ -17130,6 +18156,1087 @@
     }
    ]
   },
+  "gigante-da-colina": {
+   "num": 125,
+   "nome": "Gigante-da-colina",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 6,
+   "descricao": "Barriga enorme, clava de árvore; passo lento.",
+   "combinacoes": 72,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "rosado",
+       "nome": "Rosado"
+      },
+      {
+       "chave": "moreno",
+       "nome": "Moreno"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinzento"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    },
+    {
+     "chave": "barba",
+     "nome": "Barba",
+     "opcoes": [
+      {
+       "chave": "cheia",
+       "nome": "Cheia"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Sem barba"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gigante-da-colina/gigante-da-colina_padrao.glb",
+     "variacao": "Nix 33",
+     "kb": 125,
+     "triangulos": 1946,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.867,
+      "Correr": 7.159
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rosado",
+      "arma": "clava",
+      "barba": "cheia"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-da-colina/gigante-da-colina_nix-83.glb",
+     "variacao": "Nix 83",
+     "kb": 122,
+     "triangulos": 1674,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.867,
+      "Correr": 7.159
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rosado",
+      "arma": "martelo",
+      "barba": "nenhuma"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-da-colina/gigante-da-colina_bela-36.glb",
+     "variacao": "Bela 36",
+     "kb": 125,
+     "triangulos": 1874,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.867,
+      "Correr": 7.159
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "moreno",
+      "arma": "martelo",
+      "barba": "cheia"
+     }
+    }
+   ]
+  },
+  "ciclope-pastor": {
+   "num": 126,
+   "nome": "Ciclope-pastor",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 5,
+   "descricao": "Um olho, cajado; passo pesado.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "oliva",
+       "nome": "Oliva"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azulado"
+      },
+      {
+       "chave": "terra",
+       "nome": "Terra"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Cabelo",
+     "opcoes": [
+      {
+       "chave": "careca",
+       "nome": "Careca"
+      },
+      {
+       "chave": "topete",
+       "nome": "Topete"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/ciclope-pastor/ciclope-pastor_padrao.glb",
+     "variacao": "Bela 20",
+     "kb": 120,
+     "triangulos": 1794,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.717,
+      "Correr": 6.583
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "oliva",
+      "arma": "cajado",
+      "cabelo": "careca"
+     }
+    },
+    {
+     "arquivo": "criaturas/ciclope-pastor/ciclope-pastor_luz-95.glb",
+     "variacao": "Luz 95",
+     "kb": 120,
+     "triangulos": 1826,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 4.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.444,
+      "Correr": 5.535
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "terra",
+      "arma": "clava",
+      "cabelo": "topete"
+     }
+    },
+    {
+     "arquivo": "criaturas/ciclope-pastor/ciclope-pastor_tula-97.glb",
+     "variacao": "Tula 97",
+     "kb": 120,
+     "triangulos": 1778,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.717,
+      "Correr": 6.583
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "azul",
+      "arma": "clava",
+      "cabelo": "careca"
+     }
+    }
+   ]
+  },
+  "tita-de-musgo": {
+   "num": 127,
+   "nome": "Titã-de-musgo",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 15,
+   "descricao": "Montanha que anda; muito lento.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      },
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "neve",
+       "nome": "Neve"
+      }
+     ]
+    },
+    {
+     "chave": "costas",
+     "nome": "Costas",
+     "opcoes": [
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "cachoeira",
+       "nome": "Cachoeira"
+      },
+      {
+       "chave": "ruinas",
+       "nome": "Ruínas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/tita-de-musgo/tita-de-musgo_padrao.glb",
+     "variacao": "Zuza 32",
+     "kb": 116,
+     "triangulos": 1470,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 15,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 4.008,
+      "Correr": 15.366
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "musgo",
+      "costas": "floresta"
+     }
+    },
+    {
+     "arquivo": "criaturas/tita-de-musgo/tita-de-musgo_miro-18.glb",
+     "variacao": "Miro 18",
+     "kb": 114,
+     "triangulos": 1290,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 15,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 4.008,
+      "Correr": 15.366
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "outono",
+      "costas": "cachoeira"
+     }
+    },
+    {
+     "arquivo": "criaturas/tita-de-musgo/tita-de-musgo_luz-18.glb",
+     "variacao": "Luz 18",
+     "kb": 114,
+     "triangulos": 1338,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 17.25,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 4.609,
+      "Correr": 17.671
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "neve",
+      "costas": "ruinas"
+     }
+    }
+   ]
+  },
+  "gigante-de-gelo": {
+   "num": 128,
+   "nome": "Gigante-de-gelo",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 7,
+   "descricao": "Barba de estalactites; passo firme.",
+   "combinacoes": 72,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "geleira",
+       "nome": "Geleira"
+      },
+      {
+       "chave": "tundra",
+       "nome": "Tundra"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    },
+    {
+     "chave": "elmo",
+     "nome": "Elmo",
+     "opcoes": [
+      {
+       "chave": "chifres",
+       "nome": "Chifres de gelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gigante-de-gelo/gigante-de-gelo_padrao.glb",
+     "variacao": "Gaia 59",
+     "kb": 133,
+     "triangulos": 2124,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 7,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 2.354,
+      "Correr": 9.026
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "geleira",
+      "arma": "machado",
+      "elmo": "chifres"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-de-gelo/gigante-de-gelo_miro-48.glb",
+     "variacao": "Miro 48",
+     "kb": 130,
+     "triangulos": 2013,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 8.05,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 2.816,
+      "Correr": 10.798
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "noite",
+      "arma": "machado",
+      "elmo": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-de-gelo/gigante-de-gelo_pipo-76.glb",
+     "variacao": "Pipo 76",
+     "kb": 133,
+     "triangulos": 2084,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 6.02,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 2.024,
+      "Correr": 7.762
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "geleira",
+      "arma": "nada",
+      "elmo": "chifres"
+     }
+    }
+   ]
+  },
+  "ogro-de-duas-bocas": {
+   "num": 129,
+   "nome": "Ogro-de-duas-bocas",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 3,
+   "descricao": "Segunda boca na barriga; gingado.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "ocre",
+       "nome": "Ocre"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/ogro-de-duas-bocas/ogro-de-duas-bocas_padrao.glb",
+     "variacao": "Miro 28",
+     "kb": 126,
+     "triangulos": 1986,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.892,
+      "Correr": 3.419
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "arma": "clava"
+     }
+    },
+    {
+     "arquivo": "criaturas/ogro-de-duas-bocas/ogro-de-duas-bocas_tula-42.glb",
+     "variacao": "Tula 42",
+     "kb": 124,
+     "triangulos": 1878,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.58,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.767,
+      "Correr": 2.94
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "verde",
+      "arma": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/ogro-de-duas-bocas/ogro-de-duas-bocas_teco-63.glb",
+     "variacao": "Teco 63",
+     "kb": 126,
+     "triangulos": 1918,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.892,
+      "Correr": 3.419
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "arma": "machado"
+     }
+    }
+   ]
+  },
+  "troll-da-ponte": {
+   "num": 130,
+   "nome": "Troll-da-ponte",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 3,
+   "descricao": "Curvado, braços até o chão; anda apoiado nos nós dos dedos.",
+   "combinacoes": 72,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      },
+      {
+       "chave": "pedra",
+       "nome": "Pedra"
+      },
+      {
+       "chave": "pantano",
+       "nome": "Pântano"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    },
+    {
+     "chave": "nariz",
+     "nome": "Nariz",
+     "opcoes": [
+      {
+       "chave": "enorme",
+       "nome": "Enorme"
+      },
+      {
+       "chave": "verruga",
+       "nome": "Com verrugas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/troll-da-ponte/troll-da-ponte_padrao.glb",
+     "variacao": "Vina 83",
+     "kb": 117,
+     "triangulos": 1614,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.851,
+      "Correr": 3.262
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "musgo",
+      "arma": "nada",
+      "nariz": "enorme"
+     }
+    },
+    {
+     "arquivo": "criaturas/troll-da-ponte/troll-da-ponte_zuza-37.glb",
+     "variacao": "Zuza 37",
+     "kb": 119,
+     "triangulos": 1654,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3.45,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.884,
+      "Correr": 3.389
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "pantano",
+      "arma": "machado",
+      "nariz": "enorme"
+     }
+    },
+    {
+     "arquivo": "criaturas/troll-da-ponte/troll-da-ponte_vina-98.glb",
+     "variacao": "Vina 98",
+     "kb": 120,
+     "triangulos": 1782,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3.45,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.978,
+      "Correr": 3.751
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "musgo",
+      "arma": "clava",
+      "nariz": "verruga"
+     }
+    }
+   ]
+  },
+  "colosso-de-bronze": {
+   "num": 131,
+   "nome": "Colosso-de-bronze",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 12,
+   "descricao": "Engrenagens à mostra; passo mecânico.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "bronze",
+       "nome": "Bronze"
+      },
+      {
+       "chave": "verdete",
+       "nome": "Verdete"
+      },
+      {
+       "chave": "ferro",
+       "nome": "Ferro"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/colosso-de-bronze/colosso-de-bronze_padrao.glb",
+     "variacao": "Sabi 83",
+     "kb": 127,
+     "triangulos": 2028,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 12,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 3.89,
+      "Correr": 14.916
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "bronze",
+      "arma": "martelo"
+     }
+    },
+    {
+     "arquivo": "criaturas/colosso-de-bronze/colosso-de-bronze_sabi-83.glb",
+     "variacao": "Sabi 83",
+     "kb": 127,
+     "triangulos": 2028,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 12,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 3.89,
+      "Correr": 14.916
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "bronze",
+      "arma": "martelo"
+     }
+    },
+    {
+     "arquivo": "criaturas/colosso-de-bronze/colosso-de-bronze_pipo-37.glb",
+     "variacao": "Pipo 37",
+     "kb": 127,
+     "triangulos": 2028,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 10.32,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 3.346,
+      "Correr": 12.828
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ferro",
+      "arma": "martelo"
+     }
+    }
+   ]
+  },
   "kraken-de-pedra": {
    "num": 132,
    "nome": "Kraken-de-pedra",
@@ -17412,6 +19519,156 @@
       "tamanho": "p",
       "cores": "ocre",
       "chifres": "arco"
+     }
+    }
+   ]
+  },
+  "gigante-de-quatro-bracos": {
+   "num": 134,
+   "nome": "Gigante-de-quatro-braços",
+   "grupo": "Gigantes",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 5,
+   "descricao": "Quatro braços; luta com dois escudos e duas armas.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "rubro",
+       "nome": "Rubro"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "dourado",
+       "nome": "Dourado"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gigante-de-quatro-bracos/gigante-de-quatro-bracos_padrao.glb",
+     "variacao": "Vina 98",
+     "kb": 185,
+     "triangulos": 2542,
+     "ossos": 23,
+     "molas": [],
+     "altura_m": 5,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.746,
+      "Correr": 6.694
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rubro",
+      "arma": "machado"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-de-quatro-bracos/gigante-de-quatro-bracos_gaia-61.glb",
+     "variacao": "Gaia 61",
+     "kb": 185,
+     "triangulos": 2542,
+     "ossos": 23,
+     "molas": [],
+     "altura_m": 5.75,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 2.008,
+      "Correr": 7.698
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "dourado",
+      "arma": "machado"
+     }
+    },
+    {
+     "arquivo": "criaturas/gigante-de-quatro-bracos/gigante-de-quatro-bracos_nix-77.glb",
+     "variacao": "Nix 77",
+     "kb": 187,
+     "triangulos": 2610,
+     "ossos": 23,
+     "molas": [],
+     "altura_m": 4.3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Defender",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.502,
+      "Correr": 5.757
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "dourado",
+      "arma": "clava"
      }
     }
    ]
@@ -18428,6 +20685,145 @@
     }
    ]
   },
+  "automato-de-corda": {
+   "num": 143,
+   "nome": "Autômato-de-corda",
+   "grupo": "Constructos",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 1.4,
+   "descricao": "Chave de corda nas costas; passos que perdem força.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "latao",
+       "nome": "Latão"
+      },
+      {
+       "chave": "cobre",
+       "nome": "Cobre"
+      },
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "caixa",
+       "nome": "Caixa"
+      },
+      {
+       "chave": "cupula",
+       "nome": "Cúpula de vidro"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/automato-de-corda/automato-de-corda_padrao.glb",
+     "variacao": "Gaia 26",
+     "kb": 112,
+     "triangulos": 1680,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.616,
+      "Correr": 2.363
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "latao",
+      "cabeca": "caixa"
+     }
+    },
+    {
+     "arquivo": "criaturas/automato-de-corda/automato-de-corda_teco-23.glb",
+     "variacao": "Teco 23",
+     "kb": 115,
+     "triangulos": 1758,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 1.61,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.706,
+      "Correr": 2.708
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "cobre",
+      "cabeca": "cupula"
+     }
+    },
+    {
+     "arquivo": "criaturas/automato-de-corda/automato-de-corda_rufo-89.glb",
+     "variacao": "Rufo 89",
+     "kb": 112,
+     "triangulos": 1680,
+     "ossos": 18,
+     "molas": [],
+     "altura_m": 1.61,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.709,
+      "Correr": 2.717
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "latao",
+      "cabeca": "caixa"
+     }
+    }
+   ]
+  },
   "vassoura-viva": {
    "num": 145,
    "nome": "Vassoura-viva",
@@ -18696,6 +21092,452 @@
       "tamanho": "m",
       "cores": "negro",
       "orelhas": "pontuda"
+     }
+    }
+   ]
+  },
+  "espantalho-guardiao": {
+   "num": 147,
+   "nome": "Espantalho-guardião",
+   "grupo": "Constructos",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 1.8,
+   "descricao": "Cabeça de abóbora, corpo de palha; anda desengonçado.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      },
+      {
+       "chave": "campo",
+       "nome": "Campo"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Na mão",
+     "opcoes": [
+      {
+       "chave": "foice",
+       "nome": "Foice"
+      },
+      {
+       "chave": "lanterna",
+       "nome": "Lanterna"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Chapéu",
+     "opcoes": [
+      {
+       "chave": "palha",
+       "nome": "De palha"
+      },
+      {
+       "chave": "bruxa",
+       "nome": "De bruxa"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/espantalho-guardiao/espantalho-guardiao_padrao.glb",
+     "variacao": "Nix 21",
+     "kb": 118,
+     "triangulos": 2082,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.801,
+      "Correr": 3.07
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "outono",
+      "arma": "foice",
+      "chapeu": "palha"
+     }
+    },
+    {
+     "arquivo": "criaturas/espantalho-guardiao/espantalho-guardiao_pipo-63.glb",
+     "variacao": "Pipo 63",
+     "kb": 118,
+     "triangulos": 2066,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.801,
+      "Correr": 3.07
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "noite",
+      "arma": "lanterna",
+      "chapeu": "palha"
+     }
+    },
+    {
+     "arquivo": "criaturas/espantalho-guardiao/espantalho-guardiao_pim-66.glb",
+     "variacao": "Pim 66",
+     "kb": 117,
+     "triangulos": 2066,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.8,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.719,
+      "Correr": 2.757
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "outono",
+      "arma": "foice",
+      "chapeu": "bruxa"
+     }
+    }
+   ]
+  },
+  "bule-andante": {
+   "num": 148,
+   "nome": "Bule-andante",
+   "grupo": "Constructos",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 0.4,
+   "descricao": "Bule com pernas, bico de nariz; gingado.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "porcelana",
+       "nome": "Porcelana"
+      },
+      {
+       "chave": "ferro",
+       "nome": "Ferro fundido"
+      },
+      {
+       "chave": "esmalte",
+       "nome": "Esmalte"
+      }
+     ]
+    },
+    {
+     "chave": "tampa",
+     "nome": "Tampa",
+     "opcoes": [
+      {
+       "chave": "bolinha",
+       "nome": "Com bolinha"
+      },
+      {
+       "chave": "chapeu",
+       "nome": "Chapéu-coco"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/bule-andante/bule-andante_padrao.glb",
+     "variacao": "Tula 29",
+     "kb": 100,
+     "triangulos": 1372,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.162,
+      "Correr": 0.622
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "porcelana",
+      "tampa": "bolinha"
+     }
+    },
+    {
+     "arquivo": "criaturas/bule-andante/bule-andante_dudu-81.glb",
+     "variacao": "Dudu 81",
+     "kb": 98,
+     "triangulos": 1372,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.46,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.187,
+      "Correr": 0.715
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "esmalte",
+      "tampa": "bolinha"
+     }
+    },
+    {
+     "arquivo": "criaturas/bule-andante/bule-andante_orvo-47.glb",
+     "variacao": "Orvo 47",
+     "kb": 101,
+     "triangulos": 1445,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.344,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.135,
+      "Correr": 0.517
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "porcelana",
+      "tampa": "chapeu"
+     }
+    }
+   ]
+  },
+  "golem-de-moedas": {
+   "num": 149,
+   "nome": "Golem-de-moedas",
+   "grupo": "Constructos",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 2.2,
+   "descricao": "Feito de moedas que tilintam; passo pesado.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ouro",
+       "nome": "Ouro"
+      },
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      },
+      {
+       "chave": "cobre",
+       "nome": "Cobre"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "clava",
+       "nome": "Clava"
+      },
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "nada",
+       "nome": "Punhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/golem-de-moedas/golem-de-moedas_padrao.glb",
+     "variacao": "Sabi 32",
+     "kb": 153,
+     "triangulos": 3272,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.2,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.776,
+      "Correr": 2.974
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ouro",
+      "arma": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/golem-de-moedas/golem-de-moedas_brisa-67.glb",
+     "variacao": "Brisa 67",
+     "kb": 153,
+     "triangulos": 3308,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 2.53,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.892,
+      "Correr": 3.421
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ouro",
+      "arma": "martelo"
+     }
+    },
+    {
+     "arquivo": "criaturas/golem-de-moedas/golem-de-moedas_miro-55.glb",
+     "variacao": "Miro 55",
+     "kb": 155,
+     "triangulos": 3380,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 1.892,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.667,
+      "Correr": 2.558
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "prata",
+      "arma": "clava"
      }
     }
    ]
