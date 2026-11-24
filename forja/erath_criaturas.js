@@ -2,7 +2,7 @@
 //   import { ESPECIES, ESP_ORDEM, catsOfEsp, baseCfgEsp, randomCfgEsp, nomeVariacao, forgeCriatura, springStep } from './erath_criaturas.js'
 //   const P = forgeCriatura('fada-orvalho', baseCfgEsp('fada-orvalho'));  // P.root já na escala real; P.clips; P.springs
 // Famílias: A = bípede pequeno com/sem asas (fadas, diabretes, ursos alados); B = flutuante (fantasmas, chamas, olhos...);
-// C = quadrúpede com/sem asas (lobo-falcão, javali, alce, tartaruga-de-vento...); D = 6/8 patas (insetos, aranhas, caranguejo); E = serpentes e corpos em corrente (tamanho = comprimento).
+// C = quadrúpede com/sem asas (lobo-falcão, javali, alce, tartaruga-de-vento...); D = 6/8 patas (insetos, aranhas, caranguejo); E = serpentes e corpos em corrente (tamanho = comprimento); F = tentáculos e radiais.
 // Convenções iguais às da Forja: Y para cima, olha para +Z, esquerda dele = +X, metros.
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
@@ -512,6 +512,41 @@ const ESP_E = {
     receita: c => ({ N: 12, r0: 0.04, taper: 0.3, tipo: 'pipa', cabeca: 'pipa', fitas: c.fitas, onda: 'vertical' }) },
 };
 Object.assign(ESPECIES, ESP_E);
+
+// ------------------------------------------------------------ TENTÁCULOS E RADIAIS (família F)
+const ESP_F = {
+  'agua-viva-do-ceu': { num: 77, nome: 'Água-viva-do-céu', grupo: 'Aquáticos', fam: 'F', tam: 1.5, voa: true, desc: 'Sino translúcido, tentáculos de luz; flutua no ar.',
+    cats: { cores: pal({ lua: { n: 'Lua', pele: '#c8d8ff', claro: '#f0f4ff', brilho: '#80c0ff' }, rosa: { n: 'Rosa', pele: '#ffc0e0', claro: '#fff0f8', brilho: '#ff70c0' }, aurora: { n: 'Aurora', pele: '#b8ffe0', claro: '#f0fff8', brilho: '#50ffb0' }, ambar: { n: 'Âmbar', pele: '#ffe0a8', claro: '#fff8e8', brilho: '#ffb040' } }),
+      tentaculos: { n: 'Tentáculos', o: [P_('longos', 'Longos'), P_('curtos', 'Curtos')] }, sino: { n: 'Sino', o: [P_('redondo', 'Redondo'), P_('alto', 'Alto')] } },
+    base: { cores: 'lua', tentaculos: 'longos', sino: 'redondo' },
+    receita: c => ({ tipo: 'medusa', n: 8, K: 4, longos: c.tentaculos === 'longos', alto: c.sino === 'alto' }) },
+  'polvo-erudito': { num: 78, nome: 'Polvo-erudito', grupo: 'Aquáticos', fam: 'F', tam: 1.2, desc: 'Óculos, um livro em cada braço; anda nos tentáculos.',
+    cats: { cores: pal({ coral: { n: 'Coral', pele: '#d8705a', claro: '#f8c8b0', escuro: '#8a3a2a' }, violeta: { n: 'Violeta', pele: '#8a5ac0', claro: '#d8c0f0', escuro: '#4a2a7a' }, oceano: { n: 'Oceano', pele: '#3a7ab0', claro: '#b0d8f0', escuro: '#1a3a5a' }, areia: { n: 'Areia', pele: '#c8a070', claro: '#f0e0c0', escuro: '#7a5a30' } }),
+      oculos: { n: 'Óculos', o: [P_('redondos', 'Redondos'), P_('monoculo', 'Monóculo'), P_('nenhum', 'Nenhum')] }, livros: { n: 'Livros', o: [P_('dois', 'Dois'), P_('pilha', 'Pilha'), P_('pergaminho', 'Pergaminho')] } },
+    base: { cores: 'coral', oculos: 'redondos', livros: 'dois' },
+    receita: c => ({ tipo: 'polvo', n: 8, K: 4, oculos: c.oculos, livros: c.livros, anda: true }) },
+  'lula-pintora': { num: 83, nome: 'Lula-pintora', grupo: 'Aquáticos', fam: 'F', tam: 2.6, voa: true, desc: '10 tentáculos, tinta que forma desenhos; jato.',
+    cats: { cores: pal({ nanquim: { n: 'Nanquim', pele: '#e8d8d0', claro: '#ffffff', escuro: '#2a2028', tinta: '#2a2a3a' }, carmim: { n: 'Carmim', pele: '#d84a4a', claro: '#f8c0b0', escuro: '#6a1a1a', tinta: '#3a1a6a' }, turquesa: { n: 'Turquesa', pele: '#3ab0a8', claro: '#c0f0e8', escuro: '#145a54', tinta: '#e0a020' } }),
+      pincel: { n: 'Na ponta', o: [P_('pincel', 'Pincel'), P_('paleta', 'Paleta'), P_('nada', 'Nada')] } },
+    base: { cores: 'nanquim', pincel: 'pincel' },
+    receita: c => ({ tipo: 'lula', n: 10, K: 4, pincel: c.pincel }) },
+  'anemona-guardia': { num: 88, nome: 'Anêmona-guardiã', grupo: 'Aquáticos', fam: 'F', tam: 1.2, desc: 'Fixa no chão, tentáculos que agarram; balança no lugar.',
+    cats: { cores: pal({ coral: { n: 'Coral', pele: '#e8704a', claro: '#ffd0b0', escuro: '#8a3020', brilho: '#ffe080' }, magenta: { n: 'Magenta', pele: '#d84aa8', claro: '#ffc0e8', escuro: '#7a1a5a', brilho: '#80ffe0' }, verde: { n: 'Verde', pele: '#6ac04a', claro: '#d0ffb0', escuro: '#2a6a1a', brilho: '#ffd0ff' } }),
+      pontas: { n: 'Pontas', o: [P_('brilho', 'Que brilham'), P_('bolinhas', 'Bolinhas'), P_('finas', 'Finas')] } },
+    base: { cores: 'coral', pontas: 'brilho' },
+    receita: c => ({ tipo: 'anemona', n: 12, K: 3, pontas: c.pontas, fixo: true }) },
+  'kraken-de-pedra': { num: 132, nome: 'Kraken-de-pedra', grupo: 'Gigantes', fam: 'F', tam: 25, desc: 'Tentáculos de rocha; arrasta-se.',
+    cats: { cores: pal({ basalto: { n: 'Basalto', pele: '#4a4648', claro: '#7a7478', escuro: '#22201e', brilho: '#ff7030' }, coral: { n: 'Recife', pele: '#8a6a5a', claro: '#c0a090', escuro: '#3a2a22', brilho: '#50e0ff' }, musgo: { n: 'Musgo', pele: '#5a6450', claro: '#8a9478', escuro: '#262c20', brilho: '#c0ff60' } }),
+      olhos: { n: 'Olhos', o: [P_('dois', 'Dois'), P_('um', 'Um enorme'), P_('muitos', 'Muitos')] } },
+    base: { cores: 'basalto', olhos: 'dois' },
+    receita: c => ({ tipo: 'kraken', n: 8, K: 4, olhos: c.olhos, anda: true, pedra: true }) },
+  'cabeca-de-lula': { num: 139, nome: 'Cabeça-de-lula', grupo: 'Estranhos', fam: 'F', tam: 2.0, voa: true, desc: 'Cabeça de lula, corpo humanoide; flutua.',
+    cats: { cores: pal({ abismo: { n: 'Abismo', pele: '#6a8a8a', claro: '#b0d0c8', escuro: '#2a3a3a', roupa: '#2a2240', brilho: '#a0ffe0' }, purpura: { n: 'Púrpura', pele: '#8a6aa0', claro: '#d0b8e0', escuro: '#3a2a4a', roupa: '#3a1a2a', brilho: '#ffb0ff' }, coral: { n: 'Coral', pele: '#c07060', claro: '#f0c0b0', escuro: '#5a2a22', roupa: '#1a2a3a', brilho: '#ffe070' } }),
+      manto: { n: 'Manto', o: [P_('longo', 'Longo'), P_('capuz', 'Com capuz')] }, tentaculos: { n: 'Tentáculos', o: [P_('seis', 'Seis'), P_('quatro', 'Quatro')] } },
+    base: { cores: 'abismo', manto: 'longo', tentaculos: 'seis' },
+    receita: c => ({ tipo: 'cabecaLula', n: c.tentaculos === 'seis' ? 6 : 4, K: 3, capuz: c.manto === 'capuz' }) },
+};
+Object.assign(ESPECIES, ESP_F);
 
 export const ESP_ORDEM = Object.keys(ESPECIES).sort((a, b) => ESPECIES[a].num - ESPECIES[b].num);
 export const GRUPOS = [...new Set(ESP_ORDEM.map(k => ESPECIES[k].grupo))];
@@ -2130,10 +2165,140 @@ function forgeE(id, S, cfg) {
   return P0;
 }
 
+// ======================================================================= FAMÍLIA F — tentáculos e corpos radiais
+function forgeF(id, S, cfg) {
+  const R = { tipo: 'polvo', n: 8, K: 4, ...S.receita(cfg) };
+  const COL = S.cats.cores.cor[cfg.cores];
+  const C = { pele: '#8a6a5a', claro: '#e0c8b8', escuro: '#3a2a22', brilho: '#ffd060', ...COL };
+  const kit = makeKit(v => v.clone()), { add, G } = kit;
+  const t = R.tipo, n = R.n, K = R.K, J = t === 'kraken' ? 0.01 : 0.004;
+  // ---------- geometria-base por tipo
+  const L = { medusa: { by: 0.75, rb: 0.2, len: R.longos ? 0.7 : 0.4, droop: 85, spread: 0.02 }, polvo: { by: 0.42, rb: 0.13, len: 0.55, droop: 38, spread: 0.12 },
+    lula: { by: 0.45, rb: 0.1, len: 0.5, droop: 70, spread: 0.04 }, anemona: { by: 0.38, rb: 0.16, len: 0.42, droop: -70, spread: 0.06 },
+    kraken: { by: 0.4, rb: 0.16, len: 0.75, droop: 30, spread: 0.16 }, cabecaLula: { by: 0.92, rb: 0.07, len: 0.36, droop: 80, spread: 0.0 } }[t];
+  const bdef = [['Root', null, [0, 0, 0]], ['Body', 'Root', [0, L.by, 0]]];
+  if (t === 'medusa') for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; bdef.push(['Rim' + i, 'Body', [Math.sin(a) * L.rb * 1.3, L.by + 0.02, Math.cos(a) * L.rb * 1.3]]); }
+  if (t === 'cabecaLula') { bdef.push(['Head', 'Body', [0, 1.02, 0.02]]); for (const [s, Lr] of [[1, '_L'], [-1, '_R']]) bdef.push(['UpperArm' + Lr, 'Body', [s * 0.18, 0.85, 0]], ['ForeArm' + Lr, 'UpperArm' + Lr, [s * 0.2, 0.62, 0.04]], ['Hand' + Lr, 'ForeArm' + Lr, [s * 0.21, 0.42, 0.08]]); }
+  const tents = [];
+  for (let i = 0; i < n; i++) {
+    let a = i / n * Math.PI * 2 + (t === 'polvo' || t === 'kraken' ? Math.PI / n : 0), lenK = L.len, droop = L.droop * D2R, rb = L.rb, by = L.by - (t === 'anemona' ? -0.02 : 0.04);
+    if (t === 'lula') { a = i / n * Math.PI * 2; if (i >= 8) { lenK = L.len * 1.6; } }
+    if (t === 'cabecaLula') { a = (i / (n - 1) - 0.5) * 1.6; rb = 0.06; by = 0.95; }
+    const dir = V3(Math.sin(a), 0, Math.cos(a)), base = V3(0, by, 0).addScaledVector(dir, rb), pts = [base.toArray()];
+    const seg = lenK / K;
+    for (let k = 1; k <= K; k++) { const d = droop * (t === 'medusa' || t === 'cabecaLula' ? 1 : 1 - k / (K * 1.8)); const p = V3(...pts[k - 1]).addScaledVector(dir, seg * Math.cos(d) + (t === 'polvo' || t === 'kraken' ? L.spread * 0.15 : 0)).add(V3(0, -seg * Math.sin(d), 0)); pts.push(p.toArray()); }
+    if (t === 'polvo' || t === 'kraken') pts.forEach((p, k) => { if (k === K) p[1] = 0.02; });
+    const names = Array.from({ length: K }, (_, k) => `Tent${i}_${k + 1}`), parent = t === 'cabecaLula' ? 'Head' : 'Body';
+    names.forEach((nm, k) => bdef.push([nm, k ? names[k - 1] : parent, pts[k]])); bdef.push([`Tent${i}_End`, names[K - 1], pts[K]]);
+    tents.push({ i, a, dir, axis: new THREE.Vector3().crossVectors(_Y, dir).normalize(), pts, names, long: t === 'lula' && i >= 8, front: Math.cos(a) > 0.5 });
+  }
+  const skel = buildSkeleton(bdef, [], v => v);
+  kit.setBI(skel.BI);
+  const { B, REST } = skel;
+  const tw = tt => chainW({ pts: tt.pts, names: tt.names, parent: t === 'cabecaLula' ? 'Head' : 'Body' });
+  const stone = !!R.pedra;
+  // ---------- tentáculos
+  for (const tt of tents) {
+    const r0 = { medusa: 0.018, polvo: 0.06, lula: tt.long ? 0.022 : 0.04, anemona: 0.035, kraken: 0.085, cabecaLula: 0.03 }[t];
+    for (let k = 0; k < K; k++) { const ra = r0 * (1 - k / (K + 0.6)), rb2 = r0 * (1 - (k + 1) / (K + 0.6));
+      add(G.tube(tt.pts[k], tt.pts[k + 1], ra, Math.max(0.004, rb2), stone ? 6 : 7), { c: t === 'medusa' ? C.brilho : C.pele, glow: t === 'medusa', mat: t === 'medusa' ? 2 : 0, b: tw(tt), jit: J, vary: stone ? 0.14 : 0.07 });
+      if ((t === 'polvo' || t === 'kraken' || t === 'lula') && k < K - 1) for (let j = 0; j < 2; j++) { const q = V3(...tt.pts[k]).lerp(V3(...tt.pts[k + 1]), 0.3 + j * 0.4).add(V3(0, -ra * 0.75, 0));
+        add(G.cyl(ra * 0.35, ra * 0.35, ra * 0.25, 6), { c: stone ? C.brilho : C.claro, glow: stone, b: tw(tt), pos: q.toArray(), jit: 0 }); } }
+    const tip = tt.pts[K];
+    if (t === 'anemona') { const pt = R.pontas; add(pt === 'finas' ? G.cone(0.012, 0.05, 4) : G.ico(pt === 'bolinhas' ? 0.03 : 0.025, 1), { c: pt === 'brilho' ? C.brilho : C.claro, glow: pt === 'brilho', b: tw(tt), pos: tip, jit: 0 }); }
+    if (t === 'lula' && tt.long) add(G.sph(1, 6, 4), { c: C.pele, b: tw(tt), pos: tip, scl: [0.04, 0.02, 0.06], jit: 0 });
+  }
+  // ---------- corpo por tipo
+  if (t === 'medusa') { const h = R.alto ? 1.4 : 1;
+    add(G.sph(L.rb * 1.35, 12, 6, 0, Math.PI / 2), { c: C.pele, mat: 3, b: p => { const a = Math.atan2(p.x, p.z), i = ((Math.round(a / (Math.PI / 4)) % 8) + 8) % 8; return p.y < L.by + 0.06 ? [['Rim' + i, 0.8], ['Body', 0.2]] : [['Body', 1]]; }, pos: [0, L.by, 0], scl: [1, h, 1], jit: 0 });
+    add(G.sph(L.rb * 0.7, 9, 5, 0, Math.PI / 2), { c: C.brilho, glow: true, b: 'Body', pos: [0, L.by + 0.02, 0], scl: [1, h * 0.9, 1], jit: 0 });
+    for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; add(G.ico(0.015, 0), { c: C.claro, glow: true, b: 'Rim' + i, pos: [Math.sin(a) * L.rb * 1.33, L.by + 0.005, Math.cos(a) * L.rb * 1.33], jit: 0 }); }
+    for (let i = 0; i < 4; i++) { const a = i / 4 * Math.PI * 2 + 0.4; add(G.tube([Math.sin(a) * 0.04, L.by, Math.cos(a) * 0.04], [Math.sin(a) * 0.07, L.by - 0.28, Math.cos(a) * 0.07], 0.035, 0.008, 6), { c: C.claro, mat: 3, b: 'Body', jit: 0.004 }); } }
+  if (t === 'polvo' || t === 'kraken') { const big = t === 'kraken' ? 1.25 : 1;
+    add(G.sph(0.2 * big, 12, 9), { c: C.pele, b: 'Body', pos: [0, L.by + 0.2 * big, -0.06], scl: [1, 1.15, 1.15], jit: J, vary: stone ? 0.14 : 0.07 });
+    add(G.sph(0.16 * big, 10, 7), { c: C.pele, b: 'Body', pos: [0, L.by + 0.02, 0.04], jit: J, vary: stone ? 0.14 : 0.07 });
+    const eo = R.olhos || 'dois', es = eo === 'um' ? [[0, 0.1, 0.16, 0.06]] : eo === 'muitos' ? [[0.08, 0.08, 0.14, 0.025], [-0.08, 0.08, 0.14, 0.025], [0.04, 0.13, 0.15, 0.02], [-0.04, 0.13, 0.15, 0.02], [0.12, 0.13, 0.1, 0.02], [-0.12, 0.13, 0.1, 0.02]] : [[0.09, 0.09, 0.14, 0.035], [-0.09, 0.09, 0.14, 0.035]];
+    for (const [x, y, z, r] of es) { add(G.sph(r * big, 7, 5), { c: stone ? C.brilho : '#f8f0e0', glow: stone, b: 'Body', pos: [x * big, L.by + y * big, z * big], jit: 0, vary: 0 });
+      if (!stone) add(G.box(r * 1.2, r * 0.4, r * 0.3), { c: '#14110c', b: 'Body', pos: [x, L.by + y, z + r * 0.85], jit: 0, vary: 0 }); }
+    if (stone) for (let i = 0; i < 6; i++) add(new THREE.DodecahedronGeometry(0.06, 0), { c: C.escuro, b: 'Body', pos: [Math.cos(i) * 0.15, L.by + 0.3 + (i % 2) * 0.08, -0.06 + Math.sin(i) * 0.15], jit: 0.01 });
+    if (t === 'polvo') { const oc = R.oculos;
+      if (oc === 'redondos') { for (const s of [1, -1]) add(new THREE.TorusGeometry(0.045, 0.007, 4, 12), { c: '#c8a040', metal: true, mat: 1, b: 'Body', pos: [s * 0.09, L.by + 0.09, 0.18], jit: 0 }); add(G.box(0.05, 0.008, 0.008), { c: '#c8a040', metal: true, mat: 1, b: 'Body', pos: [0, L.by + 0.1, 0.19], jit: 0 }); }
+      if (oc === 'monoculo') { add(new THREE.TorusGeometry(0.05, 0.007, 4, 12), { c: '#c8a040', metal: true, mat: 1, b: 'Body', pos: [0.09, L.by + 0.09, 0.18], jit: 0 }); add(G.tube([0.13, L.by + 0.06, 0.18], [0.16, L.by - 0.1, 0.12], 0.003, 0.003, 3), { c: '#c8a040', b: 'Body', jit: 0 }); }
+      add(G.cyl(0.13, 0.12, 0.06, 10), { c: '#3a2a3a', b: 'Body', pos: [0, L.by + 0.43, -0.07], jit: 0.002 }); add(G.cyl(0.18, 0.18, 0.012, 10), { c: '#3a2a3a', b: 'Body', pos: [0, L.by + 0.4, -0.07], jit: 0 });
+      const holders = tents.filter(tt => tt.front).slice(0, 2), lv = R.livros;
+      holders.forEach((tt, j) => { const tip = V3(...tt.pts[2]).add(V3(0, 0.05, 0));
+        if (lv === 'pergaminho' && j === 0) add(G.cyl(0.03, 0.03, 0.16, 8), { c: '#f0e6c8', b: tt.names[1], pos: tip.toArray(), rot: [0, 0, 90], jit: 0 });
+        else if (lv !== 'pergaminho') for (let k = 0; k < (lv === 'pilha' && j === 0 ? 3 : 1); k++) { add(G.box(0.12, 0.03, 0.09), { c: ['#8a2a2a', '#2a4a8a', '#2a6a3a'][(j + k) % 3], b: tt.names[1], pos: [tip.x, tip.y + k * 0.032, tip.z], rot: [0, 20 * k, 0], jit: 0 });
+          add(G.box(0.11, 0.024, 0.085), { c: '#f0e6c8', b: tt.names[1], pos: [tip.x + 0.006, tip.y + k * 0.032, tip.z], rot: [0, 20 * k, 0], jit: 0 }); } }); } }
+  if (t === 'lula') {
+    add(G.tube([0, L.by, 0], [0, L.by + 0.6, -0.08], 0.13, 0.03, 10), { c: C.pele, b: 'Body', jit: J });
+    for (const s of [1, -1]) add(G.slab([[0, 0], [0.14, 0.04], [0.1, 0.16], [0, 0.2]], 0.01), { c: C.claro, b: 'Body', pos: [s * 0.04, L.by + 0.42, -0.06], rot: [0, s > 0 ? 0 : 180, 0], jit: 0 });
+    for (const s of [1, -1]) { add(G.sph(0.045, 7, 5), { c: '#f8f0e0', b: 'Body', pos: [s * 0.1, L.by + 0.04, 0.05], jit: 0 }); add(G.sph(0.022, 5, 4), { c: '#14110c', b: 'Body', pos: [s * 0.13, L.by + 0.04, 0.07], jit: 0 }); }
+    for (let i = 0; i < 6; i++) add(G.sph(0.02, 5, 3), { c: C.tinta, b: 'Body', pos: [Math.sin(i * 2) * 0.12, L.by + 0.12 + i * 0.07, Math.cos(i * 2) * 0.1 - 0.02], scl: [1, 0.4, 1], jit: 0 });
+    const pc = R.pincel, ht = tents.find(tt => tt.long); if (ht && pc !== 'nada') { const tip = ht.pts[K];
+      if (pc === 'pincel') { add(G.tube(tip, [tip[0], tip[1] - 0.18, tip[2] + 0.04], 0.008, 0.008, 4), { c: '#c8a060', b: ht.names[K - 1], jit: 0 }); add(G.cone(0.016, 0.05, 5), { c: C.tinta, b: ht.names[K - 1], pos: [tip[0], tip[1] - 0.2, tip[2] + 0.045], rot: [180, 0, 0], jit: 0 }); }
+      else { add(G.cyl(0.08, 0.08, 0.01, 10), { c: '#d8b880', b: ht.names[K - 1], pos: tip, jit: 0 }); for (let k = 0; k < 4; k++) add(G.cyl(0.015, 0.015, 0.012, 6), { c: ['#d83a3a', '#3a6ad8', '#f0c030', '#3ab050'][k], b: ht.names[K - 1], pos: [tip[0] + Math.cos(k * 1.5) * 0.05, tip[1] + 0.006, tip[2] + Math.sin(k * 1.5) * 0.05], jit: 0 }); } } }
+  if (t === 'anemona') {
+    add(G.cyl(0.17, 0.22, L.by, 12), { c: C.escuro, b: 'Body', pos: [0, L.by / 2, 0], jit: 0.006, vary: 0.1 });
+    add(G.cyl(0.24, 0.26, 0.05, 12), { c: C.escuro, b: 'Root', pos: [0, 0.025, 0], jit: 0.006 });
+    add(G.cyl(0.18, 0.17, 0.04, 12), { c: C.claro, b: 'Body', pos: [0, L.by + 0.01, 0], jit: 0 }); add(G.cyl(0.05, 0.05, 0.05, 8), { c: '#5a1a2a', b: 'Body', pos: [0, L.by + 0.025, 0], jit: 0 });
+    for (let i = 0; i < 6; i++) add(G.ico(0.03, 0), { c: C.claro, b: 'Body', pos: [Math.cos(i) * 0.2, 0.1 + (i % 3) * 0.08, Math.sin(i) * 0.2], jit: 0.003 }); }
+  if (t === 'cabecaLula') {
+    const robeW = p => p.y > 0.7 ? [['Body', 1]] : [['Body', 1]];
+    add(G.cone(0.32, 0.95, 12, true), { c: C.roupa, b: robeW, pos: [0, 0.5, 0], vary: 0.06, deform: g => { const pa = g.attributes.position; for (let i = 0; i < pa.count; i++) if (pa.getY(i) < 0.08) { const a = Math.atan2(pa.getZ(i), pa.getX(i)); pa.setY(i, pa.getY(i) + 0.03 * Math.sin(a * 6)); } } });
+    add(G.cyl(0.2, 0.24, 0.12, 10), { c: hex(C.roupa, 1.3), b: 'Body', pos: [0, 0.86, 0], jit: 0.003 });
+    add(G.tube([0, 1.0, 0.0], [0, 1.42, -0.12], 0.13, 0.03, 10), { c: C.pele, b: 'Head', jit: J });
+    add(G.sph(0.12, 9, 7), { c: C.pele, b: 'Head', pos: [0, 1.0, 0.03], jit: J });
+    for (const s of [1, -1]) { add(G.sph(0.03, 6, 4), { c: C.brilho, glow: true, b: 'Head', pos: [s * 0.07, 1.04, 0.12], jit: 0 }); add(G.slab([[0, 0], [0.1, 0.06], [0.06, 0.16], [0, 0.18]], 0.01), { c: C.claro, b: 'Head', pos: [s * 0.04, 1.24, -0.08], rot: [0, s > 0 ? 0 : 180, 0], jit: 0 }); }
+    if (R.capuz) add(G.sph(0.17, 9, 6, 0, 1.7, Math.PI / 2 + 0.9, Math.PI * 2 - 1.8), { c: C.roupa, b: 'Head', pos: [0, 1.06, -0.02], scl: [1, 1.3, 1], jit: 0.002 });
+    for (const [s, Lr] of [[1, '_L'], [-1, '_R']]) { const A = REST['UpperArm' + Lr].toArray(), Bp = REST['ForeArm' + Lr].toArray(), Hp = REST['Hand' + Lr].toArray();
+      add(G.tube(A, Bp, 0.055, 0.05, 7), { c: C.roupa, b: 'UpperArm' + Lr, jit: 0.003 }); add(G.tube(Bp, Hp, 0.05, 0.06, 7), { c: C.roupa, b: 'ForeArm' + Lr, jit: 0.003 });
+      add(G.sph(0.035, 6, 5), { c: C.pele, b: 'Hand' + Lr, pos: [Hp[0], Hp[1] - 0.04, Hp[2]], jit: 0 }); } }
+  // ---------- poses
+  const curlQ = (tt, ang, sw) => new THREE.Quaternion().setFromAxisAngle(tt.axis, ang * D2R).multiply(new THREE.Quaternion().setFromAxisAngle(_Y, sw * D2R));
+  function applyPose(P) {
+    B.Root.position.set(P.p[0], P.p[1], P.p[2]); B.Root.quaternion.copy(E(P.r || [0, 0, 0]));
+    B.Body.quaternion.copy(E(P.b || [0, 0, 0]));
+    if (B.Head) B.Head.quaternion.copy(E(P.hd || [0, 0, 0]));
+    for (const tt of tents) { const c = P.c[tt.i] || [0, 0, 0, 0], sw = P.s ? P.s[tt.i] || 0 : 0; tt.names.forEach((nm, k) => B[nm].quaternion.copy(curlQ(tt, c[k] || 0, sw / K))); }
+    if (t === 'medusa') for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2, ax = V3(Math.cos(a), 0, -Math.sin(a)); B['Rim' + i].quaternion.setFromAxisAngle(ax, (P.pulse || 0) * D2R); }
+    if (t === 'cabecaLula') for (const [s, Lr] of [[1, '_L'], [-1, '_R']]) { const a = P.arm || [0, 0, 0]; B['UpperArm' + Lr].quaternion.copy(E([a[0], 0, s * a[1]], 'XYZ')); B['ForeArm' + Lr].quaternion.setFromAxisAngle(_X, -a[2] * D2R); }
+    B.Root.updateMatrixWorld(true);
+  }
+  const zc = () => tents.map(() => [0, 0, 0, 0]);
+  const base = () => ({ p: [0, 0, 0], r: [0, 0, 0], b: [0, 0, 0], c: zc(), s: tents.map(() => 0), pulse: 0, arm: [-10, 12, 30] });
+  const flo = !!S.voa, hov = t === 'medusa' ? 0.35 : t === 'lula' ? 0.6 : t === 'cabecaLula' ? 0.15 : 0;
+  const waveC = (tt, ph, A) => Array.from({ length: K }, (_, k) => A * Math.sin(ph - k * 0.9));
+  const clipdefs = [
+    { name: 'Parado', dur: 3, fps: 30, loop: true, fn: t2 => { const P = base(), a = 2 * Math.PI * t2 / 3;
+      P.p[1] = hov + (flo ? 0.04 * Math.sin(a) : 0.008 * Math.sin(a)); P.b = [2 * Math.sin(a), 6 * Math.sin(a * 0.5), 0];
+      tents.forEach(tt => { P.c[tt.i] = waveC(tt, a * 2 + tt.i, t === 'anemona' ? 14 : t === 'medusa' ? 10 : t === 'cabecaLula' ? 9 : 6); P.s[tt.i] = (t === 'anemona' ? 25 : 10) * Math.sin(a + tt.i * 0.7); });
+      P.pulse = t === 'medusa' ? 18 * Math.max(0, Math.sin(a * 2)) : 0; P.arm = [-10 + 4 * Math.sin(a), 12, 30]; return P; } },
+    { name: 'Atacar', dur: 1.0, fps: 60, fn: t2 => { const P = base(), w = t2 < 0.4 ? EASE.io(t2 / 0.4) : t2 < 0.55 ? 1 - EASE.in((t2 - 0.4) / 0.15) * 2 : -1 + EASE.io((t2 - 0.55) / 0.45), back = Math.max(0, w), fwd = Math.max(0, -w);
+      P.p = [0, hov, 0.1 * fwd]; P.b = [-10 * back + 12 * fwd, 0, 0];
+      tents.forEach(tt => { const f = tt.front || t === 'anemona' || t === 'medusa'; P.c[tt.i] = Array.from({ length: K }, (_, k) => f ? (-25 * back + 30 * fwd) * (t === 'anemona' ? 1.4 : 1) : 6 * back); });
+      P.pulse = t === 'medusa' ? 30 * fwd : 0; P.arm = [-10 - 70 * back + 60 * fwd, 12 + 20 * back, 30 + 40 * back - 25 * fwd]; return P; } },
+    { name: 'Ameaçar', dur: 1.6, fps: 30, fn: t2 => { const P = base(), k2 = Math.sin(Math.PI * clamp(t2 / 1.35, 0, 1));
+      P.p = [0, hov + (t === 'polvo' || t === 'kraken' ? 0.12 * k2 : 0.04 * k2), 0]; P.b = [-8 * k2, 0, 0];
+      tents.forEach(tt => { P.c[tt.i] = Array.from({ length: K }, (_, k) => -(tt.front ? 30 : 12) * k2 + 8 * Math.sin(t2 * 8 + k + tt.i) * k2); P.s[tt.i] = 20 * Math.sin(t2 * 5 + tt.i) * k2; });
+      P.pulse = t === 'medusa' ? -15 * k2 : 0; P.arm = [-10 - 100 * k2, 12 + 40 * k2, 30 - 20 * k2]; return P; } },
+  ];
+  if (!R.fixo) { const T = t === 'kraken' ? 2.4 : t === 'polvo' ? 1.4 : 1.2;
+    clipdefs.splice(1, 0, { name: 'Mover', dur: T, fps: 30, loop: true, v: (t === 'medusa' ? 0.25 : t === 'lula' ? 1.1 : t === 'cabecaLula' ? 0.6 : 0.3) * (t === 'kraken' ? 0.6 : 1), fn: t2 => { const P = base(), ph = 2 * Math.PI * t2 / T;
+      if (R.anda) { P.p[1] = 0.02 * Math.abs(Math.sin(ph)); P.b = [4, 0, 3 * Math.sin(ph)]; tents.forEach(tt => { const g = tt.i % 2 ? 0 : Math.PI; P.c[tt.i] = Array.from({ length: K }, (_, k) => 20 * Math.max(0, Math.sin(ph + g)) * (k < 2 ? -1 : 1) + 4 * Math.sin(ph - k)); P.s[tt.i] = 15 * Math.sin(ph + g); }); }
+      else if (t === 'lula') { P.p[1] = hov; P.r = [80, 0, 0]; const pulse = Math.max(0, Math.sin(ph)); tents.forEach(tt => { P.c[tt.i] = Array.from({ length: K }, (_, k) => -35 * pulse + 10 * (1 - pulse) + 6 * Math.sin(ph - k)); }); }
+      else if (t === 'medusa') { P.p[1] = hov + 0.05 * Math.sin(ph); P.r = [12, 0, 0]; P.pulse = 25 * Math.max(0, Math.sin(ph)); tents.forEach(tt => { P.c[tt.i] = waveC(tt, ph * 2 + tt.i, 14); }); }
+      else { P.p[1] = hov + 0.03 * Math.sin(ph); P.r = [10, 0, 0]; tents.forEach(tt => { P.c[tt.i] = waveC(tt, ph * 2 + tt.i, 14); }); P.arm = [-10 + 15 * Math.sin(ph), 12, 30]; }
+      return P; } }); }
+  const P0 = finish(kit, skel, [], S.nome, clipdefs, applyPose, {});
+  P0.vel = Object.fromEntries(clipdefs.filter(c => c.v).map(c => [c.name, c.v]));
+  return P0;
+}
+
 // ======================================================================= entrada
 export function forgeCriatura(id, cfgIn) {
   const S = ESPECIES[id], cfg = { ...baseCfgEsp(id), ...cfgIn };
-  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : S.fam === 'E' ? forgeE(id, S, cfg) : forgeB(id, S, cfg);
+  const P = S.fam === 'A' ? forgeA(id, S, cfg) : S.fam === 'C' ? forgeC(id, S, cfg) : S.fam === 'D' ? forgeD(id, S, cfg) : S.fam === 'E' ? forgeE(id, S, cfg) : S.fam === 'F' ? forgeF(id, S, cfg) : forgeB(id, S, cfg);
   const scale = S.tam * TAMK[cfg.tamanho] / (S.medida === 'comprimento' ? P.nominalL : P.nominalH);
   P.root.scale.setScalar(scale);
   P.root.updateMatrixWorld(true);

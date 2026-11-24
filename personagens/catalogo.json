@@ -13943,6 +13943,322 @@
     }
    ]
   },
+  "agua-viva-do-ceu": {
+   "num": 77,
+   "nome": "Água-viva-do-céu",
+   "grupo": "Aquáticos",
+   "familia": "F",
+   "voa": true,
+   "tamanho_m": 1.5,
+   "descricao": "Sino translúcido, tentáculos de luz; flutua no ar.",
+   "combinacoes": 48,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "lua",
+       "nome": "Lua"
+      },
+      {
+       "chave": "rosa",
+       "nome": "Rosa"
+      },
+      {
+       "chave": "aurora",
+       "nome": "Aurora"
+      },
+      {
+       "chave": "ambar",
+       "nome": "Âmbar"
+      }
+     ]
+    },
+    {
+     "chave": "tentaculos",
+     "nome": "Tentáculos",
+     "opcoes": [
+      {
+       "chave": "longos",
+       "nome": "Longos"
+      },
+      {
+       "chave": "curtos",
+       "nome": "Curtos"
+      }
+     ]
+    },
+    {
+     "chave": "sino",
+     "nome": "Sino",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Redondo"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/agua-viva-do-ceu/agua-viva-do-ceu_padrao.glb",
+     "variacao": "Fagu 35",
+     "kb": 165,
+     "triangulos": 1365,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.368
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "lua",
+      "tentaculos": "longos",
+      "sino": "redondo"
+     }
+    },
+    {
+     "arquivo": "criaturas/agua-viva-do-ceu/agua-viva-do-ceu_pipo-49.glb",
+     "variacao": "Pipo 49",
+     "kb": 165,
+     "triangulos": 1365,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.29,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.316
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "aurora",
+      "tentaculos": "longos",
+      "sino": "redondo"
+     }
+    },
+    {
+     "arquivo": "criaturas/agua-viva-do-ceu/agua-viva-do-ceu_fagu-28.glb",
+     "variacao": "Fagu 28",
+     "kb": 165,
+     "triangulos": 1365,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.368
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ambar",
+      "tentaculos": "longos",
+      "sino": "redondo"
+     }
+    }
+   ]
+  },
+  "polvo-erudito": {
+   "num": 78,
+   "nome": "Polvo-erudito",
+   "grupo": "Aquáticos",
+   "familia": "F",
+   "voa": false,
+   "tamanho_m": 1.2,
+   "descricao": "Óculos, um livro em cada braço; anda nos tentáculos.",
+   "combinacoes": 108,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "violeta",
+       "nome": "Violeta"
+      },
+      {
+       "chave": "oceano",
+       "nome": "Oceano"
+      },
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      }
+     ]
+    },
+    {
+     "chave": "oculos",
+     "nome": "Óculos",
+     "opcoes": [
+      {
+       "chave": "redondos",
+       "nome": "Redondos"
+      },
+      {
+       "chave": "monoculo",
+       "nome": "Monóculo"
+      },
+      {
+       "chave": "nenhum",
+       "nome": "Nenhum"
+      }
+     ]
+    },
+    {
+     "chave": "livros",
+     "nome": "Livros",
+     "opcoes": [
+      {
+       "chave": "dois",
+       "nome": "Dois"
+      },
+      {
+       "chave": "pilha",
+       "nome": "Pilha"
+      },
+      {
+       "chave": "pergaminho",
+       "nome": "Pergaminho"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/polvo-erudito/polvo-erudito_padrao.glb",
+     "variacao": "Nix 30",
+     "kb": 188,
+     "triangulos": 2828,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.408
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "oculos": "redondos",
+      "livros": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/polvo-erudito/polvo-erudito_miro-69.glb",
+     "variacao": "Miro 69",
+     "kb": 183,
+     "triangulos": 2624,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 1.032,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.351
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "areia",
+      "oculos": "nenhum",
+      "livros": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/polvo-erudito/polvo-erudito_zuza-26.glb",
+     "variacao": "Zuza 26",
+     "kb": 186,
+     "triangulos": 2716,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.408
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "violeta",
+      "oculos": "monoculo",
+      "livros": "pergaminho"
+     }
+    }
+   ]
+  },
   "caranguejo-castelo": {
    "num": 80,
    "nome": "Caranguejo-castelo",
@@ -14085,6 +14401,271 @@
       "tamanho": "g",
       "cores": "areia",
       "torre": "ruina"
+     }
+    }
+   ]
+  },
+  "lula-pintora": {
+   "num": 83,
+   "nome": "Lula-pintora",
+   "grupo": "Aquáticos",
+   "familia": "F",
+   "voa": true,
+   "tamanho_m": 2.6,
+   "descricao": "10 tentáculos, tinta que forma desenhos; jato.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "nanquim",
+       "nome": "Nanquim"
+      },
+      {
+       "chave": "carmim",
+       "nome": "Carmim"
+      },
+      {
+       "chave": "turquesa",
+       "nome": "Turquesa"
+      }
+     ]
+    },
+    {
+     "chave": "pincel",
+     "nome": "Na ponta",
+     "opcoes": [
+      {
+       "chave": "pincel",
+       "nome": "Pincel"
+      },
+      {
+       "chave": "paleta",
+       "nome": "Paleta"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lula-pintora/lula-pintora_padrao.glb",
+     "variacao": "Tico 53",
+     "kb": 208,
+     "triangulos": 3019,
+     "ossos": 52,
+     "molas": [],
+     "altura_m": 2.6,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.976
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "nanquim",
+      "pincel": "pincel"
+     }
+    },
+    {
+     "arquivo": "criaturas/lula-pintora/lula-pintora_nix-83.glb",
+     "variacao": "Nix 83",
+     "kb": 211,
+     "triangulos": 3124,
+     "ossos": 52,
+     "molas": [],
+     "altura_m": 2.236,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 1.98
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "carmim",
+      "pincel": "paleta"
+     }
+    },
+    {
+     "arquivo": "criaturas/lula-pintora/lula-pintora_teco-74.glb",
+     "variacao": "Teco 74",
+     "kb": 208,
+     "triangulos": 3019,
+     "ossos": 52,
+     "molas": [],
+     "altura_m": 2.99,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 2.273
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "turquesa",
+      "pincel": "pincel"
+     }
+    }
+   ]
+  },
+  "anemona-guardia": {
+   "num": 88,
+   "nome": "Anêmona-guardiã",
+   "grupo": "Aquáticos",
+   "familia": "F",
+   "voa": false,
+   "tamanho_m": 1.2,
+   "descricao": "Fixa no chão, tentáculos que agarram; balança no lugar.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "magenta",
+       "nome": "Magenta"
+      },
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      }
+     ]
+    },
+    {
+     "chave": "pontas",
+     "nome": "Pontas",
+     "opcoes": [
+      {
+       "chave": "brilho",
+       "nome": "Que brilham"
+      },
+      {
+       "chave": "bolinhas",
+       "nome": "Bolinhas"
+      },
+      {
+       "chave": "finas",
+       "nome": "Finas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/anemona-guardia/anemona-guardia_padrao.glb",
+     "variacao": "Dudu 24",
+     "kb": 160,
+     "triangulos": 2264,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {},
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "pontas": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/anemona-guardia/anemona-guardia_dudu-38.glb",
+     "variacao": "Dudu 38",
+     "kb": 146,
+     "triangulos": 1448,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.032,
+     "animacoes": [
+      "Parado",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {},
+     "cfg": {
+      "tamanho": "p",
+      "cores": "coral",
+      "pontas": "finas"
+     }
+    },
+    {
+     "arquivo": "criaturas/anemona-guardia/anemona-guardia_vina-68.glb",
+     "variacao": "Vina 68",
+     "kb": 162,
+     "triangulos": 2264,
+     "ossos": 50,
+     "molas": [],
+     "altura_m": 1.2,
+     "animacoes": [
+      "Parado",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {},
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "pontas": "bolinhas"
      }
     }
    ]
@@ -16142,6 +16723,143 @@
     }
    ]
   },
+  "kraken-de-pedra": {
+   "num": 132,
+   "nome": "Kraken-de-pedra",
+   "grupo": "Gigantes",
+   "familia": "F",
+   "voa": false,
+   "tamanho_m": 25,
+   "descricao": "Tentáculos de rocha; arrasta-se.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "basalto",
+       "nome": "Basalto"
+      },
+      {
+       "chave": "coral",
+       "nome": "Recife"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "dois",
+       "nome": "Dois"
+      },
+      {
+       "chave": "um",
+       "nome": "Um enorme"
+      },
+      {
+       "chave": "muitos",
+       "nome": "Muitos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/kraken-de-pedra/kraken-de-pedra_padrao.glb",
+     "variacao": "Sabi 72",
+     "kb": 185,
+     "triangulos": 2560,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 25,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 4.788
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "basalto",
+      "olhos": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/kraken-de-pedra/kraken-de-pedra_bela-43.glb",
+     "variacao": "Bela 43",
+     "kb": 189,
+     "triangulos": 2784,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 21.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 4.118
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "musgo",
+      "olhos": "muitos"
+     }
+    },
+    {
+     "arquivo": "criaturas/kraken-de-pedra/kraken-de-pedra_rufo-83.glb",
+     "variacao": "Rufo 83",
+     "kb": 185,
+     "triangulos": 2560,
+     "ossos": 42,
+     "molas": [],
+     "altura_m": 28.75,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 5.506
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "basalto",
+      "olhos": "dois"
+     }
+    }
+   ]
+  },
   "behemote-de-chifre": {
    "num": 133,
    "nome": "Behemote-de-chifre",
@@ -16426,6 +17144,156 @@
       "tamanho": "m",
       "cores": "gelo",
       "patas": "peludas"
+     }
+    }
+   ]
+  },
+  "cabeca-de-lula": {
+   "num": 139,
+   "nome": "Cabeça-de-lula",
+   "grupo": "Estranhos",
+   "familia": "F",
+   "voa": true,
+   "tamanho_m": 2,
+   "descricao": "Cabeça de lula, corpo humanoide; flutua.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "abismo",
+       "nome": "Abismo"
+      },
+      {
+       "chave": "purpura",
+       "nome": "Púrpura"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      }
+     ]
+    },
+    {
+     "chave": "manto",
+     "nome": "Manto",
+     "opcoes": [
+      {
+       "chave": "longo",
+       "nome": "Longo"
+      },
+      {
+       "chave": "capuz",
+       "nome": "Com capuz"
+      }
+     ]
+    },
+    {
+     "chave": "tentaculos",
+     "nome": "Tentáculos",
+     "opcoes": [
+      {
+       "chave": "seis",
+       "nome": "Seis"
+      },
+      {
+       "chave": "quatro",
+       "nome": "Quatro"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cabeca-de-lula/cabeca-de-lula_padrao.glb",
+     "variacao": "Nix 39",
+     "kb": 109,
+     "triangulos": 1032,
+     "ossos": 33,
+     "molas": [],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.84
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "abismo",
+      "manto": "longo",
+      "tentaculos": "seis"
+     }
+    },
+    {
+     "arquivo": "criaturas/cabeca-de-lula/cabeca-de-lula_dudu-57.glb",
+     "variacao": "Dudu 57",
+     "kb": 84,
+     "triangulos": 864,
+     "ossos": 25,
+     "molas": [],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.84
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "abismo",
+      "manto": "longo",
+      "tentaculos": "quatro"
+     }
+    },
+    {
+     "arquivo": "criaturas/cabeca-de-lula/cabeca-de-lula_sabi-49.glb",
+     "variacao": "Sabi 49",
+     "kb": 109,
+     "triangulos": 1032,
+     "ossos": 33,
+     "molas": [],
+     "altura_m": 2.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.966
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "abismo",
+      "manto": "longo",
+      "tentaculos": "seis"
      }
     }
    ]

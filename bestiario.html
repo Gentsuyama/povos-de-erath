@@ -113,7 +113,7 @@ if (SHEET) {
   cams.forEach((cm, ci) => cells.forEach((cell, k) => {
     const key = cfgKeyEsp(cell.id, cell.cfg), D = cache[key] || (cache[key] = makeActor(cell.id, cell.cfg));
     scene.add(D.root); D.mixer.stopAllAction(); const act = D.actions[cell.clip] || D.actions.Parado; act.reset().play(); D.mixer.setTime(cell.t); D.root.updateMatrixWorld(true);
-    const h = D.vista, ty = h * ((D.especie.voa && D.especie.fam === 'A') || D.especie.fam === 'B' ? 0.75 : 0.5), d = V3(...DIR[cm]).normalize().multiplyScalar(fitDist(h));
+    const h = D.vista, ty = h * ((D.especie.voa && (D.especie.fam === 'A' || D.especie.fam === 'F')) || D.especie.fam === 'B' ? 0.75 : 0.5), d = V3(...DIR[cm]).normalize().multiplyScalar(fitDist(h));
     camera.position.set(d.x, ty + d.y, d.z); camera.lookAt(0, ty, 0); scene.fog.near = Math.max(14, h * 5); scene.fog.far = Math.max(40, h * 12); camera.far = Math.max(120, h * 30); camera.near = h * 0.02; camera.aspect = cw / chh; camera.updateProjectionMatrix(); setSun(V3(0, 0, 0), h);
     const r = ci * rowsPer + Math.floor(k / cols), i = k % cols, x = i * cw, y = Hh - (r + 1) * chh;
     renderer.setViewport(x, y, cw, chh); renderer.setScissor(x, y, cw, chh); renderer.clear(); renderer.render(scene, camera); scene.remove(D.root);
@@ -194,7 +194,7 @@ function startViewer() {
   $('bGlb').onclick = () => exportGLB(b => download(b, id + '_' + nomeVariacao(id, D.cfg).toLowerCase().replace(/\s+/g, '') + '.glb', 'model/gltf-binary'));
   const fmtH = h => h < 1 ? Math.round(h * 100) + ' cm' : h.toFixed(2).replace('.', ',') + ' m';
   const drawStats = () => { if (!D) return; const S = ESPECIES[id];
-    const rows = [['Nº na lista', S.num], ['Família de corpo', S.fam === 'A' ? 'A · bípede' + (S.voa ? ' alado' : '') : S.fam === 'C' ? 'C · quadrúpede' + (S.voa ? ' alado' : '') : S.fam === 'D' ? 'D · ' + (ESPECIES[id].receita ? '6/8 patas' : '') + (S.voa ? ' alado' : '') + (D.direcao ? ' · anda de lado' : '') : S.fam === 'E' ? 'E · serpente/corrente' + (S.voa ? ' voadora' : '') : 'B · flutuante'], ['Tamanho real', S.medida === 'comprimento' ? fmtH(D.comprimento) + ' de comprimento' : fmtH(D.altura)], ['Triângulos', D.tris.toLocaleString('pt-BR')],
+    const rows = [['Nº na lista', S.num], ['Família de corpo', S.fam === 'A' ? 'A · bípede' + (S.voa ? ' alado' : '') : S.fam === 'C' ? 'C · quadrúpede' + (S.voa ? ' alado' : '') : S.fam === 'D' ? 'D · ' + (ESPECIES[id].receita ? '6/8 patas' : '') + (S.voa ? ' alado' : '') + (D.direcao ? ' · anda de lado' : '') : S.fam === 'F' ? 'F · tentáculos' : S.fam === 'E' ? 'E · serpente/corrente' + (S.voa ? ' voadora' : '') : 'B · flutuante'], ['Tamanho real', S.medida === 'comprimento' ? fmtH(D.comprimento) + ' de comprimento' : fmtH(D.altura)], ['Triângulos', D.tris.toLocaleString('pt-BR')],
       ['Ossos', D.info.ossos], ['Molas', D.info.molas.length ? [...new Set(D.info.molas)].join(', ') : '—'], ['Variações possíveis', combinacoesEsp(id).toLocaleString('pt-BR')],
       ['Velocidade', Object.entries(D.vel).map(([k, v]) => `${k} ${v.toFixed(2)} m/s`).join(' · ') || '—'], ['GLB', glbKB ? glbKB + ' KB' : '…'], ['Espécies prontas', ESP_ORDEM.length + ' de 150']];
     $('stats').innerHTML = rows.map(([a, b]) => `<span>${a}</span><b>${b}</b>`).join(''); };
