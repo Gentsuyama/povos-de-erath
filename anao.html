@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anão Guerreiro</title>
+<style>
+  :root { --bg:#9fbfd4; --card:rgba(24,20,17,.82); --tx:#f3ead8; --mut:#c9b99c; --acc:#e0aa35; --line:rgba(255,255,255,.12); }
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--tx); }
+  canvas { display:block; }
+  #top { position:fixed; left:16px; top:14px; max-width:min(420px, calc(100vw - 32px)); background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  #top h1 { margin:0; font-size:19px; letter-spacing:.3px; }
+  #top .sub { color:var(--mut); font-size:12.5px; margin-top:3px; line-height:1.35; }
+  #panel { position:fixed; right:16px; top:14px; width:290px; max-height:calc(100vh - 28px); overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:13px; }
+  #panel h2 { font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--acc); margin:12px 0 6px; }
+  #panel h2:first-child { margin-top:0; }
+  .row { display:flex; flex-wrap:wrap; gap:6px; }
+  button { background:#3a2f26; color:var(--tx); border:1px solid #5d4a39; border-radius:8px; padding:6px 10px; font-size:13px; cursor:pointer; }
+  button:hover { background:#4a3c30; }
+  button.on { background:var(--acc); color:#1d1408; border-color:var(--acc); font-weight:600; }
+  label { display:flex; align-items:center; gap:7px; margin:3px 0; cursor:pointer; }
+  .stat { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; font-size:12.5px; }
+  .stat b { color:var(--acc); font-weight:600; text-align:right; }
+  ol { margin:0; padding-left:18px; color:var(--mut); font-size:12.3px; line-height:1.42; }
+  ol li { margin:3px 0; } ol li strong { color:var(--tx); font-weight:600; }
+  #fold { display:none; }
+  .lbl { position:fixed; color:#1d1408; background:rgba(255,255,255,.75); font:12px system-ui; padding:1px 6px; border-radius:4px; pointer-events:none; }
+  @media (max-width: 760px) {
+    #top { padding:9px 11px; } #top h1 { font-size:16px; }
+    #panel { top:auto; bottom:12px; left:16px; right:16px; width:auto; max-height:44vh; }
+    #fold { display:inline-block; float:right; padding:2px 8px; }
+    #panel.min .body { display:none; }
+  }
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="top">
+  <h1>Brakk Barba-de-Brasa</h1>
+  <div class="sub">Anão guerreiro low poly feito 100% em código: sem Blender, sem TRELLIS, sem IA de imagem, sem malha importada. Cada vértice, osso e quadro de animação sai deste arquivo.</div>
+</div>
+<div id="panel">
+  <button id="fold">▾</button>
+  <div class="body">
+  <h2>Animação</h2>
+  <div class="row" id="clips"></div>
+  <h2>Ver</h2>
+  <label><input type="checkbox" id="cWalk"> Andar pela cena (passo casado)</label>
+  <label><input type="checkbox" id="cTrail" checked> Rastro dos pés</label>
+  <label><input type="checkbox" id="cSpring" checked> Barba com molas</label>
+  <label><input type="checkbox" id="cSlow"> Câmera lenta (¼)</label>
+  <label><input type="checkbox" id="cBones"> Esqueleto</label>
+  <label><input type="checkbox" id="cColor"> Cores por osso</label>
+  <label><input type="checkbox" id="cWire"> Arame</label>
+  <div class="row" style="margin-top:6px"><button id="bGlb">Baixar GLB (Unity/Godot)</button></div>
+  <h2>Ficha</h2>
+  <div class="stat" id="stats"></div>
+  <h2>Como foi feito</h2>
+  <ol>
+    <li><strong>Blocagem</strong> com primitivas de 6–12 lados (cilindro, esfera, caixa, lâmina extrudada), como o artista low poly começa.</li>
+    <li><strong>Facetado à mão</strong>: cada vértice leva um tremido fixo e cada face um tom levemente diferente. Pintura por face, sem textura.</li>
+    <li><strong>1 malha, 2 materiais</strong> (fosco e metal), cor nos vértices.</li>
+    <li><strong>Rig</strong>: armadura e partes duras 100% em um osso (não amassa); saia de malha meio no quadril, meio na coxa; barba em 3 ossos.</li>
+    <li><strong>Control rig</strong>: IK de 2 ossos nas pernas (pé cravado no chão) e nos braços (mão vai a um alvo, polo no cotovelo, torção no antebraço).</li>
+    <li><strong>Poses-chave</strong> com curvas de suavização (antecipação → golpe → recuperação), assadas em quadros como no export do Maya.</li>
+    <li><strong>Passo casado</strong>: a velocidade sai da passada ÷ tempo de apoio, e o pé apoiado não escorrega.</li>
+    <li><strong>Física secundária</strong>: barba e tranças com molas.</li>
+  </ol>
+  </div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+
+const Q = new URLSearchParams(location.search);
+const SHEET = Q.get('sheet');
+const D2R = Math.PI / 180;
+const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+const clamp = THREE.MathUtils.clamp;
+
+// ======================================================================= paleta
+const C = {
+  skin:'#e3a782', nose:'#d98a68', ear:'#d99a76', beard:'#c4532a', beardD:'#9c3b1c', brow:'#a8431f',
+  steel:'#aab3bd', steelD:'#737c87', gold:'#e2ab36', leather:'#7b4a2b', leatherD:'#55321d', glove:'#5f3a22',
+  tunic:'#2f6193', chain:'#8e959d', pants:'#6b5638', boot:'#5c3b22', sole:'#2a1c13',
+  eye:'#1b1712', glint:'#fff6e0', horn:'#eee2c4', wood:'#8a5a2e', woodD:'#5e3c1e', stone:'#8d8a82'
+};
+
+// ======================================================================= esqueleto (repouso: braços e pernas retos; personagem olha para +Z, esquerda dele = +X)
+const SX = 0.285;
+const BDEF = [
+  ['Hips', null, [0, 0.52, 0]], ['Spine', 'Hips', [0, 0.62, 0]], ['Chest', 'Spine', [0, 0.76, 0]],
+  ['Neck', 'Chest', [0, 0.95, 0]], ['Head', 'Neck', [0, 1.0, 0]],
+  ['BeardA', 'Head', [0, 1.0, 0.17]], ['BeardB', 'BeardA', [0, 0.88, 0.19]], ['BeardEnd', 'BeardB', [0, 0.70, 0.21]],
+];
+for (const [s, L] of [[1, '_L'], [-1, '_R']]) BDEF.push(
+  ['UpperArm' + L, 'Chest', [s * SX, 0.92, 0]], ['ForeArm' + L, 'UpperArm' + L, [s * SX, 0.72, 0]], ['Hand' + L, 'ForeArm' + L, [s * SX, 0.555, 0]],
+  ['UpLeg' + L, 'Hips', [s * 0.11, 0.50, 0]], ['Leg' + L, 'UpLeg' + L, [s * 0.11, 0.315, 0]], ['Foot' + L, 'Leg' + L, [s * 0.11, 0.115, 0]]);
+const B = {}, REST = {}, BI = {}, bones = [];
+for (const [n, p, pos] of BDEF) {
+  const b = new THREE.Bone(); b.name = n; REST[n] = V3(...pos);
+  if (p) { B[p].add(b); b.position.copy(REST[n]).sub(REST[p]); } else b.position.copy(REST[n]);
+  B[n] = b; BI[n] = bones.length; bones.push(b);
+}
+const ARM = { l1: 0.20, l2: 0.165 }, LEG = { l1: 0.185, l2: 0.20 };
+
+// ======================================================================= modelagem
+function hash3(x, y, z) {
+  const f = v => { const s = Math.sin(v) * 43758.5453; return (s - Math.floor(s)) * 2 - 1; };
+  return [f(x * 127.1 + y * 311.7 + z * 74.7), f(x * 269.5 + y * 183.3 + z * 246.1), f(x * 113.5 + y * 271.9 + z * 124.6)];
+}
+const PARTS = { matte: [], metal: [] };
+let partN = 0;
+// o: c cor, metal, b osso (nome) ou função(p) -> [[osso, peso], ...], pos, rot (graus), scl, jit, vary, deform(g)
+function add(g, o) {
+  const m = new THREE.Matrix4().compose(V3(...(o.pos || [0, 0, 0])),
+    new THREE.Quaternion().setFromEuler(new THREE.Euler(...(o.rot || [0, 0, 0]).map(d => d * D2R), 'XYZ')),
+    V3(...(o.scl || [1, 1, 1])));
+  g.applyMatrix4(m);
+  if (o.deform) o.deform(g);
+  const pa = g.attributes.position, jit = o.jit ?? 0.0045;
+  if (jit > 0) for (let i = 0; i < pa.count; i++) {      // tremido fixo: vértices coincidentes andam juntos (sem rachar)
+    const x = pa.getX(i), y = pa.getY(i), z = pa.getZ(i);
+    const h = hash3(Math.round(x * 2000) / 2000, Math.round(y * 2000) / 2000, Math.round(z * 2000) / 2000);
+    pa.setXYZ(i, x + h[0] * jit, y + h[1] * jit, z + h[2] * jit);
+  }
+  const ng = g.index ? g.toNonIndexed() : g;
+  for (const k of Object.keys(ng.attributes)) if (k !== 'position') ng.deleteAttribute(k);
+  ng.computeVertexNormals();
+  const p = ng.attributes.position, n = p.count, base = new THREE.Color(o.c), vary = o.vary ?? 0.07;
+  const col = new Float32Array(n * 3), si = new Uint16Array(n * 4), sw = new Float32Array(n * 4);
+  partN++;
+  for (let f = 0; f < n / 3; f++) {                       // um tom por face (pintura facetada)
+    const cx = (p.getX(f * 3) + p.getX(f * 3 + 1) + p.getX(f * 3 + 2)), cy = (p.getY(f * 3) + p.getY(f * 3 + 1) + p.getY(f * 3 + 2));
+    const k = 1 + hash3(cx * 13.1 + partN, cy * 17.3, f * 0.37)[0] * vary;
+    for (let j = 0; j < 3; j++) { const i = (f * 3 + j) * 3; col[i] = base.r * k; col[i + 1] = base.g * k; col[i + 2] = base.b * k; }
+  }
+  const tmp = new THREE.Vector3();
+  for (let i = 0; i < n; i++) {
+    tmp.fromBufferAttribute(p, i);
+    let ws = typeof o.b === 'string' ? [[o.b, 1]] : o.b(tmp);
+    ws = ws.filter(w => w[1] > 1e-4).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    const tot = ws.reduce((s, w) => s + w[1], 0);
+    ws.forEach((w, j) => { si[i * 4 + j] = BI[w[0]]; sw[i * 4 + j] = w[1] / tot; });
+  }
+  ng.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  ng.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(si, 4));
+  ng.setAttribute('skinWeight', new THREE.Float32BufferAttribute(sw, 4));
+  PARTS[o.metal ? 'metal' : 'matte'].push(ng);
+}
+const cyl = (rt, rb, h, seg, open = false) => new THREE.CylinderGeometry(rt, rb, h, seg, 1, open);
+const sph = (r, ws, hs, ts = 0, tl = Math.PI, ps = 0, pl = Math.PI * 2) => new THREE.SphereGeometry(r, ws, hs, ps, pl, ts, tl);
+const box = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+const ico = (r, det = 0) => new THREE.IcosahedronGeometry(r, det);
+const octa = r => new THREE.OctahedronGeometry(r, 0);
+function tube(a, b, ra, rb, seg) {                         // cilindro de a até b (raio ra em a, rb em b)
+  a = V3(...a); b = V3(...b);
+  const d = b.clone().sub(a), g = cyl(rb, ra, d.length(), seg);
+  g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(V3(0, 1, 0), d.clone().normalize()));
+  g.translate(...a.clone().addScaledVector(d, 0.5).toArray());
+  return g;
+}
+const ramp = (v, a, b) => clamp((v - a) / (b - a), 0, 1);
+
+// ---------- quadril, cinto, saia de malha
+add(cyl(0.185, 0.19, 0.12, 9), { c: C.pants, b: 'Hips', pos: [0, 0.52, 0], scl: [1, 1, 0.86] });
+add(cyl(0.216, 0.216, 0.066, 10), { c: C.leather, b: 'Hips', pos: [0, 0.597, 0], scl: [1, 1, 0.87] });
+add(box(0.10, 0.082, 0.03), { c: C.gold, metal: true, b: 'Hips', pos: [0, 0.597, 0.19] });
+add(box(0.05, 0.034, 0.014), { c: C.leatherD, b: 'Hips', pos: [0, 0.597, 0.207], jit: 0.001 });
+add(box(0.07, 0.085, 0.05), { c: C.leatherD, b: 'Hips', pos: [0.17, 0.56, 0.09], rot: [0, 35, 0] });          // bolsa
+add(box(0.05, 0.06, 0.045), { c: C.leather, b: 'Hips', pos: [-0.185, 0.565, 0.0], rot: [0, -80, 0] });
+add(cyl(0.214, 0.248, 0.15, 10, true), {                                                                   // saia: barra segue a coxa (regra de rigger)
+  c: C.chain, b: p => { const t = ramp(0.575 - p.y, 0, 0.15), sf = ramp(Math.abs(p.x), 0.02, 0.12), w = 0.55 * t * sf;
+    return [['Hips', 1 - w], [p.x > 0 ? 'UpLeg_L' : 'UpLeg_R', w]]; },
+  pos: [0, 0.50, 0], scl: [1, 1, 0.87], vary: 0.1 });
+
+// ---------- tronco
+add(cyl(0.21, 0.215, 0.15, 10), { c: C.tunic, b: 'Spine', pos: [0, 0.68, 0], scl: [1, 1, 0.85] });
+add(cyl(0.20, 0.215, 0.20, 10), { c: C.tunic, b: 'Chest', pos: [0, 0.84, 0], scl: [1, 1, 0.85] });
+add(cyl(0.207, 0.228, 0.17, 10), { c: C.steel, metal: true, b: 'Chest', pos: [0, 0.825, 0.006], scl: [1, 1, 0.88] });   // couraça
+add(cyl(0.21, 0.21, 0.022, 10), { c: C.gold, metal: true, b: 'Chest', pos: [0, 0.906, 0.006], scl: [1, 1, 0.88] });
+add(cyl(0.232, 0.232, 0.022, 10), { c: C.gold, metal: true, b: 'Chest', pos: [0, 0.745, 0.006], scl: [1, 1, 0.88] });
+for (const s of [1, -1]) add(ico(0.022), { c: C.gold, metal: true, b: 'Chest', pos: [s * 0.135, 0.86, 0.168], jit: 0 });
+add(octa(0.055), { c: C.gold, metal: true, b: 'Chest', pos: [0, 0.83, -0.2], scl: [1, 1.25, 0.35] });              // runa nas costas
+add(box(0.05, 0.17, 0.02), { c: C.leatherD, b: 'Chest', pos: [0.1, 0.83, -0.198], rot: [0, 0, 0] });
+add(box(0.05, 0.17, 0.02), { c: C.leatherD, b: 'Chest', pos: [-0.1, 0.83, -0.198] });
+add(cyl(0.095, 0.112, 0.075, 8), { c: C.chain, b: 'Neck', pos: [0, 0.955, 0] });
+
+// ---------- cabeça
+add(sph(0.17, 9, 7), { c: C.skin, b: 'Head', pos: [0, 1.12, 0], scl: [1, 1, 0.95] });
+add(ico(0.046), { c: C.nose, b: 'Head', pos: [0, 1.103, 0.168], scl: [1, 0.9, 1] });
+for (const s of [1, -1]) {
+  add(box(0.03, 0.036, 0.02), { c: C.eye, b: 'Head', pos: [s * 0.058, 1.148, 0.152], jit: 0, vary: 0 });
+  add(box(0.01, 0.01, 0.01), { c: C.glint, b: 'Head', pos: [s * 0.052, 1.156, 0.163], jit: 0, vary: 0 });
+  add(box(0.078, 0.026, 0.045), { c: C.brow, b: 'Head', pos: [s * 0.06, 1.183, 0.152], rot: [0, 0, s * 16], jit: 0.002 });
+  add(ico(0.035), { c: C.ear, b: 'Head', pos: [s * 0.168, 1.115, -0.005], scl: [0.55, 1, 0.8] });
+  add(box(0.05, 0.13, 0.085), { c: C.beard, b: 'Head', pos: [s * 0.148, 1.075, 0.055] });                    // costeleta
+  add(tube([s * 0.012, 1.078, 0.195], [s * 0.085, 1.05, 0.18], 0.026, 0.02, 6), { c: C.beardD, b: 'Head' });   // bigode
+  add(tube([s * 0.085, 1.05, 0.18], [s * 0.13, 0.985, 0.155], 0.02, 0.008, 6), { c: C.beardD, b: 'Head' });
+  // chifres no elmo
+  const hp = [[0.15, 1.275, 0], [0.235, 1.315, 0.01], [0.295, 1.395, 0.03], [0.31, 1.49, 0.07]], hr = [0.038, 0.03, 0.02, 0.005];
+  for (let i = 0; i < 3; i++) add(tube([s * hp[i][0], hp[i][1], hp[i][2]], [s * hp[i + 1][0], hp[i + 1][1], hp[i + 1][2]], hr[i], hr[i + 1], 6), { c: C.horn, b: 'Head', jit: 0.002 });
+  add(tube([s * 0.13, 1.265, 0], [s * 0.175, 1.285, 0.003], 0.046, 0.044, 7), { c: C.gold, metal: true, b: 'Head', jit: 0.001 });
+}
+add(sph(0.178, 9, 4, 0.75, 1.3, Math.PI, Math.PI), { c: C.beard, b: 'Head', pos: [0, 1.11, -0.01] });             // cabelo atrás
+for (let i = 0; i < 3; i++) add(octa(0.034), { c: C.beard, b: 'Head', pos: [0, 1.04 - i * 0.05, -0.172 - i * 0.012], scl: [1, 1.3, 1] });
+add(cyl(0.028, 0.028, 0.022, 7), { c: C.gold, metal: true, b: 'Head', pos: [0, 0.915, -0.2] });
+add(sph(0.188, 8, 4, 0, Math.PI / 2), { c: C.steel, metal: true, b: 'Head', pos: [0, 1.197, 0], scl: [1, 1.05, 1] });    // elmo
+add(cyl(0.186, 0.193, 0.046, 8), { c: C.gold, metal: true, b: 'Head', pos: [0, 1.197, 0] });
+add(box(0.03, 0.085, 0.024), { c: C.steelD, metal: true, b: 'Head', pos: [0, 1.168, 0.178] });
+for (const a of [45, 135, 225, 315]) add(ico(0.014), { c: C.steelD, metal: true, b: 'Head', pos: [Math.sin(a * D2R) * 0.195, 1.197, Math.cos(a * D2R) * 0.195], jit: 0 });
+
+// barba: cabeça → BeardA → BeardB conforme a altura (pesos misturados)
+const beardW = p => { const tA = ramp(1.0 - p.y, 0, 0.09), tB = ramp(0.905 - p.y, 0, 0.08);
+  return [['Head', 1 - tA], ['BeardA', tA * (1 - tB)], ['BeardB', tA * tB]]; };
+add(sph(1, 9, 7), { c: C.beard, b: beardW, pos: [0, 0.93, 0.155], scl: [0.172, 0.165, 0.105], jit: 0.006, vary: 0.1,
+  deform: g => { const pa = g.attributes.position; for (let i = 0; i < pa.count; i++) {
+    const y = pa.getY(i), t = ramp(y, 0.765, 1.095); pa.setX(i, pa.getX(i) * (0.5 + 0.5 * t)); pa.setZ(i, pa.getZ(i) + (1 - t) * 0.03); } } });
+for (const s of [1, -1]) {                                                                                     // tranças
+  for (let i = 0; i < 3; i++) add(octa(0.03), { c: C.beard, b: 'BeardB', pos: [s * 0.045, 0.785 - i * 0.046, 0.215], scl: [1, 1.35, 1] });
+  add(cyl(0.027, 0.027, 0.024, 7), { c: C.gold, metal: true, b: 'BeardB', pos: [s * 0.045, 0.763, 0.215], jit: 0.001 });
+  add(cyl(0.025, 0.025, 0.024, 7), { c: C.gold, metal: true, b: 'BeardB', pos: [s * 0.045, 0.672, 0.215], jit: 0.001 });
+  add(tube([s * 0.045, 0.66, 0.215], [s * 0.05, 0.62, 0.218], 0.022, 0.004, 6), { c: C.beardD, b: 'BeardB' });
+}
+
+// ---------- braços
+for (const [s, L] of [[1, '_L'], [-1, '_R']]) {
+  const x = s * SX;
+  add(sph(0.105, 7, 5), { c: C.steel, metal: true, b: 'UpperArm' + L, pos: [x + s * 0.005, 0.935, 0], scl: [1.05, 0.75, 1] });   // ombreira
+  add(sph(0.11, 7, 4), { c: C.steelD, metal: true, b: 'UpperArm' + L, pos: [x + s * 0.015, 0.885, 0], scl: [1, 0.45, 0.95] });
+  add(ico(0.016), { c: C.gold, metal: true, b: 'UpperArm' + L, pos: [x + s * 0.035, 0.995, 0.03], jit: 0 });
+  add(cyl(0.062, 0.058, 0.17, 7), { c: C.tunic, b: 'UpperArm' + L, pos: [x, 0.83, 0] });
+  add(sph(0.058, 6, 4), { c: C.steel, metal: true, b: 'ForeArm' + L, pos: [x, 0.72, 0] });
+  add(cyl(0.058, 0.069, 0.14, 7), { c: C.leather, b: 'ForeArm' + L, pos: [x, 0.635, 0] });
+  add(cyl(0.072, 0.072, 0.02, 7), { c: C.gold, metal: true, b: 'ForeArm' + L, pos: [x, 0.585, 0], jit: 0.001 });
+  add(box(0.085, 0.08, 0.095), { c: C.glove, b: 'Hand' + L, pos: [x, 0.515, 0] });                                     // punho fechado
+  add(box(0.03, 0.026, 0.085), { c: C.leatherD, b: 'Hand' + L, pos: [x + s * 0.042, 0.508, 0], jit: 0.002 });           // nós dos dedos
+  add(box(0.032, 0.042, 0.032), { c: C.glove, b: 'Hand' + L, pos: [x - s * 0.03, 0.53, 0.05] });                         // polegar
+}
+
+// ---------- pernas
+for (const [s, L] of [[1, '_L'], [-1, '_R']]) {
+  const x = s * 0.11;
+  add(cyl(0.088, 0.078, 0.20, 8), { c: C.pants, b: 'UpLeg' + L, pos: [x, 0.41, 0] });
+  add(sph(0.066, 6, 4), { c: C.steel, metal: true, b: 'Leg' + L, pos: [x, 0.315, 0.02] });
+  add(cyl(0.078, 0.086, 0.19, 8), { c: C.boot, b: 'Leg' + L, pos: [x, 0.19, 0] });
+  add(cyl(0.096, 0.09, 0.045, 8), { c: C.leather, b: 'Leg' + L, pos: [x, 0.272, 0] });
+  add(sph(0.072, 7, 4), { c: C.boot, b: 'Foot' + L, pos: [x, 0.105, 0] });
+  add(box(0.122, 0.09, 0.20), { c: C.boot, b: 'Foot' + L, pos: [x, 0.05, 0.035] });
+  add(sph(0.066, 7, 4), { c: C.steel, metal: true, b: 'Foot' + L, pos: [x, 0.046, 0.122], scl: [0.95, 0.68, 1] });
+  add(box(0.132, 0.022, 0.228), { c: C.sole, b: 'Foot' + L, pos: [x, 0.011, 0.04], jit: 0.002 });
+}
+
+// ---------- machado (mão direita; repouso: cabo para +Z passando pelo punho, fio para −Y)
+{
+  const F = [-SX, 0.515, 0], T = (z, y = 0, xo = 0) => [F[0] + xo, F[1] + y, F[2] + z];
+  add(tube(T(-0.13), T(0.57), 0.019, 0.017, 6), { c: C.wood, b: 'Hand_R', jit: 0.0015 });
+  add(tube(T(-0.06), T(0.06), 0.023, 0.023, 6), { c: C.leatherD, b: 'Hand_R', jit: 0.001 });
+  add(ico(0.03), { c: C.gold, metal: true, b: 'Hand_R', pos: T(-0.145), jit: 0 });
+  add(ico(0.022), { c: C.gold, metal: true, b: 'Hand_R', pos: T(0.575), jit: 0 });
+  add(box(0.05, 0.06, 0.115), { c: C.steelD, metal: true, b: 'Hand_R', pos: T(0.505) });
+  const sh = new THREE.Shape();                                 // lâmina: (u = ao longo do cabo, v = para o fio)
+  const pts = [[0.455, -0.025], [0.555, -0.025], [0.585, -0.09], [0.64, -0.19], [0.56, -0.218], [0.45, -0.218], [0.37, -0.19], [0.425, -0.09]];
+  sh.moveTo(...pts[0]); for (const q of pts.slice(1)) sh.lineTo(...q); sh.closePath();
+  const bg = new THREE.ExtrudeGeometry(sh, { depth: 0.024, bevelEnabled: false });
+  bg.translate(0, 0, -0.012); bg.rotateY(-Math.PI / 2);         // u → +Z, v → +Y, espessura → X
+  add(bg, { c: C.steel, metal: true, b: 'Hand_R', pos: F, jit: 0.002 });
+  const eg = new THREE.ExtrudeGeometry((() => { const e = new THREE.Shape(); e.moveTo(0.64, -0.19); e.lineTo(0.56, -0.218); e.lineTo(0.45, -0.218); e.lineTo(0.37, -0.19); e.lineTo(0.385, -0.17); e.lineTo(0.46, -0.196); e.lineTo(0.55, -0.196); e.lineTo(0.62, -0.17); e.closePath(); return e; })(), { depth: 0.028, bevelEnabled: false });
+  eg.translate(0, 0, -0.014); eg.rotateY(-Math.PI / 2);
+  add(eg, { c: '#dfe6ec', metal: true, b: 'Hand_R', pos: F, jit: 0.001, vary: 0.03 });   // fio afiado (mais claro)
+  add(tube(T(0.505, 0.025), T(0.505, 0.115), 0.026, 0.004, 5), { c: C.steelD, metal: true, b: 'Hand_R', jit: 0.001 });  // espigão
+  add(octa(0.02), { c: C.gold, metal: true, b: 'Hand_R', pos: T(0.505, -0.09, 0), scl: [1.6, 1, 1], jit: 0 });
+}
+
+// ---------- escudo (antebraço esquerdo; repouso: face para +X)
+{
+  const cx = SX + 0.088, cy = 0.64;
+  add(cyl(0.195, 0.195, 0.03, 12), { c: C.wood, b: 'ForeArm_L', pos: [cx, cy, 0], rot: [0, 0, 90], vary: 0.12 });
+  for (const z of [-0.075, 0.075]) add(box(0.006, 0.36, 0.012), { c: C.woodD, b: 'ForeArm_L', pos: [cx + 0.016, cy, z], jit: 0.001 });
+  add(new THREE.TorusGeometry(0.195, 0.022, 4, 12), { c: C.steel, metal: true, b: 'ForeArm_L', pos: [cx, cy, 0], rot: [0, 90, 0] });
+  add(sph(0.068, 7, 4), { c: C.steel, metal: true, b: 'ForeArm_L', pos: [cx + 0.016, cy, 0], scl: [0.55, 1, 1] });
+  add(box(0.008, 0.25, 0.034), { c: C.gold, metal: true, b: 'ForeArm_L', pos: [cx + 0.018, cy, 0], rot: [45, 0, 0], jit: 0.001 });
+  add(box(0.008, 0.25, 0.034), { c: C.gold, metal: true, b: 'ForeArm_L', pos: [cx + 0.018, cy, 0], rot: [-45, 0, 0], jit: 0.001 });
+  add(box(0.04, 0.045, 0.12), { c: C.leatherD, b: 'ForeArm_L', pos: [SX + 0.06, cy, 0] });
+}
+
+// ======================================================================= malha final
+const gMatte = mergeGeometries(PARTS.matte), gMetal = mergeGeometries(PARTS.metal);
+const geo = mergeGeometries([gMatte, gMetal], true);
+const matMatte = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 0.85, metalness: 0, side: THREE.DoubleSide, envMapIntensity: 0.5 });
+matMatte.name = 'fosco';
+const matMetal = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 0.38, metalness: 0.75, envMapIntensity: 1.0 });
+matMetal.name = 'metal';
+const mesh = new THREE.SkinnedMesh(geo, [matMatte, matMetal]);
+mesh.name = 'Brakk'; mesh.castShadow = true; mesh.frustumCulled = false;
+const charRoot = new THREE.Group(); charRoot.name = 'Brakk_raiz';
+charRoot.add(B.Hips); charRoot.add(mesh);
+charRoot.updateMatrixWorld(true);
+mesh.bind(new THREE.Skeleton(bones));
+
+// ======================================================================= control rig: IK de 2 ossos
+const _X = V3(1, 0, 0), _Y = V3(0, 1, 0);
+function ik(b1, b2, b3, target, pole, l1, l2, leg, qEnd, twist) {
+  const P = new THREE.Vector3().setFromMatrixPosition(b1.matrixWorld);
+  const v = target.clone().sub(P); const d0 = v.length(); const vh = v.divideScalar(d0 || 1);
+  const d = clamp(d0, Math.abs(l1 - l2) + 1e-3, (l1 + l2) * 0.9995);
+  const a = Math.acos(clamp((l1 * l1 + d * d - l2 * l2) / (2 * l1 * d), -1, 1));
+  const bend = Math.PI - Math.acos(clamp((l1 * l1 + l2 * l2 - d * d) / (2 * l1 * l2), -1, 1));
+  const p = pole.clone().addScaledVector(vh, -pole.dot(vh));
+  if (p.lengthSq() < 1e-8) p.set(0, 0, leg ? 1 : -1); p.normalize();
+  const dir1 = vh.clone().multiplyScalar(Math.cos(a)).addScaledVector(p, Math.sin(a));
+  const n = new THREE.Vector3().crossVectors(vh, p).normalize();
+  const xA = leg ? n.clone().negate() : n, yA = dir1.clone().negate(), zA = new THREE.Vector3().crossVectors(xA, yA);
+  const qW = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(xA, yA, zA));
+  const qPar = b1.parent.getWorldQuaternion(new THREE.Quaternion());
+  b1.quaternion.copy(qPar.invert().multiply(qW));
+  const qB = new THREE.Quaternion().setFromAxisAngle(_X, leg ? bend : -bend);
+  const hl = qW.clone().multiply(qB).invert().multiply(qEnd);
+  if (twist) {                                             // torção do punho vai para o antebraço (o escudo gira junto)
+    const tw = new THREE.Quaternion(0, hl.y, 0, hl.w); const len = tw.length();
+    if (len < 1e-6) tw.identity(); else tw.normalize();
+    b2.quaternion.copy(qB).multiply(tw); b3.quaternion.copy(tw.clone().invert().multiply(hl));
+  } else { b2.quaternion.copy(qB); b3.quaternion.copy(hl); }
+}
+
+// ======================================================================= poses
+const E = (a, order = 'YXZ') => new THREE.Quaternion().setFromEuler(new THREE.Euler(a[0] * D2R, a[1] * D2R, a[2] * D2R, order));
+const AXE = (th, yaw = 0, roll = 0) => E([th, yaw, roll], 'XYZ');       // th: −90 = cabo em pé, fio para a frente
+function SHIELD(normal, along) {                                       // face do escudo e direção do antebraço (cotovelo → punho)
+  const x = V3(...normal).normalize(), y = V3(...along).normalize().negate();
+  y.addScaledVector(x, -y.dot(x)).normalize();
+  return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, new THREE.Vector3().crossVectors(x, y)));
+}
+const CHEST0 = REST.Chest;
+const HEEL = V3(0, -0.115, -0.07), BALL = V3(0, -0.115, 0.10);
+function basePose() {
+  return {
+    hp: [0, 0.488, 0], hr: [0, 0, 0], sp: [0, 0, 0], ch: [0, 0, 0], nk: [0, 0, 0], hd: [0, 0, 0],
+    aR: { p: [-0.30, 0.72, 0.165], q: AXE(-90, -8), pole: [-0.5, -0.2, -1] },
+    aL: { p: [0.335, 0.62, 0.07], q: SHIELD([0.72, 0, 0.7], [0.12, -0.9, 0.4]), pole: [0.6, -0.2, -1] },
+    fL: { g: [0.13, 0, 0.03], yaw: 12, pitch: 0 }, fR: { g: [-0.13, 0, -0.02], yaw: -14, pitch: 0 },
+  };
+}
+function clonePose(P) {
+  const arm = a => ({ p: [...a.p], q: a.q.clone(), pole: [...a.pole] }), foot = f => ({ g: [...f.g], yaw: f.yaw, pitch: f.pitch });
+  return { hp: [...P.hp], hr: [...P.hr], sp: [...P.sp], ch: [...P.ch], nk: [...P.nk], hd: [...P.hd], aR: arm(P.aR), aL: arm(P.aL), fL: foot(P.fL), fR: foot(P.fR) };
+}
+function mk(base, o) {
+  const P = clonePose(base);
+  for (const k in o) { if (['aR', 'aL', 'fL', 'fR'].includes(k)) Object.assign(P[k], o[k]); else P[k] = o[k]; }
+  return P;
+}
+function lerpPose(A, Bp, s) {
+  const L = (a, b) => a.map((v, i) => v + (b[i] - v) * s);
+  const arm = (a, b) => ({ p: L(a.p, b.p), q: a.q.clone().slerp(b.q, s), pole: L(a.pole, b.pole) });
+  const foot = (a, b) => ({ g: L(a.g, b.g), yaw: a.yaw + (b.yaw - a.yaw) * s, pitch: a.pitch + (b.pitch - a.pitch) * s });
+  return { hp: L(A.hp, Bp.hp), hr: L(A.hr, Bp.hr), sp: L(A.sp, Bp.sp), ch: L(A.ch, Bp.ch), nk: L(A.nk, Bp.nk), hd: L(A.hd, Bp.hd),
+    aR: arm(A.aR, Bp.aR), aL: arm(A.aL, Bp.aL), fL: foot(A.fL, Bp.fL), fR: foot(A.fR, Bp.fR) };
+}
+const EASE = { io: s => s * s * (3 - 2 * s), in: s => s * s, out: s => 1 - (1 - s) * (1 - s), lin: s => s };
+function keyed(keys, t) {
+  let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++;
+  const a = keys[i], b = keys[i + 1];
+  const s = clamp((t - a.t) / (b.t - a.t), 0, 1);
+  return lerpPose(a.P, b.P, EASE[b.e || 'io'](s));
+}
+function applyPose(P) {
+  B.Hips.position.set(...P.hp); B.Hips.quaternion.copy(E(P.hr));
+  B.Spine.quaternion.copy(E(P.sp)); B.Chest.quaternion.copy(E(P.ch)); B.Neck.quaternion.copy(E(P.nk)); B.Head.quaternion.copy(E(P.hd));
+  B.BeardA.quaternion.identity(); B.BeardB.quaternion.identity();
+  charRoot.updateMatrixWorld(true);
+  const qc = B.Chest.getWorldQuaternion(new THREE.Quaternion());
+  for (const [a, L] of [[P.aL, '_L'], [P.aR, '_R']]) {
+    const tgt = B.Chest.localToWorld(V3(...a.p).sub(CHEST0));
+    ik(B['UpperArm' + L], B['ForeArm' + L], B['Hand' + L], tgt, V3(...a.pole).applyQuaternion(qc), ARM.l1, ARM.l2, false, qc.clone().multiply(a.q), true);
+  }
+  for (const [f, L, s] of [[P.fL, '_L', 1], [P.fR, '_R', -1]]) {
+    const q = E([f.pitch, f.yaw, 0]), qy = new THREE.Quaternion().setFromAxisAngle(_Y, f.yaw * D2R);
+    const pv = f.pitch >= 0 ? BALL : HEEL;                 // calcanhar ou planta como pivô: o ponto de apoio não escorrega
+    const ankle = V3(...f.g).add(V3(0, 0, pv.z).applyQuaternion(qy)).sub(pv.clone().applyQuaternion(q));
+    const pole = V3(Math.sin(f.yaw * D2R) + s * 0.12, 0, Math.cos(f.yaw * D2R));
+    ik(B['UpLeg' + L], B['Leg' + L], B['Foot' + L], ankle, pole, LEG.l1, LEG.l2, true, q, false);
+  }
+  charRoot.updateMatrixWorld(true);
+}
+
+// ---------- parado
+function idlePose(t) {
+  const a = 2 * Math.PI * t / 3, b = Math.sin(a), P = basePose();
+  P.hp = [0.008 * Math.sin(a), 0.488 + 0.004 * b, 0]; P.hr = [0, 3 * Math.sin(a), -1.2 * Math.sin(a)];
+  P.sp = [-1 * b, 0, 0]; P.ch = [-2 * b, -2.5 * Math.sin(a), 0.8 * Math.sin(a)];
+  P.hd = [1.5 * b + 2 * Math.sin(2 * a), 9 * Math.sin(a + 0.8), -2 * Math.sin(a)];
+  P.aR.p[1] += 0.006 * b; P.aL.p[1] += 0.006 * b; P.aL.p[2] += 0.006 * Math.sin(2 * a);
+  return P;
+}
+// ---------- andar / correr (procedural com IK; o pé apoiado anda para trás exatamente na velocidade v = S / (D·T))
+const WALK = { T: 0.82, S: 0.30, D: 0.62, h: 0.075, x: 0.105, yaw: 7, strike: -12, toe: 30, run: false };
+const RUN = { T: 0.52, S: 0.40, D: 0.34, h: 0.14, x: 0.092, yaw: 4, strike: 0, toe: 26, run: true };
+for (const W of [WALK, RUN]) W.v = W.S / (W.D * W.T);
+function footCycle(W, u, side) {
+  let z, lift = 0, pitch;
+  if (u < W.D) {
+    z = W.S / 2 - W.S * (u / W.D);
+    const hs = 0.12 * W.D, to = 0.7 * W.D;
+    pitch = u < hs ? W.strike * (1 - u / hs) : u > to ? W.toe * EASE.in((u - to) / (W.D - to)) : 0;
+  } else {
+    const w = (u - W.D) / (1 - W.D);
+    z = -W.S / 2 + W.S * EASE.io(w);
+    lift = W.h * Math.sin(Math.PI * Math.pow(w, 0.85));
+    pitch = W.toe + (W.strike - W.toe) * EASE.io(w);
+  }
+  return { g: [side * W.x, lift, z], yaw: side * W.yaw, pitch };
+}
+function locoPose(W, t) {
+  const ph = t / W.T, P = basePose(), c = Math.cos(2 * Math.PI * ph), s2 = Math.sin(2 * Math.PI * ph);
+  P.fL = footCycle(W, ((ph % 1) + 1) % 1, 1); P.fR = footCycle(W, (((ph + 0.5) % 1) + 1) % 1, -1);
+  if (!W.run) {
+    P.hp = [0.012 * s2, 0.468 - 0.011 * Math.cos(4 * Math.PI * ph), 0];
+    P.hr = [3, -6 * c, -2.5 * s2]; P.sp = [2, 2 * c, 0]; P.ch = [2, 5 * c, 1.5 * s2]; P.hd = [-5, -3 * c, 0];
+    P.aR = { p: [-0.305, 0.655, 0.07 + 0.08 * c], q: AXE(-52 - 8 * c, -6), pole: [-0.5, -0.2, -1] };
+    P.aL = { p: [0.33, 0.645, 0.03 - 0.08 * c], q: SHIELD([0.8, 0, 0.6], [0.1, -0.9, 0.45]), pole: [0.6, -0.2, -1] };
+  } else {
+    const k = -Math.cos(4 * Math.PI * (ph - W.D / 2));
+    P.hp = [0.01 * s2, 0.42 + 0.025 * k, 0.02];
+    P.hr = [8, -8 * c, -2 * s2]; P.sp = [6, 3 * c, 0]; P.ch = [6, 8 * c, 0]; P.hd = [-14, -5 * c, 0];
+    P.aR = { p: [-0.29, 0.74 + 0.04 * c, 0.05 + 0.15 * c], q: AXE(-40 - 15 * c, -8), pole: [-0.4, -0.3, -1] };
+    P.aL = { p: [0.31, 0.74 - 0.04 * c, 0.02 - 0.15 * c], q: SHIELD([0.85, 0, 0.5], [0.0, -0.6, 0.8]), pole: [0.5, -0.3, -1] };
+  }
+  return P;
+}
+// ---------- combate (poses-chave)
+const READY = mk(basePose(), {
+  hp: [0, 0.462, 0], hr: [0, -10, 0], sp: [4, 0, 0], ch: [4, 6, 0], hd: [-6, 6, 0],
+  fL: { g: [0.15, 0, 0.08], yaw: 18, pitch: 0 }, fR: { g: [-0.14, 0, -0.09], yaw: -28, pitch: 0 },
+  aR: { p: [-0.31, 0.80, 0.12], q: AXE(-72, -10), pole: [-0.8, -0.3, -0.6] },
+  aL: { p: [0.25, 0.78, 0.19], q: SHIELD([0.45, 0, 0.9], [-0.5, -0.3, 0.8]), pole: [1, -0.2, -0.3] },
+});
+const ATTACK = [
+  { t: 0, P: READY },
+  { t: 0.40, e: 'io', P: mk(READY, { hp: [0, 0.472, -0.012], hr: [-3, -26, 0], sp: [-4, -8, 0], ch: [-9, -18, 0], hd: [8, 24, 0],
+      aR: { p: [-0.22, 1.20, -0.04], q: AXE(-150, -5), pole: [-0.9, 0.3, 0.1] }, aL: { p: [0.22, 0.80, 0.24] } }) },
+  { t: 0.50, e: 'in', P: mk(READY, { hp: [0, 0.455, 0.0], hr: [2, -6, 0], sp: [2, 0, 0], ch: [2, 0, 0], hd: [0, 4, 0],
+      aR: { p: [-0.18, 1.22, 0.16], q: AXE(-60, -3), pole: [-1, 0, -0.2] }, aL: { p: [0.26, 0.76, 0.16] } }) },
+  { t: 0.58, e: 'out', P: mk(READY, { hp: [0, 0.428, 0.03], hr: [8, 12, 0], sp: [10, 5, 0], ch: [18, 12, 0], hd: [-18, -12, 0],
+      aR: { p: [-0.11, 0.80, 0.34], q: AXE(-40, 0), pole: [-0.6, 0, -1] },
+      aL: { p: [0.31, 0.70, 0.0], q: SHIELD([0.9, 0, 0.3], [0.1, -0.9, 0.3]), pole: [0.8, -0.2, -0.8] } }) },
+  { t: 0.82, e: 'lin', P: mk(READY, { hp: [0, 0.432, 0.028], hr: [7, 11, 0], sp: [9, 5, 0], ch: [16, 11, 0], hd: [-16, -11, 0],
+      aR: { p: [-0.12, 0.81, 0.33], q: AXE(-44, 0), pole: [-0.6, 0, -1] },
+      aL: { p: [0.31, 0.71, 0.01], q: SHIELD([0.9, 0, 0.3], [0.1, -0.9, 0.3]), pole: [0.8, -0.2, -0.8] } }) },
+  { t: 1.30, e: 'io', P: READY },
+];
+const GUARD = mk(READY, { hp: [0, 0.43, 0], hr: [6, -6, 0], sp: [6, 0, 0], ch: [8, 12, 0], hd: [-10, 4, 0],
+  aL: { p: [0.10, 0.865, 0.22], q: SHIELD([0, 0, 1], [-1, 0, 0]), pole: [1, -0.1, 0.2] },
+  aR: { p: [-0.33, 0.82, -0.10], q: AXE(-125, -15), pole: [-0.7, -0.2, -0.7] } });
+const DEFEND = [
+  { t: 0, P: READY },
+  { t: 0.28, e: 'out', P: GUARD },
+  { t: 0.62, e: 'io', P: mk(GUARD, { hp: [0, 0.425, 0] }) },
+  { t: 0.70, e: 'out', P: mk(GUARD, { hp: [0, 0.432, -0.035], ch: [2, 12, 0], hd: [-4, 4, 0], aL: { p: [0.10, 0.885, 0.18] } }) },
+  { t: 0.98, e: 'io', P: GUARD },
+  { t: 1.25, e: 'io', P: mk(GUARD, { hp: [0, 0.428, 0] }) },
+  { t: 1.60, e: 'io', P: READY },
+];
+const IDLE0 = idlePose(0);
+const UP = { aR: { p: [-0.25, 1.30, 0.06], q: AXE(-80, -10), pole: [-1, -0.2, 0] },
+  aL: { p: [0.38, 1.10, 0.06], q: SHIELD([0.5, 0.3, 0.8], [0.2, 1, 0]), pole: [1, 0, -0.3] } };
+const CHEER = [
+  { t: 0, P: IDLE0 },
+  { t: 0.30, e: 'io', P: mk(IDLE0, { hp: [0, 0.42, 0], hr: [6, 0, 0], sp: [10, 0, 0], ch: [8, 0, 0], hd: [-10, 0, 0],
+      aR: { p: [-0.30, 0.70, 0.12], q: AXE(-60, -6) }, aL: { p: [0.33, 0.66, 0.09] } }) },
+  { t: 0.56, e: 'out', P: mk(IDLE0, { hp: [0, 0.60, 0], hr: [-2, 0, 0], sp: [-6, 0, 0], ch: [-10, 0, 0], hd: [12, 0, 0], ...UP,
+      fL: { g: [0.13, 0.105, 0.03], yaw: 12, pitch: 22 }, fR: { g: [-0.13, 0.105, -0.02], yaw: -14, pitch: 22 } }) },
+  { t: 0.80, e: 'in', P: mk(IDLE0, { hp: [0, 0.435, 0], hr: [6, 0, 0], sp: [8, 0, 0], ch: [4, 0, 0], hd: [-4, 0, 0], ...UP }) },
+  { t: 1.15, e: 'out', P: mk(IDLE0, { hp: [0, 0.49, 0], sp: [-4, 0, 0], ch: [-12, 0, 0], hd: [18, 0, 0],
+      aR: { p: [-0.26, 1.30, 0.04], q: AXE(-85, -10), pole: [-1, -0.2, 0] }, aL: { p: [0.36, 1.06, 0.05], q: UP.aL.q, pole: UP.aL.pole } }) },
+  { t: 1.55, e: 'io', P: mk(IDLE0, { hp: [0, 0.488, 0], sp: [-3, 0, 0], ch: [-10, 3, 0], hd: [15, -6, 0],
+      aR: { p: [-0.26, 1.29, 0.05], q: AXE(-84, -10), pole: [-1, -0.2, 0] }, aL: { p: [0.36, 1.04, 0.05], q: UP.aL.q, pole: UP.aL.pole } }) },
+  { t: 2.0, e: 'io', P: IDLE0 },
+];
+const CLIPDEF = [
+  { name: 'Parado', dur: 3.0, fps: 30, fn: idlePose },
+  { name: 'Andar', dur: WALK.T, fps: 60, fn: t => locoPose(WALK, t), loco: WALK },
+  { name: 'Correr', dur: RUN.T, fps: 60, fn: t => locoPose(RUN, t), loco: RUN },
+  { name: 'Atacar', dur: 1.3, fps: 30, fn: t => keyed(ATTACK, t) },
+  { name: 'Defender', dur: 1.6, fps: 30, fn: t => keyed(DEFEND, t) },
+  { name: 'Comemorar', dur: 2.0, fps: 30, fn: t => keyed(CHEER, t) },
+];
+
+// ---------- assar em quadros (como o export de animação de um DCC)
+const TRACKED = bones.filter(b => b.name !== 'BeardEnd');
+const CLIPS = [], MEAS = {};
+for (const cd of CLIPDEF) {
+  const N = Math.round(cd.dur * cd.fps), times = [], qa = TRACKED.map(() => []), pos = [];
+  const ank = { L: [], R: [] };
+  for (let i = 0; i <= N; i++) {
+    const t = i / cd.fps; applyPose(cd.fn(Math.min(t, cd.dur - 1e-6) % cd.dur));
+    times.push(t);
+    TRACKED.forEach((b, j) => qa[j].push(...b.quaternion.toArray()));
+    pos.push(...B.Hips.position.toArray());
+    for (const L of ['L', 'R']) ank[L].push(new THREE.Vector3().setFromMatrixPosition(B['Foot_' + L].matrixWorld));
+  }
+  const tracks = TRACKED.map((b, j) => new THREE.QuaternionKeyframeTrack(b.name + '.quaternion', times, qa[j]));
+  tracks.push(new THREE.VectorKeyframeTrack('Hips.position', times, pos));
+  CLIPS.push(new THREE.AnimationClip(cd.name, cd.dur, tracks));
+  if (cd.loco) {                                            // QA: velocidade medida do tornozelo enquanto o pé está plano no chão
+    let sum = 0, cnt = 0, maxDev = 0;
+    for (const L of ['L', 'R']) for (let i = 1; i < ank[L].length; i++) {
+      const a = ank[L][i - 1], b = ank[L][i];
+      if (a.y < 0.1165 && b.y < 0.1165) { const vz = -(b.z - a.z) * cd.fps; sum += vz; cnt++; maxDev = Math.max(maxDev, Math.abs(vz - cd.loco.v)); }
+    }
+    MEAS[cd.name] = { v: cd.loco.v, med: sum / Math.max(cnt, 1), dev: maxDev };
+  }
+}
+// volta ao repouso
+for (const b of bones) { b.quaternion.identity(); const p = BDEF.find(d => d[0] === b.name)[1]; b.position.copy(REST[b.name]).sub(p ? REST[p] : V3(0, 0, 0)); }
+charRoot.updateMatrixWorld(true);
+
+// ======================================================================= cena
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: !!(SHEET || Q.has('sim')) });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#9fbfd4'); scene.fog = new THREE.Fog('#9fbfd4', 9, 24);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.add(new THREE.HemisphereLight('#e2f0ff', '#5a4632', 1.0));
+const sun = new THREE.DirectionalLight('#fff0d8', 2.3); sun.position.set(2.2, 4.2, 3.0); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -2.5, right: 2.5, top: 2.5, bottom: -2.5, near: 0.5, far: 12 });
+sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.02;
+scene.add(sun, sun.target);
+scene.add(charRoot);
+
+// chão low poly + caminho de pedras no círculo por onde ele anda
+function flatColored(g, colorFn) {
+  const ng = g.toNonIndexed(); for (const k of Object.keys(ng.attributes)) if (k !== 'position') ng.deleteAttribute(k);
+  ng.computeVertexNormals(); const p = ng.attributes.position, col = new Float32Array(p.count * 3), c = new THREE.Color();
+  for (let f = 0; f < p.count / 3; f++) { colorFn(c, p.getX(f * 3), p.getZ(f * 3), f); for (let j = 0; j < 3; j++) c.toArray(col, (f * 3 + j) * 3); }
+  ng.setAttribute('color', new THREE.BufferAttribute(col, 3)); return ng;
+}
+const groundMat = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 1 });
+const gg = new THREE.CircleGeometry(9, 48, 0, Math.PI * 2); gg.rotateX(-Math.PI / 2);
+const ground = new THREE.Mesh(flatColored(gg, (c, x, z, f) => c.set('#6f9a4c').multiplyScalar(0.9 + 0.2 * (hash3(f, 1, 2)[0] * 0.5 + 0.5))), groundMat);
+ground.receiveShadow = true; scene.add(ground);
+const PATH_R = 2.0;
+const stones = [];
+for (let i = 0; i < 44; i++) {
+  const a = i / 44 * Math.PI * 2, r = PATH_R + hash3(i, 3, 1)[0] * 0.08;
+  const g = new THREE.CylinderGeometry(0.13, 0.15, 0.03, 6); g.rotateY(hash3(i, 2, 2)[1] * 3); g.translate(Math.cos(a) * r, 0.0, Math.sin(a) * r);
+  stones.push(g);
+}
+const stoneMesh = new THREE.Mesh(flatColored(mergeGeometries(stones), (c, x, z, f) => c.set(C.stone).multiplyScalar(0.85 + 0.25 * (hash3(f, 5, 5)[0] * 0.5 + 0.5))), groundMat);
+stoneMesh.position.y = -0.012; stoneMesh.receiveShadow = true; scene.add(stoneMesh);
+{ // pedras e pinheiros ao redor
+  const deco = [];
+  for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + 0.3, r = 4.2 + 2.5 * (hash3(i, 9, 9)[0] * 0.5 + 0.5);
+    const g = new THREE.IcosahedronGeometry(0.18 + 0.2 * (hash3(i, 4, 4)[1] * 0.5 + 0.5), 0); g.scale(1, 0.6, 1); g.translate(Math.cos(a) * r, 0.05, Math.sin(a) * r); deco.push(g); }
+  const rocks = new THREE.Mesh(flatColored(mergeGeometries(deco), (c, x, z, f) => c.set('#8b8780').multiplyScalar(0.8 + 0.3 * (hash3(f, 7, 1)[0] * 0.5 + 0.5))), groundMat);
+  rocks.castShadow = rocks.receiveShadow = true; scene.add(rocks);
+  const trees = [];
+  for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI * 2, r = 5.5 + 2 * (hash3(i, 1, 8)[0] * 0.5 + 0.5), x = Math.cos(a) * r, z = Math.sin(a) * r;
+    const t = new THREE.CylinderGeometry(0.08, 0.1, 0.5, 5); t.translate(x, 0.25, z); trees.push([t, '#6b4a2e']);
+    for (let k = 0; k < 3; k++) { const c = new THREE.ConeGeometry(0.75 - k * 0.18, 0.9, 6); c.translate(x, 0.8 + k * 0.5, z); trees.push([c, '#2f6b3f']); } }
+  const tm = new THREE.Mesh(mergeGeometries(trees.map(([g, col]) => flatColored(g, c => c.set(col))).map(g => g)), groundMat);
+  tm.castShadow = true; scene.add(tm);
+}
+
+const camera = new THREE.PerspectiveCamera(32, innerWidth / innerHeight, 0.05, 60);
+const mixer = new THREE.AnimationMixer(charRoot);
+const actions = {}; for (const c of CLIPS) actions[c.name] = mixer.clipAction(c);
+const triCount = geo.attributes.position.count / 3;
+
+// ======================================================================= modo folha (QA visual: várias poses numa imagem)
+if (SHEET) {
+  document.getElementById('top').style.display = 'none'; document.getElementById('panel').style.display = 'none';
+  const names = SHEET.split(','), n = +(Q.get('n') || 5), cams = (Q.get('cam') || '34').split(',');
+  const W = innerWidth, H = innerHeight, rows = names.length * cams.length, cw = W / n, chh = H / rows;
+  renderer.autoClear = false; renderer.setScissorTest(true); renderer.setClearColor(scene.background); renderer.clear();
+  const CAMS = { front: [0, 0.8, 3.2], side: [3.2, 0.8, 0], back: [0, 0.8, -3.2], right: [-3.2, 0.8, 0], '34': [2.0, 1.15, 2.5], face: [0.32, 1.12, 1.05], low: [1.2, 0.35, 2.4] };
+  let r = 0;
+  for (const nm of names) for (const cm of cams) {
+    for (let i = 0; i < n; i++) {
+      if (nm === 'rest') { for (const b of bones) b.quaternion.identity(); }
+      else { mixer.stopAllAction(); const a = actions[nm]; a.reset().play(); mixer.setTime(CLIPS.find(c => c.name === nm).duration * i / n); }
+      charRoot.updateMatrixWorld(true);
+      const ty = cm === 'face' ? 1.09 : 0.68;
+      camera.position.set(...CAMS[cm]); camera.lookAt(0, ty, 0); camera.aspect = cw / chh; camera.updateProjectionMatrix();
+      const x = i * cw, y = H - (r + 1) * chh;
+      renderer.setViewport(x, y, cw, chh); renderer.setScissor(x, y, cw, chh); renderer.clear(); renderer.render(scene, camera);
+      const d = document.createElement('div'); d.className = 'lbl'; d.style.left = (x + 4) + 'px'; d.style.top = (r * chh + 4) + 'px';
+      d.textContent = `${nm} ${cm} ${nm === 'rest' ? '' : (CLIPS.find(c => c.name === nm).duration * i / n).toFixed(2) + 's'}`; document.body.appendChild(d);
+    }
+    r++;
+  }
+  console.log('MEAS', JSON.stringify(MEAS), 'tris', triCount);
+  document.title = 'PRONTO';
+} else startViewer();
+
+// ======================================================================= visualizador
+function startViewer() {
+  camera.position.set(1.9, 1.25, 3.0);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0.72, 0); controls.enableDamping = true; controls.minDistance = 0.8; controls.maxDistance = 9; controls.maxPolarAngle = Math.PI * 0.49;
+  controls.update();
+  const skel = new THREE.SkeletonHelper(charRoot); skel.visible = false; scene.add(skel);
+  const $ = id => document.getElementById(id);
+  let cur = null, curName = '';
+  function play(name) {
+    const a = actions[name]; if (cur === a) return;
+    a.reset().setEffectiveWeight(1).fadeIn(0.22).play(); if (cur) cur.fadeOut(0.22);
+    cur = a; curName = name;
+    document.querySelectorAll('#clips button').forEach(b => b.classList.toggle('on', b.textContent === name));
+  }
+  for (const c of CLIPS) { const b = document.createElement('button'); b.textContent = c.name; b.onclick = () => play(c.name); $('clips').appendChild(b); }
+  play('Parado');
+  $('fold').onclick = () => { $('panel').classList.toggle('min'); $('fold').textContent = $('panel').classList.contains('min') ? '▴' : '▾'; };
+
+  // molas da barba (física secundária, só no navegador)
+  const springs = [{ b: B.BeardA, c: B.BeardB, k: 75, d: 9, g: 0.4, max: 22 * D2R }, { b: B.BeardB, c: B.BeardEnd, k: 55, d: 7, g: 0.4, max: 34 * D2R }];
+  const resetSprings = () => springs.forEach(s => s.P = null);
+  function springStep(dt) {
+    for (const s of springs) {
+      s.b.updateMatrixWorld(true);
+      const head = new THREE.Vector3().setFromMatrixPosition(s.b.matrixWorld), tip = new THREE.Vector3().setFromMatrixPosition(s.c.matrixWorld);
+      if (!s.P) { s.P = tip.clone(); s.V = new THREE.Vector3(); }
+      const nsub = Math.max(1, Math.ceil(dt * 240)), h = dt / nsub;
+      for (let i = 0; i < nsub; i++) { const acc = tip.clone().sub(s.P).multiplyScalar(s.k).addScaledVector(s.V, -s.d); acc.y -= s.g; s.V.addScaledVector(acc, h); s.P.addScaledVector(s.V, h); }
+      const len = tip.distanceTo(head); s.P.sub(head).setLength(len).add(head);
+      let qd = new THREE.Quaternion().setFromUnitVectors(tip.clone().sub(head).normalize(), s.P.clone().sub(head).normalize());
+      const ang = 2 * Math.acos(Math.min(1, Math.abs(qd.w))); if (ang > s.max) qd = new THREE.Quaternion().slerp(qd, s.max / ang);
+      const qn = qd.multiply(s.b.getWorldQuaternion(new THREE.Quaternion()));
+      s.b.quaternion.copy(s.b.parent.getWorldQuaternion(new THREE.Quaternion()).invert().multiply(qn));
+      s.b.updateMatrixWorld(true);
+    }
+  }
+  // rastro dos pés + medida de deslize do pé apoiado
+  const trailGeo = new THREE.CircleGeometry(0.035, 6); trailGeo.rotateX(-Math.PI / 2);
+  const trail = [], trailMat = { L: new THREE.MeshBasicMaterial({ color: '#2f7fd6', transparent: true }), R: new THREE.MeshBasicMaterial({ color: '#e0772e', transparent: true }) };
+  for (let i = 0; i < 160; i++) { const m = new THREE.Mesh(trailGeo, trailMat.L.clone()); m.visible = false; m.life = 0; scene.add(m); trail.push(m); }
+  let trailI = 0, trailT = 0; const lastAnk = {}; let slideSum = 0, slideN = 0;
+  // cores por osso
+  const colAttr = geo.attributes.color, colOrig = colAttr.array.slice(), colBone = new Float32Array(colOrig.length);
+  { const si = geo.attributes.skinIndex, sw = geo.attributes.skinWeight, c = new THREE.Color();
+    const pal = bones.map((b, i) => new THREE.Color().setHSL((i * 0.137) % 1, 0.65, 0.55));
+    for (let i = 0; i < si.count; i++) { let r = 0, g = 0, bl = 0;
+      for (let j = 0; j < 4; j++) { const w = sw.getComponent(i, j); if (!w) continue; const p = pal[si.getComponent(i, j)]; r += p.r * w; g += p.g * w; bl += p.b * w; }
+      colBone[i * 3] = r; colBone[i * 3 + 1] = g; colBone[i * 3 + 2] = bl; } }
+  $('cColor').onchange = e => { colAttr.array.set(e.target.checked ? colBone : colOrig); colAttr.needsUpdate = true; };
+  $('cWire').onchange = e => { matMatte.wireframe = matMetal.wireframe = e.target.checked; };
+  $('cBones').onchange = e => { skel.visible = e.target.checked; };
+  let walkA = 0;
+  $('cWalk').onchange = e => {
+    if (e.target.checked) { if (!['Andar', 'Correr'].includes(curName)) play('Andar'); walkA = 0; const d = placeOnPath(); camera.position.add(d); controls.target.add(d); resetSprings(); slideSum = slideN = 0; }
+    else { camera.position.sub(charRoot.position); controls.target.sub(charRoot.position); charRoot.position.set(0, 0, 0); charRoot.rotation.set(0, 0, 0); resetSprings(); }
+  };
+  function placeOnPath() {
+    const p = V3(Math.cos(walkA) * PATH_R, 0, Math.sin(walkA) * PATH_R), dir = V3(-Math.sin(walkA), 0, Math.cos(walkA));
+    const old = charRoot.position.clone(); charRoot.position.copy(p); charRoot.rotation.set(0, Math.atan2(dir.x, dir.z), 0);
+    return p.sub(old);
+  }
+  // GLB
+  function exportGLB(done) {
+    const saved = bones.map(b => [b.position.clone(), b.quaternion.clone()]), sp = charRoot.position.clone(), sr = charRoot.rotation.clone();
+    for (const b of bones) { b.quaternion.identity(); const p = BDEF.find(d => d[0] === b.name)[1]; b.position.copy(REST[b.name]).sub(p ? REST[p] : V3(0, 0, 0)); }
+    charRoot.position.set(0, 0, 0); charRoot.rotation.set(0, 0, 0); charRoot.updateMatrixWorld(true);
+    mesh.geometry = expGeo();
+    new GLTFExporter().parse(charRoot, buf => {
+      mesh.geometry = geo;
+      bones.forEach((b, i) => { b.position.copy(saved[i][0]); b.quaternion.copy(saved[i][1]); }); charRoot.position.copy(sp); charRoot.rotation.copy(sr);
+      done(buf);
+    }, err => console.error(err), { binary: true, animations: CLIPS });
+  }
+  // geometria de exportação enxuta: sem normais (não indexada → o motor recalcula facetado), cor/ossos/pesos em 8 bits
+  let _exp = null;
+  function expGeo() {
+    if (_exp) return _exp;
+    const g = new THREE.BufferGeometry(), n = geo.attributes.position.count;
+    g.setAttribute('position', geo.attributes.position);
+    const c8 = new Uint8Array(n * 3), j8 = new Uint8Array(n * 4), w8 = new Uint8Array(n * 4);
+    const ca = geo.attributes.color, si = geo.attributes.skinIndex, sw = geo.attributes.skinWeight;
+    for (let i = 0; i < n; i++) {
+      for (let k = 0; k < 3; k++) c8[i * 3 + k] = Math.round(clamp(colOrig[i * 3 + k], 0, 1) * 255);
+      let tot = 0, big = 0;
+      for (let k = 0; k < 4; k++) { j8[i * 4 + k] = si.getComponent(i, k); w8[i * 4 + k] = Math.round(sw.getComponent(i, k) * 255); tot += w8[i * 4 + k]; if (w8[i * 4 + k] > w8[i * 4 + big]) big = k; }
+      w8[i * 4 + big] += 255 - tot;
+    }
+    g.setAttribute('color', new THREE.BufferAttribute(c8, 3, true));
+    g.setAttribute('skinIndex', new THREE.BufferAttribute(j8, 4));
+    g.setAttribute('skinWeight', new THREE.BufferAttribute(w8, 4, true));
+    for (const gr of geo.groups) g.addGroup(gr.start, gr.count, gr.materialIndex);
+    return (_exp = g);
+  }
+  $('bGlb').onclick = () => exportGLB(buf => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([buf], { type: 'model/gltf-binary' })); a.download = 'brakk_anao_guerreiro.glb'; a.click(); });
+  const statRows = () => [
+    ['Triângulos', triCount.toLocaleString('pt-BR')], ['Ossos', (bones.length - 1) + ' (3 de barba com mola)'], ['Texturas', 'nenhuma'],
+    ['Materiais / malhas', '2 / 1'], ['Página inteira', (document.documentElement.outerHTML.length / 1024).toFixed(0) + ' KB'],
+    ['GLB exportado', glbKB ? glbKB + ' KB' : '…'],
+    ['Andar', MEAS.Andar.v.toFixed(2) + ' m/s (pé apoiado ' + MEAS.Andar.med.toFixed(2) + ')'],
+    ['Correr', MEAS.Correr.v.toFixed(2) + ' m/s (pé apoiado ' + MEAS.Correr.med.toFixed(2) + ')'],
+    ['Deslize do pé na cena', slideN > 30 ? (slideSum / slideN * 100).toFixed(1) + ' cm/s' : 'ligue "Andar pela cena"'],
+  ];
+  let glbKB = 0;
+  const drawStats = () => { $('stats').innerHTML = statRows().map(([a, b]) => `<span>${a}</span><b>${b}</b>`).join(''); };
+  drawStats(); if (!Q.has('noexp')) setTimeout(() => exportGLB(buf => { glbKB = Math.round(buf.byteLength / 1024); drawStats(); }), 400);
+  setInterval(drawStats, 1000);
+
+  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+  const clock = new THREE.Clock();
+  function frame(force) {
+    const real = force ?? Math.min(clock.getDelta(), 1 / 20), dt = real * ($('cSlow').checked ? 0.25 : 1);
+    mixer.update(dt);
+    const walking = $('cWalk').checked;
+    if (walking) {
+      const W = curName === 'Andar' ? WALK : curName === 'Correr' ? RUN : null;
+      if (W) {
+        // a raiz anda exatamente na velocidade do pé apoiado; no fim do ciclo do clipe o tempo de mixer e o caminho ficam em fase
+        const w = cur.getEffectiveWeight();
+        walkA += (W.v * w) * dt / PATH_R;
+        const delta = placeOnPath(); camera.position.add(delta); controls.target.add(delta);
+      }
+    }
+    charRoot.updateMatrixWorld(true);
+    if ($('cSpring').checked) springStep(dt);
+    sun.position.set(charRoot.position.x + 2.2, 4.2, charRoot.position.z + 3.0); sun.target.position.copy(charRoot.position);
+    // rastro + deslize
+    trailT += dt;
+    for (const L of ['L', 'R']) {
+      const p = new THREE.Vector3().setFromMatrixPosition(B['Foot_' + L].matrixWorld);
+      if (walking && cur.getEffectiveWeight() > 0.999 && lastAnk[L] && p.y < 0.1165 && lastAnk[L].y < 0.1165 && dt > 0) { slideSum += Math.hypot(p.x - lastAnk[L].x, p.z - lastAnk[L].z) / dt; slideN++; }
+      if (walking && $('cTrail').checked && p.y < 0.118 && trailT > 0.05) {
+        const m = trail[trailI++ % trail.length]; m.material.color.copy(trailMat[L].color); m.position.set(p.x, 0.004, p.z); m.visible = true; m.life = 4;
+      }
+      lastAnk[L] = p;
+    }
+    if (trailT > 0.05) trailT = 0;
+    for (const m of trail) if (m.visible) { m.life -= real; m.material.opacity = Math.max(0, m.life / 4); if (m.life <= 0) m.visible = false; }
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  if (Q.has('sim')) {                    // teste sem relógio (Chrome headless): ?sim=N&clip=Andar&walk=1
+    play(Q.get('clip') || 'Parado'); if (Q.get('walk')) { $('cWalk').checked = true; $('cWalk').onchange({ target: $('cWalk') }); }
+    for (let i = 0; i < +Q.get('sim'); i++) frame(1 / 60);
+    drawStats(); console.log('SIM', JSON.stringify({ slide: slideSum / Math.max(slideN, 1), n: slideN, pos: charRoot.position.toArray(), beard: B.BeardB.quaternion.toArray() }));
+    renderer.setAnimationLoop(() => renderer.render(scene, camera));
+  } else renderer.setAnimationLoop(() => frame());
+}
+</script>
+</body>
+</html>
