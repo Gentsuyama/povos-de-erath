@@ -1,0 +1,8 @@
+{
+  "name": "povos-de-erath",
+  "private": true,
+  "type": "module",
+  "description": "Personagens low poly de Erath gerados 100% em código (forja/erath_forja.js).",
+  "scripts": { "exportar": "node forja/exportar.mjs" },
+  "devDependencies": { "three": "0.160.0" }
+}

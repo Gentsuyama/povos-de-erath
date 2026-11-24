@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forja de Erath</title>
+<style>
+  :root { --bg:#9fbfd4; --card:rgba(24,20,17,.84); --tx:#f3ead8; --mut:#c9b99c; --acc:#e0aa35; --line:rgba(255,255,255,.12); }
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--tx); }
+  canvas { display:block; }
+  #top { position:fixed; left:16px; top:14px; max-width:min(470px, calc(100vw - 32px)); background:var(--card); border:1px solid var(--line); border-radius:12px; padding:11px 14px; }
+  #top h1 { margin:0; font-size:19px; letter-spacing:.3px; }
+  #top .epi { color:var(--acc); font-size:13px; margin-top:1px; }
+  #top .sub { color:var(--mut); font-size:12.3px; margin-top:4px; line-height:1.35; }
+  #racas { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+  #topBtns { margin-top:7px; display:flex; gap:6px; flex-wrap:wrap; }
+  #panel { position:fixed; right:16px; top:14px; width:322px; max-height:calc(100vh - 28px); overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 13px; font-size:13px; }
+  #panel h2 { font-size:11.5px; text-transform:uppercase; letter-spacing:1px; color:var(--acc); margin:12px 0 6px; }
+  #panel h2:first-of-type { margin-top:2px; }
+  .row { display:flex; flex-wrap:wrap; gap:5px; }
+  button { background:#3a2f26; color:var(--tx); border:1px solid #5d4a39; border-radius:8px; padding:5px 9px; font-size:12.5px; cursor:pointer; }
+  button:hover { background:#4a3c30; }
+  button.on { background:var(--acc); color:#1d1408; border-color:var(--acc); font-weight:600; }
+  button.big { font-size:13.5px; padding:7px 12px; }
+  #racas button { padding:4px 9px; font-size:12.5px; }
+  .cat { display:grid; grid-template-columns:76px 1fr; gap:4px 8px; align-items:start; margin:5px 0; }
+  .cat > span { color:var(--mut); font-size:12px; padding-top:5px; }
+  .cat .row button { padding:3px 7px; font-size:12px; border-radius:6px; }
+  label { display:flex; align-items:center; gap:7px; margin:3px 0; cursor:pointer; font-size:12.5px; }
+  .stat { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; font-size:12.3px; }
+  .stat b { color:var(--acc); font-weight:600; text-align:right; }
+  details { margin-top:10px; } summary { cursor:pointer; color:var(--acc); font-size:11.5px; text-transform:uppercase; letter-spacing:1px; }
+  ol { margin:6px 0 0; padding-left:18px; color:var(--mut); font-size:12.2px; line-height:1.42; }
+  ol li { margin:3px 0; } ol li strong { color:var(--tx); font-weight:600; }
+  #fold { display:none; }
+  #hint { position:fixed; left:50%; bottom:14px; transform:translateX(-50%); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:6px 12px; font-size:12.5px; display:none; }
+  .lbl { position:fixed; color:#1d1408; background:rgba(255,255,255,.78); font:12px system-ui; padding:1px 6px; border-radius:4px; pointer-events:none; }
+  @media (max-width: 760px) {
+    #top { padding:8px 11px; } #top h1 { font-size:16px; } #top .sub { display:none; }
+    #panel { top:auto; bottom:12px; left:16px; right:16px; width:auto; max-height:44vh; }
+    #fold { display:inline-block; float:right; padding:2px 8px; }
+    #panel.min .body { display:none; }
+    #hint { bottom:auto; top:170px; }
+  }
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="top">
+  <h1 id="nome">Brakk</h1>
+  <div class="epi" id="epiteto">Barba-de-Brasa</div>
+  <div class="sub" id="sub">Forja dos povos de Erath, feita 100% em código: cada peça, osso e animação sai do módulo <code>forja/erath_forja.js</code>, pronto para o jogo.</div>
+  <div id="racas"></div>
+  <div id="topBtns"><button class="big" id="bSort">🎲 Sortear</button><button class="big" id="bArmy">Exército (9)</button><button class="big" id="bBase">Padrão da raça</button></div>
+</div>
+<div id="hint">Clique num personagem para escolher</div>
+<div id="panel">
+  <button id="fold">▾</button>
+  <div class="body">
+  <h2>Animação</h2>
+  <div class="row" id="clips"></div>
+  <h2>Montar</h2>
+  <div id="cats"></div>
+  <h2>Ver</h2>
+  <label><input type="checkbox" id="cWalk"> Andar pela cena (passo casado)</label>
+  <label><input type="checkbox" id="cTrail" checked> Rastro dos pés</label>
+  <label><input type="checkbox" id="cSpring" checked> Molas (barba, rabo, cabelo)</label>
+  <label><input type="checkbox" id="cSlow"> Câmera lenta (¼)</label>
+  <label><input type="checkbox" id="cBones"> Esqueleto</label>
+  <label><input type="checkbox" id="cColor"> Cores por osso</label>
+  <label><input type="checkbox" id="cWire"> Arame</label>
+  <label><input type="checkbox" id="cArmyMix" checked> Exército mistura raças</label>
+  <div class="row" style="margin-top:6px"><button id="bGlb">Baixar GLB</button><button id="bJson">Baixar ficha (JSON)</button><button id="bLink">Copiar link</button></div>
+  <h2>Ficha</h2>
+  <div class="stat" id="stats"></div>
+  <details><summary>Como foi feito</summary>
+  <ol>
+    <li><strong>Um módulo para o jogo</strong>: <code>forja/erath_forja.js</code> monta qualquer personagem a partir de uma ficha (raça + peças). Roda no navegador e no Node; os GLBs prontos ficam em <code>personagens/</code>.</li>
+    <li><strong>Um esqueleto para todas as raças</strong>: mesmos nomes de ossos e as mesmas 6 animações; cada raça muda proporções e ganha correntes de mola (barba, rabo do Vran, cabelo).</li>
+    <li><strong>Peças como funções</strong>: primitivas facetadas de 6–12 lados, cor nos vértices, 1 malha com até 3 materiais (fosco, metal, brilho).</li>
+    <li><strong>Control rig</strong>: IK de pernas (pé cravado) e de braços (alvo da mão + polo + torção no antebraço); as poses servem para qualquer porte.</li>
+    <li><strong>Passo casado</strong>: a velocidade sai da passada de cada corpo; o pé apoiado não escorrega.</li>
+  </ol></details>
+  </div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+import { RACAS, RACA_ORDEM, catsOf, baseCfg, cfgKey, randomCfg, nameOf, combinacoes, forge, springStep, resetSprings, exportGeometry, rng, CLIPDEF, MATS } from './forja/erath_forja.js';
+
+const Q = new URLSearchParams(location.search);
+const SHEET = Q.get('sheet');
+const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+const hash1 = f => { const s = Math.sin(f * 127.1 + 3.7) * 43758.5453; return s - Math.floor(s); };
+
+// ======================================================================= cena
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: !!(SHEET || Q.has('sim')) });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#9fbfd4'); scene.fog = new THREE.Fog('#9fbfd4', 10, 26);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.add(new THREE.HemisphereLight('#e2f0ff', '#5a4632', 1.0));
+const sun = new THREE.DirectionalLight('#fff0d8', 2.3); sun.position.set(2.2, 4.2, 3.0); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -4.5, right: 4.5, top: 4.5, bottom: -4.5, near: 0.5, far: 14 });
+sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.02;
+scene.add(sun, sun.target);
+function flatColored(g, colorFn) {
+  const ng = g.index ? g.toNonIndexed() : g; for (const k of Object.keys(ng.attributes)) if (k !== 'position') ng.deleteAttribute(k);
+  ng.computeVertexNormals(); const p = ng.attributes.position, col = new Float32Array(p.count * 3), c = new THREE.Color();
+  for (let f = 0; f < p.count / 3; f++) { colorFn(c, f); for (let j = 0; j < 3; j++) c.toArray(col, (f * 3 + j) * 3); }
+  ng.setAttribute('color', new THREE.BufferAttribute(col, 3)); return ng;
+}
+{
+  const groundMat = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 1 });
+  const gg = new THREE.CircleGeometry(11, 56); gg.rotateX(-Math.PI / 2);
+  const ground = new THREE.Mesh(flatColored(gg, (c, f) => c.set('#6f9a4c').multiplyScalar(0.9 + 0.2 * hash1(f))), groundMat);
+  ground.receiveShadow = true; scene.add(ground);
+  const stones = [];
+  for (let i = 0; i < 44; i++) { const a = i / 44 * Math.PI * 2, r = 2.0 + (hash1(i + 9) - 0.5) * 0.16;
+    const g = new THREE.CylinderGeometry(0.13, 0.15, 0.03, 6); g.rotateY(hash1(i) * 6); g.translate(Math.cos(a) * r, 0, Math.sin(a) * r); stones.push(g); }
+  const sm = new THREE.Mesh(flatColored(mergeGeometries(stones), (c, f) => c.set('#8d8a82').multiplyScalar(0.85 + 0.25 * hash1(f + 3))), groundMat);
+  sm.position.y = -0.012; sm.receiveShadow = true; scene.add(sm);
+  const deco = [];
+  for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + 0.3, r = 5.2 + 2.5 * hash1(i + 20);
+    const g = new THREE.IcosahedronGeometry(0.18 + 0.2 * hash1(i + 40), 0); g.scale(1, 0.6, 1); g.translate(Math.cos(a) * r, 0.05, Math.sin(a) * r); deco.push(g); }
+  const rocks = new THREE.Mesh(flatColored(mergeGeometries(deco), (c, f) => c.set('#8b8780').multiplyScalar(0.8 + 0.3 * hash1(f + 7))), groundMat);
+  rocks.castShadow = rocks.receiveShadow = true; scene.add(rocks);
+  const trees = [];
+  for (let i = 0; i < 10; i++) { const a = i / 10 * Math.PI * 2, r = 6.5 + 2 * hash1(i + 60), x = Math.cos(a) * r, z = Math.sin(a) * r;
+    const t = new THREE.CylinderGeometry(0.08, 0.1, 0.5, 5); t.translate(x, 0.25, z); trees.push(flatColored(t, c => c.set('#6b4a2e')));
+    for (let k = 0; k < 3; k++) { const c = new THREE.ConeGeometry(0.75 - k * 0.18, 0.9, 6); c.translate(x, 0.8 + k * 0.5, z); trees.push(flatColored(c, cc => cc.set('#2f6b3f'))); } }
+  const tm = new THREE.Mesh(mergeGeometries(trees), groundMat); tm.castShadow = true; scene.add(tm);
+}
+const camera = new THREE.PerspectiveCamera(32, innerWidth / innerHeight, 0.05, 80);
+function stateFromHash() {
+  const h = new URLSearchParams(location.hash.slice(1)); const raca = RACAS[h.get('raca')] ? h.get('raca') : 'anao';
+  const c = baseCfg(raca);
+  for (const x of catsOf(raca)) { const v = h.get(x.k); if (v && x.o.some(o => o[0] === v)) c[x.k] = v; }
+  return { raca, cfg: c };
+}
+function makeActor(raca, cfg) {
+  const P = forge(raca, cfg);
+  P.mixer = new THREE.AnimationMixer(P.root); P.actions = {};
+  for (const c of P.clips) P.actions[c.name] = P.mixer.clipAction(c);
+  return P;
+}
+
+// ======================================================================= modo folha (QA visual)
+if (SHEET) {
+  document.getElementById('top').style.display = 'none'; document.getElementById('panel').style.display = 'none';
+  const n = +(Q.get('n') || 5), cams = (Q.get('cam') || '34').split(','), t0 = +(Q.get('t') || 0);
+  const st = stateFromHash(); let cells = [];
+  if (Q.get('racas')) for (const r of RACA_ORDEM) cells.push({ raca: r, cfg: baseCfg(r), clip: SHEET, t: t0, lab: RACAS[r].nome });
+  else if (Q.get('cat')) { const ct = catsOf(st.raca).find(x => x.k === Q.get('cat')); cells = ct.o.map(o => ({ raca: st.raca, cfg: { ...st.cfg, [ct.k]: o[0] }, clip: SHEET, t: t0, lab: o[1] })); }
+  else if (Q.get('vars')) { const r = rng(+(Q.get('seed') || 1)); for (let i = 0; i < +Q.get('vars'); i++) { const rc = Q.get('mix') ? RACA_ORDEM[Math.floor(r() * RACA_ORDEM.length)] : st.raca; const c = randomCfg(rc, r); cells.push({ raca: rc, cfg: c, clip: SHEET, t: t0, lab: nameOf(rc, c)[0] }); } }
+  else for (const nm of SHEET.split(',')) for (let i = 0; i < n; i++) cells.push({ raca: st.raca, cfg: st.cfg, clip: nm, t: CLIPDEF.find(c => c.name === nm).dur * i / n, lab: nm });
+  const cols = Math.min(n, cells.length), rowsPerCam = Math.ceil(cells.length / cols);
+  const W = innerWidth, Hh = innerHeight, rows = rowsPerCam * cams.length, cw = W / cols, chh = Hh / rows;
+  renderer.autoClear = false; renderer.setScissorTest(true); renderer.setClearColor(scene.background); renderer.clear();
+  const CAMS = { front: [0, 0.8, 3.2], side: [3.2, 0.8, 0], back: [0, 0.8, -3.2], right: [-3.2, 0.8, 0], '34': [2.0, 1.15, 2.5], face: [0.32, 1.12, 1.05], low: [1.2, 0.35, 2.4] };
+  const cache = {};
+  cams.forEach((cm, ci) => cells.forEach((cell, k) => {
+    const key = cfgKey(cell.raca, cell.cfg); const D = cache[key] || (cache[key] = makeActor(cell.raca, cell.cfg));
+    scene.add(D.root); D.mixer.stopAllAction(); D.actions[cell.clip].reset().play(); D.mixer.setTime(cell.t); D.root.updateMatrixWorld(true);
+    const r = ci * rowsPerCam + Math.floor(k / cols), i = k % cols;
+    const sc = D.ky; camera.position.set(...CAMS[cm].map((v, j) => j === 1 ? v * (cm === 'face' ? sc : 1) : v * (cm === 'face' ? 1 : Math.max(1, sc))));
+    camera.lookAt(0, cm === 'face' ? D.REST.Head.y + 0.1 : 0.7 * Math.max(1, sc), 0); camera.aspect = cw / chh; camera.updateProjectionMatrix();
+    const x = i * cw, y = Hh - (r + 1) * chh;
+    renderer.setViewport(x, y, cw, chh); renderer.setScissor(x, y, cw, chh); renderer.clear(); renderer.render(scene, camera);
+    scene.remove(D.root);
+    const d = document.createElement('div'); d.className = 'lbl'; d.style.left = (x + 4) + 'px'; d.style.top = (r * chh + 4) + 'px';
+    d.textContent = `${cell.lab} ${cm} ${cell.t.toFixed(2)}s`; document.body.appendChild(d);
+  }));
+  const D0 = Object.values(cache)[0];
+  console.log('MEAS', JSON.stringify(D0.meas), 'tris', D0.tris, JSON.stringify(Object.values(cache).map(D => [D.raca, D.tris])));
+  document.title = 'PRONTO';
+} else startViewer();
+
+// ======================================================================= visualizador
+function startViewer() {
+  const $ = id => document.getElementById(id);
+  camera.position.set(1.9, 1.25, 3.0);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0.72, 0); controls.enableDamping = true; controls.minDistance = 0.8; controls.maxDistance = 14; controls.maxPolarAngle = Math.PI * 0.49;
+  controls.update();
+  let D = null, skel = null, curName = 'Parado', army = [], armyOn = false, raca = 'anao';
+  const PATH_R = 2.0;
+
+  for (const r of RACA_ORDEM) { const b = document.createElement('button'); b.textContent = RACAS[r].nome; b.dataset.r = r;
+    b.onclick = () => { if (armyOn) toggleArmy(); setActor(r, baseCfg(r)); }; $('racas').appendChild(b); }
+  function buildCats() {
+    $('cats').innerHTML = '';
+    for (const ct of catsOf(raca)) {
+      const wrap = document.createElement('div'); wrap.className = 'cat';
+      wrap.innerHTML = `<span>${ct.n}</span><div class="row"></div>`;
+      for (const [v, lab] of ct.o) { const b = document.createElement('button'); b.textContent = lab; b.dataset.k = ct.k; b.dataset.v = v;
+        b.onclick = () => setActor(raca, { ...D.cfg, [ct.k]: v }); wrap.querySelector('.row').appendChild(b); }
+      $('cats').appendChild(wrap);
+    }
+  }
+  for (const c of CLIPDEF) { const b = document.createElement('button'); b.textContent = c.name; b.onclick = () => play(c.name); $('clips').appendChild(b); }
+  $('fold').onclick = () => { $('panel').classList.toggle('min'); $('fold').textContent = $('panel').classList.contains('min') ? '▴' : '▾'; };
+
+  function playOn(X, name, fade = 0.22, offset = 0) {
+    const a = X.actions[name]; if (X.cur === a) return;
+    a.reset().setEffectiveWeight(1).fadeIn(fade).play(); if (offset) a.time = offset * a.getClip().duration;
+    if (X.cur) X.cur.fadeOut(fade); X.cur = a;
+  }
+  function play(name) {
+    curName = name;
+    if (armyOn) army.forEach((X, i) => playOn(X, name, 0.22, name === 'Parado' ? (i * 0.37) % 1 : 0)); else playOn(D, name);
+    document.querySelectorAll('#clips button').forEach(b => b.classList.toggle('on', b.textContent === name));
+  }
+  let colOrig = null, colBone = null;
+  function setActor(r, cfg, keepHash) {
+    const oldPos = D ? D.root.position.clone() : V3(0, 0, 0), oldRot = D ? D.root.rotation.y : 0, oldT = D && D.cur ? D.cur.time : 0;
+    if (D) { scene.remove(D.root); D.geo.dispose(); }
+    if (skel) { scene.remove(skel); skel = null; }
+    const raceChanged = r !== raca || !$('cats').children.length; raca = r;
+    D = makeActor(r, cfg); D.root.position.copy(oldPos); D.root.rotation.y = oldRot; scene.add(D.root);
+    playOn(D, curName, 0); D.cur.time = oldT;
+    skel = new THREE.SkeletonHelper(D.root); skel.visible = $('cBones').checked; scene.add(skel);
+    colOrig = D.geo.attributes.color.array.slice(); colBone = boneColors(D);
+    if ($('cColor').checked) { D.geo.attributes.color.array.set(colBone); D.geo.attributes.color.needsUpdate = true; }
+    if (raceChanged) buildCats();
+    const [nm, ep] = nameOf(r, D.cfg); $('nome').textContent = nm; $('epiteto').textContent = `${ep} · ${RACAS[r].nome}, ${RACAS[r].titulo}`;
+    document.title = nm + ' — Forja de Erath';
+    document.querySelectorAll('#cats button').forEach(b => b.classList.toggle('on', D.cfg[b.dataset.k] === b.dataset.v));
+    document.querySelectorAll('#racas button').forEach(b => b.classList.toggle('on', b.dataset.r === r));
+    if (!keepHash) history.replaceState(null, '', '#raca=' + r + '&' + catsOf(r).map(x => x.k + '=' + D.cfg[x.k]).join('&'));
+    glbKB = 0; clearTimeout(glbTimer); glbTimer = setTimeout(() => exportGLB(buf => { glbKB = Math.round(buf.byteLength / 1024); drawStats(); }), 700);
+    drawStats();
+  }
+  function boneColors(X) {
+    const si = X.geo.attributes.skinIndex, sw = X.geo.attributes.skinWeight, out = new Float32Array(si.count * 3);
+    const pal = X.bones.map((b, i) => new THREE.Color().setHSL((i * 0.137) % 1, 0.65, 0.55));
+    for (let i = 0; i < si.count; i++) { let r = 0, g = 0, bl = 0;
+      for (let j = 0; j < 4; j++) { const w = sw.getComponent(i, j); if (!w) continue; const p = pal[si.getComponent(i, j)]; r += p.r * w; g += p.g * w; bl += p.b * w; }
+      out[i * 3] = r; out[i * 3 + 1] = g; out[i * 3 + 2] = bl; }
+    return out;
+  }
+  $('cColor').onchange = e => { D.geo.attributes.color.array.set(e.target.checked ? colBone : colOrig); D.geo.attributes.color.needsUpdate = true; };
+  $('cWire').onchange = e => { MATS.forEach(m => m.wireframe = e.target.checked); };
+  $('cBones').onchange = e => { if (skel) skel.visible = e.target.checked; };
+  $('bSort').onclick = () => { if (armyOn) toggleArmy(); setActor(raca, randomCfg(raca, rng(Math.random() * 1e9 | 0))); };
+  $('bBase').onclick = () => { if (armyOn) toggleArmy(); setActor(raca, baseCfg(raca)); };
+  $('bLink').onclick = () => { navigator.clipboard?.writeText(location.href); $('bLink').textContent = 'Link copiado'; setTimeout(() => $('bLink').textContent = 'Copiar link', 1500); };
+  const download = (data, name, type) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data], { type })); a.download = name; a.click(); };
+  $('bJson').onclick = () => download(JSON.stringify({ raca, cfg: D.cfg, nome: nameOf(raca, D.cfg) }, null, 2), nameOf(raca, D.cfg)[0].toLowerCase() + '.json', 'application/json');
+
+  function toggleArmy() {
+    armyOn = !armyOn; $('bArmy').classList.toggle('on', armyOn); $('hint').style.display = armyOn ? 'block' : 'none';
+    if (armyOn) {
+      if ($('cWalk').checked) { $('cWalk').checked = false; $('cWalk').onchange({ target: $('cWalk') }); }
+      D.root.visible = false; if (skel) skel.visible = false;
+      const r = rng(Math.random() * 1e9 | 0); army = [];
+      for (let i = 0; i < 9; i++) {
+        const rc = i === 4 ? raca : $('cArmyMix').checked ? RACA_ORDEM[Math.floor(r() * RACA_ORDEM.length)] : raca;
+        const X = makeActor(rc, i === 4 ? D.cfg : randomCfg(rc, r)), gx = (i % 3) - 1, gz = Math.floor(i / 3) - 1;
+        X.root.position.set(gx * 1.45 + (gz % 2) * 0.2, 0, gz * 1.4); X.root.rotation.y = -gx * 0.12; scene.add(X.root); army.push(X);
+      }
+      play(curName);
+      camera.position.set(3.4, 3.2, 7.0); controls.target.set(0.8, 0.6, 0);
+    } else {
+      army.forEach(X => { scene.remove(X.root); X.geo.dispose(); }); army = [];
+      D.root.visible = true; if (skel) skel.visible = $('cBones').checked;
+      camera.position.set(1.9, 1.25, 3.0); controls.target.set(0, 0.72, 0);
+    }
+  }
+  $('bArmy').onclick = toggleArmy;
+  const ray = new THREE.Raycaster(), mouse = new THREE.Vector2(); let downAt = null;
+  renderer.domElement.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (!armyOn || !downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 6) return;
+    mouse.set(e.clientX / innerWidth * 2 - 1, -e.clientY / innerHeight * 2 + 1); ray.setFromCamera(mouse, camera);
+    const hits = ray.intersectObjects(army.map(X => X.mesh), false);
+    if (hits.length) { const X = army.find(A => A.mesh === hits[0].object); toggleArmy(); setActor(X.raca, X.cfg); }
+  });
+
+  let walkA = 0;
+  function placeOnPath() {
+    const p = V3(Math.cos(walkA) * PATH_R, 0, Math.sin(walkA) * PATH_R), dir = V3(-Math.sin(walkA), 0, Math.cos(walkA));
+    const old = D.root.position.clone(); D.root.position.copy(p); D.root.rotation.set(0, Math.atan2(dir.x, dir.z), 0);
+    return p.sub(old);
+  }
+  $('cWalk').onchange = e => {
+    if (e.target.checked) { if (armyOn) toggleArmy(); if (!['Andar', 'Correr'].includes(curName)) play('Andar'); walkA = 0; const d = placeOnPath(); camera.position.add(d); controls.target.add(d); resetSprings(D); slideSum = slideN = 0; }
+    else { camera.position.sub(D.root.position); controls.target.sub(D.root.position); D.root.position.set(0, 0, 0); D.root.rotation.set(0, 0, 0); resetSprings(D); }
+  };
+  const trailGeo = new THREE.CircleGeometry(0.035, 6); trailGeo.rotateX(-Math.PI / 2);
+  const trail = [], trailCol = { L: new THREE.Color('#2f7fd6'), R: new THREE.Color('#e0772e') };
+  for (let i = 0; i < 160; i++) { const m = new THREE.Mesh(trailGeo, new THREE.MeshBasicMaterial({ transparent: true })); m.visible = false; m.life = 0; scene.add(m); trail.push(m); }
+  let trailI = 0, trailT = 0; const lastAnk = {}; let slideSum = 0, slideN = 0;
+
+  let glbKB = 0, glbTimer = 0;
+  function exportGLB(done) {
+    const X = D, saved = X.bones.map(b => [b.position.clone(), b.quaternion.clone()]), sp = X.root.position.clone(), sr = X.root.rotation.clone(), vis = X.root.visible;
+    const colNow = X.geo.attributes.color.array.slice(); X.geo.attributes.color.array.set(colOrig);
+    X.restPose(); X.root.position.set(0, 0, 0); X.root.rotation.set(0, 0, 0); X.root.visible = true; X.root.updateMatrixWorld(true);
+    X.mesh.geometry = exportGeometry(X);
+    new GLTFExporter().parse(X.root, buf => {
+      X.mesh.geometry = X.geo; X.geo.attributes.color.array.set(colNow);
+      X.bones.forEach((b, i) => { b.position.copy(saved[i][0]); b.quaternion.copy(saved[i][1]); }); X.root.position.copy(sp); X.root.rotation.copy(sr); X.root.visible = vis;
+      done(buf);
+    }, err => console.error(err), { binary: true, animations: X.clips });
+  }
+  $('bGlb').onclick = () => exportGLB(buf => download(buf, nameOf(raca, D.cfg)[0].toLowerCase() + '_' + raca + '.glb', 'model/gltf-binary'));
+  const drawStats = () => {
+    if (!D) return;
+    const rows = [
+      ['Triângulos', D.tris.toLocaleString('pt-BR')], ['Ossos', D.info.ossos + (D.info.molas.length ? ' (molas: ' + D.info.molas.join(', ').replace('Beard', 'barba').replace('Tail', 'rabo').replace('Hair', 'cabelo') + ')' : '')],
+      ['Texturas', 'nenhuma'], ['Combinações desta raça', combinacoes(raca).toLocaleString('pt-BR')],
+      ['Página + módulo', '≈ ' + Math.round((document.documentElement.outerHTML.length + 95000) / 1024) + ' KB'], ['GLB deste personagem', glbKB ? glbKB + ' KB' : '…'],
+      ['Andar', D.meas.Andar.v.toFixed(2) + ' m/s'], ['Correr', D.meas.Correr.v.toFixed(2) + ' m/s'],
+      ['Deslize do pé na cena', slideN > 30 ? (slideSum / slideN * 100).toFixed(1) + ' cm/s' : 'ligue "Andar pela cena"'],
+    ];
+    $('stats').innerHTML = rows.map(([a, b]) => `<span>${a}</span><b>${b}</b>`).join('');
+  };
+  setInterval(drawStats, 1000);
+  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+  addEventListener('hashchange', () => { const s = stateFromHash(); if (cfgKey(s.raca, s.cfg) !== cfgKey(raca, D.cfg)) setActor(s.raca, s.cfg, true); });
+
+  const s0 = stateFromHash(); setActor(s0.raca, s0.cfg, true);
+  play('Parado');
+
+  const clock = new THREE.Clock();
+  function frame(force) {
+    const real = force ?? Math.min(clock.getDelta(), 1 / 20), dt = real * ($('cSlow').checked ? 0.25 : 1);
+    if (armyOn) {
+      for (const X of army) { X.mixer.update(dt); X.root.updateMatrixWorld(true); if ($('cSpring').checked) springStep(X, dt); }
+    } else {
+      D.mixer.update(dt);
+      const walking = $('cWalk').checked;
+      if (walking && (curName === 'Andar' || curName === 'Correr')) {
+        walkA += D.meas[curName].v * D.cur.getEffectiveWeight() * dt / PATH_R;
+        const delta = placeOnPath(); camera.position.add(delta); controls.target.add(delta);
+      }
+      D.root.updateMatrixWorld(true);
+      if ($('cSpring').checked) springStep(D, dt);
+      trailT += dt;
+      for (const L of ['L', 'R']) {
+        const p = new THREE.Vector3().setFromMatrixPosition(D.B['Foot_' + L].matrixWorld), yc = D.meas.Andar.yc;
+        if (walking && D.cur.getEffectiveWeight() > 0.999 && lastAnk[L] && p.y < yc && lastAnk[L].y < yc && dt > 0) { slideSum += Math.hypot(p.x - lastAnk[L].x, p.z - lastAnk[L].z) / dt; slideN++; }
+        if (walking && $('cTrail').checked && p.y < yc + 0.002 && trailT > 0.05) {
+          const m = trail[trailI++ % trail.length]; m.material.color.copy(trailCol[L]); m.position.set(p.x, 0.004, p.z); m.visible = true; m.life = 4;
+        }
+        lastAnk[L] = p;
+      }
+      if (trailT > 0.05) trailT = 0;
+    }
+    for (const m of trail) if (m.visible) { m.life -= real; m.material.opacity = Math.max(0, m.life / 4); if (m.life <= 0) m.visible = false; }
+    const focus = armyOn ? V3(0, 0, 0) : D.root.position;
+    sun.position.set(focus.x + 2.2, 4.2, focus.z + 3.0); sun.target.position.copy(focus);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  if (Q.has('sim')) {
+    if (Q.get('army')) toggleArmy();
+    play(Q.get('clip') || 'Parado'); if (Q.get('walk')) { $('cWalk').checked = true; $('cWalk').onchange({ target: $('cWalk') }); }
+    for (let i = 0; i < +Q.get('sim'); i++) frame(1 / 60);
+    drawStats(); console.log('SIM', JSON.stringify({ slide: slideSum / Math.max(slideN, 1), n: slideN, tris: D.tris }));
+    renderer.setAnimationLoop(() => renderer.render(scene, camera));
+  } else renderer.setAnimationLoop(() => frame());
+}
+</script>
+</body>
+</html>

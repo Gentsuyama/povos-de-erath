@@ -1,0 +1,42 @@
+# Personagens de Erath (prontos para o jogo)
+
+Gerados 100% em código pelo módulo [`../forja/erath_forja.js`](../forja/erath_forja.js), sem Blender, sem IA de imagem e sem malha importada.
+Para ver e montar no navegador, abra a [Forja de Erath](https://gentsuyama.github.io/povos-de-erath/forja.html).
+
+## O que tem aqui
+
+- `<raca>/<raca>_padrao.glb`: o personagem-padrão de cada povo.
+- `<raca>/<raca>_<nome>.glb`: variações sorteadas com semente fixa, então saem sempre iguais.
+- `catalogo.json`: para cada povo, as categorias de peças, as opções e a lista de arquivos. Cada personagem traz a ficha (`cfg`) que o gerou, triângulos, ossos e velocidades de andar e correr.
+
+Povos: Anão, Vran, Beorning, Vodnik, Silvano, Litomante, Aetheryn e Humano.
+
+## Cada GLB
+
+- **Malha:** 1 malha com pele (skinned), de 1.000 a 3.100 triângulos, sem textura (cor nos vértices). Materiais: `fosco`, `metal` e `brilho` (sem luz, `KHR_materials_unlit`).
+- **Animações:** 6 animações: `Parado`, `Andar`, `Correr` (em loop), `Atacar`, `Defender` e `Comemorar`. Andar e correr ficam no lugar. Para o pé não escorregar, mova o personagem na `velocidade_andar` / `velocidade_correr` do catálogo, em m/s.
+- **Ossos (os mesmos em todos):** `Hips, Spine, Chest, Neck, Head, UpperArm_L/R, ForeArm_L/R, Hand_L/R, UpLeg_L/R, Leg_L/R, Foot_L/R`.
+- **Correntes de mola, quando o personagem tem:** `BeardA/B` (barba), `Tail1..N` (rabo do Vran) e `Hair1..N` (cabelo). Nos clipes elas ficam paradas; no jogo, aplique física de mola ou "spring bone".
+- **Eixos:** metros, +Y para cima, o personagem olha para +Z, esquerda dele = +X.
+- **Armas:** já vêm na malha, presas aos ossos `Hand_R` e `ForeArm_L` / `Hand_L`.
+
+## Gerar de novo ou mais variações
+
+```
+npm install            # instala three@0.160.0 (só para exportar)
+npm run exportar       # 1 padrão + 4 variações por povo
+node forja/exportar.mjs 12   # 1 padrão + 12 variações por povo
+```
+
+## Num jogo web (three.js)
+
+O módulo monta qualquer combinação na hora, em milissegundos:
+
+```js
+import { forge, baseCfg, randomCfg, springStep, rng } from './forja/erath_forja.js';
+const P = forge('vran', { ...baseCfg('vran'), cauda: 'longa', arma: 'tridente' });
+scene.add(P.root);
+const mixer = new THREE.AnimationMixer(P.root);
+mixer.clipAction(P.clips.find(c => c.name === 'Andar')).play();
+// a cada quadro: mixer.update(dt); P.root.updateMatrixWorld(true); springStep(P, dt);
+```

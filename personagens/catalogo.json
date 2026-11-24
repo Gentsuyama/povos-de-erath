@@ -1,0 +1,3953 @@
+{
+ "gerado": "2026-11-24",
+ "versao_three": "0.160.0",
+ "animacoes": [
+  {
+   "nome": "Parado",
+   "duracao": 3,
+   "loop": true
+  },
+  {
+   "nome": "Andar",
+   "duracao": 0.82,
+   "loop": true
+  },
+  {
+   "nome": "Correr",
+   "duracao": 0.52,
+   "loop": true
+  },
+  {
+   "nome": "Atacar",
+   "duracao": 1.3,
+   "loop": false
+  },
+  {
+   "nome": "Defender",
+   "duracao": 1.6,
+   "loop": false
+  },
+  {
+   "nome": "Comemorar",
+   "duracao": 2,
+   "loop": false
+  }
+ ],
+ "convencoes": {
+  "unidade": "metro",
+  "cima": "+Y",
+  "frente": "+Z",
+  "esquerda_do_personagem": "+X",
+  "materiais": [
+   "fosco",
+   "metal",
+   "brilho (sem luz)"
+  ]
+ },
+ "racas": {
+  "anao": {
+   "nome": "Anão",
+   "titulo": "Os Filhos da Forja",
+   "combinacoes": 12192768000,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "clara",
+       "nome": "Clara"
+      },
+      {
+       "chave": "rosada",
+       "nome": "Rosada"
+      },
+      {
+       "chave": "morena",
+       "nome": "Morena"
+      },
+      {
+       "chave": "escura",
+       "nome": "Escura"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "bravos",
+       "nome": "Bravos"
+      },
+      {
+       "chave": "calmos",
+       "nome": "Calmos"
+      },
+      {
+       "chave": "sabio",
+       "nome": "Sábio"
+      },
+      {
+       "chave": "tapa",
+       "nome": "Tapa-olho"
+      }
+     ]
+    },
+    {
+     "chave": "nariz",
+     "nome": "Nariz",
+     "opcoes": [
+      {
+       "chave": "batata",
+       "nome": "Batata"
+      },
+      {
+       "chave": "comprido",
+       "nome": "Comprido"
+      },
+      {
+       "chave": "pequeno",
+       "nome": "Pequeno"
+      }
+     ]
+    },
+    {
+     "chave": "barba",
+     "nome": "Barba",
+     "opcoes": [
+      {
+       "chave": "cheia",
+       "nome": "Cheia"
+      },
+      {
+       "chave": "bifurcada",
+       "nome": "Bifurcada"
+      },
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      },
+      {
+       "chave": "bigode",
+       "nome": "Só bigode"
+      }
+     ]
+    },
+    {
+     "chave": "pelo",
+     "nome": "Cor do pelo",
+     "opcoes": [
+      {
+       "chave": "ruivo",
+       "nome": "Ruivo"
+      },
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "loiro",
+       "nome": "Loiro"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "grisalho",
+       "nome": "Grisalho"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "chifres",
+       "nome": "Chifres"
+      },
+      {
+       "chave": "asas",
+       "nome": "Asas"
+      },
+      {
+       "chave": "fechado",
+       "nome": "Elmo fechado"
+      },
+      {
+       "chave": "capuz",
+       "nome": "Capuz"
+      },
+      {
+       "chave": "coroa",
+       "nome": "Coroa"
+      },
+      {
+       "chave": "moicano",
+       "nome": "Moicano"
+      },
+      {
+       "chave": "careca",
+       "nome": "Careca"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "couraca",
+       "nome": "Couraça"
+      },
+      {
+       "chave": "malha",
+       "nome": "Cota de malha"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      },
+      {
+       "chave": "avental",
+       "nome": "Avental"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      }
+     ]
+    },
+    {
+     "chave": "ombros",
+     "nome": "Ombros",
+     "opcoes": [
+      {
+       "chave": "redondas",
+       "nome": "Redondas"
+      },
+      {
+       "chave": "pontudas",
+       "nome": "Pontudas"
+      },
+      {
+       "chave": "pele",
+       "nome": "Pele"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "malha",
+       "nome": "Saia de malha"
+      },
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      },
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "biqueira",
+       "nome": "Biqueira de aço"
+      },
+      {
+       "chave": "pelo",
+       "nome": "Botas de pelo"
+      },
+      {
+       "chave": "simples",
+       "nome": "Botas simples"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "anao/anao_padrao.glb",
+     "nome": "Brakk",
+     "epiteto": "Barba-de-Brasa",
+     "kb": 415,
+     "triangulos": 3086,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.59,
+     "velocidade_correr": 2.262,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "pele": "rosada",
+      "olhos": "bravos",
+      "nariz": "batata",
+      "barba": "cheia",
+      "pelo": "ruivo",
+      "cabeca": "chifres",
+      "tronco": "couraca",
+      "ombros": "redondas",
+      "pernas": "malha",
+      "pes": "biqueira",
+      "arma": "machado",
+      "esquerda": "redondo",
+      "cla": "brasa"
+     }
+    },
+    {
+     "arquivo": "anao/anao_durgal.glb",
+     "nome": "Durgal",
+     "epiteto": "Martelo-Rubro",
+     "kb": 417,
+     "triangulos": 3104,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.637,
+     "velocidade_correr": 2.443,
+     "cfg": {
+      "porte": "magro",
+      "altura": "alto",
+      "pele": "morena",
+      "olhos": "tapa",
+      "nariz": "batata",
+      "barba": "longa",
+      "pelo": "castanho",
+      "cabeca": "chifres",
+      "tronco": "avental",
+      "ombros": "pele",
+      "pernas": "saiote",
+      "pes": "biqueira",
+      "arma": "cajado",
+      "esquerda": "livro",
+      "cla": "mar"
+     }
+    },
+    {
+     "arquivo": "anao/anao_grimbur.glb",
+     "nome": "Grimbur",
+     "epiteto": "Martelo-Rubro",
+     "kb": 354,
+     "triangulos": 2238,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.543,
+     "velocidade_correr": 2.081,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "baixo",
+      "pele": "rosada",
+      "olhos": "sabio",
+      "nariz": "pequeno",
+      "barba": "bifurcada",
+      "pelo": "loiro",
+      "cabeca": "moicano",
+      "tronco": "malha",
+      "ombros": "redondas",
+      "pernas": "malha",
+      "pes": "biqueira",
+      "arma": "cajado",
+      "esquerda": "caneca",
+      "cla": "reino"
+     }
+    },
+    {
+     "arquivo": "anao/anao_mordan.glb",
+     "nome": "Mordan",
+     "epiteto": "Fogo-de-Forja",
+     "kb": 378,
+     "triangulos": 2569,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.637,
+     "velocidade_correr": 2.443,
+     "cfg": {
+      "porte": "forte",
+      "altura": "alto",
+      "pele": "rosada",
+      "olhos": "tapa",
+      "nariz": "pequeno",
+      "barba": "cheia",
+      "pelo": "loiro",
+      "cabeca": "capuz",
+      "tronco": "malha",
+      "ombros": "redondas",
+      "pernas": "malha",
+      "pes": "biqueira",
+      "arma": "maca",
+      "esquerda": "orbe",
+      "cla": "fera"
+     }
+    },
+    {
+     "arquivo": "anao/anao_urbur.glb",
+     "nome": "Urbur",
+     "epiteto": "Fogo-de-Forja",
+     "kb": 402,
+     "triangulos": 2892,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.543,
+     "velocidade_correr": 2.081,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "baixo",
+      "pele": "escura",
+      "olhos": "tapa",
+      "nariz": "batata",
+      "barba": "cheia",
+      "pelo": "preto",
+      "cabeca": "moicano",
+      "tronco": "couro",
+      "ombros": "pontudas",
+      "pernas": "saiote",
+      "pes": "biqueira",
+      "arma": "cajado",
+      "esquerda": "orbe",
+      "cla": "veu"
+     }
+    }
+   ]
+  },
+  "vran": {
+   "nome": "Vran",
+   "titulo": "Os Escamados",
+   "combinacoes": 290304000,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "escamas",
+     "nome": "Escamas",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "vermelho",
+       "nome": "Vermelho"
+      },
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      }
+     ]
+    },
+    {
+     "chave": "crista",
+     "nome": "Crista",
+     "opcoes": [
+      {
+       "chave": "espinhos",
+       "nome": "Espinhos"
+      },
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "chifrinhos",
+       "nome": "Chifrinhos"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Nenhuma"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "amarelos",
+       "nome": "Amarelos"
+      },
+      {
+       "chave": "laranja",
+       "nome": "Laranja"
+      },
+      {
+       "chave": "verdes",
+       "nome": "Verdes"
+      },
+      {
+       "chave": "sono",
+       "nome": "Sonolentos"
+      }
+     ]
+    },
+    {
+     "chave": "focinho",
+     "nome": "Focinho",
+     "opcoes": [
+      {
+       "chave": "curto",
+       "nome": "Curto"
+      },
+      {
+       "chave": "longo",
+       "nome": "Longo"
+      }
+     ]
+    },
+    {
+     "chave": "cauda",
+     "nome": "Cauda",
+     "opcoes": [
+      {
+       "chave": "grossa",
+       "nome": "Grossa"
+      },
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      },
+      {
+       "chave": "espinhos",
+       "nome": "Com espinhos"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "couraca",
+       "nome": "Couraça"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      },
+      {
+       "chave": "malha",
+       "nome": "Cota de malha"
+      },
+      {
+       "chave": "mago",
+       "nome": "Toga de escriba"
+      }
+     ]
+    },
+    {
+     "chave": "ombros",
+     "nome": "Ombros",
+     "opcoes": [
+      {
+       "chave": "redondas",
+       "nome": "Redondas"
+      },
+      {
+       "chave": "pontudas",
+       "nome": "Pontudas"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      },
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "malha",
+       "nome": "Saia de malha"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "biqueira",
+       "nome": "Botas de aço"
+      },
+      {
+       "chave": "garras",
+       "nome": "Garras"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "vran/vran_padrao.glb",
+     "nome": "Rhekesh",
+     "epiteto": "Cauda-Firme",
+     "kb": 392,
+     "triangulos": 2646,
+     "ossos": 20,
+     "molas": [
+      "Tail"
+     ],
+     "velocidade_andar": 0.59,
+     "velocidade_correr": 2.262,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "escamas": "verde",
+      "crista": "espinhos",
+      "olhos": "amarelos",
+      "focinho": "curto",
+      "cauda": "grossa",
+      "tronco": "couraca",
+      "ombros": "redondas",
+      "pernas": "saiote",
+      "pes": "biqueira",
+      "arma": "espada",
+      "esquerda": "livro",
+      "cla": "sangue"
+     }
+    },
+    {
+     "arquivo": "vran/vran_kressik.glb",
+     "nome": "Kressik",
+     "epiteto": "Cauda-Firme",
+     "kb": 396,
+     "triangulos": 2574,
+     "ossos": 21,
+     "molas": [
+      "Tail"
+     ],
+     "velocidade_andar": 0.543,
+     "velocidade_correr": 2.081,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "baixo",
+      "escamas": "verde",
+      "crista": "longa",
+      "olhos": "verdes",
+      "focinho": "longo",
+      "cauda": "longa",
+      "tronco": "mago",
+      "ombros": "nenhuma",
+      "pernas": "calca",
+      "pes": "biqueira",
+      "arma": "machado",
+      "esquerda": "orbe",
+      "cla": "mar"
+     }
+    },
+    {
+     "arquivo": "vran/vran_ssaix.glb",
+     "nome": "Ssaix",
+     "epiteto": "Língua-Rápida",
+     "kb": 387,
+     "triangulos": 2456,
+     "ossos": 21,
+     "molas": [
+      "Tail"
+     ],
+     "velocidade_andar": 0.637,
+     "velocidade_correr": 2.443,
+     "cfg": {
+      "porte": "magro",
+      "altura": "alto",
+      "escamas": "vermelho",
+      "crista": "longa",
+      "olhos": "sono",
+      "focinho": "longo",
+      "cauda": "longa",
+      "tronco": "couro",
+      "ombros": "redondas",
+      "pernas": "malha",
+      "pes": "garras",
+      "arma": "machado",
+      "esquerda": "livro",
+      "cla": "reino"
+     }
+    },
+    {
+     "arquivo": "vran/vran_kreiss.glb",
+     "nome": "Kreiss",
+     "epiteto": "Escama-de-Jade",
+     "kb": 399,
+     "triangulos": 2746,
+     "ossos": 20,
+     "molas": [
+      "Tail"
+     ],
+     "velocidade_andar": 0.59,
+     "velocidade_correr": 2.262,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "medio",
+      "escamas": "vermelho",
+      "crista": "nenhuma",
+      "olhos": "sono",
+      "focinho": "curto",
+      "cauda": "espinhos",
+      "tronco": "couraca",
+      "ombros": "pontudas",
+      "pernas": "calca",
+      "pes": "biqueira",
+      "arma": "picareta",
+      "esquerda": "broquel",
+      "cla": "veu"
+     }
+    },
+    {
+     "arquivo": "vran/vran_ixiiss.glb",
+     "nome": "Ixiiss",
+     "epiteto": "Sangue-Frio",
+     "kb": 387,
+     "triangulos": 2576,
+     "ossos": 20,
+     "molas": [
+      "Tail"
+     ],
+     "velocidade_andar": 0.637,
+     "velocidade_correr": 2.443,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "alto",
+      "escamas": "azul",
+      "crista": "chifrinhos",
+      "olhos": "sono",
+      "focinho": "longo",
+      "cauda": "espinhos",
+      "tronco": "couraca",
+      "ombros": "pontudas",
+      "pernas": "calca",
+      "pes": "biqueira",
+      "arma": "espada",
+      "esquerda": "nada",
+      "cla": "floresta"
+     }
+    }
+   ]
+  },
+  "beorning": {
+   "nome": "Beorning",
+   "titulo": "Os Filhos da Fera",
+   "combinacoes": 495452160,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "clara",
+       "nome": "Clara"
+      },
+      {
+       "chave": "rosada",
+       "nome": "Rosada"
+      },
+      {
+       "chave": "morena",
+       "nome": "Morena"
+      },
+      {
+       "chave": "escura",
+       "nome": "Escura"
+      }
+     ]
+    },
+    {
+     "chave": "pelo",
+     "nome": "Cor do pelo",
+     "opcoes": [
+      {
+       "chave": "ruivo",
+       "nome": "Ruivo"
+      },
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "loiro",
+       "nome": "Loiro"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "grisalho",
+       "nome": "Grisalho"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Cabelo",
+     "opcoes": [
+      {
+       "chave": "longo",
+       "nome": "Longo"
+      },
+      {
+       "chave": "tranca",
+       "nome": "Trança"
+      },
+      {
+       "chave": "rabo",
+       "nome": "Rabo"
+      },
+      {
+       "chave": "curto",
+       "nome": "Curto"
+      }
+     ]
+    },
+    {
+     "chave": "barba",
+     "nome": "Barba",
+     "opcoes": [
+      {
+       "chave": "enorme",
+       "nome": "Enorme"
+      },
+      {
+       "chave": "longa",
+       "nome": "Trançada"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      },
+      {
+       "chave": "bigode",
+       "nome": "Só bigode"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "urso",
+       "nome": "Capuz de urso"
+      },
+      {
+       "chave": "faixa",
+       "nome": "Faixa"
+      },
+      {
+       "chave": "chifres",
+       "nome": "Elmo com chifres"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "peles",
+       "nome": "Lã e couro"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      },
+      {
+       "chave": "malha",
+       "nome": "Cota de malha"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      }
+     ]
+    },
+    {
+     "chave": "ombros",
+     "nome": "Ombros",
+     "opcoes": [
+      {
+       "chave": "urso",
+       "nome": "Gola de urso"
+      },
+      {
+       "chave": "pele",
+       "nome": "Peles"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "pelo",
+       "nome": "Botas de pelo"
+      },
+      {
+       "chave": "simples",
+       "nome": "Botas simples"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "beorning/beorning_padrao.glb",
+     "nome": "Arnrik",
+     "epiteto": "Dente-de-Lobo",
+     "kb": 423,
+     "triangulos": 2940,
+     "ossos": 21,
+     "molas": [
+      "Beard",
+      "Hair"
+     ],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "pele": "rosada",
+      "pelo": "castanho",
+      "cabelo": "longo",
+      "barba": "enorme",
+      "cabeca": "nada",
+      "tronco": "peles",
+      "ombros": "urso",
+      "pernas": "calca",
+      "pes": "pelo",
+      "arma": "machado2",
+      "esquerda": "redondo",
+      "cla": "fera"
+     }
+    },
+    {
+     "arquivo": "beorning/beorning_torvrik.glb",
+     "nome": "Torvrik",
+     "epiteto": "Pele-de-Urso",
+     "kb": 350,
+     "triangulos": 2427,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "forte",
+      "altura": "medio",
+      "pele": "rosada",
+      "pelo": "loiro",
+      "cabelo": "tranca",
+      "barba": "curta",
+      "cabeca": "urso",
+      "tronco": "peles",
+      "ombros": "nenhuma",
+      "pernas": "calca",
+      "pes": "simples",
+      "arma": "espada",
+      "esquerda": "redondo",
+      "cla": "fera"
+     }
+    },
+    {
+     "arquivo": "beorning/beorning_ovebjorn.glb",
+     "nome": "Ovebjorn",
+     "epiteto": "Neve-Rubra",
+     "kb": 389,
+     "triangulos": 2719,
+     "ossos": 19,
+     "molas": [
+      "Beard"
+     ],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "forte",
+      "altura": "medio",
+      "pele": "clara",
+      "pelo": "ruivo",
+      "cabelo": "tranca",
+      "barba": "enorme",
+      "cabeca": "urso",
+      "tronco": "tunica",
+      "ombros": "nenhuma",
+      "pernas": "saiote",
+      "pes": "pelo",
+      "arma": "espada",
+      "esquerda": "torre",
+      "cla": "rocha"
+     }
+    },
+    {
+     "arquivo": "beorning/beorning_ulfolf.glb",
+     "nome": "Ulfolf",
+     "epiteto": "Garra-Lenta",
+     "kb": 376,
+     "triangulos": 2789,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.581,
+     "velocidade_correr": 2.227,
+     "cfg": {
+      "porte": "forte",
+      "altura": "baixo",
+      "pele": "escura",
+      "pelo": "loiro",
+      "cabelo": "tranca",
+      "barba": "curta",
+      "cabeca": "urso",
+      "tronco": "tunica",
+      "ombros": "urso",
+      "pernas": "saiote",
+      "pes": "simples",
+      "arma": "machado2",
+      "esquerda": "livro",
+      "cla": "mar"
+     }
+    },
+    {
+     "arquivo": "beorning/beorning_hakkgeir.glb",
+     "nome": "Hakkgeir",
+     "epiteto": "Pinheiro-Velho",
+     "kb": 400,
+     "triangulos": 2506,
+     "ossos": 22,
+     "molas": [
+      "Beard",
+      "Hair"
+     ],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "pele": "escura",
+      "pelo": "branco",
+      "cabelo": "tranca",
+      "barba": "enorme",
+      "cabeca": "faixa",
+      "tronco": "couro",
+      "ombros": "nenhuma",
+      "pernas": "calca",
+      "pes": "pelo",
+      "arma": "machado",
+      "esquerda": "nada",
+      "cla": "veu"
+     }
+    }
+   ]
+  },
+  "vodnik": {
+   "nome": "Vodnik",
+   "titulo": "O Povo das Águas",
+   "combinacoes": 77414400,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "azulada",
+       "nome": "Azulada"
+      },
+      {
+       "chave": "verde-agua",
+       "nome": "Verde agua"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "abissal",
+       "nome": "Abissal"
+      },
+      {
+       "chave": "dourada",
+       "nome": "Dourada"
+      }
+     ]
+    },
+    {
+     "chave": "barbatanas",
+     "nome": "Barbatanas",
+     "opcoes": [
+      {
+       "chave": "laterais",
+       "nome": "Laterais"
+      },
+      {
+       "chave": "crista",
+       "nome": "Crista"
+      },
+      {
+       "chave": "ambas",
+       "nome": "As duas"
+      }
+     ]
+    },
+    {
+     "chave": "corfin",
+     "nome": "Cor das barbatanas",
+     "opcoes": [
+      {
+       "chave": "laranja",
+       "nome": "Laranja"
+      },
+      {
+       "chave": "vermelha",
+       "nome": "Vermelha"
+      },
+      {
+       "chave": "amarela",
+       "nome": "Amarela"
+      },
+      {
+       "chave": "turquesa",
+       "nome": "Turquesa"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "dourados",
+       "nome": "Dourados"
+      },
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      },
+      {
+       "chave": "vermelhos",
+       "nome": "Vermelhos"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Chapéu",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "tricornio",
+       "nome": "Tricórnio"
+      },
+      {
+       "chave": "bandana",
+       "nome": "Bandana"
+      },
+      {
+       "chave": "gorro",
+       "nome": "Gorro"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "casaco",
+       "nome": "Casaco de capitão"
+      },
+      {
+       "chave": "colete",
+       "nome": "Colete"
+      },
+      {
+       "chave": "malha",
+       "nome": "Cota de malha"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "bermuda",
+       "nome": "Bermuda"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "palmado",
+       "nome": "Palmados"
+      },
+      {
+       "chave": "simples",
+       "nome": "Botas"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "vodnik/vodnik_padrao.glb",
+     "nome": "Nauuro",
+     "epiteto": "Rede-Cheia",
+     "kb": 349,
+     "triangulos": 2426,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.578,
+     "velocidade_correr": 2.217,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "pele": "azulada",
+      "barbatanas": "laterais",
+      "corfin": "laranja",
+      "olhos": "dourados",
+      "chapeu": "nada",
+      "tronco": "casaco",
+      "pernas": "calca",
+      "pes": "palmado",
+      "arma": "tridente",
+      "esquerda": "broquel",
+      "cla": "mar"
+     }
+    },
+    {
+     "arquivo": "vodnik/vodnik_salago.glb",
+     "nome": "Salago",
+     "epiteto": "Maré-Alta",
+     "kb": 323,
+     "triangulos": 2060,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.532,
+     "velocidade_correr": 2.04,
+     "cfg": {
+      "porte": "forte",
+      "altura": "baixo",
+      "pele": "dourada",
+      "barbatanas": "ambas",
+      "corfin": "amarela",
+      "olhos": "vermelhos",
+      "chapeu": "tricornio",
+      "tronco": "tunica",
+      "pernas": "bermuda",
+      "pes": "palmado",
+      "arma": "picareta",
+      "esquerda": "nada",
+      "cla": "sangue"
+     }
+    },
+    {
+     "arquivo": "vodnik/vodnik_pelivo.glb",
+     "nome": "Pelivo",
+     "epiteto": "Escama-Prata",
+     "kb": 331,
+     "triangulos": 2168,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.625,
+     "velocidade_correr": 2.395,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "alto",
+      "pele": "dourada",
+      "barbatanas": "laterais",
+      "corfin": "vermelha",
+      "olhos": "dourados",
+      "chapeu": "tricornio",
+      "tronco": "colete",
+      "pernas": "bermuda",
+      "pes": "simples",
+      "arma": "cajado",
+      "esquerda": "nada",
+      "cla": "rocha"
+     }
+    },
+    {
+     "arquivo": "vodnik/vodnik_ondoth.glb",
+     "nome": "Ondoth",
+     "epiteto": "Âncora-Firme",
+     "kb": 345,
+     "triangulos": 2361,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.625,
+     "velocidade_correr": 2.395,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "alto",
+      "pele": "dourada",
+      "barbatanas": "ambas",
+      "corfin": "laranja",
+      "olhos": "vermelhos",
+      "chapeu": "bandana",
+      "tronco": "colete",
+      "pernas": "bermuda",
+      "pes": "palmado",
+      "arma": "machado2",
+      "esquerda": "broquel",
+      "cla": "brasa"
+     }
+    },
+    {
+     "arquivo": "vodnik/vodnik_kelena.glb",
+     "nome": "Kelena",
+     "epiteto": "Escama-Prata",
+     "kb": 355,
+     "triangulos": 2498,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.532,
+     "velocidade_correr": 2.04,
+     "cfg": {
+      "porte": "forte",
+      "altura": "baixo",
+      "pele": "dourada",
+      "barbatanas": "crista",
+      "corfin": "vermelha",
+      "olhos": "vermelhos",
+      "chapeu": "gorro",
+      "tronco": "casaco",
+      "pernas": "calca",
+      "pes": "simples",
+      "arma": "picareta",
+      "esquerda": "broquel",
+      "cla": "reino"
+     }
+    }
+   ]
+  },
+  "silvano": {
+   "nome": "Silvano",
+   "titulo": "Os Chifrudos",
+   "combinacoes": 743178240,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "chifres",
+     "nome": "Chifres",
+     "opcoes": [
+      {
+       "chave": "carneiro",
+       "nome": "Carneiro"
+      },
+      {
+       "chave": "cabra",
+       "nome": "Cabra"
+      },
+      {
+       "chave": "retos",
+       "nome": "Retos"
+      },
+      {
+       "chave": "galhos",
+       "nome": "Galhos"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "clara",
+       "nome": "Clara"
+      },
+      {
+       "chave": "rosada",
+       "nome": "Rosada"
+      },
+      {
+       "chave": "morena",
+       "nome": "Morena"
+      },
+      {
+       "chave": "escura",
+       "nome": "Escura"
+      }
+     ]
+    },
+    {
+     "chave": "pelo",
+     "nome": "Cor do pelo",
+     "opcoes": [
+      {
+       "chave": "ruivo",
+       "nome": "Ruivo"
+      },
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "loiro",
+       "nome": "Loiro"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "grisalho",
+       "nome": "Grisalho"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Cabelo",
+     "opcoes": [
+      {
+       "chave": "ondulado",
+       "nome": "Ondulado"
+      },
+      {
+       "chave": "curto",
+       "nome": "Curto"
+      },
+      {
+       "chave": "rabo",
+       "nome": "Rabo"
+      },
+      {
+       "chave": "longo",
+       "nome": "Longo"
+      }
+     ]
+    },
+    {
+     "chave": "barba",
+     "nome": "Barba",
+     "opcoes": [
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      },
+      {
+       "chave": "cavanhaque",
+       "nome": "Cavanhaque"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Sem barba"
+      },
+      {
+       "chave": "longa",
+       "nome": "Longa"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "folhas",
+       "nome": "Coroa de folhas"
+      },
+      {
+       "chave": "faixa",
+       "nome": "Faixa"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "colete",
+       "nome": "Colete e bolsa"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      },
+      {
+       "chave": "avental",
+       "nome": "Avental de artista"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "bermuda",
+       "nome": "Bermuda"
+      },
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "simples",
+       "nome": "Botas curtas"
+      },
+      {
+       "chave": "cascos",
+       "nome": "Cascos"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "silvano/silvano_padrao.glb",
+     "nome": "Orenbo",
+     "epiteto": "Pé-Ligeiro",
+     "kb": 367,
+     "triangulos": 2660,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.578,
+     "velocidade_correr": 2.217,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "chifres": "carneiro",
+      "pele": "rosada",
+      "pelo": "ruivo",
+      "cabelo": "ondulado",
+      "barba": "curta",
+      "cabeca": "nada",
+      "tronco": "colete",
+      "pernas": "calca",
+      "pes": "simples",
+      "arma": "cajado",
+      "esquerda": "nada",
+      "cla": "bosque"
+     }
+    },
+    {
+     "arquivo": "silvano/silvano_faumir.glb",
+     "nome": "Faumir",
+     "epiteto": "Canto-do-Bosque",
+     "kb": 383,
+     "triangulos": 2888,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.532,
+     "velocidade_correr": 2.04,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "baixo",
+      "chifres": "cabra",
+      "pele": "morena",
+      "pelo": "preto",
+      "cabelo": "ondulado",
+      "barba": "nenhuma",
+      "cabeca": "folhas",
+      "tronco": "tunica",
+      "pernas": "saiote",
+      "pes": "simples",
+      "arma": "tridente",
+      "esquerda": "redondo",
+      "cla": "sangue"
+     }
+    },
+    {
+     "arquivo": "silvano/silvano_ewadil.glb",
+     "nome": "Ewadil",
+     "epiteto": "Pincel-Verde",
+     "kb": 360,
+     "triangulos": 2570,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.532,
+     "velocidade_correr": 2.04,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "baixo",
+      "chifres": "carneiro",
+      "pele": "morena",
+      "pelo": "loiro",
+      "cabelo": "ondulado",
+      "barba": "cavanhaque",
+      "cabeca": "folhas",
+      "tronco": "couro",
+      "pernas": "calca",
+      "pes": "cascos",
+      "arma": "machado2",
+      "esquerda": "nada",
+      "cla": "veu"
+     }
+    },
+    {
+     "arquivo": "silvano/silvano_bramlen.glb",
+     "nome": "Bramlen",
+     "epiteto": "Flauta-Doce",
+     "kb": 366,
+     "triangulos": 2416,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.578,
+     "velocidade_correr": 2.217,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "medio",
+      "chifres": "galhos",
+      "pele": "clara",
+      "pelo": "ruivo",
+      "cabelo": "rabo",
+      "barba": "curta",
+      "cabeca": "nada",
+      "tronco": "colete",
+      "pernas": "calca",
+      "pes": "simples",
+      "arma": "tridente",
+      "esquerda": "nada",
+      "cla": "bosque"
+     }
+    },
+    {
+     "arquivo": "silvano/silvano_bramwyn.glb",
+     "nome": "Bramwyn",
+     "epiteto": "Canto-do-Bosque",
+     "kb": 363,
+     "triangulos": 2374,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.578,
+     "velocidade_correr": 2.217,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "medio",
+      "chifres": "cabra",
+      "pele": "rosada",
+      "pelo": "branco",
+      "cabelo": "longo",
+      "barba": "nenhuma",
+      "cabeca": "nada",
+      "tronco": "avental",
+      "pernas": "saiote",
+      "pes": "cascos",
+      "arma": "maca",
+      "esquerda": "torre",
+      "cla": "sangue"
+     }
+    }
+   ]
+  },
+  "litomante": {
+   "nome": "Litomante",
+   "titulo": "Os Nascidos da Pedra",
+   "combinacoes": 14515200,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "rocha",
+     "nome": "Rocha",
+     "opcoes": [
+      {
+       "chave": "cinza",
+       "nome": "Cinza"
+      },
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "basalto",
+       "nome": "Basalto"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      },
+      {
+       "chave": "marmore",
+       "nome": "Marmore"
+      }
+     ]
+    },
+    {
+     "chave": "brilho",
+     "nome": "Cristais",
+     "opcoes": [
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "laranja",
+       "nome": "Laranja"
+      },
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "redonda",
+       "nome": "Redonda"
+      },
+      {
+       "chave": "quadrada",
+       "nome": "Quadrada"
+      },
+      {
+       "chave": "cristais",
+       "nome": "Coroa de cristais"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "redondos",
+       "nome": "Redondos"
+      },
+      {
+       "chave": "fenda",
+       "nome": "Fenda"
+      },
+      {
+       "chave": "tres",
+       "nome": "Três olhos"
+      }
+     ]
+    },
+    {
+     "chave": "ombros",
+     "nome": "Ombros",
+     "opcoes": [
+      {
+       "chave": "cristais",
+       "nome": "Cristais"
+      },
+      {
+       "chave": "pedregulhos",
+       "nome": "Pedregulhos"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Lisos"
+      }
+     ]
+    },
+    {
+     "chave": "corpo",
+     "nome": "Corpo",
+     "opcoes": [
+      {
+       "chave": "liso",
+       "nome": "Placas"
+      },
+      {
+       "chave": "rachado",
+       "nome": "Rachado (brilho)"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgoso"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "litomante/litomante_padrao.glb",
+     "nome": "Magul",
+     "epiteto": "Punho-de-Granito",
+     "kb": 246,
+     "triangulos": 1004,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.614,
+     "velocidade_correr": 2.353,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "rocha": "cinza",
+      "brilho": "azul",
+      "cabeca": "redonda",
+      "olhos": "redondos",
+      "ombros": "cristais",
+      "corpo": "liso",
+      "arma": "martelo",
+      "esquerda": "nada",
+      "cla": "rocha"
+     }
+    },
+    {
+     "arquivo": "litomante/litomante_sildor.glb",
+     "nome": "Sildor",
+     "epiteto": "Rocha-Antiga",
+     "kb": 257,
+     "triangulos": 1160,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.663,
+     "velocidade_correr": 2.541,
+     "cfg": {
+      "porte": "forte",
+      "altura": "alto",
+      "rocha": "basalto",
+      "brilho": "laranja",
+      "cabeca": "cristais",
+      "olhos": "redondos",
+      "ombros": "cristais",
+      "corpo": "liso",
+      "arma": "tridente",
+      "esquerda": "torre",
+      "cla": "fera"
+     }
+    },
+    {
+     "arquivo": "litomante/litomante_graek.glb",
+     "nome": "Graek",
+     "epiteto": "Musgo-Velho",
+     "kb": 266,
+     "triangulos": 1284,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.663,
+     "velocidade_correr": 2.541,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "alto",
+      "rocha": "areia",
+      "brilho": "roxo",
+      "cabeca": "redonda",
+      "olhos": "redondos",
+      "ombros": "pedregulhos",
+      "corpo": "rachado",
+      "arma": "machado2",
+      "esquerda": "orbe",
+      "cla": "floresta"
+     }
+    },
+    {
+     "arquivo": "litomante/litomante_magix.glb",
+     "nome": "Magix",
+     "epiteto": "Musgo-Velho",
+     "kb": 241,
+     "triangulos": 940,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.565,
+     "velocidade_correr": 2.165,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "baixo",
+      "rocha": "areia",
+      "brilho": "azul",
+      "cabeca": "quadrada",
+      "olhos": "fenda",
+      "ombros": "pedregulhos",
+      "corpo": "liso",
+      "arma": "tridente",
+      "esquerda": "nada",
+      "cla": "veu"
+     }
+    },
+    {
+     "arquivo": "litomante/litomante_magnit.glb",
+     "nome": "Magnit",
+     "epiteto": "Rocha-Antiga",
+     "kb": 263,
+     "triangulos": 1244,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.565,
+     "velocidade_correr": 2.165,
+     "cfg": {
+      "porte": "forte",
+      "altura": "baixo",
+      "rocha": "marmore",
+      "brilho": "verde",
+      "cabeca": "redonda",
+      "olhos": "redondos",
+      "ombros": "pedregulhos",
+      "corpo": "rachado",
+      "arma": "machado2",
+      "esquerda": "torre",
+      "cla": "veu"
+     }
+    }
+   ]
+  },
+  "aetheryn": {
+   "nome": "Aetheryn",
+   "titulo": "Os Nascidos do Véu",
+   "combinacoes": 165150720,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "lavanda",
+       "nome": "Lavanda"
+      },
+      {
+       "chave": "perolada",
+       "nome": "Perolada"
+      },
+      {
+       "chave": "azul-palida",
+       "nome": "Azul palida"
+      },
+      {
+       "chave": "cinza-lunar",
+       "nome": "Cinza lunar"
+      }
+     ]
+    },
+    {
+     "chave": "pelo",
+     "nome": "Cabelo (cor)",
+     "opcoes": [
+      {
+       "chave": "prata",
+       "nome": "Prata"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      },
+      {
+       "chave": "violeta",
+       "nome": "Violeta"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Cabelo",
+     "opcoes": [
+      {
+       "chave": "rabo",
+       "nome": "Rabo alto"
+      },
+      {
+       "chave": "tranca",
+       "nome": "Trança"
+      },
+      {
+       "chave": "longo",
+       "nome": "Solto"
+      },
+      {
+       "chave": "coque",
+       "nome": "Coque"
+      }
+     ]
+    },
+    {
+     "chave": "brilho",
+     "nome": "Brilho",
+     "opcoes": [
+      {
+       "chave": "violeta",
+       "nome": "Violeta"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "dourado",
+       "nome": "Dourado"
+      }
+     ]
+    },
+    {
+     "chave": "orelhas",
+     "nome": "Orelhas",
+     "opcoes": [
+      {
+       "chave": "longa",
+       "nome": "Longas"
+      },
+      {
+       "chave": "pontuda",
+       "nome": "Curtas"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "tiara",
+       "nome": "Tiara"
+      },
+      {
+       "chave": "capuz",
+       "nome": "Capuz"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "mago",
+       "nome": "Armadura de runas"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      },
+      {
+       "chave": "couraca",
+       "nome": "Couraça leve"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "altas",
+       "nome": "Botas altas"
+      },
+      {
+       "chave": "simples",
+       "nome": "Botas curtas"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "aetheryn/aetheryn_padrao.glb",
+     "nome": "Luth",
+     "epiteto": "Chama-Fria",
+     "kb": 349,
+     "triangulos": 2170,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "pele": "lavanda",
+      "pelo": "prata",
+      "cabelo": "rabo",
+      "brilho": "violeta",
+      "orelhas": "longa",
+      "cabeca": "nada",
+      "tronco": "mago",
+      "pernas": "calca",
+      "pes": "altas",
+      "arma": "cajado",
+      "esquerda": "orbe",
+      "cla": "veu"
+     }
+    },
+    {
+     "arquivo": "aetheryn/aetheryn_orilith.glb",
+     "nome": "Orilith",
+     "epiteto": "Sussurro-Prata",
+     "kb": 330,
+     "triangulos": 2152,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.581,
+     "velocidade_correr": 2.227,
+     "cfg": {
+      "porte": "forte",
+      "altura": "baixo",
+      "pele": "cinza-lunar",
+      "pelo": "noite",
+      "cabelo": "coque",
+      "brilho": "dourado",
+      "orelhas": "longa",
+      "cabeca": "tiara",
+      "tronco": "tunica",
+      "pernas": "calca",
+      "pes": "altas",
+      "arma": "cajado",
+      "esquerda": "redondo",
+      "cla": "reino"
+     }
+    },
+    {
+     "arquivo": "aetheryn/aetheryn_oriwen.glb",
+     "nome": "Oriwen",
+     "epiteto": "Lâmina-Lunar",
+     "kb": 358,
+     "triangulos": 2531,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "magro",
+      "altura": "medio",
+      "pele": "lavanda",
+      "pelo": "violeta",
+      "cabelo": "rabo",
+      "brilho": "dourado",
+      "orelhas": "pontuda",
+      "cabeca": "capuz",
+      "tronco": "couraca",
+      "pernas": "saiote",
+      "pes": "altas",
+      "arma": "maca",
+      "esquerda": "redondo",
+      "cla": "brasa"
+     }
+    },
+    {
+     "arquivo": "aetheryn/aetheryn_oriwen2.glb",
+     "nome": "Oriwen",
+     "epiteto": "Asa-de-Névoa",
+     "kb": 340,
+     "triangulos": 2286,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "magro",
+      "altura": "medio",
+      "pele": "lavanda",
+      "pelo": "prata",
+      "cabelo": "coque",
+      "brilho": "violeta",
+      "orelhas": "pontuda",
+      "cabeca": "nada",
+      "tronco": "tunica",
+      "pernas": "saiote",
+      "pes": "simples",
+      "arma": "tridente",
+      "esquerda": "nada",
+      "cla": "reino"
+     }
+    },
+    {
+     "arquivo": "aetheryn/aetheryn_ilyth.glb",
+     "nome": "Ilyth",
+     "epiteto": "Lâmina-Lunar",
+     "kb": 374,
+     "triangulos": 2516,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.631,
+     "velocidade_correr": 2.421,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "medio",
+      "pele": "cinza-lunar",
+      "pelo": "noite",
+      "cabelo": "rabo",
+      "brilho": "verde",
+      "orelhas": "longa",
+      "cabeca": "nada",
+      "tronco": "couro",
+      "pernas": "saiote",
+      "pes": "altas",
+      "arma": "cajado",
+      "esquerda": "redondo",
+      "cla": "bosque"
+     }
+    }
+   ]
+  },
+  "humano": {
+   "nome": "Humano",
+   "titulo": "Os Povos dos Reinos",
+   "combinacoes": 2903040000,
+   "categorias": [
+    {
+     "chave": "porte",
+     "nome": "Porte",
+     "opcoes": [
+      {
+       "chave": "atarracado",
+       "nome": "Padrão"
+      },
+      {
+       "chave": "forte",
+       "nome": "Forte"
+      },
+      {
+       "chave": "barrigudo",
+       "nome": "Barrigudo"
+      },
+      {
+       "chave": "magro",
+       "nome": "Magro"
+      }
+     ]
+    },
+    {
+     "chave": "altura",
+     "nome": "Altura",
+     "opcoes": [
+      {
+       "chave": "baixo",
+       "nome": "Baixo"
+      },
+      {
+       "chave": "medio",
+       "nome": "Médio"
+      },
+      {
+       "chave": "alto",
+       "nome": "Alto"
+      }
+     ]
+    },
+    {
+     "chave": "rosto",
+     "nome": "Rosto",
+     "opcoes": [
+      {
+       "chave": "fem",
+       "nome": "Feminino"
+      },
+      {
+       "chave": "masc",
+       "nome": "Masculino"
+      }
+     ]
+    },
+    {
+     "chave": "pele",
+     "nome": "Pele",
+     "opcoes": [
+      {
+       "chave": "clara",
+       "nome": "Clara"
+      },
+      {
+       "chave": "rosada",
+       "nome": "Rosada"
+      },
+      {
+       "chave": "morena",
+       "nome": "Morena"
+      },
+      {
+       "chave": "escura",
+       "nome": "Escura"
+      }
+     ]
+    },
+    {
+     "chave": "pelo",
+     "nome": "Cor do cabelo",
+     "opcoes": [
+      {
+       "chave": "ruivo",
+       "nome": "Ruivo"
+      },
+      {
+       "chave": "castanho",
+       "nome": "Castanho"
+      },
+      {
+       "chave": "loiro",
+       "nome": "Loiro"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "grisalho",
+       "nome": "Grisalho"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Cabelo",
+     "opcoes": [
+      {
+       "chave": "rabo",
+       "nome": "Rabo"
+      },
+      {
+       "chave": "coque",
+       "nome": "Coque"
+      },
+      {
+       "chave": "curto",
+       "nome": "Curto"
+      },
+      {
+       "chave": "longo",
+       "nome": "Longo"
+      },
+      {
+       "chave": "tranca",
+       "nome": "Trança"
+      }
+     ]
+    },
+    {
+     "chave": "barba",
+     "nome": "Barba",
+     "opcoes": [
+      {
+       "chave": "nenhuma",
+       "nome": "Sem barba"
+      },
+      {
+       "chave": "curta",
+       "nome": "Curta"
+      },
+      {
+       "chave": "cavanhaque",
+       "nome": "Cavanhaque"
+      },
+      {
+       "chave": "cheia",
+       "nome": "Cheia"
+      }
+     ]
+    },
+    {
+     "chave": "cabeca",
+     "nome": "Cabeça",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "elmo",
+       "nome": "Elmo aberto"
+      },
+      {
+       "chave": "fechado",
+       "nome": "Elmo fechado"
+      },
+      {
+       "chave": "capuz",
+       "nome": "Capuz"
+      },
+      {
+       "chave": "coroa",
+       "nome": "Coroa"
+      }
+     ]
+    },
+    {
+     "chave": "tronco",
+     "nome": "Tronco",
+     "opcoes": [
+      {
+       "chave": "placas",
+       "nome": "Placas e faixa"
+      },
+      {
+       "chave": "gibao",
+       "nome": "Gibão"
+      },
+      {
+       "chave": "malha",
+       "nome": "Cota de malha"
+      },
+      {
+       "chave": "couro",
+       "nome": "Couro"
+      },
+      {
+       "chave": "tunica",
+       "nome": "Túnica"
+      }
+     ]
+    },
+    {
+     "chave": "ombros",
+     "nome": "Ombros",
+     "opcoes": [
+      {
+       "chave": "redondas",
+       "nome": "Redondas"
+      },
+      {
+       "chave": "pontudas",
+       "nome": "Pontudas"
+      },
+      {
+       "chave": "nenhuma",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "pernas",
+     "nome": "Pernas",
+     "opcoes": [
+      {
+       "chave": "malha",
+       "nome": "Saia de malha"
+      },
+      {
+       "chave": "calca",
+       "nome": "Calça"
+      },
+      {
+       "chave": "saiote",
+       "nome": "Saiote"
+      }
+     ]
+    },
+    {
+     "chave": "pes",
+     "nome": "Pés",
+     "opcoes": [
+      {
+       "chave": "biqueira",
+       "nome": "Botas de aço"
+      },
+      {
+       "chave": "simples",
+       "nome": "Botas simples"
+      }
+     ]
+    },
+    {
+     "chave": "arma",
+     "nome": "Mão direita",
+     "opcoes": [
+      {
+       "chave": "machado",
+       "nome": "Machado"
+      },
+      {
+       "chave": "martelo",
+       "nome": "Martelo"
+      },
+      {
+       "chave": "picareta",
+       "nome": "Picareta"
+      },
+      {
+       "chave": "espada",
+       "nome": "Espada"
+      },
+      {
+       "chave": "machado2",
+       "nome": "Machado duplo"
+      },
+      {
+       "chave": "maca",
+       "nome": "Maça"
+      },
+      {
+       "chave": "cajado",
+       "nome": "Cajado"
+      },
+      {
+       "chave": "tridente",
+       "nome": "Tridente"
+      }
+     ]
+    },
+    {
+     "chave": "esquerda",
+     "nome": "Mão esquerda",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Escudo redondo"
+      },
+      {
+       "chave": "torre",
+       "nome": "Escudo quadrado"
+      },
+      {
+       "chave": "broquel",
+       "nome": "Broquel"
+      },
+      {
+       "chave": "livro",
+       "nome": "Livro"
+      },
+      {
+       "chave": "orbe",
+       "nome": "Orbe"
+      },
+      {
+       "chave": "caneca",
+       "nome": "Caneca"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    },
+    {
+     "chave": "cla",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "brasa",
+       "nome": "Brasa"
+      },
+      {
+       "chave": "rocha",
+       "nome": "Rocha"
+      },
+      {
+       "chave": "floresta",
+       "nome": "Floresta"
+      },
+      {
+       "chave": "sangue",
+       "nome": "Sangue"
+      },
+      {
+       "chave": "gelo",
+       "nome": "Gelo"
+      },
+      {
+       "chave": "mar",
+       "nome": "Mar"
+      },
+      {
+       "chave": "veu",
+       "nome": "Véu"
+      },
+      {
+       "chave": "reino",
+       "nome": "Reino"
+      },
+      {
+       "chave": "fera",
+       "nome": "Fera"
+      },
+      {
+       "chave": "bosque",
+       "nome": "Bosque"
+      }
+     ]
+    }
+   ],
+   "personagens": [
+    {
+     "arquivo": "humano/humano_padrao.glb",
+     "nome": "Maric",
+     "epiteto": "da Muralha",
+     "kb": 364,
+     "triangulos": 2380,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.62,
+     "velocidade_correr": 2.376,
+     "cfg": {
+      "porte": "atarracado",
+      "altura": "medio",
+      "rosto": "fem",
+      "pele": "clara",
+      "pelo": "castanho",
+      "cabelo": "rabo",
+      "barba": "nenhuma",
+      "cabeca": "nada",
+      "tronco": "placas",
+      "ombros": "redondas",
+      "pernas": "malha",
+      "pes": "biqueira",
+      "arma": "espada",
+      "esquerda": "redondo",
+      "cla": "reino"
+     }
+    },
+    {
+     "arquivo": "humano/humano_bearic.glb",
+     "nome": "Bearic",
+     "epiteto": "do Vale",
+     "kb": 316,
+     "triangulos": 1968,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.57,
+     "velocidade_correr": 2.186,
+     "cfg": {
+      "porte": "magro",
+      "altura": "baixo",
+      "rosto": "fem",
+      "pele": "rosada",
+      "pelo": "ruivo",
+      "cabelo": "rabo",
+      "barba": "nenhuma",
+      "cabeca": "fechado",
+      "tronco": "placas",
+      "ombros": "nenhuma",
+      "pernas": "malha",
+      "pes": "biqueira",
+      "arma": "tridente",
+      "esquerda": "caneca",
+      "cla": "mar"
+     }
+    },
+    {
+     "arquivo": "humano/humano_beawin.glb",
+     "nome": "Beawin",
+     "epiteto": "da Muralha",
+     "kb": 371,
+     "triangulos": 2484,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.669,
+     "velocidade_correr": 2.566,
+     "cfg": {
+      "porte": "magro",
+      "altura": "alto",
+      "rosto": "masc",
+      "pele": "morena",
+      "pelo": "branco",
+      "cabelo": "rabo",
+      "barba": "cavanhaque",
+      "cabeca": "coroa",
+      "tronco": "couro",
+      "ombros": "nenhuma",
+      "pernas": "malha",
+      "pes": "simples",
+      "arma": "maca",
+      "esquerda": "redondo",
+      "cla": "veu"
+     }
+    },
+    {
+     "arquivo": "humano/humano_mator.glb",
+     "nome": "Mator",
+     "epiteto": "Escudo-Rubro",
+     "kb": 399,
+     "triangulos": 2864,
+     "ossos": 19,
+     "molas": [
+      "Hair"
+     ],
+     "velocidade_andar": 0.57,
+     "velocidade_correr": 2.186,
+     "cfg": {
+      "porte": "magro",
+      "altura": "baixo",
+      "rosto": "masc",
+      "pele": "escura",
+      "pelo": "loiro",
+      "cabelo": "rabo",
+      "barba": "curta",
+      "cabeca": "coroa",
+      "tronco": "couro",
+      "ombros": "redondas",
+      "pernas": "saiote",
+      "pes": "biqueira",
+      "arma": "machado2",
+      "esquerda": "livro",
+      "cla": "sangue"
+     }
+    },
+    {
+     "arquivo": "humano/humano_gerdra.glb",
+     "nome": "Gerdra",
+     "epiteto": "do Vale",
+     "kb": 344,
+     "triangulos": 2350,
+     "ossos": 17,
+     "molas": [],
+     "velocidade_andar": 0.62,
+     "velocidade_correr": 2.376,
+     "cfg": {
+      "porte": "barrigudo",
+      "altura": "medio",
+      "rosto": "fem",
+      "pele": "morena",
+      "pelo": "loiro",
+      "cabelo": "coque",
+      "barba": "cavanhaque",
+      "cabeca": "elmo",
+      "tronco": "tunica",
+      "ombros": "nenhuma",
+      "pernas": "calca",
+      "pes": "biqueira",
+      "arma": "machado",
+      "esquerda": "livro",
+      "cla": "mar"
+     }
+    }
+   ]
+  }
+ }
+}
