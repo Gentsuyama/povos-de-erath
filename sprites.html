@@ -15,8 +15,9 @@
   button { font: inherit; padding: 6px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--tx); cursor: pointer; }
   button.on { background: var(--acc); border-color: var(--acc); color: #1d1408; }
   input[type=range] { width: 110px; }
-  main { display: grid; grid-template-columns: minmax(320px, 620px) 1fr; gap: 16px; padding: 16px; }
+  main { display: grid; grid-template-columns: minmax(300px, 560px) minmax(0, 1fr); gap: 16px; padding: 16px; }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  main > section { min-width: 0; }
   .painel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
   .painel h2 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--acc); }
   #rosa { position: relative; width: 100%; aspect-ratio: 1; }
@@ -27,15 +28,15 @@
   #rosa .centro { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--mut); font-size: 12px; text-align: center; }
   #campo { width: 100%; height: 420px; border-radius: 12px; background: var(--chao); display: block; image-rendering: auto; }
   #tira { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 6px; }
-  #tira canvas { width: 96px; height: 96px; background: #33402a; border-radius: 6px; flex: none; }
+  #tira canvas { height: 96px; background: #33402a; border-radius: 6px; flex: none; }
   #tira canvas.on { outline: 2px solid var(--acc); }
   .nota { color: var(--mut); font-size: 12.5px; margin: 8px 0 0; }
 </style>
 </head>
 <body>
 <header>
-  <h1>Sprites gerados no Flow</h1>
-  <div class="grupo" id="gCri"><small>Criatura</small></div>
+  <h1>Sprites do Flow</h1>
+  <div class="grupo" id="gCri"></div>
   <div class="grupo" id="gMov"><small>Movimento</small></div>
   <div class="grupo"><small>Velocidade</small><input type="range" id="fps" min="4" max="24" value="12"><span id="fpsV">12 qps</span></div>
   <div class="grupo"><small>Fundo</small><button id="bFundo">Grama</button></div>
@@ -60,20 +61,25 @@
 </main>
 <script type="module">
 const $ = id => document.getElementById(id);
-const NOMES = { lobo: 'Lobo-falcão', urso: 'Ursalado', besouro: 'Besouro-armadura' }, MOVS = { parado: 'Parado', andar: 'Andar', correr: 'Correr', atacar: 'Atacar' };
+const NOMES = { lobo: 'Lobo-falcão', urso: 'Ursalado', besouro: 'Besouro-armadura', anao: 'Anão', vran: 'Vran', beorning: 'Beorning', vodnik: 'Vodnik', silvano: 'Silvano', litomante: 'Litomante', aetheryn: 'Aetheryn', humano: 'Humana' }, MOVS = { parado: 'Parado', andar: 'Andar', correr: 'Correr', atacar: 'Atacar' };
 const D8 = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];                    // ângulo 0 = leste, sentido horário na tela
 const POS = { N: [50, 13], NE: [83, 22], E: [87, 50], SE: [83, 78], S: [50, 87], SW: [17, 78], W: [13, 50], NW: [17, 22] };
-const man = await (await fetch('sprites/flow/anim/manifesto.json')).json(), CEL = man.celula;
+const man = { criaturas: {} }, GRUPOS = [['sprites/flow/povos/anim/', 'Povos'], ['sprites/flow/anim/', 'Criaturas']];
+for (const [base, grupo] of GRUPOS) { try { const m = await (await fetch(base + 'manifesto.json')).json(); for (const k in m.criaturas) man.criaturas[k] = { ...m.criaturas[k], base, grupo }; } catch (e) { console.warn('sem', base); } }
+const CW = c => man.criaturas[c].celula[0], CH = c => man.criaturas[c].celula[1];   // cada criatura tem a célula do seu maior quadro
 let cri = 'lobo', mov = 'andar', dirSel = 'S', fps = 12, fundoGrama = true;
 const cache = {};
-const img = (c, m, d) => { const k = `${c}/${m}_${d}`; if (!cache[k]) { const im = new Image(); im.src = `sprites/flow/anim/${k}.webp`; cache[k] = im; } return cache[k]; };
-const nq = (c, m, d) => man.criaturas[c]?.[m]?.[d] || 1;
+const img = (c, m, d) => { const k = `${c}/${m}_${d}`; if (!cache[k]) { const im = new Image(); im.src = `${man.criaturas[c].base}${k}.webp`; cache[k] = im; } return cache[k]; };
+const nq = (c, m, d) => man.criaturas[c]?.anim?.[m]?.[d] || 1;
 // pré-carrega tudo da criatura
-const precarregar = c => { for (const m in man.criaturas[c]) for (const d in man.criaturas[c][m]) img(c, m, d); };
-Object.keys(man.criaturas).forEach(precarregar);
+const precarregar = c => { for (const m in man.criaturas[c].anim) for (const d in man.criaturas[c].anim[m]) img(c, m, d); };
+
 
 function botoes(id, itens, get, set) { const g = $(id); for (const [k, n] of itens) { const b = document.createElement('button'); b.textContent = n; b.onclick = () => { set(k); marcar(); }; b.dataset.k = k; g.appendChild(b); } }
-botoes('gCri', Object.keys(man.criaturas).map(k => [k, NOMES[k] || k]), () => cri, k => { cri = k; montarTira(); });
+for (const [, grupo] of GRUPOS) { const g = $('gCri'), sm = document.createElement('small'); sm.textContent = grupo; sm.style.marginLeft = '8px'; g.appendChild(sm);
+  for (const k of Object.keys(man.criaturas).filter(k => man.criaturas[k].grupo === grupo)) { const b = document.createElement('button'); b.textContent = NOMES[k] || k; b.dataset.k = k; b.onclick = () => { cri = k; precarregar(k); montarTira(); marcar(); try { history.replaceState(null, '', '#' + k); } catch {} }; g.appendChild(b); } }
+if (man.criaturas[location.hash.slice(1)]) cri = location.hash.slice(1); else if (!man.criaturas[cri]) cri = Object.keys(man.criaturas)[0];
+precarregar(cri);
 botoes('gMov', Object.keys(MOVS).map(k => [k, MOVS[k]]), () => mov, k => { mov = k; montarTira(); });
 function marcar() { for (const b of $('gCri').querySelectorAll('button')) b.classList.toggle('on', b.dataset.k === cri); for (const b of $('gMov').querySelectorAll('button')) b.classList.toggle('on', b.dataset.k === mov);
   for (const el of document.querySelectorAll('#rosa .d')) el.classList.toggle('on', el.dataset.d === dirSel); $('info').innerHTML = `<b>${NOMES[cri]}</b><br>${MOVS[mov]} · ${nq(cri, mov, dirSel)} quadros`; }
@@ -83,13 +89,16 @@ $('bFundo').onclick = () => { fundoGrama = !fundoGrama; $('bFundo').textContent 
 // rosa dos ventos
 const rosa = {};
 for (const d of D8) { const div = document.createElement('div'); div.className = 'd'; div.dataset.d = d; div.style.left = POS[d][0] + '%'; div.style.top = POS[d][1] + '%';
-  const cv = document.createElement('canvas'); cv.width = cv.height = CEL; div.append(cv); const sp = document.createElement('span'); sp.textContent = d; div.append(sp);
+  const cv = document.createElement('canvas'); cv.width = cv.height = 300; div.append(cv); const sp = document.createElement('span'); sp.textContent = d; div.append(sp);
   div.onclick = () => { dirSel = d; montarTira(); marcar(); }; $('rosa').append(div); rosa[d] = cv.getContext('2d'); }
-function quadro(ctx, c, m, d, f, x, y, s) { const im = img(c, m, d); if (!im.complete || !im.naturalWidth) return; const n = nq(c, m, d); ctx.drawImage(im, (f % n) * CEL, 0, CEL, CEL, x, y, s, s); }
+// desenha o quadro com o pivô (pés) em (px, py); s = altura de exibição da célula
+function quadro(ctx, c, m, d, f, px, py, s) { const im = img(c, m, d); if (!im.complete || !im.naturalWidth) return; const n = nq(c, m, d), W = CW(c), H = CH(c), [pvx, pvy] = man.criaturas[c].pivo, k = s / H;
+  ctx.drawImage(im, (f % n) * W, 0, W, H, px - pvx * k, py - pvy * k, W * k, H * k); }
+function caber(c, w, h) { return Math.min(h * 0.92, w * 0.92 * CH(c) / CW(c)); }
 
 // tira de quadros
 function montarTira() { const t = $('tira'); t.textContent = ''; const n = nq(cri, mov, dirSel), im = img(cri, mov, dirSel);
-  const desenha = () => { for (let i = 0; i < n; i++) { const cv = document.createElement('canvas'); cv.width = cv.height = CEL; cv.getContext('2d').drawImage(im, i * CEL, 0, CEL, CEL, 0, 0, CEL, CEL); t.append(cv); } };
+  const desenha = () => { const W = CW(cri), H = CH(cri); for (let i = 0; i < n; i++) { const cv = document.createElement('canvas'); cv.width = W; cv.height = H; cv.style.width = Math.round(96 * W / H) + 'px'; cv.getContext('2d').drawImage(im, i * W, 0, W, H, 0, 0, W, H); t.append(cv); } };
   if (im.complete) desenha(); else im.onload = desenha; marcar(); }
 
 // campo para passear
@@ -103,7 +112,7 @@ let ultimo = performance.now(), acc = 0, frame = 0;
 function loop(t) {
   requestAnimationFrame(loop); const dt = Math.min(0.05, (t - ultimo) / 1000); ultimo = t; acc += dt; const passo = 1 / fps;
   while (acc >= passo) { acc -= passo; frame++; }
-  for (const d of D8) { const c = rosa[d]; c.clearRect(0, 0, CEL, CEL); quadro(c, cri, mov, d, frame, 0, 0, CEL); }
+  for (const d of D8) { const c = rosa[d]; c.clearRect(0, 0, 300, 300); const s = caber(cri, 300, 300), [pvx, pvy] = man.criaturas[cri].pivo; quadro(c, cri, mov, d, frame, 150, 150 + s / 2 - (CH(cri) - pvy) * s / CH(cri), s); }
   // campo
   const W = campo.clientWidth, H = campo.clientHeight; if (campo.width !== W) { campo.width = W; campo.height = H; }
   let dx = (tecla.KeyD || tecla.ArrowRight ? 1 : 0) - (tecla.KeyA || tecla.ArrowLeft ? 1 : 0), dy = (tecla.KeyS || tecla.ArrowDown ? 1 : 0) - (tecla.KeyW || tecla.ArrowUp ? 1 : 0);
@@ -114,9 +123,9 @@ function loop(t) {
   else ator.estado = 'parado';
   cx.clearRect(0, 0, W, H);
   for (let i = 0; i < 40; i++) { const gx = ((i * 0.6180339) % 1) * W, gy = ((i * 0.7548777 + 0.1) % 1) * H; cx.fillStyle = 'rgba(40,70,30,.35)'; cx.fillRect(gx, gy, 3, 8); }
-  const s = H * 0.55 * (0.7 + 0.3 * ator.y), px = ator.x * W - s / 2, py = ator.y * H - s * 0.94;
-  cx.fillStyle = 'rgba(0,0,0,.25)'; cx.beginPath(); cx.ellipse(ator.x * W, ator.y * H, s * 0.22, s * 0.06, 0, 0, Math.PI * 2); cx.fill();
-  quadro(cx, cri, ator.estado, ator.dir, frame, px, py, s);
+  const s = H * 0.5 * (0.7 + 0.3 * ator.y);
+  cx.fillStyle = 'rgba(0,0,0,.25)'; cx.beginPath(); cx.ellipse(ator.x * W, ator.y * H, s * 0.3, s * 0.07, 0, 0, Math.PI * 2); cx.fill();
+  quadro(cx, cri, ator.estado, ator.dir, frame, ator.x * W, ator.y * H, s);
   cx.fillStyle = 'rgba(0,0,0,.45)'; cx.fillRect(8, 8, 190, 22); cx.fillStyle = '#f3ead8'; cx.font = '12px system-ui'; cx.fillText(`${MOVS[ator.estado]} · direção ${ator.dir}`, 14, 23);
 }
 montarTira(); marcar(); requestAnimationFrame(loop);
