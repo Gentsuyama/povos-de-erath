@@ -15882,6 +15882,139 @@
     }
    ]
   },
+  "baiacu-balao": {
+   "num": 79,
+   "nome": "Baiacu-balão",
+   "grupo": "Aquáticos",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 1.4,
+   "descricao": "Infla, espinhos; deriva com o vento.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "noite",
+       "nome": "Noite"
+      }
+     ]
+    },
+    {
+     "chave": "espinhos",
+     "nome": "Espinhos",
+     "opcoes": [
+      {
+       "chave": "muitos",
+       "nome": "Muitos"
+      },
+      {
+       "chave": "poucos",
+       "nome": "Poucos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/baiacu-balao/baiacu-balao_padrao.glb",
+     "variacao": "Nix 45",
+     "kb": 45,
+     "triangulos": 1012,
+     "ossos": 5,
+     "molas": [],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.012
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "espinhos": "muitos"
+     }
+    },
+    {
+     "arquivo": "criaturas/baiacu-balao/baiacu-balao_miro-87.glb",
+     "variacao": "Miro 87",
+     "kb": 46,
+     "triangulos": 1012,
+     "ossos": 5,
+     "molas": [],
+     "altura_m": 1.204,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 1.73
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "noite",
+      "espinhos": "muitos"
+     }
+    },
+    {
+     "arquivo": "criaturas/baiacu-balao/baiacu-balao_bela-25.glb",
+     "variacao": "Bela 25",
+     "kb": 41,
+     "triangulos": 772,
+     "ossos": 5,
+     "molas": [],
+     "altura_m": 1.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.041
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "espinhos": "poucos"
+     }
+    }
+   ]
+  },
   "caranguejo-castelo": {
    "num": 80,
    "nome": "Caranguejo-castelo",
@@ -16028,6 +16161,278 @@
     }
    ]
   },
+  "raia-do-vento": {
+   "num": 81,
+   "nome": "Raia-do-vento",
+   "grupo": "Aquáticos",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 2,
+   "descricao": "Corpo achatado; planeia no ar.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ceu",
+       "nome": "Céu"
+      },
+      {
+       "chave": "areia",
+       "nome": "Areia"
+      },
+      {
+       "chave": "manta",
+       "nome": "Manta negra"
+      }
+     ]
+    },
+    {
+     "chave": "pintas",
+     "nome": "Pintas",
+     "opcoes": [
+      {
+       "chave": "brilho",
+       "nome": "Que brilham"
+      },
+      {
+       "chave": "lisa",
+       "nome": "Lisa"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/raia-do-vento/raia-do-vento_padrao.glb",
+     "variacao": "Pim 92",
+     "kb": 36,
+     "triangulos": 568,
+     "ossos": 8,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.952,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.218
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ceu",
+      "pintas": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/raia-do-vento/raia-do-vento_rufo-57.glb",
+     "variacao": "Rufo 57",
+     "kb": 37,
+     "triangulos": 568,
+     "ossos": 8,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.952,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.218
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "areia",
+      "pintas": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/raia-do-vento/raia-do-vento_sabi-53.glb",
+     "variacao": "Sabi 53",
+     "kb": 37,
+     "triangulos": 568,
+     "ossos": 8,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 0.819,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 1.908
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "areia",
+      "pintas": "brilho"
+     }
+    }
+   ]
+  },
+  "sereia-de-lama": {
+   "num": 82,
+   "nome": "Sereia-de-lama",
+   "grupo": "Aquáticos",
+   "familia": "E",
+   "voa": false,
+   "tamanho_m": 1.6,
+   "descricao": "Tronco humanoide, cauda, cabelo de algas; rasteja e nada.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "lodo",
+       "nome": "Lodo"
+      },
+      {
+       "chave": "rio",
+       "nome": "Rio"
+      },
+      {
+       "chave": "barro",
+       "nome": "Barro"
+      }
+     ]
+    },
+    {
+     "chave": "cabelo",
+     "nome": "Algas",
+     "opcoes": [
+      {
+       "chave": "longas",
+       "nome": "Longas"
+      },
+      {
+       "chave": "curtas",
+       "nome": "Curtas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/sereia-de-lama/sereia-de-lama_padrao.glb",
+     "variacao": "Luz 52",
+     "kb": 70,
+     "triangulos": 1712,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 0.424,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.379
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "lodo",
+      "cabelo": "longas"
+     }
+    },
+    {
+     "arquivo": "criaturas/sereia-de-lama/sereia-de-lama_brisa-45.glb",
+     "variacao": "Brisa 45",
+     "kb": 70,
+     "triangulos": 1712,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 0.424,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.379
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "lodo",
+      "cabelo": "curtas"
+     }
+    },
+    {
+     "arquivo": "criaturas/sereia-de-lama/sereia-de-lama_luz-15.glb",
+     "variacao": "Luz 15",
+     "kb": 70,
+     "triangulos": 1712,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 0.364,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.326
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "barro",
+      "cabelo": "curtas"
+     }
+    }
+   ]
+  },
   "lula-pintora": {
    "num": 83,
    "nome": "Lula-pintora",
@@ -16161,6 +16566,284 @@
       "tamanho": "g",
       "cores": "turquesa",
       "pincel": "pincel"
+     }
+    }
+   ]
+  },
+  "cavalo-marinho-montaria": {
+   "num": 84,
+   "nome": "Cavalo-marinho-montaria",
+   "grupo": "Aquáticos",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 2.2,
+   "descricao": "Cauda enrolada, crina de nadadeira; nada em pé.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      },
+      {
+       "chave": "recife",
+       "nome": "Recife"
+      },
+      {
+       "chave": "abismo",
+       "nome": "Abismo"
+      }
+     ]
+    },
+    {
+     "chave": "sela",
+     "nome": "Sela",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com sela"
+      },
+      {
+       "chave": "nao",
+       "nome": "Selvagem"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cavalo-marinho-montaria/cavalo-marinho-montaria_padrao.glb",
+     "variacao": "Tula 90",
+     "kb": 50,
+     "triangulos": 1180,
+     "ossos": 7,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 3.113
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "sela": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavalo-marinho-montaria/cavalo-marinho-montaria_miro-25.glb",
+     "variacao": "Miro 25",
+     "kb": 50,
+     "triangulos": 1180,
+     "ossos": 7,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 1.892,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.677
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "recife",
+      "sela": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/cavalo-marinho-montaria/cavalo-marinho-montaria_tula-22.glb",
+     "variacao": "Tula 22",
+     "kb": 50,
+     "triangulos": 1156,
+     "ossos": 7,
+     "molas": [
+      "cauda"
+     ],
+     "altura_m": 2.53,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 3.579
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "recife",
+      "sela": "nao"
+     }
+    }
+   ]
+  },
+  "baleia-de-nuvem": {
+   "num": 85,
+   "nome": "Baleia-de-nuvem",
+   "grupo": "Colossais",
+   "familia": "E",
+   "voa": true,
+   "tamanho_m": 40,
+   "descricao": "Nuvens nas costas; voa lentamente no céu.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "ceu",
+       "nome": "Céu"
+      },
+      {
+       "chave": "aurora",
+       "nome": "Aurora"
+      },
+      {
+       "chave": "tempestade",
+       "nome": "Tempestade"
+      }
+     ]
+    },
+    {
+     "chave": "nuvens",
+     "nome": "Nuvens",
+     "opcoes": [
+      {
+       "chave": "muitas",
+       "nome": "Muitas"
+      },
+      {
+       "chave": "poucas",
+       "nome": "Poucas"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/baleia-de-nuvem/baleia-de-nuvem_padrao.glb",
+     "variacao": "Quim 75",
+     "kb": 123,
+     "triangulos": 3838,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 7.786,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 9.559,
+      "Voar": 32.12
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "ceu",
+      "nuvens": "muitas"
+     }
+    },
+    {
+     "arquivo": "criaturas/baleia-de-nuvem/baleia-de-nuvem_lua-14.glb",
+     "variacao": "Lua 14",
+     "kb": 105,
+     "triangulos": 2878,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 7.786,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 9.559,
+      "Voar": 32.12
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "aurora",
+      "nuvens": "poucas"
+     }
+    },
+    {
+     "arquivo": "criaturas/baleia-de-nuvem/baleia-de-nuvem_rufo-32.glb",
+     "variacao": "Rufo 32",
+     "kb": 123,
+     "triangulos": 3838,
+     "ossos": 12,
+     "molas": [],
+     "altura_m": 6.696,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar",
+      "Voar"
+     ],
+     "velocidades": {
+      "Mover": 8.221,
+      "Voar": 27.623
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ceu",
+      "nuvens": "muitas"
      }
     }
    ]
@@ -16710,6 +17393,139 @@
     }
    ]
   },
+  "flor-armadilha": {
+   "num": 91,
+   "nome": "Flor-armadilha",
+   "grupo": "Plantas",
+   "familia": "F",
+   "voa": false,
+   "tamanho_m": 2,
+   "descricao": "Raízes como pernas, boca de pétalas; arrasta as raízes.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "carmim",
+       "nome": "Carmim"
+      },
+      {
+       "chave": "violeta",
+       "nome": "Violeta"
+      },
+      {
+       "chave": "amarela",
+       "nome": "Amarela"
+      }
+     ]
+    },
+    {
+     "chave": "dentes",
+     "nome": "Dentes",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com dentes"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem dentes"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/flor-armadilha/flor-armadilha_padrao.glb",
+     "variacao": "Lua 66",
+     "kb": 97,
+     "triangulos": 918,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.502
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "carmim",
+      "dentes": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/flor-armadilha/flor-armadilha_brisa-57.glb",
+     "variacao": "Brisa 57",
+     "kb": 94,
+     "triangulos": 756,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 2.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.577
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "carmim",
+      "dentes": "nao"
+     }
+    },
+    {
+     "arquivo": "criaturas/flor-armadilha/flor-armadilha_quim-69.glb",
+     "variacao": "Quim 69",
+     "kb": 94,
+     "triangulos": 756,
+     "ossos": 26,
+     "molas": [],
+     "altura_m": 1.72,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Ameaçar"
+     ],
+     "velocidades": {
+      "Mover": 0.432
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "carmim",
+      "dentes": "nao"
+     }
+    }
+   ]
+  },
   "vinha-serpente": {
    "num": 92,
    "nome": "Vinha-serpente",
@@ -16990,6 +17806,139 @@
     }
    ]
   },
+  "musgo-andante": {
+   "num": 94,
+   "nome": "Musgo-andante",
+   "grupo": "Plantas",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.6,
+   "descricao": "Tapete de musgo com olhos; escorre.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "azul",
+       "nome": "Líquen"
+      }
+     ]
+    },
+    {
+     "chave": "flores",
+     "nome": "Flores",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com florzinhas"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem flores"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/musgo-andante/musgo-andante_padrao.glb",
+     "variacao": "Pipo 86",
+     "kb": 26,
+     "triangulos": 580,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.6,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.369
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "flores": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/musgo-andante/musgo-andante_tula-12.glb",
+     "variacao": "Tula 12",
+     "kb": 26,
+     "triangulos": 580,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.516,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.317
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "azul",
+      "flores": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/musgo-andante/musgo-andante_nix-65.glb",
+     "variacao": "Nix 65",
+     "kb": 24,
+     "triangulos": 480,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.516,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.317
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "verde",
+      "flores": "nao"
+     }
+    }
+   ]
+  },
   "cacto-guerreiro": {
    "num": 95,
    "nome": "Cacto-guerreiro",
@@ -17146,6 +18095,695 @@
       "cores": "roxo",
       "arma": "nada",
       "chapeu": "flor"
+     }
+    }
+   ]
+  },
+  "salgueiro-chorao": {
+   "num": 96,
+   "nome": "Salgueiro-chorão",
+   "grupo": "Plantas",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 6,
+   "descricao": "Raízes como pernas, cabelo de ramos; muito lento.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verao",
+       "nome": "Verão"
+      },
+      {
+       "chave": "outono",
+       "nome": "Outono"
+      },
+      {
+       "chave": "neblina",
+       "nome": "Neblina"
+      }
+     ]
+    },
+    {
+     "chave": "ramos",
+     "nome": "Ramos",
+     "opcoes": [
+      {
+       "chave": "longos",
+       "nome": "Longos"
+      },
+      {
+       "chave": "curtos",
+       "nome": "Curtos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/salgueiro-chorao/salgueiro-chorao_padrao.glb",
+     "variacao": "Brisa 65",
+     "kb": 124,
+     "triangulos": 1988,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 6,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.677,
+      "Correr": 6.429
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verao",
+      "ramos": "longos"
+     }
+    },
+    {
+     "arquivo": "criaturas/salgueiro-chorao/salgueiro-chorao_nix-96.glb",
+     "variacao": "Nix 96",
+     "kb": 124,
+     "triangulos": 1988,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 5.16,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.442,
+      "Correr": 5.529
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "verao",
+      "ramos": "curtos"
+     }
+    },
+    {
+     "arquivo": "criaturas/salgueiro-chorao/salgueiro-chorao_orvo-89.glb",
+     "variacao": "Orvo 89",
+     "kb": 123,
+     "triangulos": 1988,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 5.16,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.442,
+      "Correr": 5.529
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "outono",
+      "ramos": "longos"
+     }
+    }
+   ]
+  },
+  "bolota-cavaleiro": {
+   "num": 97,
+   "nome": "Bolota-cavaleiro",
+   "grupo": "Feéricos",
+   "familia": "A",
+   "voa": false,
+   "tamanho_m": 0.15,
+   "descricao": "Capacete de bolota, espada de espinho; corre.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "carvalho",
+       "nome": "Carvalho"
+      },
+      {
+       "chave": "rubro",
+       "nome": "Rubro"
+      },
+      {
+       "chave": "musgo",
+       "nome": "Musgo"
+      }
+     ]
+    },
+    {
+     "chave": "mao",
+     "nome": "Arma",
+     "opcoes": [
+      {
+       "chave": "espada",
+       "nome": "Espada de espinho"
+      },
+      {
+       "chave": "lanca",
+       "nome": "Lança"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/bolota-cavaleiro/bolota-cavaleiro_padrao.glb",
+     "variacao": "Vina 54",
+     "kb": 57,
+     "triangulos": 915,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.15,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.058
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "carvalho",
+      "mao": "espada"
+     }
+    },
+    {
+     "arquivo": "criaturas/bolota-cavaleiro/bolota-cavaleiro_fagu-69.glb",
+     "variacao": "Fagu 69",
+     "kb": 57,
+     "triangulos": 915,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.172,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.067
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "carvalho",
+      "mao": "lanca"
+     }
+    },
+    {
+     "arquivo": "criaturas/bolota-cavaleiro/bolota-cavaleiro_sabi-90.glb",
+     "variacao": "Sabi 90",
+     "kb": 57,
+     "triangulos": 887,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.129,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.05
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "musgo",
+      "mao": "nada"
+     }
+    }
+   ]
+  },
+  "colonia-luminosa": {
+   "num": 98,
+   "nome": "Colônia-luminosa",
+   "grupo": "Plantas",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.12,
+   "descricao": "Cogumelinhos que andam juntos; em bando.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "ambar",
+       "nome": "Âmbar"
+      }
+     ]
+    },
+    {
+     "chave": "quantos",
+     "nome": "Quantos",
+     "opcoes": [
+      {
+       "chave": "cinco",
+       "nome": "Cinco"
+      },
+      {
+       "chave": "sete",
+       "nome": "Sete"
+      },
+      {
+       "chave": "tres",
+       "nome": "Três"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/colonia-luminosa/colonia-luminosa_padrao.glb",
+     "variacao": "Gaia 85",
+     "kb": 39,
+     "triangulos": 915,
+     "ossos": 6,
+     "molas": [],
+     "altura_m": 0.12,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.166
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "azul",
+      "quantos": "cinco"
+     }
+    },
+    {
+     "arquivo": "criaturas/colonia-luminosa/colonia-luminosa_zuza-31.glb",
+     "variacao": "Zuza 31",
+     "kb": 51,
+     "triangulos": 1281,
+     "ossos": 8,
+     "molas": [],
+     "altura_m": 0.103,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.143
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ambar",
+      "quantos": "sete"
+     }
+    },
+    {
+     "arquivo": "criaturas/colonia-luminosa/colonia-luminosa_rufo-12.glb",
+     "variacao": "Rufo 12",
+     "kb": 39,
+     "triangulos": 915,
+     "ossos": 6,
+     "molas": [],
+     "altura_m": 0.138,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.191
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "azul",
+      "quantos": "cinco"
+     }
+    }
+   ]
+  },
+  "lirio-helice": {
+   "num": 99,
+   "nome": "Lírio-hélice",
+   "grupo": "Plantas",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 0.5,
+   "descricao": "Pétalas que giram como hélice; voa girando.",
+   "combinacoes": 27,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      },
+      {
+       "chave": "rosa",
+       "nome": "Rosa"
+      },
+      {
+       "chave": "laranja",
+       "nome": "Laranja"
+      }
+     ]
+    },
+    {
+     "chave": "petalas",
+     "nome": "Pétalas",
+     "opcoes": [
+      {
+       "chave": "seis",
+       "nome": "Seis"
+      },
+      {
+       "chave": "tres",
+       "nome": "Três"
+      },
+      {
+       "chave": "oito",
+       "nome": "Oito"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/lirio-helice/lirio-helice_padrao.glb",
+     "variacao": "Zuza 81",
+     "kb": 28,
+     "triangulos": 296,
+     "ossos": 6,
+     "molas": [
+      "caule"
+     ],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 0.882
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branco",
+      "petalas": "seis"
+     }
+    },
+    {
+     "arquivo": "criaturas/lirio-helice/lirio-helice_dudu-70.glb",
+     "variacao": "Dudu 70",
+     "kb": 29,
+     "triangulos": 328,
+     "ossos": 6,
+     "molas": [
+      "caule"
+     ],
+     "altura_m": 0.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 0.882
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "branco",
+      "petalas": "oito"
+     }
+    },
+    {
+     "arquivo": "criaturas/lirio-helice/lirio-helice_lua-32.glb",
+     "variacao": "Lua 32",
+     "kb": 28,
+     "triangulos": 296,
+     "ossos": 6,
+     "molas": [
+      "caule"
+     ],
+     "altura_m": 0.575,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 1.015
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "rosa",
+      "petalas": "seis"
+     }
+    }
+   ]
+  },
+  "nabo-teimoso": {
+   "num": 100,
+   "nome": "Nabo-teimoso",
+   "grupo": "Plantas",
+   "familia": "A",
+   "voa": false,
+   "tamanho_m": 0.25,
+   "descricao": "Folhas na cabeça, cara zangada; corre e se enterra.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      },
+      {
+       "chave": "branco",
+       "nome": "Branco"
+      },
+      {
+       "chave": "rubro",
+       "nome": "Rabanete"
+      }
+     ]
+    },
+    {
+     "chave": "humor",
+     "nome": "Humor",
+     "opcoes": [
+      {
+       "chave": "bravo",
+       "nome": "Bravo"
+      },
+      {
+       "chave": "emburrado",
+       "nome": "Emburrado"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/nabo-teimoso/nabo-teimoso_padrao.glb",
+     "variacao": "Teco 43",
+     "kb": 58,
+     "triangulos": 920,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.25,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.089
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "roxo",
+      "humor": "bravo"
+     }
+    },
+    {
+     "arquivo": "criaturas/nabo-teimoso/nabo-teimoso_vina-55.glb",
+     "variacao": "Vina 55",
+     "kb": 58,
+     "triangulos": 920,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.215,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.077
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "rubro",
+      "humor": "bravo"
+     }
+    },
+    {
+     "arquivo": "criaturas/nabo-teimoso/nabo-teimoso_teco-43.glb",
+     "variacao": "Teco 43",
+     "kb": 58,
+     "triangulos": 920,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.25,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 0.089
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "roxo",
+      "humor": "bravo"
      }
     }
    ]
@@ -17588,6 +19226,145 @@
       "cores": "azul",
       "rosto": "feliz",
       "pontas": "uma"
+     }
+    }
+   ]
+  },
+  "elemental-de-areia": {
+   "num": 104,
+   "nome": "Elemental-de-areia",
+   "grupo": "Elementais",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 2,
+   "descricao": "Redemoinho no lugar das pernas; gira.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "deserto",
+       "nome": "Deserto"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Cinzas"
+      },
+      {
+       "chave": "rubra",
+       "nome": "Areia rubra"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "brilho",
+       "nome": "Brilhantes"
+      },
+      {
+       "chave": "ocos",
+       "nome": "Ocos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/elemental-de-areia/elemental-de-areia_padrao.glb",
+     "variacao": "Rufo 53",
+     "kb": 38,
+     "triangulos": 508,
+     "ossos": 8,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.743
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "deserto",
+      "olhos": "brilho"
+     }
+    },
+    {
+     "arquivo": "criaturas/elemental-de-areia/elemental-de-areia_quim-85.glb",
+     "variacao": "Quim 85",
+     "kb": 36,
+     "triangulos": 508,
+     "ossos": 8,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 2.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 3.154
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "rubra",
+      "olhos": "ocos"
+     }
+    },
+    {
+     "arquivo": "criaturas/elemental-de-areia/elemental-de-areia_gaia-85.glb",
+     "variacao": "Gaia 85",
+     "kb": 38,
+     "triangulos": 508,
+     "ossos": 8,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 2.743
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "cinza",
+      "olhos": "brilho"
      }
     }
    ]
@@ -18462,6 +20239,278 @@
       "tamanho": "g",
       "cores": "basalto",
       "musgo": "muito"
+     }
+    }
+   ]
+  },
+  "tempestuoso": {
+   "num": 111,
+   "nome": "Tempestuoso",
+   "grupo": "Elementais",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 5,
+   "descricao": "Tronco de nuvem, braços de raio; voa.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "trovao",
+       "nome": "Trovão"
+      },
+      {
+       "chave": "furia",
+       "nome": "Fúria"
+      },
+      {
+       "chave": "granizo",
+       "nome": "Granizo"
+      }
+     ]
+    },
+    {
+     "chave": "chuva",
+     "nome": "Chuva",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com chuva"
+      },
+      {
+       "chave": "nao",
+       "nome": "Seco"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/tempestuoso/tempestuoso_padrao.glb",
+     "variacao": "Pipo 91",
+     "kb": 41,
+     "triangulos": 780,
+     "ossos": 7,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 6.527
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "trovao",
+      "chuva": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/tempestuoso/tempestuoso_orvo-28.glb",
+     "variacao": "Orvo 28",
+     "kb": 41,
+     "triangulos": 780,
+     "ossos": 7,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 4.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 5.613
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "granizo",
+      "chuva": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/tempestuoso/tempestuoso_fagu-55.glb",
+     "variacao": "Fagu 55",
+     "kb": 38,
+     "triangulos": 672,
+     "ossos": 7,
+     "molas": [
+      "braços"
+     ],
+     "altura_m": 5.75,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 7.505
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "granizo",
+      "chuva": "nao"
+     }
+    }
+   ]
+  },
+  "mercurial": {
+   "num": 112,
+   "nome": "Mercurial",
+   "grupo": "Elementais",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 1.5,
+   "descricao": "Metal líquido que muda de forma; escorre e se ergue.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "mercurio",
+       "nome": "Mercúrio"
+      },
+      {
+       "chave": "ouro",
+       "nome": "Ouro líquido"
+      },
+      {
+       "chave": "cobre",
+       "nome": "Cobre"
+      }
+     ]
+    },
+    {
+     "chave": "forma",
+     "nome": "Forma",
+     "opcoes": [
+      {
+       "chave": "gota",
+       "nome": "Gota"
+      },
+      {
+       "chave": "pilar",
+       "nome": "Pilar"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/mercurial/mercurial_padrao.glb",
+     "variacao": "Dudu 79",
+     "kb": 26,
+     "triangulos": 440,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.352
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "mercurio",
+      "forma": "gota"
+     }
+    },
+    {
+     "arquivo": "criaturas/mercurial/mercurial_bela-25.glb",
+     "variacao": "Bela 25",
+     "kb": 26,
+     "triangulos": 440,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.29,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.163
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "mercurio",
+      "forma": "gota"
+     }
+    },
+    {
+     "arquivo": "criaturas/mercurial/mercurial_rufo-85.glb",
+     "variacao": "Rufo 85",
+     "kb": 26,
+     "triangulos": 440,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.725,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.555
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "mercurio",
+      "forma": "gota"
      }
     }
    ]
@@ -19354,6 +21403,145 @@
       "tamanho": "m",
       "cores": "roxo",
       "tentaculos": "seis"
+     }
+    }
+   ]
+  },
+  "sombra-longa": {
+   "num": 120,
+   "nome": "Sombra-longa",
+   "grupo": "Espectrais",
+   "familia": "H",
+   "voa": false,
+   "tamanho_m": 3,
+   "descricao": "Membros finíssimos; passos longos.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "breu",
+       "nome": "Breu"
+      },
+      {
+       "chave": "roxa",
+       "nome": "Roxa"
+      },
+      {
+       "chave": "cinza",
+       "nome": "Névoa"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "dois",
+       "nome": "Dois"
+      },
+      {
+       "chave": "muitos",
+       "nome": "Muitos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/sombra-longa/sombra-longa_padrao.glb",
+     "variacao": "Fagu 27",
+     "kb": 92,
+     "triangulos": 1252,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.817,
+      "Correr": 6.966
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "breu",
+      "olhos": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/sombra-longa/sombra-longa_fagu-27.glb",
+     "variacao": "Fagu 27",
+     "kb": 92,
+     "triangulos": 1252,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 1.817,
+      "Correr": 6.966
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "breu",
+      "olhos": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/sombra-longa/sombra-longa_lua-88.glb",
+     "variacao": "Lua 88",
+     "kb": 92,
+     "triangulos": 1252,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 3.45,
+     "animacoes": [
+      "Parado",
+      "Andar",
+      "Correr",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Andar": 2.089,
+      "Correr": 8.011
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "breu",
+      "olhos": "dois"
      }
     }
    ]
@@ -21721,6 +23909,139 @@
     }
    ]
   },
+  "bau-mordedor": {
+   "num": 137,
+   "nome": "Baú-mordedor",
+   "grupo": "Estranhos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 1,
+   "descricao": "Baú com pernas, língua e dentes; corre e morde.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "carvalho",
+       "nome": "Carvalho"
+      },
+      {
+       "chave": "ebano",
+       "nome": "Ébano"
+      },
+      {
+       "chave": "pinho",
+       "nome": "Pinho"
+      }
+     ]
+    },
+    {
+     "chave": "ferragens",
+     "nome": "Ferragens",
+     "opcoes": [
+      {
+       "chave": "ouro",
+       "nome": "Ouro"
+      },
+      {
+       "chave": "ferro",
+       "nome": "Ferro"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/bau-mordedor/bau-mordedor_padrao.glb",
+     "variacao": "Rufo 63",
+     "kb": 41,
+     "triangulos": 736,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.601
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "carvalho",
+      "ferragens": "ouro"
+     }
+    },
+    {
+     "arquivo": "criaturas/bau-mordedor/bau-mordedor_dudu-41.glb",
+     "variacao": "Dudu 41",
+     "kb": 40,
+     "triangulos": 736,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.691
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ebano",
+      "ferragens": "ferro"
+     }
+    },
+    {
+     "arquivo": "criaturas/bau-mordedor/bau-mordedor_dudu-41-2.glb",
+     "variacao": "Dudu 41",
+     "kb": 40,
+     "triangulos": 736,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.691
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "ebano",
+      "ferragens": "ferro"
+     }
+    }
+   ]
+  },
   "olho-aranha": {
    "num": 138,
    "nome": "Olho-aranha",
@@ -22586,6 +24907,145 @@
       "tamanho": "g",
       "cores": "latao",
       "cabeca": "caixa"
+     }
+    }
+   ]
+  },
+  "livro-voador": {
+   "num": 144,
+   "nome": "Livro-voador",
+   "grupo": "Constructos",
+   "familia": "B",
+   "voa": false,
+   "tamanho_m": 0.3,
+   "descricao": "Páginas como asas; voa batendo as páginas.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "grimorio",
+       "nome": "Grimório"
+      },
+      {
+       "chave": "tomo",
+       "nome": "Tomo azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Herbário"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "sim",
+       "nome": "Com olhos"
+      },
+      {
+       "chave": "nao",
+       "nome": "Sem olhos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/livro-voador/livro-voador_padrao.glb",
+     "variacao": "Tula 27",
+     "kb": 31,
+     "triangulos": 232,
+     "ossos": 7,
+     "molas": [
+      "fita"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 0.732
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "grimorio",
+      "olhos": "sim"
+     }
+    },
+    {
+     "arquivo": "criaturas/livro-voador/livro-voador_nix-36.glb",
+     "variacao": "Nix 36",
+     "kb": 29,
+     "triangulos": 100,
+     "ossos": 7,
+     "molas": [
+      "fita"
+     ],
+     "altura_m": 0.3,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 0.732
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "tomo",
+      "olhos": "nao"
+     }
+    },
+    {
+     "arquivo": "criaturas/livro-voador/livro-voador_luz-67.glb",
+     "variacao": "Luz 67",
+     "kb": 29,
+     "triangulos": 100,
+     "ossos": 7,
+     "molas": [
+      "fita"
+     ],
+     "altura_m": 0.258,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Comemorar"
+     ],
+     "velocidades": {
+      "Mover": 0.629
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "verde",
+      "olhos": "nao"
      }
     }
    ]
