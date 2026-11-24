@@ -175,7 +175,7 @@ export const ESPECIES = {
       canela: { n: 'Canela', pele: '#a8683a', claro: '#e0b080', asa: '#b88050', asa2: '#f0e0c0' }, cinza: { n: 'Cinzento', pele: '#7a7672', claro: '#b8b2aa', asa: '#8a8680', asa2: '#e0dcd4' } }),
       asas: { n: 'Asas', o: [P_('coruja', 'De coruja'), P_('morcego', 'De morcego'), P_('mariposa', 'De mariposa')] }, peito: { n: 'Peito', o: [P_('penas', 'Penas'), P_('liso', 'Liso')] } },
     base: { cores: 'pardo', asas: 'coruja', peito: 'penas' },
-    receita: c => ({ torso: 'urso', head: { tipo: 'urso' }, asas: c.asas, extras: c.peito === 'penas' ? ['penas-peito'] : [], bracos: 'grosso', pe: 'pata', cauda: 'urso', flap: 1.6, pesado: true, k: { x: 1.25, y: 1 } }) },
+    receita: c => ({ torso: 'urso', head: { tipo: 'urso' }, asas: c.asas, extras: c.peito === 'penas' ? ['penas-peito'] : [], bracos: 'grosso', pe: 'pata', cauda: 'urso', flap: 1.6, pesado: true, k: { x: 1.25, y: 1 }, v2: true }) },
   'ursinho-mariposa': { num: 26, nome: 'Ursinho-mariposa', grupo: 'Híbridos alados', fam: 'A', tam: 1.0, voa: true, desc: 'Urso fofo com asas e antenas de mariposa; voo pesado e lento.',
     cats: { cores: pal({ creme: { n: 'Creme', pele: '#e0c8a0', claro: '#f8ecd8', asa: '#c8b8e0', asa2: '#8a78b0' }, mel: { n: 'Mel', pele: '#c8903a', claro: '#f0d090', asa: '#f0d8a0', asa2: '#a8783a' },
       lua: { n: 'Lua', pele: '#c8ccd8', claro: '#f0f2f8', asa: '#a8e0c8', asa2: '#5a9a88' }, rosa: { n: 'Rosa', pele: '#d8a8b0', claro: '#f8e0e4', asa: '#f8c8e0', asa2: '#c87898' } }),
@@ -246,7 +246,7 @@ const ESP_C = {
       neve: { n: 'Neve', pele: '#e8e8ec', claro: '#ffffff', escuro: '#9a9aa4', asa: '#d8d8e0', asa2: '#8a8a98' }, noite: { n: 'Noite', pele: '#3a3a44', claro: '#8a8a96', escuro: '#1a1a20', asa: '#2a2a32', asa2: '#6a6a7a' } }),
       padrao: PAD, asas: { n: 'Asas', o: [P_('ave', 'De falcão'), P_('morcego', 'De morcego')] } },
     base: { cores: 'cinza', padrao: 'liso', asas: 'ave' },
-    receita: c => ({ corpo: { L: 0.85, R: 0.15, H: 0.42, pesc: 0.16 }, cabeca: { tipo: 'canino', orelhas: 'pontuda' }, cauda: 'peluda', asas: c.asas, pe: 'garra', pelagem: c.padrao, flap: 2.6 }) },
+    receita: c => ({ corpo: { L: 0.85, R: 0.15, H: 0.42, pesc: 0.16 }, cabeca: { tipo: 'canino', orelhas: 'pontuda' }, cauda: 'peluda', asas: c.asas, pe: 'garra', pelagem: c.padrao, flap: 2.6, v2: true }) },
   'gato-morcego': { num: 28, nome: 'Gato-morcego', grupo: 'Híbridos alados', fam: 'C', tam: 0.45, voa: true, desc: 'Asas de membrana, orelhas enormes; pendura-se de cabeça para baixo.',
     cats: { cores: pal({ preto: { n: 'Preto', pele: '#2a2628', claro: '#5a5458', escuro: '#141214', asa: '#3a3036', olho: '#f0d040' }, cinza: { n: 'Cinza', pele: '#7a7a80', claro: '#c8c8cc', escuro: '#3a3a40', asa: '#5a5058', olho: '#80e040' },
       laranja: { n: 'Laranja', pele: '#d88a3a', claro: '#f8e0c0', escuro: '#8a4a1a', asa: '#8a4a3a', olho: '#40c0f0' }, branco: { n: 'Branco', pele: '#ece8e4', claro: '#ffffff', escuro: '#a8a4a0', asa: '#d8b8c0', olho: '#4080f0' } }),
@@ -415,7 +415,7 @@ const ESP_D = {
       safira: { n: 'Safira', pele: '#1a2a6a', claro: '#4a80f0', escuro: '#0a1230', extra: '#22242a', asa: '#d8e0f8' }, rubi: { n: 'Rubi', pele: '#6a1a24', claro: '#f04a60', escuro: '#2a0a10', extra: '#2a2224', asa: '#f8e0e4' } }),
       chifre: { n: 'Chifre', o: [P_('rinoceronte', 'Rinoceronte'), P_('pinca', 'Pinça de veado'), P_('tridente', 'Três pontas')] } },
     base: { cores: 'esmeralda', chifre: 'rinoceronte' },
-    receita: c => ({ pares: 3, corpo: 'besouro', cabeca: 'besouro', chifre: c.chifre, asas: 'besouro', metal: true, perna: 0.55, flap: 9 }) },
+    receita: c => ({ pares: 3, corpo: 'besouro', cabeca: 'besouro', chifre: c.chifre, asas: 'besouro', metal: true, perna: 0.55, flap: 9, v2: true }) },
   'aranha-tapeceira': { num: 66, nome: 'Aranha-tapeceira', grupo: 'Insetos', fam: 'D', tam: 0.9, desc: '8 patas, abdômen com desenho de tapete; sobe paredes.',
     cats: { cores: pal({ persa: { n: 'Persa', pele: '#5a2a24', claro: '#e0b060', escuro: '#2a1210', extra: '#2a4a8a' }, oasis: { n: 'Oásis', pele: '#1e4a4a', claro: '#e8d090', escuro: '#0e2424', extra: '#c84a3a' },
       noite: { n: 'Noite', pele: '#2a2438', claro: '#c8b0f0', escuro: '#121018', extra: '#e8c040' } }),
@@ -854,7 +854,7 @@ function ik(b1, b2, b3, target, pole, l1, l2, qEnd) {
 
 // ======================================================================= montagem comum
 function makeKit(Mv) {
-  const PARTS = [[], [], [], []]; let partN = 0, BI = {};
+  const PARTS = [[], [], [], []]; let partN = 0, BI = {}; const cfC = new THREE.Color();
   function add(g, o) {
     if (o.pre) o.pre(g);                                      // deformação no espaço da própria peça (antes de posicionar)
     g.applyMatrix4(new THREE.Matrix4().compose(V3(...(o.pos || [0, 0, 0])),
@@ -874,7 +874,8 @@ function makeKit(Mv) {
     for (let f = 0; f < n / 3; f++) {
       const cx = p.getX(f * 3) + p.getX(f * 3 + 1) + p.getX(f * 3 + 2), cy = p.getY(f * 3) + p.getY(f * 3 + 1) + p.getY(f * 3 + 2);
       const k = 1 + hash3(cx * 13.1 + partN, cy * 17.3, f * 0.37)[0] * vary;
-      for (let j = 0; j < 3; j++) { const i = (f * 3 + j) * 3; col[i] = base.r * k; col[i + 1] = base.g * k; col[i + 2] = base.b * k; }
+      const bc = o.cf ? cfC.set(o.cf(cx / 3, cy / 3, (p.getZ(f * 3) + p.getZ(f * 3 + 1) + p.getZ(f * 3 + 2)) / 3)) : base;   // cor por região (v2)
+      for (let j = 0; j < 3; j++) { const i = (f * 3 + j) * 3; col[i] = bc.r * k; col[i + 1] = bc.g * k; col[i + 2] = bc.b * k; }
     }
     const tmp = new THREE.Vector3();
     for (let i = 0; i < n; i++) {
@@ -970,7 +971,7 @@ function finish(kit, skel, chains, name, clipdefs, applyPose, extra) {
 
 // ======================================================================= FAMÍLIA A — bípede pequeno (asas opcionais)
 function forgeA(id, S, cfg) {
-  const R = { torso: 'fada', head: { tipo: 'humano' }, asas: null, pernas: 'pernas', pe: 'sapato', bracos: 'fino', cauda: null, antenas: false, extras: [], mao: 'nada', saia: true, flap: 8, k: { x: 1, y: 1 }, ...S.receita(cfg) };
+  const R = { torso: 'fada', head: { tipo: 'humano' }, asas: null, pernas: 'pernas', pe: 'sapato', bracos: 'fino', cauda: null, antenas: false, extras: [], mao: 'nada', saia: true, flap: 8, k: { x: 1, y: 1 }, ...S.receita(cfg) }; if (cfg._v1) R.v2 = false;   // _v1: versão antiga, para comparar
   const COL = S.cats.cores.cor[cfg.cores];
   const C = { pele: COL.pele || COL.agua || '#e0c8b0', roupa: COL.roupa || hex(COL.pele || '#a08070', 0.8), cab: COL.cab || COL.barba || '#6a4a2a', asa: COL.asa || '#c8d8e8',
     brilho: COL.brilho || '#ffe070', olho: COL.olho || '#1b1712', claro: COL.claro || hex(COL.pele || '#c0a080', 1.25), asa2: COL.asa2 || hex(COL.asa || '#c8d8e8', 0.6), ...COL };
@@ -980,7 +981,7 @@ function forgeA(id, S, cfg) {
   const kx = R.k.x, ky = R.k.y, kz = 1 + (kx - 1) * 0.6;
   const Mv = v => V3(v.x * kx, v.y * ky, v.z * kz);
   const HEAD0 = V3(0, 0.78, 0), hs = urso ? 1.0 : 1;
-  const kit = makeKit(Mv), { add, G } = kit;
+  const kit = makeKit(Mv), { add: addK, G } = kit; let add = addK;
   const HA = [HEAD0, hs], HD = { anc: HA };
   const legless = R.pernas === 'fumaca';
 
@@ -1022,6 +1023,7 @@ function forgeA(id, S, cfg) {
   const torsoW = p => p.y > 0.6 ? [['Chest', 1]] : p.y > 0.44 ? [['Spine', 1]] : [['Hips', 1]];
   const skinMat = R.torso === 'agua' ? 3 : 0, pedra = !!R.pedra, J = pedra ? 0.01 : 0.004;
 
+  const v2u = !!R.v2 && urso; if (v2u) { esculpirUrso({ add: addK, G, R, C, REST, kx, ky, kz, HD, HC: 0.92 }); add = () => {}; }   // escultura nova do urso
   // ---------- tronco
   if (R.torso === 'fada' || R.torso === 'agua') {
     const cC = R.torso === 'agua' ? C.pele : C.roupa;
@@ -1322,7 +1324,9 @@ function forgeA(id, S, cfg) {
       }
     }
   }
+  if (v2u) add = R.asas === 'coruja' ? () => {} : addK;   // outras asas continuam as antigas
   if (R.asas) for (const [s, L] of [[1, '_L'], [-1, '_R']]) wing(L, s, R.asas);
+  if (v2u) add = () => {};
 
   // ---------- na mão
   {
@@ -1648,6 +1652,225 @@ function forgeB(id, S, cfg) {
   return P0;
 }
 
+// ======================================================================= ESCULTURA v2 (formas orgânicas: loft, pesos por segmento, cor por região)
+// loft: tubo por um caminho suave, com seção elíptica [rx (lado), ry (cima)] que varia ao longo; tampas nas pontas
+function loftGeo(path, prof, seg = 8, nS = 10, opt = {}) {
+  const curve = new THREE.CatmullRomCurve3(path.map(p => V3(...p)), false, 'centripetal');
+  const pr = t => { const f = t * (prof.length - 1), i = Math.min(prof.length - 2, Math.floor(f)), u = f - i, a = prof[i], b = prof[i + 1], s = u * u * (3 - 2 * u);
+    return [a[0] + (b[0] - a[0]) * s, (a[1] ?? a[0]) + ((b[1] ?? b[0]) - (a[1] ?? a[0])) * s]; };
+  const pos = [], idx = []; let up = opt.up ? V3(...opt.up) : V3(0, 1, 0);
+  for (let i = 0; i <= nS; i++) {
+    const t = i / nS, c = curve.getPoint(t), T = curve.getTangent(t).normalize();
+    let U = up.clone().addScaledVector(T, -up.dot(T)); if (U.lengthSq() < 1e-6) U = V3(0, 0, 1).addScaledVector(T, -T.z); U.normalize(); up = U;
+    const Bn = new THREE.Vector3().crossVectors(T, U).normalize(), [rx, ry] = pr(t);
+    for (let k = 0; k < seg; k++) { const a = k / seg * Math.PI * 2 + (opt.rot || 0); pos.push(...c.clone().addScaledVector(Bn, Math.cos(a) * rx).addScaledVector(U, Math.sin(a) * ry).toArray()); }
+  }
+  for (let i = 0; i < nS; i++) for (let k = 0; k < seg; k++) { const a = i * seg + k, b = i * seg + (k + 1) % seg, c = (i + 1) * seg + k, d = (i + 1) * seg + (k + 1) % seg; idx.push(a, c, b, b, c, d); }
+  const p0 = curve.getPoint(0), p1 = curve.getPoint(1), i0 = pos.length / 3; pos.push(...p0.toArray()); const i1 = i0 + 1; pos.push(...p1.toArray());
+  for (let k = 0; k < seg; k++) { idx.push(i0, k, (k + 1) % seg); idx.push(i1, nS * seg + (k + 1) % seg, nS * seg + k); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); return g;
+}
+// pesos por segmentos de osso: o mais perto manda, perto da junta mistura (soft = largura da mistura)
+function segsW(segs, soft = 0.02) {
+  const S = segs.map(([n, a, b]) => [n, V3(...a), V3(...b)]);
+  return p => { const ds = S.map(([n, a, b]) => { const ab = b.clone().sub(a), t = clamp(p.clone().sub(a).dot(ab) / Math.max(1e-9, ab.lengthSq()), 0, 1); return [n, p.distanceTo(a.clone().addScaledVector(ab, t))]; });
+    const dm = Math.min(...ds.map(d => d[1])); return ds.map(([n, d]) => [n, Math.exp(-(d - dm) / soft)]).filter(w => w[1] > 0.04); };
+}
+// pena: forma pontuda no plano XY, comprimento para −Y a partir da raiz (0,0)
+function penaGeo(G, w, l, d = 0.008) { return G.slab([[0, 0], [w * 0.5, -l * 0.12], [w * 0.46, -l * 0.7], [w * 0.12, -l * 0.97], [0, -l], [-w * 0.3, -l * 0.9], [-w * 0.5, -l * 0.6], [-w * 0.45, -l * 0.12]], d); }
+const lerpC = (a, b, t) => '#' + new THREE.Color(a).lerp(new THREE.Color(b), clamp(t, 0, 1)).getHexString();
+
+// quadrúpede v2: corpo em loft (peito fundo, cintura, anca), ombros e ancas musculosos, pernas que afinam até a pata,
+// cabeça canina esculpida, gola de pelo, cauda peluda, asas de falcão com penas em camadas e barras
+function esculpirC(K) {
+  const { add, G, R, C, L, Rb, yb, zr, zc, yj, fy, xf, xb, zf, zbk, nb, hp, frontUp, bodyW, neckW, REST, chains } = K;
+  const HB = (x, y, z) => [x, hp[1] + y, hp[2] + z];
+  const pele = C.pele, claro = C.claro, esc = C.escuro, dorso = lerpC(pele, esc, 0.35);
+  // ---------- corpo
+  const zm = (zr + zc) / 2;
+  add(loftGeo([[0, yb + 0.005, zr - Rb * 0.95], [0, yb + 0.02, zr - Rb * 0.35], [0, yb + 0.035, zm - 0.02], [0, yb - 0.005, zc - Rb * 0.25], [0, yb + 0.0, zc + Rb * 0.45], [0, yb + 0.05, zc + Rb * 1.0]],
+    [[0.35 * Rb, 0.4 * Rb], [0.86 * Rb, 0.88 * Rb], [0.72 * Rb, 0.74 * Rb], [0.9 * Rb, 1.06 * Rb], [0.8 * Rb, 0.98 * Rb], [0.42 * Rb, 0.5 * Rb]], 10, 12),
+    { c: pele, b: bodyW, jit: 0.003, vary: 0.06, cf: (x, y, z) => y < yb - Rb * 0.38 || (z > zc && y < yb + Rb * 0.1) ? claro : y > yb + Rb * 0.7 ? dorso : pele });
+  // ombros e ancas (massa que dá cara de bicho)
+  for (const [s, L2] of [[1, '_L'], [-1, '_R']]) {
+    add(G.sph(1, 8, 6), { c: pele, b: p => [['Chest', 0.55], ['FrontUpLeg' + L2, 0.45]], pos: [s * xf * 0.8, yj + frontUp + Rb * 0.25, zf - 0.01], scl: [0.4 * Rb, 0.8 * Rb, 0.55 * Rb], jit: 0.003, cf: (x, y) => y > yb + Rb * 0.5 ? dorso : pele });
+    add(G.sph(1, 8, 6), { c: pele, b: p => [['Hips', 0.5], ['BackUpLeg' + L2, 0.5]], pos: [s * xb * 0.85, yj + Rb * 0.3, zbk + 0.02], scl: [0.44 * Rb, 0.78 * Rb, 0.7 * Rb], jit: 0.003, cf: (x, y) => y > yb + Rb * 0.5 ? dorso : pele });
+  }
+  // ---------- pescoço + gola de pelo
+  add(loftGeo([[0, yb + 0.0, zc + Rb * 0.55], [0, nb[1] - 0.005, nb[2]], [0, hp[1] - 0.035, hp[2] - 0.05]], [[0.72 * Rb, 0.86 * Rb], [0.56 * Rb, 0.66 * Rb], [0.48 * Rb, 0.52 * Rb]], 9, 6),
+    { c: pele, b: neckW, jit: 0.003, cf: (x, y, z) => { const t = clamp((z - nb[2]) / (hp[2] - nb[2]), -1, 1), cy = nb[1] + (hp[1] - nb[1]) * t; return y < cy - Rb * 0.18 ? claro : y > cy + Rb * 0.35 ? dorso : pele; } });
+  for (let i = 0; i < 14; i++) { const a = (i / 14) * Math.PI * 2, d = V3(Math.cos(a), Math.sin(a) * 0.9 + 0.1, -0.9).normalize(), r = Rb * 0.62;
+    const c0 = V3(0, nb[1] - 0.01, nb[2] + 0.005).add(V3(Math.cos(a) * r, Math.sin(a) * r * 1.05, 0));
+    add(G.cone(Rb * 0.16, Rb * 0.55, 4), { c: Math.sin(a) < -0.2 ? claro : i % 2 ? pele : dorso, b: neckW, pos: c0.toArray(), pre: g => { g.translate(0, Rb * 0.2, 0); g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(_Y, d)); }, jit: 0.002 }); }
+  // ---------- pernas (coxa grossa → canela fina → pata); dianteiras de falcão quando pe = 'garra'
+  const amarelo = '#d8a838';
+  for (const [s, L2] of [[1, '_L'], [-1, '_R']]) for (const fr of [true, false]) {
+    const P = fr ? 'Front' : 'Back', x = s * (fr ? xf : xb), z = fr ? zf : zbk, top = (fr ? yj + frontUp : yj), kn = (top + fy) / 2;
+    const W = segsW([[P + 'UpLeg' + L2, [x, top + 0.04, z], [x, kn, z]], [P + 'Leg' + L2, [x, kn, z], [x, fy, z]]], 0.012), falc = fr && R.pe === 'garra';
+    add(loftGeo([[x, top + 0.03, z + (fr ? 0.005 : -0.01)], [x, top - (top - kn) * 0.45, z + (fr ? 0.0 : -0.012)], [x, kn + 0.01, z]], [[0.46 * Rb, 0.52 * Rb], [0.38 * Rb, 0.44 * Rb], [0.21 * Rb, 0.24 * Rb]], 8, 6),
+      { c: pele, b: W, jit: 0.003, cf: (px, py) => py > top - 0.02 ? (fr ? pele : pele) : pele });
+    add(loftGeo([[x, kn + 0.015, z], [x, (kn + fy) / 2, z + (fr ? 0.004 : -0.006)], [x, fy + 0.02, z]], [[0.21 * Rb, 0.23 * Rb], [0.15 * Rb, 0.16 * Rb], [0.14 * Rb, 0.15 * Rb]], 7, 5),
+      { c: falc ? amarelo : lerpC(pele, esc, 0.25), b: W, jit: 0.002, cf: falc ? (px, py) => Math.floor((py - fy) / (Rb * 0.18)) % 2 ? amarelo : lerpC(amarelo, '#7a5a18', 0.35) : null });
+    if (falc) {   // calça de penas no joelho + garras de falcão
+      for (let i = 0; i < 7; i++) { const a = (i / 7) * Math.PI * 2; add(penaGeo(G, Rb * 0.32, Rb * 0.55, 0.006), { c: i % 2 ? pele : claro, b: W, pos: [x + Math.cos(a) * Rb * 0.2, kn + 0.02, z + Math.sin(a) * Rb * 0.2], rot: [0, -a / D2R + 90, 0], pre: g => g.rotateX(0.35), jit: 0.001 }); }
+      for (const [dx, dz, ln] of [[-0.03, 0.05, 1], [0, 0.06, 1.15], [0.03, 0.05, 1], [0, -0.04, 0.6]]) { const t0 = [x, fy, z], t1 = [x + dx * Rb / 0.15, 0.012, z + dz * ln * Rb / 0.15];
+        add(G.tube(t0, t1, Rb * 0.09, Rb * 0.06, 5), { c: amarelo, b: P + 'Foot' + L2, jit: 0.001 });
+        add(G.cone(Rb * 0.05, Rb * 0.22, 4), { c: '#1e1a16', b: P + 'Foot' + L2, pos: [t1[0] + dx * 0.25, 0.012, t1[2] + Math.sign(dz) * Rb * 0.08], rot: [Math.sign(dz) * 100, 0, 0], jit: 0 }); }
+    } else {      // pata redonda com dedos e unhas
+      add(G.sph(1, 8, 5), { c: lerpC(pele, esc, 0.3), b: P + 'Foot' + L2, pos: [x, fy - 0.01, z + Rb * 0.18], scl: [0.32 * Rb, 0.2 * Rb, 0.42 * Rb], jit: 0.002 });
+      for (const dx of [-0.6, -0.2, 0.2, 0.6]) { add(G.sph(Rb * 0.1, 6, 4), { c: lerpC(pele, esc, 0.35), b: P + 'Foot' + L2, pos: [x + dx * Rb * 0.4, fy - 0.012, z + Rb * 0.5], jit: 0 });
+        add(G.cone(Rb * 0.035, Rb * 0.1, 4), { c: '#2a2420', b: P + 'Foot' + L2, pos: [x + dx * Rb * 0.42, fy - 0.02, z + Rb * 0.6], rot: [100, 0, 0], jit: 0 }); }
+    }
+  }
+  // ---------- cabeça canina
+  add(G.sph(1, 10, 8), { c: pele, b: 'Head', pos: HB(0, 0.012, -0.005), scl: [0.6 * Rb, 0.52 * Rb, 0.64 * Rb], jit: 0.002, cf: (x, y) => y > hp[1] + 0.03 ? dorso : pele });
+  add(loftGeo([HB(0, 0.0, 0.035), HB(0, -0.012, 0.11), HB(0, -0.02, 0.165)], [[0.42 * Rb, 0.36 * Rb], [0.3 * Rb, 0.25 * Rb], [0.19 * Rb, 0.16 * Rb]], 8, 5),
+    { c: pele, b: 'Head', jit: 0.002, cf: (x, y, z) => y < hp[1] - 0.012 - (z - hp[2]) * 0.1 ? claro : pele });
+  add(loftGeo([HB(0, -0.04, 0.03), HB(0, -0.045, 0.1), HB(0, -0.038, 0.145)], [[0.3 * Rb, 0.14 * Rb], [0.2 * Rb, 0.1 * Rb], [0.12 * Rb, 0.07 * Rb]], 7, 4), { c: claro, b: 'Head', jit: 0.002 });
+  add(G.sph(1, 7, 5), { c: '#1c1816', b: 'Head', pos: HB(0, -0.01, 0.172), scl: [0.13 * Rb, 0.09 * Rb, 0.09 * Rb], jit: 0 });
+  for (const s of [1, -1]) {
+    add(G.box(0.004, 0.003, 0.07), { c: '#2a1c18', b: 'Head', pos: HB(s * 0.03, -0.034, 0.115), rot: [0, s * 9, 0], jit: 0 });                 // boca
+    add(G.sph(1, 7, 5), { c: '#e0a030', b: 'Head', pos: HB(s * 0.046, 0.03, 0.068), scl: [0.016, 0.012, 0.008], rot: [0, s * 30, s * -12], jit: 0, vary: 0 });   // olho âmbar amendoado
+    add(G.sph(1, 6, 4), { c: '#120e0c', b: 'Head', pos: HB(s * 0.05, 0.03, 0.072), scl: [0.008, 0.009, 0.005], rot: [0, s * 30, 0], jit: 0, vary: 0 });
+    add(G.box(0.006, 0.006, 0.004), { c: '#fff6e0', b: 'Head', pos: HB(s * 0.047, 0.036, 0.077), jit: 0, vary: 0 });
+    add(G.box(0.04, 0.012, 0.022), { c: dorso, b: 'Head', pos: HB(s * 0.044, 0.047, 0.064), rot: [10, s * 28, s * -16], jit: 0.001 });            // sobrancelha
+    for (let i = 0; i < 3; i++) add(G.cone(Rb * 0.12, Rb * 0.42, 4), { c: i ? claro : pele, b: 'Head', pos: HB(s * (0.06 + i * 0.006), -0.02 - i * 0.012, -0.01 - i * 0.008), rot: [-70 - i * 8, 0, s * (-60 - i * 10)], jit: 0.001 });   // bochecha de pelo
+    const ear = G.slab([[-0.032, 0], [0.032, 0], [0.004, 0.11]], 0.012), inner = G.slab([[-0.018, 0.008], [0.018, 0.008], [0.003, 0.075]], 0.004);
+    for (const [g, c, dz] of [[ear, pele, 0], [inner, '#c89a8a', 0.008]]) add(g, { c: g === ear ? dorso : c, b: 'Head', pos: HB(s * 0.042, 0.05, -0.025 + dz), rot: [-12, s * -18, s * -14], jit: 0.001 });
+  }
+  // ---------- cauda peluda (ponta clara)
+  const tail = chains.find(c => c.name === 'Tail');
+  if (tail) { const pts = tail.pts, tw = chainW(tail), L0 = V3(...pts[0]), Ltot = pts.reduce((s, p, i) => i ? s + V3(...p).distanceTo(V3(...pts[i - 1])) : 0, 0);
+    add(loftGeo([[0, pts[0][1] + 0.01, pts[0][2] + 0.05], ...pts], [[0.3 * Rb], [0.42 * Rb, 0.4 * Rb], [0.55 * Rb, 0.5 * Rb], [0.45 * Rb, 0.42 * Rb], [0.12 * Rb]], 8, 12),
+      { c: pele, b: tw, jit: 0.004, vary: 0.09, cf: (x, y, z) => { const d = V3(x, y, z).distanceTo(L0) / Ltot; return d > 0.78 ? claro : y > pts[0][1] + 0.01 && d < 0.6 ? dorso : pele; } }); }
+  // ---------- asas de falcão: braço + 2 fileiras de coberteiras + secundárias + primárias com barras
+  if (R.asas === 'ave') for (const [s, L2] of [[1, '_L'], [-1, '_R']]) {
+    const A = REST['WingA' + L2].toArray(), Bw = REST['WingB' + L2].toArray(), span = L * (R.pesado ? 0.75 : 0.65), col = C.asa, col2 = C.asa2, bar = lerpC(col, '#000000', 0.35);
+    add(loftGeo([A, V3(...A).lerp(V3(...Bw), 0.5).add(V3(0, 0.01, 0)).toArray(), Bw], [[span * 0.045, span * 0.03], [span * 0.038, span * 0.026], [span * 0.028, span * 0.02]], 7, 6), { c: lerpC(col, C.pele, 0.4), b: 'WingA' + L2, jit: 0.001 });
+    const AB = V3(...Bw).sub(V3(...A)), ang = Math.atan2(AB.y, AB.x * s);
+    for (let i = 0; i < 9; i++) { const u = (i + 0.5) / 9, p0 = V3(...A).lerp(V3(...Bw), u);                                                      // secundárias
+      add(penaGeo(G, span * 0.15, span * (0.5 - u * 0.1)), { c: col, b: 'WingA' + L2, pos: [p0.x, p0.y, p0.z - 0.006 - i * 0.0015], rot: [0, 0, s * (6 + u * 14)], jit: 0.001,
+        cf: (x, y) => { const d = (p0.y - y) / (span * 0.5); return d > 0.72 ? col2 : Math.floor(d * 7) % 2 ? bar : col; } }); }
+    for (let r = 0; r < 2; r++) for (let i = 0; i < 7; i++) { const u = (i + 0.5) / 7, p0 = V3(...A).lerp(V3(...Bw), u);                     // coberteiras
+      add(penaGeo(G, span * 0.13, span * (0.2 - r * 0.06), 0.009), { c: r ? lerpC(col, col2, 0.2) : col, b: 'WingA' + L2, pos: [p0.x, p0.y + 0.004 - r * span * 0.08, p0.z + 0.002 + r * 0.002], rot: [0, 0, s * (4 + u * 8)], jit: 0.001 }); }
+    for (let i = 0; i < 6; i++) { const a = -s * (8 + i * 17) + ang / D2R * s * 0, len = span * (0.82 - i * 0.06);                               // primárias em leque
+      add(penaGeo(G, span * 0.14, len), { c: col, b: 'WingB' + L2, pos: [Bw[0] - s * i * span * 0.012, Bw[1], Bw[2] - 0.008 - i * 0.002], rot: [0, 0, s * (90 - 6) - s * i * 15 + s * 0], jit: 0.001,
+        cf: (x, y, z) => { const d = Math.hypot(x - Bw[0], y - Bw[1]) / len; return d > 0.8 ? col2 : Math.floor(d * 8) % 2 ? bar : col; } }); }
+  }
+}
+
+// urso alado v2: tronco em pera com corcova, cabeça de urso esculpida, braços e pernas grossos com patas e garras, peito de penas e asas de coruja em camadas
+function esculpirUrso(K) {
+  const { add, G, R, C, REST, kx, ky, kz, HD, HC } = K;
+  const pele = C.pele, claro = C.claro, esc = hex(pele, 0.62), dorso = lerpC(pele, esc, 0.3), garra = '#e8dcc0';
+  const TW = segsW([['Hips', [0, 0.28, 0], [0, 0.45, 0]], ['Spine', [0, 0.45, 0], [0, 0.6, 0]], ['Chest', [0, 0.6, 0], [0, 0.8, 0]]], 0.03);
+  // ---------- tronco
+  add(loftGeo([[0, 0.29, 0.0], [0, 0.4, 0.012], [0, 0.53, 0.005], [0, 0.66, -0.012], [0, 0.765, -0.03]], [[0.13, 0.11], [0.205, 0.19], [0.2, 0.185], [0.19, 0.16], [0.11, 0.095]], 11, 10),
+    { c: pele, b: TW, jit: 0.004, vary: 0.08, cf: (x, y, z) => z > 0.07 && y > 0.33 && y < 0.6 && Math.abs(x) < 0.13 ? claro : z < -0.08 && y > 0.55 ? dorso : pele });
+  add(G.sph(1, 9, 6), { c: dorso, b: 'Chest', pos: [0, 0.72, -0.07], scl: [0.15, 0.09, 0.11], jit: 0.003 });                     // corcova
+  if (R.extras.includes('penas-peito')) for (let r = 0; r < 4; r++) for (let i = 0; i < 5 - (r % 2); i++) {                     // peito de penas de coruja
+    const x = (i - (4 - (r % 2)) / 2) * 0.045, y = 0.72 - r * 0.045, z = 0.15 - r * 0.004 + (0.03 - Math.abs(x) * 0.25);
+    add(penaGeo(G, 0.05, 0.065, 0.006), { c: r % 2 ? claro : lerpC(claro, C.asa2 || claro, 0.5), b: 'Chest', pos: [x, y, z], rot: [-12, x * 120, 0], jit: 0.001 }); }
+  // ---------- pernas: coxa grossa, canela, pata com almofada e garras
+  for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const x = s * 0.11;
+    const W = segsW([['UpLeg' + L, [x, 0.4, 0], [x, 0.22, 0]], ['Leg' + L, [x, 0.22, 0], [x, 0.07, 0]]], 0.02);
+    add(loftGeo([[x * 0.85, 0.42, 0.0], [x * 1.05, 0.33, 0.01], [x, 0.22, 0.005]], [[0.1, 0.11], [0.105, 0.11], [0.072, 0.075]], 9, 6), { c: pele, b: W, jit: 0.004, vary: 0.08 });
+    add(loftGeo([[x, 0.23, 0.005], [x, 0.15, 0.0], [x, 0.075, 0.0]], [[0.072, 0.075], [0.066, 0.068], [0.07, 0.07]], 8, 5), { c: lerpC(pele, esc, 0.2), b: W, jit: 0.003 });
+    add(G.sph(1, 9, 6), { c: lerpC(pele, esc, 0.25), b: 'Foot' + L, pos: [x, 0.045, 0.035], scl: [0.085, 0.05, 0.11], jit: 0.003 });
+    add(G.sph(1, 7, 4), { c: '#3a2c26', b: 'Foot' + L, pos: [x, 0.004, 0.04], scl: [0.06, 0.012, 0.075], jit: 0 });
+    for (const dx of [-0.045, -0.015, 0.015, 0.045]) add(G.cone(0.01, 0.035, 4), { c: garra, b: 'Foot' + L, pos: [x + dx, 0.02, 0.15], rot: [100, 0, 0], jit: 0 }); }
+  // ---------- braços: ombro, braço com músculo, antebraço, pata com garras grandes
+  for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const x = s * 0.23;
+    const W = segsW([['UpperArm' + L, [x, 0.73, 0], [x, 0.57, 0]], ['ForeArm' + L, [x, 0.57, 0], [x, 0.45, 0]], ['Hand' + L, [x, 0.45, 0], [x, 0.38, 0]]], 0.018);
+    add(G.sph(1, 9, 6), { c: pele, b: p => [['Chest', 0.5], ['UpperArm' + L, 0.5]], pos: [x * 0.88, 0.715, -0.005], scl: [0.095, 0.085, 0.1], jit: 0.003 });
+    add(loftGeo([[x, 0.74, 0], [x * 1.02, 0.66, 0.005], [x, 0.575, 0]], [[0.078, 0.082], [0.082, 0.085], [0.06, 0.064]], 8, 6), { c: pele, b: W, jit: 0.004, vary: 0.08 });
+    add(loftGeo([[x, 0.58, 0], [x, 0.52, 0.006], [x, 0.455, 0.004]], [[0.06, 0.064], [0.058, 0.06], [0.054, 0.056]], 8, 5), { c: pele, b: W, jit: 0.003 });
+    add(G.cone(0.03, 0.06, 4), { c: dorso, b: W, pos: [x * 1.05, 0.575, -0.05], rot: [-120, 0, 0], jit: 0.002 });      // tufo do cotovelo
+    add(G.sph(1, 9, 6), { c: lerpC(pele, esc, 0.2), b: 'Hand' + L, pos: [x, 0.415, 0.012], scl: [0.07, 0.065, 0.072], jit: 0.003 });
+    add(G.sph(1, 6, 4), { c: '#3a2c26', b: 'Hand' + L, pos: [x, 0.41, 0.07], scl: [0.04, 0.035, 0.01], jit: 0 });
+    for (const dx of [-0.03, -0.01, 0.01, 0.03]) add(G.cone(0.011, 0.055, 4), { c: garra, b: 'Hand' + L, pos: [x + dx, 0.36, 0.05], rot: [150, 0, 0], jit: 0 }); }
+  // ---------- cauda
+  add(G.ico(0.055, 1), { c: dorso, b: 'Hips', pos: [0, 0.37, -0.18], jit: 0.006 });
+  // ---------- cabeça de urso (âncora: não estica com o porte)
+  add(G.sph(1, 11, 8), { c: pele, b: 'Head', pos: [0, HC, -0.005], scl: [0.18, 0.165, 0.165], jit: 0.003, vary: 0.08, cf: (x, y) => y > HC + 0.09 ? dorso : pele, ...HD });
+  for (const s of [1, -1]) add(G.sph(1, 8, 6), { c: pele, b: 'Head', pos: [s * 0.1, HC - 0.06, 0.06], scl: [0.075, 0.07, 0.075], jit: 0.003, ...HD });      // bochechas
+  add(loftGeo([[0, HC - 0.04, 0.09], [0, HC - 0.055, 0.17], [0, HC - 0.06, 0.215]], [[0.085, 0.07], [0.068, 0.055], [0.05, 0.042]], 9, 4), { c: claro, b: 'Head', jit: 0.002, ...HD });
+  add(G.sph(1, 7, 5), { c: '#1c1614', b: 'Head', pos: [0, HC - 0.035, 0.225], scl: [0.036, 0.024, 0.02], jit: 0, ...HD });
+  add(G.box(0.004, 0.03, 0.004), { c: '#1c1614', b: 'Head', pos: [0, HC - 0.075, 0.222], jit: 0, ...HD });
+  add(G.box(0.05, 0.004, 0.004), { c: '#1c1614', b: 'Head', pos: [0, HC - 0.09, 0.21], jit: 0, ...HD, deform: g => { const pa = g.attributes.position; for (let i = 0; i < pa.count; i++) pa.setY(i, pa.getY(i) + 6 * pa.getX(i) * pa.getX(i)); } });
+  for (const s of [1, -1]) {
+    add(G.sph(1, 7, 5), { c: '#1c1614', b: 'Head', pos: [s * 0.068, HC + 0.03, 0.15], scl: [0.02, 0.024, 0.012], jit: 0, vary: 0, ...HD });
+    add(G.box(0.008, 0.008, 0.006), { c: '#fff6e0', b: 'Head', pos: [s * 0.064, HC + 0.04, 0.162], jit: 0, vary: 0, ...HD });
+    add(G.box(0.05, 0.014, 0.02), { c: dorso, b: 'Head', pos: [s * 0.068, HC + 0.065, 0.14], rot: [8, s * 18, s * -10], jit: 0.001, ...HD });
+    add(G.sph(1, 8, 6, 0, Math.PI), { c: pele, b: 'Head', pos: [s * 0.12, HC + 0.12, -0.01], scl: [0.06, 0.06, 0.035], rot: [0, s * -25, s * -20], jit: 0.002, ...HD });   // orelha redonda
+    add(G.sph(1, 7, 4, 0, Math.PI), { c: '#5a3c30', b: 'Head', pos: [s * 0.123, HC + 0.118, 0.012], scl: [0.036, 0.036, 0.012], rot: [0, s * -25, s * -20], jit: 0, ...HD });
+    for (let i = 0; i < 3; i++) add(G.cone(0.025, 0.07, 4), { c: i ? pele : claro, b: 'Head', pos: [s * (0.16 + i * 0.005), HC - 0.04 - i * 0.025, 0.02 - i * 0.02], rot: [-80, 0, s * (-70 - i * 12)], jit: 0.001, ...HD }); }
+  // ---------- asas de coruja (macias, pontas claras, barras suaves)
+  if (R.asas === 'coruja') for (const [s, L] of [[1, '_L'], [-1, '_R']]) {
+    const A = REST['WingA' + L], Bp = REST['WingB' + L], wa = [s * 0.05, A.y / ky, A.z / kz], wb = [Bp.x / kx, Bp.y / ky, Bp.z / kz], sp = 1, col = C.asa, col2 = C.asa2, bar = lerpC(col, '#000000', 0.25);
+    add(loftGeo([wa, V3(...wa).lerp(V3(...wb), 0.5).add(V3(0, 0.02, 0)).toArray(), wb], [[0.05, 0.035], [0.045, 0.03], [0.03, 0.022]], 7, 6), { c: lerpC(col, pele, 0.35), b: 'WingA' + L, jit: 0.002 });
+    for (let i = 0; i < 10; i++) { const u = (i + 0.5) / 10, p0 = V3(...wa).lerp(V3(...wb), u), len = (0.42 - u * 0.08) * sp;
+      add(penaGeo(G, 0.11 * sp, len), { c: col, b: 'WingA' + L, pos: [p0.x, p0.y, p0.z - 0.008 - i * 0.002], rot: [0, 0, s * (5 + u * 14)], jit: 0.001,
+        cf: (x, y) => { const d = (p0.y - y) / len; return d > 0.74 ? col2 : Math.floor(d * 6) % 2 ? bar : col; } }); }
+    for (let r = 0; r < 2; r++) for (let i = 0; i < 8; i++) { const u = (i + 0.5) / 8, p0 = V3(...wa).lerp(V3(...wb), u);
+      add(penaGeo(G, 0.1 * sp, (0.16 - r * 0.05) * sp, 0.01), { c: r ? lerpC(col, col2, 0.35) : lerpC(col, pele, 0.2), b: 'WingA' + L, pos: [p0.x, p0.y + 0.006 - r * 0.07 * sp, p0.z + 0.003 + r * 0.002], rot: [0, 0, s * (4 + u * 8)], jit: 0.001 }); }
+    for (let i = 0; i < 6; i++) { const len = (0.62 - i * 0.04) * sp;
+      add(penaGeo(G, 0.12 * sp, len), { c: col, b: 'WingB' + L, pos: [wb[0] - s * i * 0.012, wb[1], wb[2] - 0.01 - i * 0.002], rot: [0, 0, s * (84 - i * 15)], jit: 0.001,
+        cf: (x, y) => { const d = Math.hypot(x - wb[0], y - wb[1]) / len; return d > 0.78 ? col2 : Math.floor(d * 7) % 2 ? bar : col; } }); }
+  }
+}
+
+// besouro v2: élitros fechados em cúpula com estrias e brilho metálico, pronoto, chifre curvo em loft, patas segmentadas com espinhos e garra,
+// asas membranosas dobradas por baixo dos élitros (abrem só no voo)
+function esculpirBesouro(K) {
+  const { add, G, R, C, yb, az, legs, REST } = K;
+  const H0 = REST.Head, HB = (x, y, z) => [x, H0.y + y, H0.z + z];
+  const pele = C.pele, claro = C.claro, esc = C.escuro, MT = { metal: true, mat: 1 }, crista = lerpC(pele, claro, 0.55);
+  // ---------- abdômen (por baixo dos élitros) com anéis
+  add(G.sph(1, 10, 7), { c: esc, b: 'Abdomen', pos: [0, yb - 0.015, az - 0.19], scl: [0.18, 0.12, 0.27], jit: 0.002 });
+  for (let i = 0; i < 4; i++) add(G.cyl(0.16 - i * 0.02, 0.16 - i * 0.02, 0.012, 10, true), { c: lerpC(esc, claro, 0.15), b: 'Abdomen', pos: [0, yb - 0.04, az - 0.1 - i * 0.075], rot: [90, 0, 0], scl: [1, 1, 0.55], jit: 0 });
+  // ---------- élitros: duas meias-cúpulas com estrias, costura escura e borda
+  const ec = [0, yb + 0.02, az - 0.15], es = [0.2, 0.165, 0.32];
+  for (const [s, L] of [[1, '_L'], [-1, '_R']]) {
+    add(G.sph(1, 9, 7, 0, Math.PI * 0.56, s > 0 ? Math.PI / 2 : -Math.PI / 2, Math.PI), { c: pele, b: 'WingA' + L, pos: ec, scl: es, jit: 0.0015, vary: 0.04, ...MT,
+      cf: (x, y, z) => { const a = Math.atan2(Math.abs(x), y - ec[1]); return a < 0.05 ? esc : a < 0.2 ? crista : Math.floor(a / 0.21) % 2 ? lerpC(pele, esc, 0.25) : pele; } });
+  }
+  // ---------- pronoto (escudo do tórax) e tórax por baixo
+  add(G.sph(1, 10, 6, 0, Math.PI * 0.6), { c: pele, b: 'Hips', pos: [0, yb + 0.0, 0.05], scl: [0.165, 0.13, 0.15], jit: 0.0015, ...MT, cf: (x, y) => y > yb + 0.1 ? crista : pele });
+  add(G.sph(1, 8, 6), { c: esc, b: 'Hips', pos: [0, yb - 0.03, 0.04], scl: [0.13, 0.08, 0.13], jit: 0.002 });
+  // ---------- cabeça, olhos, mandíbulas, antenas em clava
+  add(G.sph(1, 8, 6), { c: esc, b: 'Head', pos: HB(0, -0.015, 0.02), scl: [0.085, 0.06, 0.075], jit: 0.002, ...MT });
+  for (const s of [1, -1]) {
+    add(G.sph(0.022, 7, 5), { c: '#0c0a08', b: 'Head', pos: HB(s * 0.068, 0.0, 0.035), jit: 0, vary: 0, ...MT });
+    add(G.box(0.006, 0.006, 0.004), { c: '#fff6e0', b: 'Head', pos: HB(s * 0.074, 0.008, 0.054), jit: 0, vary: 0 });
+    add(loftGeo([HB(s * 0.035, -0.04, 0.07), HB(s * 0.045, -0.045, 0.1), HB(s * 0.02, -0.05, 0.125)], [[0.012, 0.009], [0.009, 0.007], [0.003]], 5, 4), { c: esc, b: 'Head', jit: 0, ...MT });
+    add(G.tube(HB(s * 0.05, 0.0, 0.08), HB(s * 0.09, 0.02, 0.13), 0.005, 0.004, 4), { c: esc, b: 'Head', jit: 0 });
+    for (let k = 0; k < 3; k++) add(G.sph(1, 5, 4), { c: lerpC(esc, claro, 0.3), b: 'Head', pos: HB(s * (0.095 + k * 0.006), 0.024 + k * 0.004, 0.138 + k * 0.008), scl: [0.012, 0.007, 0.012], jit: 0 });
+  }
+  const ch = R.chifre, horn = (pts, prof) => add(loftGeo(pts, prof, 7, 8), { c: esc, b: 'Head', jit: 0.001, ...MT, cf: (x, y, z) => { const t = (y - pts[0][1]) / Math.max(0.01, pts[pts.length - 1][1] - pts[0][1]); return t > 0.75 ? crista : pele; } });
+  if (ch === 'rinoceronte') { horn([HB(0, 0.0, 0.05), HB(0, 0.06, 0.15), HB(0, 0.17, 0.2), HB(0, 0.26, 0.17)], [[0.036, 0.042], [0.03, 0.034], [0.018, 0.02], [0.004]]);
+    add(loftGeo([[0, yb + 0.1, 0.06], [0, yb + 0.15, 0.13], [0, yb + 0.15, 0.19]], [[0.03, 0.026], [0.018, 0.016], [0.004]], 6, 6), { c: pele, b: 'Hips', jit: 0.001, ...MT }); }
+  if (ch === 'pinca') for (const s of [1, -1]) horn([HB(s * 0.04, -0.01, 0.06), HB(s * 0.1, 0.03, 0.15), HB(s * 0.09, 0.06, 0.25), HB(s * 0.03, 0.07, 0.3)], [[0.022, 0.024], [0.018, 0.018], [0.012], [0.004]]);
+  if (ch === 'tridente') for (const x of [-0.06, 0, 0.06]) horn([HB(x * 0.4, 0.0, 0.05), HB(x * 0.8, 0.07, 0.13), HB(x, x ? 0.14 : 0.21, 0.17)], [[0.022, 0.024], [0.016], [0.004]]);
+  // ---------- patas segmentadas: fêmur grosso, tíbia com espinhos, tarso em contas e garra
+  for (const lg of legs) {
+    const { root: r0, l1, l2, s, nm, L } = lg, k = [r0[0], r0[1] - l1, r0[2]], t = [r0[0], r0[1] - l1 - l2, r0[2]];
+    add(G.sph(1, 7, 5), { c: esc, b: nm + 'A' + L, pos: r0, scl: [0.032, 0.03, 0.032], jit: 0.001, ...MT });
+    add(loftGeo([r0, V3(...r0).lerp(V3(...k), 0.45).add(V3(s * 0.006, 0, 0)).toArray(), k], [[0.03, 0.034], [0.034, 0.037], [0.021, 0.023]], 6, 5), { c: lerpC(esc, pele, 0.35), b: nm + 'A' + L, jit: 0.001, ...MT });
+    add(G.sph(0.018, 6, 4), { c: esc, b: nm + 'B' + L, pos: k, jit: 0 });
+    add(loftGeo([k, V3(...k).lerp(V3(...t), 0.5).toArray(), t], [[0.02, 0.022], [0.017, 0.018], [0.012, 0.013]], 6, 5), { c: esc, b: nm + 'B' + L, jit: 0.001, ...MT });
+    for (let i = 0; i < 3; i++) { const q = V3(...k).lerp(V3(...t), 0.25 + i * 0.25); add(G.cone(0.005, 0.03, 3), { c: esc, b: nm + 'B' + L, pos: [q.x + s * 0.012, q.y, q.z - 0.004], rot: [0, 0, -s * 65], jit: 0 }); }
+    for (let i = 0; i < 3; i++) add(G.sph(0.009 - i * 0.0012, 5, 4), { c: lerpC(esc, claro, 0.2), b: nm + 'C' + L, pos: [t[0], t[1] - 0.004 - i * 0.012, t[2]], jit: 0 });
+    add(G.cone(0.005, 0.025, 3), { c: '#0c0a08', b: nm + 'C' + L, pos: [t[0], t[1] - 0.046, t[2] + 0.008], rot: [150, 0, 0], jit: 0 });
+  }
+  // ---------- asas membranosas: abertas na geometria, dobradas para trás pelo osso WingB fora do voo
+  for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const A = REST['WingB' + L].toArray(), len = 0.4, wid = 0.13;
+    const pts = []; for (let i = 0; i <= 12; i++) { const a = i / 12 * Math.PI * 2; pts.push([len / 2 + Math.cos(a) * len / 2, Math.sin(a) * wid / 2 * (1 - 0.3 * Math.cos(a))]); }
+    const g = G.flat(pts); if (s < 0) { g.scale(-1, 1, 1); const ix = g.index.array; for (let i = 0; i < ix.length; i += 3) { const tq = ix[i]; ix[i] = ix[i + 2]; ix[i + 2] = tq; } }
+    g.rotateX(-Math.PI / 2); g.translate(A[0], A[1] - 0.01, A[2]); add(g, { c: C.asa, mat: 3, b: 'WingB' + L, jit: 0 });
+    add(G.box(len * 0.9, 0.004, 0.004), { c: lerpC(C.asa, esc, 0.6), b: 'WingB' + L, pos: [A[0] + s * len * 0.45, A[1] - 0.008, A[2] + wid * 0.25], jit: 0 }); }
+}
+
 // ======================================================================= FAMÍLIA C — quadrúpede (asas opcionais)
 function ikQ(b1, b2, b3, target, pole, l1, l2, leg, qEnd) {
   const P = new THREE.Vector3().setFromMatrixPosition(b1.matrixWorld);
@@ -1666,12 +1889,12 @@ function ikQ(b1, b2, b3, target, pole, l1, l2, leg, qEnd) {
   b3.quaternion.copy(qW.clone().multiply(qB).invert().multiply(qEnd));
 }
 function forgeC(id, S, cfg) {
-  const R = { corpo: { L: 0.8, R: 0.16, H: 0.4, pesc: 0.14 }, cabeca: { tipo: 'canino', orelhas: 'pontuda' }, cauda: 'fina', asas: null, pe: 'pata', pelagem: 'liso', extras: [], flap: 3, ...S.receita(cfg) };
+  const R = { corpo: { L: 0.8, R: 0.16, H: 0.4, pesc: 0.14 }, cabeca: { tipo: 'canino', orelhas: 'pontuda' }, cauda: 'fina', asas: null, pe: 'pata', pelagem: 'liso', extras: [], flap: 3, ...S.receita(cfg) }; if (cfg._v1) R.v2 = false;   // _v1: versão antiga, para comparar
   const COL = S.cats.cores.cor[cfg.cores];
   const pele0 = COL.pele || '#8a7a6a';
   const C = { pele: pele0, claro: hex(pele0, 1.3), escuro: hex(pele0, 0.55), extra: '#e8dcc0', brilho: '#ffd060', asa: pele0, asa2: hex(pele0, 1.3), olho: '#1b1712', ...COL };
   const { L, R: Rb, H, pesc } = R.corpo;
-  const kit = makeKit(v => v.clone()), { add, G } = kit;
+  const kit = makeKit(v => v.clone()), { add: addK, G } = kit; let add = addK;
   const metal = !!R.armadura || !!R.espelho, crist = !!R.corpoCristal, ori = !!R.origami, spr = R.esparramado ? 1 : 0;
   const bodyMat = crist ? 3 : 0, J = ori ? 0 : crist ? 0.006 : 0.004, VAR = ori ? 0.16 : 0.07;
   const yb = H + Rb * 0.75, zr = -L * 0.38, zc = L * 0.32, yj = yb - Rb * 0.25, fy = 0.05, frontUp = R.dianteiraAlta ? Rb * 0.25 : 0;
@@ -1708,6 +1931,7 @@ function forgeC(id, S, cfg) {
   const bodyW = p => { const t = ramp(p.z, zr * 0.55, zc * 0.55); return t <= 0 ? [['Hips', 1]] : t >= 1 ? [['Chest', 1]] : t < 0.5 ? [['Hips', 1 - t * 2], ['Spine', t * 2]] : [['Spine', 2 - t * 2], ['Chest', t * 2 - 1]]; };
   const neckW = p => { const a = V3(...nb), b = V3(...hp), ab = b.clone().sub(a), t = clamp(p.clone().sub(a).dot(ab) / ab.lengthSq(), 0, 1); return t > 0.85 ? [['Neck', 1 - (t - 0.85) / 0.3], ['Head', (t - 0.85) / 0.3]] : [['Chest', Math.max(0, 1 - t * 2.5)], ['Neck', Math.min(1, t * 2.5)]]; };
   const M = { metal, mat: metal ? 1 : bodyMat };
+  if (R.v2) { esculpirC({ add: addK, G, R, C, L, Rb, yb, zr, zc, yj, fy, xf, xb, zf, zbk, nb, hp, frontUp, bodyW, neckW, REST, chains }); add = () => {}; }   // escultura nova substitui a antiga
 
   // ---------- corpo
   if (R.corpoAbobora) { const zc0 = (zr + zc) / 2;
@@ -2108,10 +2332,10 @@ function forgeC(id, S, cfg) {
 
 // ======================================================================= FAMÍLIA D — 6 e 8 patas (insetos, aracnídeos, caranguejo)
 function forgeD(id, S, cfg) {
-  const R = { pares: 3, corpo: 'besouro', cabeca: 'besouro', frente: null, cauda: null, asas: null, antenas: false, extras: [], perna: 0.7, flap: 8, ...S.receita(cfg) };
+  const R = { pares: 3, corpo: 'besouro', cabeca: 'besouro', frente: null, cauda: null, asas: null, antenas: false, extras: [], perna: 0.7, flap: 8, ...S.receita(cfg) }; if (cfg._v1) R.v2 = false;   // _v1: versão antiga, para comparar
   const COL = S.cats.cores.cor[cfg.cores];
   const C = { pele: '#6a5a4a', claro: '#c0a890', escuro: '#2a2018', extra: '#e8dcc0', brilho: '#ffd060', asa: '#e0e8f0', olho: '#1b1712', ...COL };
-  const kit = makeKit(v => v.clone()), { add, G } = kit;
+  const kit = makeKit(v => v.clone()), { add: addK, G } = kit; let add = addK;
   const vidro = !!R.vidro, MAT = vidro ? 3 : 0, metal = !!R.metal, J = 0.004;
   const bc = R.corpo;
   // ---------- layout por tipo de corpo
@@ -2130,6 +2354,7 @@ function forgeD(id, S, cfg) {
     libelula: { yb: 0.26, hz: 0.14, az: -0.08, xr: 0.05, zs: [0.06, 0.0, -0.06], sp: [0.14, 0.16, 0.15], zf: [0.16, 0.0, -0.18] },
     mariposa: { yb: 0.3, hz: 0.16, az: -0.1, xr: 0.07, zs: [0.06, 0.0, -0.06], sp: [0.18, 0.2, 0.19], zf: [0.2, 0.0, -0.2] },
   }[bc];
+  if (R.v2 && bc === 'besouro') Object.assign(LAY, { yb: 0.25, sp: [0.2, 0.24, 0.22], zf: [0.3, 0.03, -0.3], zs: [0.1, 0.0, -0.1] });   // v2: corpo baixo, patas curtas e fortes
   const { yb, hz, az, xr } = LAY, NP = R.pares;
   // ---------- correntes
   const chains = [];
@@ -2170,6 +2395,7 @@ function forgeD(id, S, cfg) {
   const { B, REST } = skel;
   const HB = (x, y, z) => { const h = REST.Head; return [h.x + x, h.y + y, h.z + z]; };
 
+  const v2b = !!R.v2 && bc === 'besouro'; if (v2b) { esculpirBesouro({ add: addK, G, R, C, yb, az, legs, REST }); add = () => {}; }   // escultura nova do besouro
   // ---------- corpo
   const sk = { mat: metal ? 1 : MAT, metal };
   const abdW = p => p.z < az + 0.05 ? [['Abdomen', 1]] : [['Hips', 1]];
@@ -2365,7 +2591,7 @@ function forgeD(id, S, cfg) {
     for (const ch of chains) for (const nm of ch.names) B[nm].quaternion.identity();
     if (front) for (const [s, L] of [[1, '_L'], [-1, '_R']]) { const a = P.arm; setE(B['ArmA' + L], [a[0], s * a[1], s * a[2]], 'XYZ'); setE(B['ArmB' + L], [a[3], 0, 0], 'XYZ'); setE(B['ArmC' + L], [a[4], 0, s * (a[5] || 0)], 'XYZ'); }
     if (tailN) for (let i = 1; i <= tailN; i++) setE(B['Sting' + i], [P.tail[i - 1] || 0, P.tailY ? P.tailY / tailN : 0, 0]);
-    if (R.asas) for (const [s, L] of [[1, '_L'], [-1, '_R']]) { setE(B['WingA' + L], [P.w[2] || 0, s * P.w[1], s * P.w[0]], 'XYZ'); setE(B['WingB' + L], [0, s * P.w[1] * (R.asas === 'besouro' ? 0.4 : 1), s * P.w[3]], 'XYZ'); }
+    if (R.asas) for (const [s, L] of [[1, '_L'], [-1, '_R']]) { setE(B['WingA' + L], [P.w[2] || 0, s * P.w[1], s * P.w[0]], 'XYZ'); setE(B['WingB' + L], v2b ? [0, s * (P.wf ?? 88), s * (P.wf !== undefined ? P.w[3] : 0)] : [0, s * P.w[1] * (R.asas === 'besouro' ? 0.4 : 1), s * P.w[3]], 'XYZ'); }
     B.Hips.updateMatrixWorld(true);
     for (const lg of legs) { const o = P.f[lg.nm + lg.L] || [0, 0, 0];
       const tgt = V3(lg.foot[0] + o[0], lg.foot[1] + o[1], lg.foot[2] + o[2]);
@@ -2373,7 +2599,7 @@ function forgeD(id, S, cfg) {
     B.Hips.updateMatrixWorld(true);
   }
   const groupA = lg => (lg.i % 2 === 0) === (lg.s > 0);           // tripé / tetrápode alternado
-  const wRest = ['libelula', 'mariposa'].includes(R.asas) ? [6, 12, 0, 2] : [-5, 75, 0, -5];
+  const wRest = v2b ? [0, 0, 0, 0] : ['libelula', 'mariposa'].includes(R.asas) ? [6, 12, 0, 2] : [-5, 75, 0, -5];   // v2: élitros fechados no repouso
   const base = () => ({ hp: [0, 0, 0], hr: [0, 0, 0], ab: [0, 0, 0], hd: [0, 0, 0], ch: [0, 0, 0], nk: [0, 0, 0], arm: bc === 'louva' ? [-20, 0, 0, -120, 150, 0] : [10, 10, 0, -30, 20, 10], tail: [0, 0, 0, 0, 0], w: [...wRest], f: {} });
   const gait = (name, T, D, Sx, h) => ({ name, dur: T, fps: 60, loop: true, v: Sx / (D * T), fn: t => { const P = base(), u = t / T;
     for (const lg of legs) { const ph = ((u + (groupA(lg) ? 0 : 0.5) + lg.i * 0.04) % 1 + 1) % 1; let d, lift = 0;
@@ -2404,7 +2630,7 @@ function forgeD(id, S, cfg) {
     clipdefs.push({ name: 'Voar', dur: DV, fps: Math.max(30, Math.min(120, f * 10)), loop: true, v: 2.2 * reach, fn: t => { const P = base(), ph = 2 * Math.PI * f * t;
       P.hp = [0, hov + 0.03 * reach * Math.cos(ph), 0]; P.hr = [-10, 0, 0]; P.ab = [12, 0, 0];
       for (const lg of legs) P.f[lg.nm + lg.L] = [-lg.s * 0.1 * reach, hov - reach * 0.35, -0.05 * reach];
-      P.w = R.asas === 'besouro' ? [55, 10, -30, 40 * Math.sin(ph)] : [40 * Math.sin(ph) + 10, 10, 0, 40 * Math.sin(ph - 0.5)]; return P; } }); }
+      P.w = R.asas === 'besouro' ? [55, 10, -30, 40 * Math.sin(ph)] : [40 * Math.sin(ph) + 10, 10, 0, 40 * Math.sin(ph - 0.5)]; if (v2b) P.wf = 6; return P; } }); }
   if (R.saltador) clipdefs.push({ name: 'Saltar', dur: 1.2, fps: 60, fn: t => { const P = base(), u = t / 1.2, cr = Math.sin(Math.PI * clamp(u / 0.25, 0, 1)) * (u < 0.25 ? 1 : 0), air = Math.sin(Math.PI * clamp((u - 0.25) / 0.5, 0, 1));
     P.hp = [0, -0.06 * reach * cr + 0.9 * reach * air, 0.5 * reach * air]; P.hr = [-15 * air + 8 * cr, 0, 0];
     for (const lg of legs) P.f[lg.nm + lg.L] = [0, 0.9 * reach * air * (lg.i === NP - 1 ? 0.7 : 0.85), 0.5 * reach * air - (lg.i === NP - 1 ? 0.15 * reach * air : 0)]; return P; } });

@@ -8023,8 +8023,8 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_padrao.glb",
      "variacao": "Sabi 50",
-     "kb": 103,
-     "triangulos": 2064,
+     "kb": 175,
+     "triangulos": 5636,
      "ossos": 21,
      "molas": [],
      "altura_m": 2.2,
@@ -8036,8 +8036,8 @@
       "Andar"
      ],
      "velocidades": {
-      "Voar": 3.132,
-      "Andar": 0.687
+      "Voar": 3.182,
+      "Andar": 0.698
      },
      "cfg": {
       "tamanho": "m",
@@ -8049,8 +8049,8 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_lua-76.glb",
      "variacao": "Lua 76",
-     "kb": 98,
-     "triangulos": 1808,
+     "kb": 140,
+     "triangulos": 3796,
      "ossos": 21,
      "molas": [],
      "altura_m": 2.53,
@@ -8062,8 +8062,8 @@
       "Andar"
      ],
      "velocidades": {
-      "Voar": 3.601,
-      "Andar": 0.79
+      "Voar": 3.659,
+      "Andar": 0.802
      },
      "cfg": {
       "tamanho": "g",
@@ -8075,8 +8075,8 @@
     {
      "arquivo": "criaturas/ursalado/ursalado_tula-86.glb",
      "variacao": "Tula 86",
-     "kb": 99,
-     "triangulos": 1764,
+     "kb": 144,
+     "triangulos": 3752,
      "ossos": 21,
      "molas": [],
      "altura_m": 2.53,
@@ -8088,8 +8088,8 @@
       "Andar"
      ],
      "velocidades": {
-      "Voar": 3.601,
-      "Andar": 0.79
+      "Voar": 3.659,
+      "Andar": 0.802
      },
      "cfg": {
       "tamanho": "g",
@@ -8353,8 +8353,8 @@
     {
      "arquivo": "criaturas/lobo-falcao/lobo-falcao_padrao.glb",
      "variacao": "Quim 14",
-     "kb": 131,
-     "triangulos": 2236,
+     "kb": 201,
+     "triangulos": 5568,
      "ossos": 24,
      "molas": [
       "cauda"
@@ -8369,9 +8369,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.575,
-      "Correr": 4.082,
-      "Voar": 3.741
+      "Andar": 0.63,
+      "Correr": 4.471,
+      "Voar": 4.097
      },
      "cfg": {
       "tamanho": "m",
@@ -8383,8 +8383,8 @@
     {
      "arquivo": "criaturas/lobo-falcao/lobo-falcao_nix-21.glb",
      "variacao": "Nix 21",
-     "kb": 127,
-     "triangulos": 2256,
+     "kb": 160,
+     "triangulos": 3748,
      "ossos": 24,
      "molas": [
       "cauda"
@@ -8399,9 +8399,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.62,
-      "Correr": 4.402,
-      "Voar": 4.033
+      "Andar": 0.63,
+      "Correr": 4.471,
+      "Voar": 4.097
      },
      "cfg": {
       "tamanho": "m",
@@ -8413,8 +8413,8 @@
     {
      "arquivo": "criaturas/lobo-falcao/lobo-falcao_tula-90.glb",
      "variacao": "Tula 90",
-     "kb": 132,
-     "triangulos": 2488,
+     "kb": 194,
+     "triangulos": 5568,
      "ossos": 24,
      "molas": [
       "cauda"
@@ -8429,9 +8429,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.662,
-      "Correr": 4.695,
-      "Voar": 4.302
+      "Andar": 0.725,
+      "Correr": 5.142,
+      "Voar": 4.712
      },
      "cfg": {
       "tamanho": "g",
@@ -14029,8 +14029,8 @@
     {
      "arquivo": "criaturas/besouro-armadura/besouro-armadura_padrao.glb",
      "variacao": "Nix 73",
-     "kb": 121,
-     "triangulos": 1126,
+     "kb": 158,
+     "triangulos": 3580,
      "ossos": 25,
      "molas": [],
      "altura_m": 1,
@@ -14043,9 +14043,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.474,
-      "Correr": 1.767,
-      "Voar": 1.385
+      "Andar": 0.466,
+      "Correr": 1.74,
+      "Voar": 1.169
      },
      "cfg": {
       "tamanho": "m",
@@ -14056,8 +14056,8 @@
     {
      "arquivo": "criaturas/besouro-armadura/besouro-armadura_pipo-45.glb",
      "variacao": "Pipo 45",
-     "kb": 121,
-     "triangulos": 1134,
+     "kb": 158,
+     "triangulos": 3622,
      "ossos": 25,
      "molas": [],
      "altura_m": 0.86,
@@ -14070,9 +14070,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.448,
-      "Correr": 1.67,
-      "Voar": 1.309
+      "Andar": 0.459,
+      "Correr": 1.711,
+      "Voar": 1.15
      },
      "cfg": {
       "tamanho": "p",
@@ -14083,8 +14083,8 @@
     {
      "arquivo": "criaturas/besouro-armadura/besouro-armadura_lua-55.glb",
      "variacao": "Lua 55",
-     "kb": 121,
-     "triangulos": 1114,
+     "kb": 160,
+     "triangulos": 3748,
      "ossos": 25,
      "molas": [],
      "altura_m": 1.15,
@@ -14097,9 +14097,9 @@
       "Voar"
      ],
      "velocidades": {
-      "Andar": 0.599,
-      "Correr": 2.233,
-      "Voar": 1.75
+      "Andar": 0.574,
+      "Correr": 2.141,
+      "Voar": 1.438
      },
      "cfg": {
       "tamanho": "g",
