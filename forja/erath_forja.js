@@ -5,7 +5,7 @@
 // Convenções: Y para cima, personagem olha para +Z, esquerda dele = +X. Ossos com nomes estáveis (Hips, Spine, Chest, Neck, Head,
 // UpperArm_L/R, ForeArm_L/R, Hand_L/R, UpLeg_L/R, Leg_L/R, Foot_L/R; correntes de mola: BeardA/B, Tail1.., Hair1..).
 import * as THREE from 'three';
-import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { mergeGeometries, toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
 
 export const D2R = Math.PI / 180;
 const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
@@ -324,6 +324,9 @@ export const MATS = [
   new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 0.38, metalness: 0.75, envMapIntensity: 1.0, name: 'metal' }),
   new THREE.MeshBasicMaterial({ vertexColors: true, name: 'brilho' }),
 ];
+// qualidade "liso": as mesmas peças com normais suavizadas (quinas acima de ~50° continuam vivas)
+export const MATS_LISO = MATS.map(m => { const c = m.clone(); if (c.isMeshStandardMaterial) c.flatShading = false; c.name = m.name; return c; });
+// cfg._q = { seg: multiplicador de segmentos das peças redondas (1 = atual), liso: normais suaves, vinco: ângulo em graus }
 const _X = V3(1, 0, 0), _Y = V3(0, 1, 0);
 export function ik(b1, b2, b3, target, pole, l1, l2, leg, qEnd, twist) {
   const P = new THREE.Vector3().setFromMatrixPosition(b1.matrixWorld);
@@ -348,7 +351,8 @@ export function ik(b1, b2, b3, target, pole, l1, l2, leg, qEnd, twist) {
 
 // ======================================================================= forja
 export function forge(raca, cfgIn) {
-  const R = RACAS[raca], cfg = { ...baseCfg(raca), ...cfgIn };
+  const R = RACAS[raca], cfg = { ...baseCfg(raca), ...cfgIn }, Q = { seg: 1, liso: false, vinco: 50, ...(cfg._q || {}) };
+  const SG = n => n >= 5 ? Math.max(n, Math.round(n * Q.seg)) : n;   // 3 e 4 lados são forma (dentes, espinhos): ficam
   const pr = PORTE[cfg.porte], kx = pr.kx * R.k.x, ky = ALT[cfg.altura] * R.k.y, kz = 1 + (kx - 1) * 0.6, bar = pr.bar * (R.k.bar || 1);
   const bb = 1 + (bar - 1) * 0.8, cb = 1 + (bar - 1) * 0.45;
   const pal = CLA[cfg.cla];
@@ -416,7 +420,7 @@ export function forge(raca, cfgIn) {
     g.applyMatrix4(new THREE.Matrix4().compose(V3(...(o.pos || [0, 0, 0])),
       new THREE.Quaternion().setFromEuler(new THREE.Euler(...(o.rot || [0, 0, 0]).map(d => d * D2R), 'XYZ')), V3(...(o.scl || [1, 1, 1]))));
     if (o.deform) o.deform(g);
-    const pa = g.attributes.position, jit = o.jit ?? 0.0045;
+    const pa = g.attributes.position, jit = (o.jit ?? 0.0045) * (Q.liso ? 0.5 : 1);
     if (jit > 0) for (let i = 0; i < pa.count; i++) {
       const x = pa.getX(i), y = pa.getY(i), z = pa.getZ(i);
       const h = hash3(Math.round(x * 2000) / 2000, Math.round(y * 2000) / 2000, Math.round(z * 2000) / 2000);
@@ -430,7 +434,9 @@ export function forge(raca, cfgIn) {
     for (let f = 0; f < n / 3; f++) {
       const cx = p.getX(f * 3) + p.getX(f * 3 + 1) + p.getX(f * 3 + 2), cy = p.getY(f * 3) + p.getY(f * 3 + 1) + p.getY(f * 3 + 2);
       const k = 1 + hash3(cx * 13.1 + partN, cy * 17.3, f * 0.37)[0] * vary;
-      for (let j = 0; j < 3; j++) { const i = (f * 3 + j) * 3; col[i] = base.r * k; col[i + 1] = base.g * k; col[i + 2] = base.b * k; }
+      for (let j = 0; j < 3; j++) { const i = (f * 3 + j) * 3, v = f * 3 + j;
+        const kv = Q.liso ? 1 + hash3(Math.round(p.getX(v) * 300) + partN * 0.13, Math.round(p.getY(v) * 300), Math.round(p.getZ(v) * 300))[0] * vary * 0.6 : k;   // liso: tom por vértice (degradê), não por face
+        col[i] = base.r * kv; col[i + 1] = base.g * kv; col[i + 2] = base.b * kv; }
     }
     const tmp = new THREE.Vector3();
     for (let i = 0; i < n; i++) {
@@ -445,18 +451,18 @@ export function forge(raca, cfgIn) {
       if (o.off) p.setXYZ(i, p.getX(i) + o.off.x, p.getY(i) + o.off.y, p.getZ(i) + o.off.z);
       else p.setXYZ(i, p.getX(i) * kx, p.getY(i) * ky, p.getZ(i) * kz);
     }
-    ng.computeVertexNormals();
+    if (Q.liso) toCreasedNormals(ng, Q.vinco * D2R); else ng.computeVertexNormals();
     ng.setAttribute('color', new THREE.BufferAttribute(col, 3));
     ng.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(si, 4));
     ng.setAttribute('skinWeight', new THREE.Float32BufferAttribute(sw, 4));
     PARTS[o.glow ? 2 : o.metal ? 1 : 0].push(ng);
   }
-  const cyl = (rt, rb, h, seg, open = false) => new THREE.CylinderGeometry(rt, rb, h, seg, 1, open);
-  const sph = (r, ws, hs, ts = 0, tl = Math.PI, ps = 0, pl = Math.PI * 2) => new THREE.SphereGeometry(r, ws, hs, ps, pl, ts, tl);
+  const cyl = (rt, rb, h, seg, open = false) => new THREE.CylinderGeometry(rt, rb, h, SG(seg), 1, open);
+  const sph = (r, ws, hs, ts = 0, tl = Math.PI, ps = 0, pl = Math.PI * 2) => new THREE.SphereGeometry(r, SG(ws), hs >= 4 ? Math.max(hs, Math.round(hs * Q.seg)) : hs, ps, pl, ts, tl);
   const box = (w, h, d, hs = 1) => new THREE.BoxGeometry(w, h, d, 1, hs, 1);
-  const ico = (r, det = 0) => new THREE.IcosahedronGeometry(r, det);
+  const ico = (r, det = 0) => new THREE.IcosahedronGeometry(r, det + (Q.seg >= 2 && Q.liso ? 1 : 0));
   const octa = r => new THREE.OctahedronGeometry(r, 0);
-  const cone = (r, h, seg) => new THREE.ConeGeometry(r, h, seg);
+  const cone = (r, h, seg) => new THREE.ConeGeometry(r, h, SG(seg));
   function tube(a, b, ra, rb, seg) {
     a = V3(...a); b = V3(...b);
     const d = b.clone().sub(a), g = cyl(rb, ra, d.length(), seg);
@@ -1079,7 +1085,7 @@ export function forge(raca, cfgIn) {
   const groups = PARTS.map(a => a.length ? mergeGeometries(a) : null);
   const used = groups.map((g, i) => g ? i : -1).filter(i => i >= 0);
   const geo = mergeGeometries(used.map(i => groups[i]), true);
-  const mesh = new THREE.SkinnedMesh(geo, used.map(i => MATS[i]));
+  const mesh = new THREE.SkinnedMesh(geo, used.map(i => (Q.liso ? MATS_LISO : MATS)[i]));
   mesh.name = RACAS[raca].nome; mesh.castShadow = true; mesh.frustumCulled = false;
   const root = new THREE.Group(); root.name = RACAS[raca].nome + '_raiz'; root.add(B.Hips); root.add(mesh);
   root.updateMatrixWorld(true); mesh.bind(new THREE.Skeleton(bones));
@@ -1127,7 +1133,7 @@ export function forge(raca, cfgIn) {
   restPose();
   const springs = [];
   for (const ch of chains) ch.names.forEach((nm, i) => springs.push({ b: B[nm], c: B[i < ch.names.length - 1 ? ch.names[i + 1] : ch.end], ...ch.spring[i], max: ch.spring[i].max * D2R }));
-  return { raca, cfg, root, mesh, geo, bones, B, REST, PARENT, clips, meas, springs, restPose, tris: geo.attributes.position.count / 3, ky,
+  return { raca, cfg, root, mesh, geo, bones, B, REST, PARENT, clips, meas, springs, restPose, tris: geo.attributes.position.count / 3, ky, liso: Q.liso, q: Q,
     height: REST.Head.y + 0.3, info: { ossos: TRACKED.length, molas: chains.map(c => c.name) } };
 }
 
@@ -1153,6 +1159,7 @@ export const resetSprings = P => P.springs.forEach(s => { s.P = null; });
 export function exportGeometry(P) {
   const geo = P.geo, g = new THREE.BufferGeometry(), n = geo.attributes.position.count;
   g.setAttribute('position', geo.attributes.position);
+  if (P.liso) g.setAttribute('normal', geo.attributes.normal);   // liso precisa das normais; facetado o leitor recalcula
   const c8 = new Uint8Array(n * 3), j8 = new Uint8Array(n * 4), w8 = new Uint8Array(n * 4);
   const ca = geo.attributes.color, si = geo.attributes.skinIndex, sw = geo.attributes.skinWeight;
   for (let i = 0; i < n; i++) {
