@@ -22,7 +22,7 @@ Cada espécie tem de 3 a 5 categorias: paleta de cor (4 a 6), forma de uma parte
 | 3 | D: hexápode / octópode | 40, 65–69, 73, 75, 76, 80, 138 | Parado, Andar/Correr (tripé ou tetrápode alternado; caranguejo de lado), Atacar (foices, pinças, ferrão, chifre, bote), Ameaçar, Voar, Saltar | **feita (11)** |
 | 4 | E: serpente / verme / corrente | 53, 56, 58, 71, 74, 92, 116, 150 | Parado (enrolada), Mover (onda lateral ou vertical; o verme mergulha), Atacar (bote), Ameaçar (empinar), Voar, Rolar (duas pontas) | **feita (8)** |
 | 5 | F: radial / tentáculos | 77, 78, 83, 88, 132, 139 | Parado (ondas nos tentáculos), Mover (andar nos tentáculos, jato, pulsar do sino), Atacar (agarrar), Ameaçar | **feita (6)** |
-| 6 | G: amorfo / rolante / monopé | 20 (bola), 87, 90, 110, 135, 136, 140, 141, 145 | esticar e achatar, rolar, pular | a fazer |
+| 6 | G: amorfo / rolante / monopé | 87, 90, 110, 135, 136, 140, 141, 145 (o 20 já saiu na fase 1) | Parado, Mover (rolar, pular, deslizar, andar nos dedos), Atacar, Pular, com trilhas de escala para esticar e achatar | **feita (8)** |
 | 7 | A+: bípedes grandes e gigantes | 89, 95, 101, 102, 107, 109, 115, 125–131, 134, 143, 147–149 | as da família A, com peso | a fazer |
 | 8 | Especiais | 54, 55, 57, 59–64, 70, 72, 79, 81–86, 91, 93, 94, 96–100, 104, 111, 112, 119, 120, 137, 144 | por espécie | a fazer |
 | 9 | Colossais / enxames | 63, 85, 98, 127, 132 | escala e LOD | a fazer |

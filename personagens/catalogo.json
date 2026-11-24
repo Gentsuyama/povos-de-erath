@@ -14542,6 +14542,139 @@
     }
    ]
   },
+  "ourico-rolante": {
+   "num": 87,
+   "nome": "Ouriço-rolante",
+   "grupo": "Aquáticos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.4,
+   "descricao": "Esfera de espinhos; rola.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      },
+      {
+       "chave": "preto",
+       "nome": "Preto"
+      },
+      {
+       "chave": "coral",
+       "nome": "Coral"
+      }
+     ]
+    },
+    {
+     "chave": "espinhos",
+     "nome": "Espinhos",
+     "opcoes": [
+      {
+       "chave": "longos",
+       "nome": "Longos"
+      },
+      {
+       "chave": "curtos",
+       "nome": "Curtos"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/ourico-rolante/ourico-rolante_padrao.glb",
+     "variacao": "Nix 13",
+     "kb": 27,
+     "triangulos": 728,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.754
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "roxo",
+      "espinhos": "longos"
+     }
+    },
+    {
+     "arquivo": "criaturas/ourico-rolante/ourico-rolante_orvo-93.glb",
+     "variacao": "Orvo 93",
+     "kb": 27,
+     "triangulos": 728,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 0.344,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.822
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "roxo",
+      "espinhos": "curtos"
+     }
+    },
+    {
+     "arquivo": "criaturas/ourico-rolante/ourico-rolante_nix-12.glb",
+     "variacao": "Nix 12",
+     "kb": 27,
+     "triangulos": 728,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.754
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "coral",
+      "espinhos": "longos"
+     }
+    }
+   ]
+  },
   "anemona-guardia": {
    "num": 88,
    "nome": "Anêmona-guardiã",
@@ -14666,6 +14799,147 @@
       "tamanho": "m",
       "cores": "coral",
       "pontas": "bolinhas"
+     }
+    }
+   ]
+  },
+  "cogumelo-saltitante": {
+   "num": 90,
+   "nome": "Cogumelo-saltitante",
+   "grupo": "Plantas",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.4,
+   "descricao": "Um pé só, chapéu grande; pula.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "rubro",
+       "nome": "Rubro"
+      },
+      {
+       "chave": "dourado",
+       "nome": "Dourado"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul brilhante"
+      },
+      {
+       "chave": "roxo",
+       "nome": "Roxo"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Chapéu",
+     "opcoes": [
+      {
+       "chave": "redondo",
+       "nome": "Redondo"
+      },
+      {
+       "chave": "pontudo",
+       "nome": "Pontudo"
+      },
+      {
+       "chave": "largo",
+       "nome": "Largo"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/cogumelo-saltitante/cogumelo-saltitante_padrao.glb",
+     "variacao": "Dudu 95",
+     "kb": 31,
+     "triangulos": 620,
+     "ossos": 4,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.242
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rubro",
+      "chapeu": "redondo"
+     }
+    },
+    {
+     "arquivo": "criaturas/cogumelo-saltitante/cogumelo-saltitante_quim-70.glb",
+     "variacao": "Quim 70",
+     "kb": 31,
+     "triangulos": 620,
+     "ossos": 4,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.199
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rubro",
+      "chapeu": "pontudo"
+     }
+    },
+    {
+     "arquivo": "criaturas/cogumelo-saltitante/cogumelo-saltitante_teco-47.glb",
+     "variacao": "Teco 47",
+     "kb": 32,
+     "triangulos": 620,
+     "ossos": 4,
+     "molas": [],
+     "altura_m": 0.46,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.229
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "azul",
+      "chapeu": "pontudo"
      }
     }
    ]
@@ -15426,6 +15700,139 @@
       "cores": "tempestade",
       "clima": "neve",
       "rosto": "feliz"
+     }
+    }
+   ]
+  },
+  "pedra-que-rola": {
+   "num": 110,
+   "nome": "Pedra-que-rola",
+   "grupo": "Elementais",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 1,
+   "descricao": "Esfera de pedra com olho único e musgo; rola.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "granito",
+       "nome": "Granito"
+      },
+      {
+       "chave": "arenito",
+       "nome": "Arenito"
+      },
+      {
+       "chave": "basalto",
+       "nome": "Basalto"
+      }
+     ]
+    },
+    {
+     "chave": "musgo",
+     "nome": "Musgo",
+     "opcoes": [
+      {
+       "chave": "muito",
+       "nome": "Muito"
+      },
+      {
+       "chave": "pouco",
+       "nome": "Pouco"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/pedra-que-rola/pedra-que-rola_padrao.glb",
+     "variacao": "Pim 65",
+     "kb": 21,
+     "triangulos": 528,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 1,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 2.552
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "granito",
+      "musgo": "muito"
+     }
+    },
+    {
+     "arquivo": "criaturas/pedra-que-rola/pedra-que-rola_lua-28.glb",
+     "variacao": "Lua 28",
+     "kb": 21,
+     "triangulos": 528,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 2.935
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "arenito",
+      "musgo": "muito"
+     }
+    },
+    {
+     "arquivo": "criaturas/pedra-que-rola/pedra-que-rola_rufo-27.glb",
+     "variacao": "Rufo 27",
+     "kb": 21,
+     "triangulos": 528,
+     "ossos": 2,
+     "molas": [],
+     "altura_m": 1.15,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 2.935
+     },
+     "cfg": {
+      "tamanho": "g",
+      "cores": "basalto",
+      "musgo": "muito"
      }
     }
    ]
@@ -17009,6 +17416,288 @@
     }
    ]
   },
+  "gosma-cubo": {
+   "num": 135,
+   "nome": "Gosma-cubo",
+   "grupo": "Estranhos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 1.5,
+   "descricao": "Cubo de gelatina com objetos dentro; desliza.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "ambar",
+       "nome": "Âmbar"
+      },
+      {
+       "chave": "rosa",
+       "nome": "Rosa"
+      }
+     ]
+    },
+    {
+     "chave": "dentro",
+     "nome": "Dentro",
+     "opcoes": [
+      {
+       "chave": "tesouro",
+       "nome": "Tesouro"
+      },
+      {
+       "chave": "ossos",
+       "nome": "Ossos"
+      },
+      {
+       "chave": "aventureiro",
+       "nome": "Elmo e espada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gosma-cubo/gosma-cubo_padrao.glb",
+     "variacao": "Nix 46",
+     "kb": 26,
+     "triangulos": 460,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.238
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "dentro": "tesouro"
+     }
+    },
+    {
+     "arquivo": "criaturas/gosma-cubo/gosma-cubo_vina-61.glb",
+     "variacao": "Vina 61",
+     "kb": 22,
+     "triangulos": 264,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.238
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "rosa",
+      "dentro": "aventureiro"
+     }
+    },
+    {
+     "arquivo": "criaturas/gosma-cubo/gosma-cubo_lua-73.glb",
+     "variacao": "Lua 73",
+     "kb": 22,
+     "triangulos": 332,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 1.29,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.065
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "verde",
+      "dentro": "ossos"
+     }
+    }
+   ]
+  },
+  "gosma-saltadora": {
+   "num": 136,
+   "nome": "Gosma-saltadora",
+   "grupo": "Estranhos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.4,
+   "descricao": "Gota com olhinhos; pula.",
+   "combinacoes": 36,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "azul",
+       "nome": "Azul"
+      },
+      {
+       "chave": "verde",
+       "nome": "Verde"
+      },
+      {
+       "chave": "magma",
+       "nome": "Magma"
+      },
+      {
+       "chave": "roxa",
+       "nome": "Roxa"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Enfeite",
+     "opcoes": [
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      },
+      {
+       "chave": "coroa",
+       "nome": "Coroinha"
+      },
+      {
+       "chave": "folha",
+       "nome": "Folha"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/gosma-saltadora/gosma-saltadora_padrao.glb",
+     "variacao": "Pim 38",
+     "kb": 27,
+     "triangulos": 444,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.33
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "azul",
+      "chapeu": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/gosma-saltadora/gosma-saltadora_bela-94.glb",
+     "variacao": "Bela 94",
+     "kb": 27,
+     "triangulos": 468,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.4,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.324
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "magma",
+      "chapeu": "folha"
+     }
+    },
+    {
+     "arquivo": "criaturas/gosma-saltadora/gosma-saltadora_luz-93.glb",
+     "variacao": "Luz 93",
+     "kb": 30,
+     "triangulos": 520,
+     "ossos": 3,
+     "molas": [],
+     "altura_m": 0.344,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.27
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "roxa",
+      "chapeu": "coroa"
+     }
+    }
+   ]
+  },
   "olho-aranha": {
    "num": 138,
    "nome": "Olho-aranha",
@@ -17298,6 +17987,314 @@
     }
    ]
   },
+  "bocarra": {
+   "num": 140,
+   "nome": "Bocarra",
+   "grupo": "Estranhos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 2.2,
+   "descricao": "Só boca e dentes, com pernas; salta.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "carne",
+       "nome": "Carne"
+      },
+      {
+       "chave": "pantano",
+       "nome": "Pântano"
+      },
+      {
+       "chave": "sombra",
+       "nome": "Sombra"
+      }
+     ]
+    },
+    {
+     "chave": "dentes",
+     "nome": "Dentes",
+     "opcoes": [
+      {
+       "chave": "muitos",
+       "nome": "Muitos"
+      },
+      {
+       "chave": "poucos",
+       "nome": "Poucos e grandes"
+      }
+     ]
+    },
+    {
+     "chave": "olhos",
+     "nome": "Olhos",
+     "opcoes": [
+      {
+       "chave": "dois",
+       "nome": "Dois"
+      },
+      {
+       "chave": "um",
+       "nome": "Um"
+      },
+      {
+       "chave": "nenhum",
+       "nome": "Nenhum"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/bocarra/bocarra_padrao.glb",
+     "variacao": "Sabi 58",
+     "kb": 48,
+     "triangulos": 1176,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 2.2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.198
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "carne",
+      "dentes": "muitos",
+      "olhos": "dois"
+     }
+    },
+    {
+     "arquivo": "criaturas/bocarra/bocarra_teco-16.glb",
+     "variacao": "Teco 16",
+     "kb": 44,
+     "triangulos": 944,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.892,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.104
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "carne",
+      "dentes": "muitos",
+      "olhos": "nenhum"
+     }
+    },
+    {
+     "arquivo": "criaturas/bocarra/bocarra_nix-83.glb",
+     "variacao": "Nix 83",
+     "kb": 48,
+     "triangulos": 1176,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 2.2,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 1.198
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "pantano",
+      "dentes": "muitos",
+      "olhos": "dois"
+     }
+    }
+   ]
+  },
+  "mao-errante": {
+   "num": 141,
+   "nome": "Mão-errante",
+   "grupo": "Estranhos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 0.18,
+   "descricao": "Mão sem corpo; corre nos dedos.",
+   "combinacoes": 54,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "palida",
+       "nome": "Pálida"
+      },
+      {
+       "chave": "verde",
+       "nome": "Esverdeada"
+      },
+      {
+       "chave": "ossos",
+       "nome": "Cinzenta"
+      }
+     ]
+    },
+    {
+     "chave": "anel",
+     "nome": "Anel",
+     "opcoes": [
+      {
+       "chave": "ouro",
+       "nome": "De ouro"
+      },
+      {
+       "chave": "rubi",
+       "nome": "Rubi"
+      },
+      {
+       "chave": "nenhum",
+       "nome": "Nenhum"
+      }
+     ]
+    },
+    {
+     "chave": "punho",
+     "nome": "Punho",
+     "opcoes": [
+      {
+       "chave": "manga",
+       "nome": "Manga rendada"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nu"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/mao-errante/mao-errante_padrao.glb",
+     "variacao": "Orvo 55",
+     "kb": 38,
+     "triangulos": 552,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.18,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.237
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "palida",
+      "anel": "ouro",
+      "punho": "manga"
+     }
+    },
+    {
+     "arquivo": "criaturas/mao-errante/mao-errante_gaia-48.glb",
+     "variacao": "Gaia 48",
+     "kb": 32,
+     "triangulos": 336,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.155,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.231
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "ossos",
+      "anel": "nenhum",
+      "punho": "nada"
+     }
+    },
+    {
+     "arquivo": "criaturas/mao-errante/mao-errante_miro-54.glb",
+     "variacao": "Miro 54",
+     "kb": 36,
+     "triangulos": 536,
+     "ossos": 17,
+     "molas": [],
+     "altura_m": 0.18,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.237
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "verde",
+      "anel": "nenhum",
+      "punho": "manga"
+     }
+    }
+   ]
+  },
   "bolha-sabia": {
    "num": 142,
    "nome": "Bolha-sábia",
@@ -17427,6 +18424,139 @@
       "tamanho": "m",
       "cores": "ambar",
       "oculos": "nao"
+     }
+    }
+   ]
+  },
+  "vassoura-viva": {
+   "num": 145,
+   "nome": "Vassoura-viva",
+   "grupo": "Constructos",
+   "familia": "G",
+   "voa": false,
+   "tamanho_m": 1.5,
+   "descricao": "Um pé só, braços de palha; varre e pula.",
+   "combinacoes": 18,
+   "categorias": [
+    {
+     "chave": "tamanho",
+     "nome": "Tamanho",
+     "opcoes": [
+      {
+       "chave": "p",
+       "nome": "Menor"
+      },
+      {
+       "chave": "m",
+       "nome": "Normal"
+      },
+      {
+       "chave": "g",
+       "nome": "Maior"
+      }
+     ]
+    },
+    {
+     "chave": "cores",
+     "nome": "Cores",
+     "opcoes": [
+      {
+       "chave": "palha",
+       "nome": "Palha"
+      },
+      {
+       "chave": "escura",
+       "nome": "Escura"
+      },
+      {
+       "chave": "clara",
+       "nome": "Clara"
+      }
+     ]
+    },
+    {
+     "chave": "chapeu",
+     "nome": "Chapéu",
+     "opcoes": [
+      {
+       "chave": "bruxa",
+       "nome": "De bruxa"
+      },
+      {
+       "chave": "nada",
+       "nome": "Nada"
+      }
+     ]
+    }
+   ],
+   "arquivos": [
+    {
+     "arquivo": "criaturas/vassoura-viva/vassoura-viva_padrao.glb",
+     "variacao": "Luz 98",
+     "kb": 35,
+     "triangulos": 588,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.339
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "palha",
+      "chapeu": "bruxa"
+     }
+    },
+    {
+     "arquivo": "criaturas/vassoura-viva/vassoura-viva_luz-98.glb",
+     "variacao": "Luz 98",
+     "kb": 35,
+     "triangulos": 588,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.5,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.339
+     },
+     "cfg": {
+      "tamanho": "m",
+      "cores": "palha",
+      "chapeu": "bruxa"
+     }
+    },
+    {
+     "arquivo": "criaturas/vassoura-viva/vassoura-viva_miro-75.glb",
+     "variacao": "Miro 75",
+     "kb": 35,
+     "triangulos": 588,
+     "ossos": 9,
+     "molas": [],
+     "altura_m": 1.29,
+     "animacoes": [
+      "Parado",
+      "Mover",
+      "Atacar",
+      "Pular"
+     ],
+     "velocidades": {
+      "Mover": 0.292
+     },
+     "cfg": {
+      "tamanho": "p",
+      "cores": "palha",
+      "chapeu": "bruxa"
      }
     }
    ]
