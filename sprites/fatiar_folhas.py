@@ -91,8 +91,23 @@ def ajustar(segs, perfil):
     return out
 
 
+def apagar_chao(rgb):
+    """apaga linhas de chão finas (guia de pose): faixa cinza horizontal longa com branco logo acima e abaixo"""
+    a = rgb.copy(); f = a.astype(np.int16); H, W = f.shape[:2]
+    cinza = (f.max(2) - f.min(2) < 18) & (f.min(2) > 110) & (f.max(2) < 235)
+    for y in range(3, H - 3):
+        lin = cinza[y]
+        if lin.sum() < W * 0.08: continue
+        branco = lambda yy: f[yy].min(1) > 238
+        ok = lin & (branco(y - 3) | branco(y + 3))
+        lab, n = ndi.label(ok)
+        for i in range(1, n + 1):
+            xs = np.nonzero(lab == i)[0]
+            if len(xs) > W * 0.04: a[max(0, y - 2):y + 3, xs[0]:xs[-1] + 1] = 255
+    return a
+
 def quadros(img, esperado=5):
-    rgb = np.asarray(img.convert('RGB'))
+    rgb = apagar_chao(np.asarray(img.convert('RGB')))
     m, d = mascara(rgb)
     perfil = np.convolve(m.sum(axis=1).astype(np.float32), np.ones(9) / 9, mode='same')
     linhas = faixas(m.sum(axis=1), gap=6, minimo=2)
@@ -276,10 +291,31 @@ def passo(cels, py, H):
 
 
 def limitar_vel(v):
-    """a medida pela abertura dos pés é ruidosa (6 patas, galope): prende em faixas plausíveis para ALTURA=200"""
-    vel = v.get('vel', {}); a = min(9.0, max(3.0, vel.get('andar', 5.0))); c = min(25.0, max(a * 1.8, vel.get('correr', a * 2.5)))
+    """velocidade medida pela varredura vale como está; só socorre arte que não anda (v≈0, ciclo sem passo)"""
+    vel = v.get('vel', {}); a = vel.get('andar', 0); c = vel.get('correr', 0)
+    if a < 2: a = 6.0; v.setdefault('aviso', []).append('andar sem passo na arte')
+    if c < a * 1.3: c = a * 2.2; v.setdefault('aviso', []).append('correr sem passo na arte')
     v['vel'] = {'andar': round(a, 2), 'correr': round(c, 2)}
 
+
+def pes_chao(m):
+    """centros x dos pés que tocam o chão (faixa de 3,5% da altura acima da base)"""
+    ys = np.nonzero(m.any(1))[0]; b = ys.max(); h = b - ys.min()
+    band = ndi.binary_closing(m[int(b - h * 0.035):b + 1].any(0), iterations=3); lab, n = ndi.label(band)
+    return [float(np.nonzero(lab == i)[0].mean()) for i in range(1, n + 1) if (lab == i).sum() >= 4]
+
+def vel_medida(cels, vmax=90.0):
+    """velocidade (px/quadro) que deixa o pé de apoio mais parado no chão: varre v e minimiza o deslize médio.
+    Arte que não anda (pernas paradas) dá v≈0; ciclo de passo de verdade dá um mínimo claro."""
+    P = [pes_chao(np.asarray(c)[..., 3] > 127) for c in cels]; n = len(P); melhor = (0.0, 1e9)
+    for v in np.arange(0, vmax + 0.01, 0.5):
+        d = [min(abs(p + k * v - q - (k + 1) * v) for p in P[k] for q in P[(k + 1) % n]) for k in range(n) if P[k] and P[(k + 1) % n]]
+        if d and np.mean(d) < melhor[1]: melhor = (float(v), float(np.mean(d)))
+    if melhor[1] > 12:
+        # corrida: o pé de apoio troca a cada 1-2 quadros e a varredura fica plana; usa quanto o pé no chão recua
+        rec = [P[k][0] - P[k + 1][0] for k in range(n - 1) if len(P[k]) == 1 and len(P[k + 1]) == 1 and 5 <= P[k][0] - P[k + 1][0] <= vmax]
+        if len(rec) >= 2: melhor = (float(np.median(rec)), -1.0)
+    return melhor
 
 def main(src, dst):
     os.makedirs(dst, exist_ok=True)
@@ -303,7 +339,8 @@ def main(src, dst):
                 im = q['img'].resize((max(1, round(q['img'].width * k)), max(1, round(q['img'].height * k))), Image.LANCZOS)
                 cel = Image.new('RGBA', (W, H), (0, 0, 0, 0)); cel.paste(im, (round(px - q['cx'] * k), round(py - q['base'] * k)), im); cels.append(cel)
             D = DIRS[d]
-            if D == 'E' and mov in ('andar', 'correr'): man[cri].setdefault('vel', {})[mov] = passo(cels, py, H)
+            if D == 'E' and mov in ('andar', 'correr'):
+                v, desl = vel_medida(cels); man[cri].setdefault('vel', {})[mov] = round(v, 2); man[cri].setdefault('deslize', {})[mov] = round(desl, 1)
             for nome, lista in [(D, cels)] + ([(ESPELHO[D], [c.transpose(Image.FLIP_LEFT_RIGHT) for c in cels])] if D in ESPELHO else []):
                 tira = Image.new('RGBA', (W * len(lista), H), (0, 0, 0, 0))
                 for i, c in enumerate(lista): tira.paste(c, (i * W, 0))

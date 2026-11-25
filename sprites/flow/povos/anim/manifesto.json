@@ -52,9 +52,16 @@
     }
    },
    "vel": {
-    "andar": 9.0,
-    "correr": 23.6
-   }
+    "andar": 6.0,
+    "correr": 23.0
+   },
+   "deslize": {
+    "andar": 10.6,
+    "correr": -1.0
+   },
+   "aviso": [
+    "andar sem passo na arte"
+   ]
   },
   "anao": {
    "celula": [
@@ -108,9 +115,16 @@
     }
    },
    "vel": {
-    "andar": 4.2,
-    "correr": 25.0
-   }
+    "andar": 2.0,
+    "correr": 4.4
+   },
+   "deslize": {
+    "andar": 2.0,
+    "correr": 29.1
+   },
+   "aviso": [
+    "correr sem passo na arte"
+   ]
   },
   "beorning": {
    "celula": [
@@ -164,9 +178,17 @@
     }
    },
    "vel": {
-    "andar": 9.0,
-    "correr": 21.4
-   }
+    "andar": 6.0,
+    "correr": 13.2
+   },
+   "deslize": {
+    "andar": 9.2,
+    "correr": 38.4
+   },
+   "aviso": [
+    "andar sem passo na arte",
+    "correr sem passo na arte"
+   ]
   },
   "humano": {
    "celula": [
@@ -220,8 +242,12 @@
     }
    },
    "vel": {
-    "andar": 6.4,
-    "correr": 17.6
+    "andar": 10.0,
+    "correr": 32.75
+   },
+   "deslize": {
+    "andar": 6.0,
+    "correr": -1.0
    }
   },
   "litomante": {
@@ -276,9 +302,17 @@
     }
    },
    "vel": {
-    "andar": 9.0,
-    "correr": 16.2
-   }
+    "andar": 6.0,
+    "correr": 13.2
+   },
+   "deslize": {
+    "andar": 3.2,
+    "correr": 6.9
+   },
+   "aviso": [
+    "andar sem passo na arte",
+    "correr sem passo na arte"
+   ]
   },
   "silvano": {
    "celula": [
@@ -332,9 +366,17 @@
     }
    },
    "vel": {
-    "andar": 6.4,
+    "andar": 6.0,
+    "correr": 13.2
+   },
+   "deslize": {
+    "andar": 3.0,
     "correr": 18.4
-   }
+   },
+   "aviso": [
+    "andar sem passo na arte",
+    "correr sem passo na arte"
+   ]
   },
   "vodnik": {
    "celula": [
@@ -388,9 +430,17 @@
     }
    },
    "vel": {
+    "andar": 6.0,
+    "correr": 13.2
+   },
+   "deslize": {
     "andar": 3.4,
-    "correr": 20.4
-   }
+    "correr": 11.1
+   },
+   "aviso": [
+    "andar sem passo na arte",
+    "correr sem passo na arte"
+   ]
   },
   "vran": {
    "celula": [
@@ -444,9 +494,16 @@
     }
    },
    "vel": {
-    "andar": 9.0,
-    "correr": 23.0
-   }
+    "andar": 6.0,
+    "correr": 38.0
+   },
+   "deslize": {
+    "andar": 12.2,
+    "correr": -1.0
+   },
+   "aviso": [
+    "andar sem passo na arte"
+   ]
   }
  }
 }

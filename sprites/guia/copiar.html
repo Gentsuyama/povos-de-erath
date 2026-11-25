@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Copiar guia</title>
+<style>body{margin:0;font:16px system-ui;background:#fff} button{font:inherit;padding:30px 60px;margin:20px} img{max-width:100%;display:block}</style></head>
+<body><button id="b">Copiar imagem</button><span id="s"></span><img id="i">
+<script>
+// ?f=folhas/guia_Walk_E.png  → botão copia a imagem como PNG para a área de transferência
+const f = new URLSearchParams(location.search).get('f'); document.getElementById('i').src = f;
+document.getElementById('b').onclick = async () => {
+  try { const bm = await createImageBitmap(await (await fetch(f)).blob()), cv = document.createElement('canvas'); cv.width = bm.width; cv.height = bm.height; cv.getContext('2d').drawImage(bm, 0, 0); const b = await new Promise(r => cv.toBlob(r, 'image/png')); await navigator.clipboard.write([new ClipboardItem({ 'image/png': b })]); document.getElementById('s').textContent = 'COPIADO ' + b.size; }
+  catch (e) { document.getElementById('s').textContent = 'ERRO ' + e.message; }
+};
+</script></body></html>

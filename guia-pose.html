@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Guia de Pose</title>
+<style>html,body{margin:0;background:#fff;overflow:hidden} canvas{display:block} #meta{display:none}</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<canvas id="out"></canvas><pre id="meta"></pre>
+<script type="module">
+// Guia de pose para pintura por IA. Manequim de captura de movimento ("Mannequin Man" por vinish.dev, CC BY 4.0)
+// fazendo o ciclo REAL, no lugar, em N quadros; câmera ortográfica fixa; fundo branco; linha de chão;
+// lado ESQUERDO do corpo azulado e DIREITO alaranjado para a IA não trocar as pernas.
+// ?clip=Walk&dir=E&n=10&cols=5&cw=400&ch=500&elev=10
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const Q = new URLSearchParams(location.search);
+const clipName = Q.get('clip') || 'Walk', dir = Q.get('dir') || 'E';
+const N = +(Q.get('n') || 10), COLS = +(Q.get('cols') || 5), CW = +(Q.get('cw') || 400), CH = +(Q.get('ch') || 500), ROWS = Math.ceil(N / COLS);
+const ELEV = +(Q.get('elev') || 10) * Math.PI / 180, ANG = { S: 0, SE: 45, E: 90, NE: 135, N: 180 }[dir] * Math.PI / 180;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(CW, CH); renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#ffffff');
+scene.add(new THREE.HemisphereLight('#ffffff', '#6f6658', 1.6));
+const sun = new THREE.DirectionalLight('#ffffff', 2.0); sun.position.set(1.2, 2.5, 3); scene.add(sun);
+const gl = await new GLTFLoader().loadAsync('sprites/guia/mannequin-man.glb');
+const root = gl.scene; root.rotation.y = ANG; scene.add(root);
+// cor por lado: vértice puxado por osso Left* → azul, Right* → laranja, resto cinza
+const COR = { L: new THREE.Color('#5f86c9'), R: new THREE.Color('#e08a4a'), C: new THREE.Color('#c9c4bc') };
+root.traverse(o => { if (!o.isSkinnedMesh) return;
+  const bn = o.skeleton.bones.map(b => /Left/.test(b.name) ? 'L' : /Right/.test(b.name) ? 'R' : 'C');
+  const g = o.geometry, si = g.attributes.skinIndex, sw = g.attributes.skinWeight, col = new Float32Array(si.count * 3);
+  for (let i = 0; i < si.count; i++) { const acc = { L: 0, R: 0, C: 0 };
+    const ix = [si.getX(i), si.getY(i), si.getZ(i), si.getW(i)], wt = [sw.getX(i), sw.getY(i), sw.getZ(i), sw.getW(i)]; for (let k = 0; k < 4; k++) acc[bn[ix[k]]] += wt[k];
+    const lado = acc.L > 0.5 ? 'L' : acc.R > 0.5 ? 'R' : 'C'; COR[lado].toArray(col, i * 3); }
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  o.material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.6, metalness: 0 }); o.frustumCulled = false; });
+// clipe no lugar: tira a tendência linear do quadril em X/Z (a deriva vira a velocidade real do passo)
+const clip = gl.animations.find(a => a.name === clipName).clone();
+let vel = 0;
+for (const tr of clip.tracks) if (/Hips\.position$/.test(tr.name)) {
+  const v = tr.values, n = v.length / 3, T = tr.times[n - 1] - tr.times[0];
+  const d = [v[(n - 1) * 3] - v[0], 0, v[(n - 1) * 3 + 2] - v[2]];
+  vel = Math.hypot(d[0], d[2]) / T;                     // unidades do modelo por segundo
+  for (let i = 0; i < n; i++) { const u = (tr.times[i] - tr.times[0]) / T; v[i * 3] -= d[0] * u; v[i * 3 + 2] -= d[2] * u; }
+}
+const mixer = new THREE.AnimationMixer(root), act = mixer.clipAction(clip); act.play();
+mixer.setTime(0); root.updateMatrixWorld(true);
+const box = new THREE.Box3().setFromObject(root), Hm = box.max.y - Math.min(0, box.min.y);
+const viewH = Hm * 1.25, viewW = viewH * CW / CH;
+const cam = new THREE.OrthographicCamera(-viewW / 2, viewW / 2, viewH * 0.9, -viewH * 0.1, -100, 100);
+cam.position.set(0, Math.sin(ELEV), Math.cos(ELEV)); cam.lookAt(0, 0, 0); cam.updateProjectionMatrix();
+const out = document.getElementById('out'); out.width = CW * COLS; out.height = CH * ROWS;
+const g = out.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, out.width, out.height);
+const proj = v => { const p = v.clone().project(cam); return [+((p.x + 1) / 2 * CW).toFixed(1), +((1 - p.y) / 2 * CH).toFixed(1)]; };
+const bone = n => { let b = null; root.traverse(o => { if (o.isBone && o.name.endsWith(n)) b = o; }); return b; };
+const fL = bone('LeftToeBase') || bone('LeftFoot'), fR = bone('RightToeBase') || bone('RightFoot');
+const meta = { clip: clipName, dir, n: N, cw: CW, ch: CH, pxm: CH / viewH, vel_px_s: vel * CH / viewH, dur: clip.duration, quadros: [] };
+for (let i = 0; i < N; i++) {
+  const t = clip.duration * i / N; mixer.setTime(t); root.updateMatrixWorld(true); renderer.render(scene, cam);
+  const cx = (i % COLS) * CW, cy = Math.floor(i / COLS) * CH, chao = proj(new THREE.Vector3());
+  g.drawImage(renderer.domElement, cx, cy);
+  g.strokeStyle = '#bdbdbd'; g.lineWidth = 2; g.beginPath(); g.moveTo(cx + CW * 0.1, cy + chao[1] + 1); g.lineTo(cx + CW * 0.9, cy + chao[1] + 1); g.stroke();
+  const w = b => proj(new THREE.Vector3().setFromMatrixPosition(b.matrixWorld));
+  meta.quadros.push({ t: +t.toFixed(3), chao, peE: w(fL), peD: w(fR) });
+}
+document.getElementById('meta').textContent = JSON.stringify(meta);
+document.title = 'PRONTO';
+</script>
+</body>
+</html>
